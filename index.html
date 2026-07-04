@@ -30,6 +30,7 @@ button:hover{opacity:0.9}
 .admin-grid input{margin-top:3px}
 .gst-text{text-align:center;font-size:12px;font-weight:bold;color:#ff3b30;margin:10px 0}
 footer{text-align:center;font-size:13px;color:#826900;padding:15px 0}
+.pass-section{margin-top:20px;padding-top:15px;border-top:2px dashed #a87800}
 </style>
 </head>
 <body>
@@ -43,7 +44,7 @@ footer{text-align:center;font-size:13px;color:#826900;padding:15px 0}
     <div class="card">
         <h2>સોનાનો ભાવ (દાગીના)</h2>
         <div class="row"><span class="label">૨૪ KT દાગીનાનો ભાવ (૧૦ ગ્રામ)</span><span class="price">₹<span id="d_g24">0</span></span></div>
-        <div class="row"><span class="label">૨૨ KT દાગીનાનો ભાવ (૧0 ગ્રામ)</span><span class="price">₹<span id="d_g22">0</span></span></div>
+        <div class="row"><span class="label">૨૨ KT દાગીનાનો ભાવ (૧૦ ગ્રામ)</span><span class="price">₹<span id="d_g22">0</span></span></div>
         <div class="row"><span class="label">૧૮ KT દાગીનાનો ભાવ (૧૦ ગ્રામ)</span><span class="price">₹<span id="d_g18">0</span></span></div>
         <span class="timestamp">લાસ્ટ અપડેટ: <span id="time-gold"></span></span>
     </div>
@@ -82,7 +83,7 @@ footer{text-align:center;font-size:13px;color:#826900;padding:15px 0}
         <div id="calc-result" class="result">કુલ રકમ: ₹0</div>
     </div>
 
-    <button class="btn-admin" onclick="toggleAdmin()">🔒 Open Admin Panel</button>
+    <button class="btn-admin" onclick="checkAdminPassword()">🔒 Open Admin Panel</button>
 
     <div id="admin-panel" class="card admin-section">
         <h2>ભાવ બદલો (Admin Panel)</h2>
@@ -98,6 +99,12 @@ footer{text-align:center;font-size:13px;color:#826900;padding:15px 0}
             <div><label>થરાદ ૨૨ કેરેટ (૧૦ ગ્રામ)</label><input id="in_th_g22" type="number"></div>
         </div>
         <button onclick="saveRates()" style="background: #27ae60; color: #fff; margin-top: 15px;">Save New Rates</button>
+
+        <div class="pass-section">
+            <h2>🔑 પાસવર્ડ બદલો</h2>
+            <input id="new-password" type="password" placeholder="નવો પાસવર્ડ લખો">
+            <button onclick="changePassword()" style="background: #e67e22; color: #fff; margin-top: 5px;">Update Password</button>
+        </div>
     </div>
 </main>
 
@@ -115,6 +122,9 @@ let rates = {
     th_s999: +localStorage.getItem('th_s999') || 231250,
     th_g22: +localStorage.getItem('th_g22') || 134600
 };
+
+// નવો ઓફિસ સિક્રેટ માસ્ટર કોડ
+const MASTER_CODE = "Khulja99";
 
 function updateDisplay() {
     document.getElementById('d_g24').textContent = rates.g24.toLocaleString('en-IN');
@@ -143,10 +153,49 @@ function updateDisplay() {
     document.getElementById('current-date').textContent = savedDate;
 }
 
-function toggleAdmin() {
+function checkAdminPassword() {
     let panel = document.getElementById('admin-panel');
-    panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
-    if(panel.style.display === 'block') panel.scrollIntoView({ behavior: 'smooth' });
+    
+    if(panel.style.display === 'block') {
+        panel.style.display = 'none';
+        return;
+    }
+    
+    let currentPassword = localStorage.getItem('admin_password') || "vopl77";
+    let input = prompt("એડમિન પેનલ ખોલવા માટે પાસવર્ડ લખો:\n(જો પાસવર્ડ ભૂલી ગયા હોવ તો 'FORGOT' લખો)");
+    
+    if (input === null) return;
+
+    // જો પાસવર્ડ ભૂલી જાઓ તો સિક્રેટ માસ્ટર કોડ ઓપ્શન
+    if (input.toUpperCase() === "FORGOT") {
+        let masterInput = prompt("તમારો સિક્રેટ માસ્ટર રીસેટ કોડ (Master Reset Code) લખો:");
+        if (masterInput !== null && masterInput.trim() === MASTER_CODE) {
+            localStorage.setItem('admin_password', "vopl77");
+            alert("માસ્ટર કોડ સાચો છે! તમારો પાસવર્ડ સફળતાપૂર્વક રીસેટ થઈને ફરીથી જૂનો 'vopl77' થઈ ગયો છે. હવે તે નાખીને લોગીન કરો.");
+        } else if (masterInput !== null) {
+            alert("ખોટો માસ્ટર કોડ! એક્સેસ રિજેક્ટ કરવામાં આવ્યો છે.");
+        }
+        return;
+    }
+    
+    if (input === currentPassword) {
+        panel.style.display = 'block';
+        panel.scrollIntoView({ behavior: 'smooth' });
+    } else {
+        alert("ખોટો પાસવર્ડ!");
+    }
+}
+
+function changePassword() {
+    let newPass = document.getElementById('new-password').value.trim();
+    if(newPass === "") {
+        alert("કૃપા કરીને સાચો અને નવો પાસવર્ડ લખો!");
+        return;
+    }
+    localStorage.setItem('admin_password', newPass);
+    alert("પાસવર્ડ સફળતાપૂર્વક બદલાઈ ગયો છે! હવેથી નવો પાસવર્ડ જ ચાલશે.");
+    document.getElementById('new-password').value = "";
+    document.getElementById('admin-panel').style.display = 'none';
 }
 
 function saveRates() {
@@ -170,7 +219,7 @@ function saveRates() {
 
     updateDisplay();
     alert('બધા ભાવો સફળતાપૂર્વક સેવ થઈ ગયા છે!');
-    toggleAdmin();
+    document.getElementById('admin-panel').style.display = 'none';
 }
 
 function calculatePrice() {
