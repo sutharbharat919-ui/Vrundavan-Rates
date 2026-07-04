@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VRUNDAVAN ORNAMENTS PVT LTD</title>
+<title>VRUNDAVAN ORNAMENTS</title>
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:#fff9df;color:#382b00;padding-bottom:40px}
@@ -31,6 +31,13 @@ button:hover{opacity:0.9}
 .gst-text{text-align:center;font-size:12px;font-weight:bold;color:#ff3b30;margin:10px 0}
 footer{text-align:center;font-size:13px;color:#826900;padding:15px 0}
 .pass-section{margin-top:20px;padding-top:15px;border-top:2px dashed #a87800}
+
+/* પોપ-અપ મોડલ ડિઝાઇન */
+.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:1000;justify-content:center;align-items:center;padding:20px}
+.modal-box{background:#fff;width:100%;max-width:350px;padding:25px;border-radius:15px;border:2px solid #ffd700;box-shadow:0 10px 25px rgba(0,0,0,0.3)}
+.modal-buttons{display:flex;gap:10px;margin-top:15px}
+.modal-buttons button{margin-top:0}
+.btn-close{background:#e0e0e0;color:#333}
 </style>
 </head>
 <body>
@@ -42,89 +49,100 @@ footer{text-align:center;font-size:13px;color:#826900;padding:15px 0}
 
 <main>
     <div class="card">
-        <h2>સોનાનો ભાવ (દાગીના)</h2>
-        <div class="row"><span class="label">૨૪ KT દાગીનાનો ભાવ (૧૦ ગ્રામ)</span><span class="price">₹<span id="d_g24">0</span></span></div>
-        <div class="row"><span class="label">૨૨ KT દાગીનાનો ભાવ (૧૦ ગ્રામ)</span><span class="price">₹<span id="d_g22">0</span></span></div>
-        <div class="row"><span class="label">૧૮ KT દાગીનાનો ભાવ (૧૦ ગ્રામ)</span><span class="price">₹<span id="d_g18">0</span></span></div>
-        <span class="timestamp">લાસ્ટ અપડેટ: <span id="time-gold"></span></span>
+        <h2>સોનાનો ભાવ</h2>
+        <div class="row"><span class="label">૨૪ KT (૧૦ ગ્રામ)</span><span class="price">₹<span id="d_g24">0</span></span></div>
+        <div class="row"><span class="label">૨૨ KT (૧૦ ગ્રામ)</span><span class="price">₹<span id="d_g22">0</span></span></div>
+        <div class="row"><span class="label">૧૮ KT (૧૦ ગ્રામ)</span><span class="price">₹<span id="d_g18">0</span></span></div>
+        <span class="timestamp">Last Update: <span id="time-gold"></span></span>
     </div>
 
     <div class="card">
         <h2>ચાંદીનો ભાવ (૧ કિલો)</h2>
-        <div class="row"><span class="label">૯૫/૭૫ ટ્રેડીંગ</span><span class="price">₹<span id="d_s95">0</span></span></div>
-        <div class="row"><span class="label">૯૦/૭૦ ટ્રેડીંગ</span><span class="price">₹<span id="d_s90">0</span></span></div>
-        <div class="row"><span class="label">૬૦/૮૦ ટ્રેડીંગ</span><span class="price">₹<span id="d_s60">0</span></span></div>
+        <div class="row"><span class="label">૯૫/૭૫</span><span class="price">₹<span id="d_s95">0</span></span></div>
+        <div class="row"><span class="label">૯૦/૭૦</span><span class="price">₹<span id="d_s90">0</span></span></div>
+        <div class="row"><span class="label">૬૦/૮૦</span><span class="price">₹<span id="d_s60">0</span></span></div>
     </div>
 
     <div class="gst-text">* 3% GST APPLY</div>
 
     <div class="card">
-        <h2>થરાદ રોકડ બજાર ભાવ</h2>
-        <div class="row"><span class="label">ગોલ્ડ ૯૯૯ imp (૧૦ ગ્રામ)</span><span class="price">₹<span id="d_th_g999">0</span></span></div>
-        <div class="row"><span class="label">સિલ્વર ચોરસા ૯૯૯ (૧ કિલો)</span><span class="price">₹<span id="d_th_s999">0</span></span></div>
-        <div class="row"><span class="label">૨૨ કેરેટ ભાવ (૧૦ ગ્રામ)</span><span class="price">₹<span id="d_th_g22">0</span></span></div>
+        <h2>થરાદ રોકડ બજાર</h2>
+        <div class="row"><span class="label">ગોલ્ડ ૯૯૯ imp</span><span class="price">₹<span id="d_th_g999">0</span></span></div>
+        <div class="row"><span class="label">સિલ્વર ચોરસા ૯૯૯</span><span class="price">₹<span id="d_th_s999">0</span></span></div>
+        <div class="row"><span class="label">૨૨ કેરેટ</span><span class="price">₹<span id="d_th_g22">0</span></span></div>
     </div>
 
     <div class="card">
-        <h2>ભાવ કેલ્ક્યુલેટર (Rate Calculator)</h2>
+        <h2>Rate Calculator</h2>
         <select id="calc-item">
-            <option value="g24">૨૪ KT સોનું (દાગીના)</option>
-            <option value="g22">૨૨ KT સોનું (દાગીના)</option>
-            <option value="g18">૧૮ KT સોનું (દાગીના)</option>
+            <option value="g24">૨૪ KT સોનું</option>
+            <option value="g22">૨૨ KT સોનું</option>
+            <option value="g18">૧૮ KT સોનું</option>
             <option value="s95">ચાંદી ૯૫/૭૫</option>
             <option value="s90">ચાંદી ૯૦/૭૦</option>
             <option value="s60">ચાંદી ૬૦/૮૦</option>
-            <option value="th_g999">થરાદ ગોલ્ડ ૯૯૯ imp</option>
-            <option value="th_s999">થરાદ સિલ્વર ચોરસા ૯૯૯</option>
-            <option value="th_g22">થરાદ ૨૨ કેરેટ રોકડ</option>
+            <option value="th_g999">થરાદ ગોલ્ડ ૯૯૯</option>
+            <option value="th_s999">થરાદ સિલ્વર</option>
+            <option value="th_g22">થરાદ ૨૨ કેરેટ</option>
         </select>
-        <input id="calc-weight" type="number" step="any" placeholder="વજન (ગ્રામ માં લખો)">
+        <input id="calc-weight" type="number" step="any" placeholder="વજન (ગ્રામ)">
         <button onclick="calculatePrice()">હિસાબ કરો</button>
         <div id="calc-result" class="result">કુલ રકમ: ₹0</div>
     </div>
 
-    <button class="btn-admin" onclick="checkAdminPassword()">🔒 Open Admin Panel</button>
+    <button class="btn-admin" onclick="openPasswordModal()">🔒 Settings</button>
 
+    <!-- એડમિન પેનલ સેક્શન -->
     <div id="admin-panel" class="card admin-section">
-        <h2>ભાવ બદલો (Admin Panel)</h2>
+        <h2>Admin Panel</h2>
         <div class="admin-grid">
-            <div><label>૨૪ KT સોનું (૧૦ ગ્રામ)</label><input id="in_g24" type="number"></div>
-            <div><label>૨૨ KT સોનું (૧૦ ગ્રામ)</label><input id="in_g22" type="number"></div>
-            <div><label>૧૮ KT સોનું (૧૦ ગ્રામ)</label><input id="in_g18" type="number"></div>
-            <div><label>ચાંદી ૯૫/૭૫ (૧ કિલો)</label><input id="in_s95" type="number"></div>
-            <div><label>ચાંદી ૯૦/૭૦ (૧ કિલો)</label><input id="in_s90" type="number"></div>
-            <div><label>ચાંદી ૬૦/૮૦ (૧ કિલો)</label><input id="in_s60" type="number"></div>
-            <div><label>થરાદ ગોલ્ડ ૯૯૯ (૧૦ ગ્રામ)</label><input id="in_th_g999" type="number"></div>
-            <div><label>થરાદ સિલ્વર ચોરસા (૧ કિલો)</label><input id="in_th_s999" type="number"></div>
-            <div><label>થરાદ ૨૨ કેરેટ (૧૦ ગ્રામ)</label><input id="in_th_g22" type="number"></div>
+            <div><label>૨૪ KT</label><input id="in_g24" type="number"></div>
+            <div><label>૨૨ KT</label><input id="in_g22" type="number"></div>
+            <div><label>૧૮ KT</label><input id="in_g18" type="number"></div>
+            <div><label>ચાંદી ૯૫/૭૫</label><input id="in_s95" type="number"></div>
+            <div><label>ચાંદી ૯૦/૭૦</label><input id="in_s90" type="number"></div>
+            <div><label>ચાંદી ૬૦/૮૦</label><input id="in_s60" type="number"></div>
+            <div><label>થરાદ ગોલ્ડ</label><input id="in_th_g999" type="number"></div>
+            <div><label>થરાદ સિલ્વર</label><input id="in_th_s999" type="number"></div>
+            <div><label>થરાદ ૨૨ K</label><input id="in_th_g22" type="number"></div>
         </div>
-        <button onclick="saveRates()" style="background: #27ae60; color: #fff; margin-top: 15px;">Save New Rates</button>
-
+        <button onclick="saveRates()" style="background:#27ae60;color:#fff;margin-top:15px;">Save</button>
+        
         <div class="pass-section">
-            <h2>🔑 પાસવર્ડ બદલો</h2>
-            <input id="new-password" type="password" placeholder="નવો પાસવર્ડ લખો">
-            <button onclick="changePassword()" style="background: #e67e22; color: #fff; margin-top: 5px;">Update Password</button>
+            <input id="new-password" type="password" placeholder="New Password">
+            <button onclick="changePassword()" style="background:#e67e22;color:#fff;margin-top:5px;">Update Pass</button>
         </div>
     </div>
 </main>
 
+<!-- કસ્ટમ સિક્રેટ મોડલ (કોઈ લખાણ વગર) -->
+<div id="custom-modal" class="modal-overlay">
+    <div class="modal-box">
+        <input id="modal-input" type="password" placeholder="Enter Code">
+        <div class="modal-buttons">
+            <button class="btn-close" onclick="closeModal()">Cancel</button>
+            <button onclick="submitModal()">OK</button>
+        </div>
+    </div>
+</div>
+
 <footer>Vrundavan Ornaments Pvt. Ltd.</footer>
 
 <script>
-let rates = {
-    g24: +localStorage.getItem('g24') || 143480,
-    g22: +localStorage.getItem('g22') || 134400,
-    g18: +localStorage.getItem('g18') || 108730,
-    s95: +localStorage.getItem('s95') || 221260,
-    s90: +localStorage.getItem('s90') || 209240,
-    s60: +localStorage.getItem('s60') || 185185,
-    th_g999: +localStorage.getItem('th_g999') || 146300,
-    th_s999: +localStorage.getItem('th_s999') || 231250,
-    th_g22: +localStorage.getItem('th_g22') || 134600
+let rates = { 
+    g24: +localStorage.getItem('g24') || 143480, 
+    g22: +localStorage.getItem('g22') || 134400, 
+    g18: +localStorage.getItem('g18') || 108730, 
+    s95: +localStorage.getItem('s95') || 221260, 
+    s90: +localStorage.getItem('s90') || 209240, 
+    s60: +localStorage.getItem('s60') || 185185, 
+    th_g999: +localStorage.getItem('th_g999') || 146300, 
+    th_s999: +localStorage.getItem('th_s999') || 231250, 
+    th_g22: +localStorage.getItem('th_g22') || 134600 
 };
-
-// નવો ઓફિસ સિક્રેટ માસ્ટર કોડ
-const MASTER_CODE = "Khulja99";
+const M_EMAIL = "office.vopl@gmail.com"; 
+const M_CODE = "Khulja99"; 
+let step = 1;
 
 function updateDisplay() {
     document.getElementById('d_g24').textContent = rates.g24.toLocaleString('en-IN');
@@ -136,99 +154,117 @@ function updateDisplay() {
     document.getElementById('d_th_g999').textContent = rates.th_g999.toLocaleString('en-IN');
     document.getElementById('d_th_s999').textContent = rates.th_s999.toLocaleString('en-IN');
     document.getElementById('d_th_g22').textContent = rates.th_g22.toLocaleString('en-IN');
-
-    document.getElementById('in_g24').value = rates.g24;
-    document.getElementById('in_g22').value = rates.g22;
-    document.getElementById('in_g18').value = rates.g18;
-    document.getElementById('in_s95').value = rates.s95;
-    document.getElementById('in_s90').value = rates.s90;
-    document.getElementById('in_s60').value = rates.s60;
-    document.getElementById('in_th_g999').value = rates.th_g999;
-    document.getElementById('in_th_s999').value = rates.th_s999;
+    
+    document.getElementById('in_g24').value = rates.g24; 
+    document.getElementById('in_g22').value = rates.g22; 
+    document.getElementById('in_g18').value = rates.g18; 
+    document.getElementById('in_s95').value = rates.s95; 
+    document.getElementById('in_s90').value = rates.s90; 
+    document.getElementById('in_s60').value = rates.s60; 
+    document.getElementById('in_th_g999').value = rates.th_g999; 
+    document.getElementById('in_th_s999').value = rates.th_s999; 
     document.getElementById('in_th_g22').value = rates.th_g22;
-
-    let savedTime = localStorage.getItem('update_time') || new Date().toLocaleTimeString('en-IN', {hour: '2-digit', minute:'2-digit'});
-    let savedDate = localStorage.getItem('update_date') || new Date().toLocaleDateString('en-IN');
-    document.getElementById('time-gold').textContent = savedTime;
-    document.getElementById('current-date').textContent = savedDate;
+    
+    document.getElementById('time-gold').textContent = localStorage.getItem('update_time') || new Date().toLocaleTimeString('en-IN', {hour:'2-digit', minute:'2-digit'});
+    document.getElementById('current-date').textContent = localStorage.getItem('update_date') || new Date().toLocaleDateString('en-IN');
 }
 
-function checkAdminPassword() {
-    let panel = document.getElementById('admin-panel');
-    
-    if(panel.style.display === 'block') {
-        panel.style.display = 'none';
-        return;
+function openPasswordModal() {
+    if(document.getElementById('admin-panel').style.display === 'block') { 
+        document.getElementById('admin-panel').style.display = 'none'; 
+        return; 
     }
-    
-    let currentPassword = localStorage.getItem('admin_password') || "vopl77";
-    let input = prompt("એડમિન પેનલ ખોલવા માટે પાસવર્ડ લખો:\n(જો પાસવર્ડ ભૂલી ગયા હોવ તો 'FORGOT' લખો)");
-    
-    if (input === null) return;
+    step = 1; 
+    let inputField = document.getElementById('modal-input');
+    inputField.value = ""; 
+    inputField.type = "password"; 
+    inputField.placeholder = "Enter Code";
+    document.getElementById('custom-modal').style.display = 'flex';
+}
 
-    // જો પાસવર્ડ ભૂલી જાઓ તો સિક્રેટ માસ્ટર કોડ ઓપ્શન
-    if (input.toUpperCase() === "FORGOT") {
-        let masterInput = prompt("તમારો સિક્રેટ માસ્ટર રીસેટ કોડ (Master Reset Code) લખો:");
-        if (masterInput !== null && masterInput.trim() === MASTER_CODE) {
-            localStorage.setItem('admin_password', "vopl77");
-            alert("માસ્ટર કોડ સાચો છે! તમારો પાસવર્ડ સફળતાપૂર્વક રીસેટ થઈને ફરીથી જૂનો 'vopl77' થઈ ગયો છે. હવે તે નાખીને લોગીન કરો.");
-        } else if (masterInput !== null) {
-            alert("ખોટો માસ્ટર કોડ! એક્સેસ રિજેક્ટ કરવામાં આવ્યો છે.");
+function closeModal() { 
+    document.getElementById('custom-modal').style.display = 'none'; 
+}
+
+function submitModal() {
+    let val = document.getElementById('modal-input').value.trim();
+    if(!val) return;
+
+    if(step === 1) {
+        if(val === (localStorage.getItem('admin_password') || "vopl77")) { 
+            closeModal(); 
+            document.getElementById('admin-panel').style.display = 'block'; 
         }
-        return;
-    }
-    
-    if (input === currentPassword) {
-        panel.style.display = 'block';
-        panel.scrollIntoView({ behavior: 'smooth' });
-    } else {
-        alert("ખોટો પાસવર્ડ!");
+        else if(val === "FORGOT") { 
+            step = 2; 
+            let inputField = document.getElementById('modal-input');
+            inputField.value = ""; 
+            inputField.type = "text"; 
+            inputField.placeholder = "Enter Email";
+        } else {
+            alert("Wrong Code");
+            closeModal();
+        }
+    } else if(step === 2) {
+        if(val.toLowerCase() === M_EMAIL) { 
+            step = 3; 
+            let inputField = document.getElementById('modal-input');
+            inputField.value = ""; 
+            inputField.type = "password"; 
+            inputField.placeholder = "Enter Master Code";
+        }
+        else { 
+            closeModal(); 
+        }
+    } else if(step === 3) {
+        if(val === M_CODE) { 
+            localStorage.setItem('admin_password', "vopl77"); 
+            alert("Done."); 
+            closeModal(); 
+        }
+        else { 
+            closeModal(); 
+        }
     }
 }
 
 function changePassword() {
     let newPass = document.getElementById('new-password').value.trim();
-    if(newPass === "") {
-        alert("કૃપા કરીને સાચો અને નવો પાસવર્ડ લખો!");
-        return;
-    }
+    if(newPass === "") return;
     localStorage.setItem('admin_password', newPass);
-    alert("પાસવર્ડ સફળતાપૂર્વક બદલાઈ ગયો છે! હવેથી નવો પાસવર્ડ જ ચાલશે.");
+    alert("Updated.");
     document.getElementById('new-password').value = "";
     document.getElementById('admin-panel').style.display = 'none';
 }
 
 function saveRates() {
-    rates.g24 = +document.getElementById('in_g24').value;
-    rates.g22 = +document.getElementById('in_g22').value;
-    rates.g18 = +document.getElementById('in_g18').value;
-    rates.s95 = +document.getElementById('in_s95').value;
-    rates.s90 = +document.getElementById('in_s90').value;
-    rates.s60 = +document.getElementById('in_s60').value;
-    rates.th_g999 = +document.getElementById('in_th_g999').value;
-    rates.th_s999 = +document.getElementById('in_th_s999').value;
+    rates.g24 = +document.getElementById('in_g24').value; 
+    rates.g22 = +document.getElementById('in_g22').value; 
+    rates.g18 = +document.getElementById('in_g18').value; 
+    rates.s95 = +document.getElementById('in_s95').value; 
+    rates.s90 = +document.getElementById('in_s90').value; 
+    rates.s60 = +document.getElementById('in_s60').value; 
+    rates.th_g999 = +document.getElementById('in_th_g999').value; 
+    rates.th_s999 = +document.getElementById('in_th_s999').value; 
     rates.th_g22 = +document.getElementById('in_th_g22').value;
-
-    for (let key in rates) { localStorage.setItem(key, rates[key]); }
-
-    let now = new Date();
-    let timeStr = now.toLocaleTimeString('en-IN', {hour: '2-digit', minute:'2-digit'});
-    let dateStr = now.toLocaleDateString('en-IN');
-    localStorage.setItem('update_time', timeStr);
-    localStorage.setItem('update_date', dateStr);
-
-    updateDisplay();
-    alert('બધા ભાવો સફળતાપૂર્વક સેવ થઈ ગયા છે!');
+    
+    for(let k in rates) localStorage.setItem(k, rates[k]);
+    
+    localStorage.setItem('update_time', new Date().toLocaleTimeString('en-IN', {hour:'2-digit', minute:'2-digit'}));
+    localStorage.setItem('update_date', new Date().toLocaleDateString('en-IN'));
+    
+    updateDisplay(); 
     document.getElementById('admin-panel').style.display = 'none';
+    alert("Saved.");
 }
 
 function calculatePrice() {
+    let w = +document.getElementById('calc-weight').value;
     let item = document.getElementById('calc-item').value;
-    let weight = +document.getElementById('calc-weight').value;
-    if(!weight || weight <= 0) { alert('કૃપા કરીને સાચું વજન લખો'); return; }
-    let baseRate = rates[item];
-    let totalPrice = (item==='s95'||item==='s90'||item==='s60'||item==='th_s999') ? (baseRate/1000)*weight : (baseRate/10)*weight;
-    document.getElementById('calc-result').textContent = 'કુલ રકમ: ₹' + Math.round(totalPrice).toLocaleString('en-IN');
+    let r = rates[item];
+    if(!w || w <= 0) return;
+    let p = (['s95','s90','s60','th_s999'].includes(item)) ? (r/1000)*w : (r/10)*w;
+    document.getElementById('calc-result').textContent = 'કુલ રકમ: ₹' + Math.round(p).toLocaleString('en-IN');
 }
 updateDisplay();
 </script>
