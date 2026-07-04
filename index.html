@@ -1,1208 +1,452 @@
 <!DOCTYPE html>
-<html lang="gu">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VRUNDAVAN ORNAMENTS PVT LTD</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Gujarati:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-:root{
-    --bg:#F5EEE8;
-    --surface:#FFFDFC;
-    --coffee-soft:#F1E5DC;
-    --coffee-light:#E8D8CC;
-    --coffee:#C7A995;
-    --coffee-medium:#9B7964;
-    --coffee-button:#6E5142;
-    --coffee-dark:#4A352B;
-    --text:#352721;
-    --muted:#806B60;
-    --border:#DDCEC4;
-}
-
-*{
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    margin:0;
-    min-height:100vh;
-    padding-bottom:40px;
-    background:var(--bg);
-    color:var(--text);
-    font-family:'Noto Serif Gujarati','Poppins',serif;
-}
-
-
-/* HEADER */
-
-header{
-    padding:30px 16px 27px;
-    text-align:center;
-    background:var(--coffee-light);
-    border-bottom:1px solid var(--coffee);
-    box-shadow:0 5px 18px rgba(74,53,43,.08);
-}
-
-.logo-wrap{
-    width:105px;
-    height:105px;
-    margin:0 auto 14px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:50%;
-    background:var(--surface);
-    border:1px solid var(--coffee);
-    box-shadow:0 6px 18px rgba(74,53,43,.08);
-}
-
-.logo-wrap img{
-    max-width:88px;
-    max-height:88px;
-    object-fit:contain;
-}
-
-header h1{
-    margin:0;
-    color:var(--text);
-    font-family:'Poppins','Noto Serif Gujarati',sans-serif;
-    font-size:clamp(19px,5.3vw,27px);
-    line-height:1.3;
-    font-weight:700;
-    letter-spacing:.3px;
-}
-
-header p{
-    display:inline-block;
-    margin:11px 0 0;
-    padding:7px 14px;
-    color:var(--coffee-button);
-    background:rgba(255,253,252,.65);
-    border:1px solid rgba(199,169,149,.65);
-    border-radius:30px;
-    font-size:14px;
-    font-weight:600;
-}
-
-
-/* MAIN */
-
-main{
-    width:100%;
-    max-width:560px;
-    margin:auto;
-    padding:25px 14px;
-}
-
-
-/* CARD */
-
-.card{
-    margin-bottom:22px;
-    padding:21px;
-    background:var(--surface);
-    border:1px solid var(--border);
-    border-radius:20px;
-    box-shadow:0 8px 25px rgba(74,53,43,.07);
-}
-
-
-/* CARD TITLE */
-
-h2{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin:0 0 17px;
-    padding-bottom:13px;
-    color:var(--coffee-dark);
-    font-size:19px;
-    font-weight:700;
-    border-bottom:1px solid var(--coffee-light);
-}
-
-.icon-box{
-    width:38px;
-    height:38px;
-    flex:0 0 38px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:var(--coffee-dark);
-    background:var(--coffee-light);
-    border:1px solid var(--coffee);
-    border-radius:11px;
-    font-size:18px;
-}
-
-
-/* RATE ROW */
-
-.row{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:14px;
-    margin-bottom:8px;
-    padding:15px 13px;
-    background:#F8F2ED;
-    border:1px solid #E8DDD5;
-    border-radius:12px;
-    transition:.2s ease;
-}
-
-.row:last-of-type{
-    margin-bottom:0;
-}
-
-.row:hover{
-    transform:translateY(-1px);
-    box-shadow:0 5px 14px rgba(74,53,43,.06);
-}
-
-.label{
-    color:#5D473C;
-    font-size:15px;
-    font-weight:600;
-}
-
-.price{
-    flex-shrink:0;
-    color:var(--text);
-    font-family:'Poppins',sans-serif;
-    font-size:18px;
-    font-weight:700;
-    white-space:nowrap;
-}
-
-.timestamp{
-    display:block;
-    margin-top:12px;
-    color:var(--muted);
-    font-family:'Poppins',sans-serif;
-    font-size:11px;
-    font-weight:500;
-    text-align:right;
-}
-
-
-/* GST */
-
-.gst-text{
-    margin:-2px 0 22px;
-    padding:11px 12px;
-    color:#7A443B;
-    background:var(--coffee-soft);
-    border:1px solid var(--border);
-    border-radius:11px;
-    text-align:center;
-    font-size:13px;
-    font-weight:700;
-}
-
-
-/* FORM */
-
-input,
-select,
-button{
-    width:100%;
-    padding:14px;
-    margin-top:11px;
-    border-radius:11px;
-    font-family:'Noto Serif Gujarati','Poppins',sans-serif;
-    font-size:15px;
-    outline:none;
-    transition:.2s ease;
-}
-
-input,
-select{
-    color:var(--text);
-    background:var(--surface);
-    border:1px solid var(--coffee);
-}
-
-input::placeholder{
-    color:#9A8980;
-}
-
-input:focus,
-select:focus{
-    border-color:var(--muted);
-    box-shadow:0 0 0 3px rgba(128,107,96,.10);
-}
-
-button{
-    border:0;
-    color:#FFFFFF;
-    background:var(--coffee-button);
-    font-weight:700;
-    cursor:pointer;
-    box-shadow:0 7px 18px rgba(74,53,43,.15);
-}
-
-button:hover{
-    background:var(--coffee-dark);
-    transform:translateY(-1px);
-}
-
-button:active{
-    transform:scale(.99);
-}
-
-
-/* CALCULATOR */
-
-.calculator-card{
-    background:#FAF5F1;
-}
-
-.result{
-    margin-top:16px;
-    padding:16px;
-    color:var(--text);
-    background:var(--coffee-soft);
-    border:1px dashed var(--coffee-medium);
-    border-radius:12px;
-    text-align:center;
-    font-family:'Poppins',sans-serif;
-    font-size:18px;
-    font-weight:700;
-}
-
-
-/* SETTINGS */
-
-.btn-admin{
-    margin-top:1px;
-    color:var(--coffee-dark);
-    background:var(--surface);
-    border:1px solid var(--coffee);
-    box-shadow:0 7px 18px rgba(74,53,43,.07);
-}
-
-.btn-admin:hover{
-    color:#FFFFFF;
-    background:var(--coffee-button);
-}
-
-
-/* ADMIN PANEL */
-
-.admin-section{
-    display:none;
-    margin-top:20px;
-    background:var(--surface);
-    border:1px solid var(--coffee);
-}
-
-.admin-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:12px;
-}
-
-.admin-grid label{
-    display:block;
-    margin-top:5px;
-    color:var(--coffee-dark);
-    font-size:12px;
-    font-weight:700;
-}
-
-.admin-grid input{
-    margin-top:5px;
-    padding:12px;
-    background:#FFFEFD;
-}
-
-.save-button{
-    margin-top:17px;
-    background:var(--coffee-button);
-}
-
-.pass-section{
-    margin-top:22px;
-    padding-top:19px;
-    border-top:1px dashed var(--coffee);
-}
-
-.pass-button{
-    margin-top:6px;
-    background:var(--coffee-medium);
-}
-
-
-/* MODAL */
-
-.modal-overlay{
-    display:none;
-    position:fixed;
-    inset:0;
-    z-index:1000;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-    background:rgba(53,39,33,.38);
-    backdrop-filter:blur(5px);
-}
-
-.modal-box{
-    width:100%;
-    max-width:350px;
-    padding:24px;
-    background:var(--surface);
-    border:1px solid var(--coffee);
-    border-radius:19px;
-    box-shadow:0 20px 50px rgba(53,39,33,.22);
-    animation:modalOpen .2s ease;
-}
-
-@keyframes modalOpen{
-    from{
-        opacity:0;
-        transform:translateY(15px) scale(.98);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0) scale(1);
-    }
-}
-
-.modal-title{
-    margin:0 0 5px;
-    color:var(--text);
-    font-family:'Poppins',sans-serif;
-    font-size:20px;
-    font-weight:700;
-}
-
-.modal-subtitle{
-    margin:0 0 10px;
-    color:var(--muted);
-    font-size:13px;
-}
-
-.modal-buttons{
-    display:flex;
-    gap:11px;
-    margin-top:17px;
-}
-
-.modal-buttons button{
-    margin:0;
-}
-
-.btn-close{
-    color:var(--coffee-dark);
-    background:var(--coffee-light);
-    box-shadow:none;
-}
-
-.btn-close:hover{
-    color:var(--text);
-    background:var(--coffee);
-}
-
-
-/* FOOTER */
-
-footer{
-    padding:16px 15px 28px;
-    color:var(--muted);
-    text-align:center;
-    font-family:'Poppins',sans-serif;
-    font-size:12px;
-}
-
-
-/* MOBILE */
-
-@media(max-width:400px){
-    main{
-        padding-left:10px;
-        padding-right:10px;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VOPL GOLD</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #0d0d0d;
+      color: white;
+      font-family: Arial, sans-serif;
     }
 
-    .card{
-        padding:17px;
-        border-radius:17px;
+    header {
+      padding: 22px;
+      text-align: center;
+      background: #161616;
+      border-bottom: 1px solid #333;
     }
 
-    .row{
-        padding:14px 10px;
+    header h1 {
+      margin: 0;
+      color: #d4af37;
     }
 
-    .label{
-        font-size:14px;
+    .container {
+      max-width: 700px;
+      margin: auto;
+      padding: 20px;
     }
 
-    .price{
-        font-size:16px;
+    .card {
+      background: #191919;
+      border: 1px solid #333;
+      border-radius: 18px;
+      padding: 22px;
+      margin-bottom: 20px;
     }
 
-    .admin-grid{
-        grid-template-columns:1fr;
+    .rate {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 22px;
+      padding: 20px 0;
     }
-}
-</style>
+
+    .price {
+      color: #d4af37;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 15px;
+      margin: 7px 0;
+      border-radius: 10px;
+      border: 1px solid #444;
+      background: #111;
+      color: white;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      margin-top: 10px;
+      border: 0;
+      border-radius: 10px;
+      background: #d4af37;
+      color: #111;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .secondary {
+      background: #333;
+      color: white;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #message {
+      text-align: center;
+      margin-top: 12px;
+      min-height: 20px;
+    }
+  </style>
 </head>
 
 <body>
 
 <header>
-    <div class="logo-wrap">
-        <img
-        src="https://lh3.googleusercontent.com/d/1XHVetU6xNNu-cvu0t7T3NIV6iRVyHiZW"
-        alt="VRUNDAVAN LOGO">
-    </div>
-
-    <h1>VRUNDAVAN ORNAMENTS PVT LTD</h1>
-
-    <p>આજના ભાવ • તા. <span id="current-date"></span></p>
+  <h1>VOPL GOLD</h1>
+  <div>Live Gold Rates</div>
 </header>
 
+<div class="container">
 
-<main>
+  <!-- CUSTOMER RATE VIEW -->
 
-    <!-- GOLD -->
+  <div class="card">
 
-    <div class="card">
-        <h2>
-            <span class="icon-box">✦</span>
-            સોનાનો ભાવ
-        </h2>
+    <h2>Today's Rate</h2>
 
-        <div class="row">
-            <span class="label">૨૪ KT (૧૦ ગ્રામ)</span>
-            <span class="price">₹<span id="d_g24">0</span></span>
-        </div>
-
-        <div class="row">
-            <span class="label">૨૨ KT (૧૦ ગ્રામ)</span>
-            <span class="price">₹<span id="d_g22">0</span></span>
-        </div>
-
-        <div class="row">
-            <span class="label">૧૮ KT (૧૦ ગ્રામ)</span>
-            <span class="price">₹<span id="d_g18">0</span></span>
-        </div>
-
-        <span class="timestamp">
-            Last Update: <span id="time-gold"></span>
-        </span>
+    <div class="rate">
+      <span>Gold 24K</span>
+      <span class="price">
+        ₹<span id="gold24k">Loading...</span>
+      </span>
     </div>
 
-
-    <!-- SILVER -->
-
-    <div class="card">
-        <h2>
-            <span class="icon-box">◆</span>
-            ચાંદીનો ભાવ (૧ કિલો)
-        </h2>
-
-        <div class="row">
-            <span class="label">૯૫/૭૫ ટ્રેડિંગ</span>
-            <span class="price">₹<span id="d_s95">0</span></span>
-        </div>
-
-        <div class="row">
-            <span class="label">૯૦/૭૦ ટ્રેડિંગ</span>
-            <span class="price">₹<span id="d_s90">0</span></span>
-        </div>
-
-        <div class="row">
-            <span class="label">૬૦/૮૦ ટ્રેડિંગ</span>
-            <span class="price">₹<span id="d_s60">0</span></span>
-        </div>
-    </div>
+  </div>
 
 
-    <div class="gst-text">
-        ⚠️ * 3% GST APPLY
-    </div>
+  <!-- ADMIN LOGIN -->
 
+  <div id="loginBox" class="card">
 
-    <!-- THARAD MARKET -->
+    <h2>Admin Login</h2>
 
-    <div class="card">
-        <h2>
-            <span class="icon-box">⌖</span>
-            થરાદ રોકડ બજાર
-        </h2>
+    <input
+      id="email"
+      type="email"
+      placeholder="Admin Email"
+    >
 
-        <div class="row">
-            <span class="label">ગોલ્ડ ૯૯૯ imp</span>
-            <span class="price">₹<span id="d_th_g999">0</span></span>
-        </div>
+    <input
+      id="password"
+      type="password"
+      placeholder="Password"
+    >
 
-        <div class="row">
-            <span class="label">સિલ્વર ચોરસા ૯૯૯</span>
-            <span class="price">₹<span id="d_th_s999">0</span></span>
-        </div>
-
-        <div class="row">
-            <span class="label">૨૨ કેરેટ રોકડ</span>
-            <span class="price">₹<span id="d_th_g22">0</span></span>
-        </div>
-    </div>
-
-
-    <!-- CALCULATOR -->
-
-    <div class="card calculator-card">
-        <h2>
-            <span class="icon-box">⌗</span>
-            Rate Calculator
-        </h2>
-
-        <select id="calc-item">
-            <option value="g24">૨૪ KT સોનું</option>
-            <option value="g22">૨૨ KT સોનું</option>
-            <option value="g18">૧૮ KT સોનું</option>
-            <option value="s95">ચાંદી ૯૫/૭૫</option>
-            <option value="s90">ચાંદી ૯૦/૭૦</option>
-            <option value="s60">ચાંદી ૬૦/૮૦</option>
-            <option value="th_g999">થરાદ ગોલ્ડ ૯૯૯</option>
-            <option value="th_s999">થરાદ સિલ્વર</option>
-            <option value="th_g22">થરાદ ૨૨ કેરેટ</option>
-        </select>
-
-        <input
-        id="calc-weight"
-        type="number"
-        step="any"
-        placeholder="વજન (ગ્રામ)">
-
-        <button onclick="calculatePrice()">
-            ⚙️ હિસાબ કરો
-        </button>
-
-        <div id="calc-result" class="result">
-            કુલ રકમ: ₹0
-        </div>
-    </div>
-
-
-    <!-- SETTINGS -->
-
-    <button
-    class="btn-admin"
-    onclick="openPasswordModal()">
-        🔒 Admin-panel
+    <button id="loginBtn">
+      Login
     </button>
 
-
-    <!-- ADMIN PANEL -->
-
-    <div id="admin-panel" class="card admin-section">
-
-        <h2>Admin Panel</h2>
-
-        <div class="admin-grid">
-
-            <div>
-                <label>૨૪ KT</label>
-                <input id="in_g24" type="number">
-            </div>
-
-            <div>
-                <label>૨૨ KT</label>
-                <input id="in_g22" type="number">
-            </div>
-
-            <div>
-                <label>૧૮ KT</label>
-                <input id="in_g18" type="number">
-            </div>
-
-            <div>
-                <label>ચાંદી ૯૫/૭૫</label>
-                <input id="in_s95" type="number">
-            </div>
-
-            <div>
-                <label>ચાંદી ૯૦/૭૦</label>
-                <input id="in_s90" type="number">
-            </div>
-
-            <div>
-                <label>ચાંદી ૬૦/૮૦</label>
-                <input id="in_s60" type="number">
-            </div>
-
-            <div>
-                <label>થરાદ ગોલ્ડ</label>
-                <input id="in_th_g999" type="number">
-            </div>
-
-            <div>
-                <label>થરાદ સિલ્વર</label>
-                <input id="in_th_s999" type="number">
-            </div>
-
-            <div>
-                <label>થરાદ ૨૨ K</label>
-                <input id="in_th_g22" type="number">
-            </div>
-
-        </div>
+  </div>
 
 
-        <button
-        class="save-button"
-        onclick="saveRates()">
-            Save Rates
-        </button>
+  <!-- ADMIN PANEL -->
 
+  <div id="adminBox" class="card hidden">
 
-        <div class="pass-section">
+    <h2>Admin Rate Update</h2>
 
-            <input
-            id="new-password"
-            type="password"
-            placeholder="New Password">
+    <input
+      id="newGold24k"
+      type="number"
+      step="0.01"
+      placeholder="Enter Gold 24K Rate"
+    >
 
-            <button
-            class="pass-button"
-            onclick="changePassword()">
-                Update Password
-            </button>
+    <button id="updateBtn">
+      Update Rate
+    </button>
 
-        </div>
+    <button id="logoutBtn" class="secondary">
+      Logout
+    </button>
 
-    </div>
+  </div>
 
-</main>
-
-
-<!-- PASSWORD MODAL -->
-
-<div id="custom-modal" class="modal-overlay">
-
-    <div class="modal-box">
-
-        <h3 class="modal-title">
-            Secure Settings
-        </h3>
-
-        <p class="modal-subtitle" id="modal-subtitle">
-            Enter admin access code
-        </p>
-
-        <input
-        id="modal-input"
-        type="password"
-        placeholder="Enter Code">
-
-        <div class="modal-buttons">
-
-            <button
-            class="btn-close"
-            onclick="closeModal()">
-                Cancel
-            </button>
-
-            <button onclick="submitModal()">
-                Continue
-            </button>
-
-        </div>
-
-    </div>
+  <div id="message"></div>
 
 </div>
 
 
-<footer>
-    © Vrundavan Ornaments Pvt. Ltd.
-</footer>
+<script type="module">
+
+import {
+  initializeApp
+} from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
 
 
-<script>
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.15.0/firebase-auth.js";
 
-let rates = {
-    g24: +localStorage.getItem('g24') || 143480,
-    g22: +localStorage.getItem('g22') || 134400,
-    g18: +localStorage.getItem('g18') || 108730,
-    s95: +localStorage.getItem('s95') || 221260,
-    s90: +localStorage.getItem('s90') || 209240,
-    s60: +localStorage.getItem('s60') || 185185,
-    th_g999: +localStorage.getItem('th_g999') || 146300,
-    th_s999: +localStorage.getItem('th_s999') || 231250,
-    th_g22: +localStorage.getItem('th_g22') || 134600
+
+import {
+  getFirestore,
+  doc,
+  onSnapshot,
+  updateDoc
+} from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
+
+
+
+const firebaseConfig = {
+
+  apiKey: "AIzaSyACpWFqxs1AaIx7C6kMpu45bD79fWJeR60",
+
+  authDomain: "reset-de458.firebaseapp.com",
+
+  projectId: "reset-de458",
+
+  storageBucket: "reset-de458.firebasestorage.app",
+
+  messagingSenderId: "192490668353",
+
+  appId: "1:192490668353:web:e8ce193dab2d3c4f7061c0",
+
+  measurementId: "G-NKVEWN4YSC"
+
 };
 
-const M_EMAIL = "office.vopl@gmail.com";
-const M_CODE = "Khulja99";
-
-let step = 1;
 
 
-function getFormattedDate(customDateStr){
+const ADMIN_EMAIL = "office.vopl@gmail.com";
 
-    let d = customDateStr
-        ? new Date(customDateStr.split('/').reverse().join('-'))
-        : new Date();
+const app = initializeApp(firebaseConfig);
 
-    if(isNaN(d.getTime())){
-        d = new Date();
-    }
+const auth = getAuth(app);
 
-    let day = String(d.getDate()).padStart(2,'0');
-    let month = String(d.getMonth()+1).padStart(2,'0');
-    let year = d.getFullYear();
+const db = getFirestore(app);
 
-    return `${day}/${month}/${year}`;
-}
+const rateRef = doc(db, "rates", "current");
 
 
-function updateDisplay(){
+const gold24k = document.getElementById("gold24k");
 
-    document.getElementById('d_g24').textContent =
-        rates.g24.toLocaleString('en-IN');
+const loginBox = document.getElementById("loginBox");
 
-    document.getElementById('d_g22').textContent =
-        rates.g22.toLocaleString('en-IN');
+const adminBox = document.getElementById("adminBox");
 
-    document.getElementById('d_g18').textContent =
-        rates.g18.toLocaleString('en-IN');
+const emailInput = document.getElementById("email");
 
-    document.getElementById('d_s95').textContent =
-        rates.s95.toLocaleString('en-IN');
+const passwordInput = document.getElementById("password");
 
-    document.getElementById('d_s90').textContent =
-        rates.s90.toLocaleString('en-IN');
+const newGoldInput = document.getElementById("newGold24k");
 
-    document.getElementById('d_s60').textContent =
-        rates.s60.toLocaleString('en-IN');
-
-    document.getElementById('d_th_g999').textContent =
-        rates.th_g999.toLocaleString('en-IN');
-
-    document.getElementById('d_th_s999').textContent =
-        rates.th_s999.toLocaleString('en-IN');
-
-    document.getElementById('d_th_g22').textContent =
-        rates.th_g22.toLocaleString('en-IN');
+const message = document.getElementById("message");
 
 
-    for(let key in rates){
 
-        let input =
-            document.getElementById('in_' + key);
+function showMessage(text) {
 
-        if(input){
-            input.value = rates[key];
-        }
-    }
-
-
-    document.getElementById('time-gold').textContent =
-
-        localStorage.getItem('update_time')
-
-        ||
-
-        new Date().toLocaleTimeString(
-            'en-IN',
-            {
-                hour:'2-digit',
-                minute:'2-digit'
-            }
-        );
-
-
-    let storedDate =
-        localStorage.getItem('update_date');
-
-
-    document.getElementById('current-date').textContent =
-
-        storedDate
-
-        ? getFormattedDate(storedDate)
-
-        : getFormattedDate();
+  message.textContent = text;
 
 }
 
 
-function openPasswordModal(){
 
-    let adminPanel =
-        document.getElementById('admin-panel');
+/* LIVE RATE */
 
+onSnapshot(
 
-    if(adminPanel.style.display === 'block'){
+  rateRef,
 
-        adminPanel.style.display = 'none';
+  (snapshot) => {
 
-        return;
+    if (snapshot.exists()) {
 
-    }
+      const data = snapshot.data();
 
+      gold24k.textContent =
+        Number(data.gold24k || 0).toLocaleString("en-IN");
 
-    step = 1;
-
-
-    let inputField =
-        document.getElementById('modal-input');
-
-
-    inputField.value = "";
-
-    inputField.type = "password";
-
-    inputField.placeholder = "Enter Code";
-
-
-    document.getElementById('modal-subtitle').textContent =
-        "Enter admin access code";
-
-
-    document.getElementById('custom-modal').style.display =
-        'flex';
-
-
-    setTimeout(function(){
-
-        inputField.focus();
-
-    },100);
-
-}
-
-
-function closeModal(){
-
-    document.getElementById('custom-modal').style.display =
-        'none';
-
-}
-
-
-function submitModal(){
-
-    let inputField =
-        document.getElementById('modal-input');
-
-
-    let val =
-        inputField.value.trim();
-
-
-    if(!val){
-        return;
-    }
-
-
-    if(step === 1){
-
-
-        if(
-            val ===
-            (
-                localStorage.getItem('admin_password')
-                ||
-                "vopl77"
-            )
-        ){
-
-            closeModal();
-
-            document.getElementById('admin-panel').style.display =
-                'block';
-
-
-            document.getElementById('admin-panel').scrollIntoView({
-                behavior:'smooth',
-                block:'start'
-            });
-
-        }
-
-
-        else if(val === "FORGOT"){
-
-            step = 2;
-
-            inputField.value = "";
-
-            inputField.type = "email";
-
-            inputField.placeholder = "Enter Email";
-
-
-            document.getElementById('modal-subtitle').textContent =
-                "Enter recovery email";
-
-        }
-
-
-        else{
-
-            alert("Wrong Code");
-
-            closeModal();
-
-        }
+      newGoldInput.value = data.gold24k || "";
 
     }
 
+    else {
 
-    else if(step === 2){
-
-
-        if(val.toLowerCase() === M_EMAIL.toLowerCase()){
-
-            step = 3;
-
-            inputField.value = "";
-
-            inputField.type = "password";
-
-            inputField.placeholder = "Enter Master Code";
-
-
-            document.getElementById('modal-subtitle').textContent =
-                "Enter master recovery code";
-
-        }
-
-
-        else{
-
-            alert("Wrong Email");
-
-            closeModal();
-
-        }
+      gold24k.textContent = "No Data";
 
     }
 
+  },
 
-    else if(step === 3){
+  (error) => {
 
+    console.error(error);
 
-        if(val === M_CODE){
+    gold24k.textContent = "Error";
 
-            localStorage.setItem(
-                'admin_password',
-                "vopl77"
-            );
-
-
-            alert("Password reset completed.");
-
-
-            closeModal();
-
-        }
-
-
-        else{
-
-            alert("Wrong Master Code");
-
-            closeModal();
-
-        }
-
-    }
-
-}
-
-
-function changePassword(){
-
-    let newPass =
-        document.getElementById('new-password').value.trim();
-
-
-    if(newPass === ""){
-
-        alert("Please enter new password.");
-
-        return;
-
-    }
-
-
-    localStorage.setItem(
-        'admin_password',
-        newPass
-    );
-
-
-    alert("Password Updated.");
-
-
-    document.getElementById('new-password').value =
-        "";
-
-
-    document.getElementById('admin-panel').style.display =
-        'none';
-
-}
-
-
-function saveRates(){
-
-    for(let key in rates){
-
-        let input =
-            document.getElementById('in_' + key);
-
-
-        rates[key] =
-            Number(input.value) || 0;
-
-
-        localStorage.setItem(
-            key,
-            rates[key]
-        );
-
-    }
-
-
-    localStorage.setItem(
-
-        'update_time',
-
-        new Date().toLocaleTimeString(
-
-            'en-IN',
-
-            {
-                hour:'2-digit',
-                minute:'2-digit'
-            }
-
-        )
-
-    );
-
-
-    localStorage.setItem(
-        'update_date',
-        getFormattedDate()
-    );
-
-
-    updateDisplay();
-
-
-    document.getElementById('admin-panel').style.display =
-        'none';
-
-
-    alert("Rates Saved Successfully.");
-
-}
-
-
-function calculatePrice(){
-
-    let weight =
-        Number(
-            document.getElementById('calc-weight').value
-        );
-
-
-    let item =
-        document.getElementById('calc-item').value;
-
-
-    let rate =
-        rates[item];
-
-
-    if(!weight || weight <= 0){
-
-        document.getElementById('calc-result').textContent =
-            'કૃપા કરીને યોગ્ય વજન દાખલ કરો';
-
-        return;
-
-    }
-
-
-    let price;
-
-
-    if(
-        ['s95','s90','s60','th_s999'].includes(item)
-    ){
-
-        price =
-            (rate / 1000) * weight;
-
-    }
-
-    else{
-
-        price =
-            (rate / 10) * weight;
-
-    }
-
-
-    document.getElementById('calc-result').textContent =
-
-        'કુલ રકમ: ₹' +
-
-        Math.round(price).toLocaleString('en-IN');
-
-}
-
-
-document.getElementById('modal-input').addEventListener(
-
-    'keydown',
-
-    function(event){
-
-        if(event.key === 'Enter'){
-
-            submitModal();
-
-        }
-
-    }
+  }
 
 );
 
 
-document.getElementById('custom-modal').addEventListener(
 
-    'click',
+/* LOGIN */
 
-    function(event){
+document
+.getElementById("loginBtn")
+.addEventListener("click", async () => {
 
-        if(event.target === this){
+  const email = emailInput.value.trim();
 
-            closeModal();
+  const password = passwordInput.value;
 
-        }
+
+  if (!email || !password) {
+
+    showMessage("Email અને password દાખલ કરો.");
+
+    return;
+
+  }
+
+
+  try {
+
+    const credential =
+      await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+
+    if (credential.user.email !== ADMIN_EMAIL) {
+
+      await signOut(auth);
+
+      showMessage("આ account admin નથી.");
+
+      return;
 
     }
 
-);
+
+    showMessage("Admin Login Successful");
 
 
-updateDisplay();
+  }
+
+  catch (error) {
+
+    console.error(error);
+
+    showMessage("Login Failed: " + error.code);
+
+  }
+
+});
+
+
+
+/* AUTH STATUS */
+
+onAuthStateChanged(auth, (user) => {
+
+  const isAdmin =
+    user &&
+    user.email === ADMIN_EMAIL;
+
+
+  if (isAdmin) {
+
+    loginBox.classList.add("hidden");
+
+    adminBox.classList.remove("hidden");
+
+  }
+
+  else {
+
+    loginBox.classList.remove("hidden");
+
+    adminBox.classList.add("hidden");
+
+  }
+
+});
+
+
+
+/* UPDATE RATE */
+
+document
+.getElementById("updateBtn")
+.addEventListener("click", async () => {
+
+  const value = Number(newGoldInput.value);
+
+
+  if (!Number.isFinite(value) || value <= 0) {
+
+    showMessage("સાચો rate દાખલ કરો.");
+
+    return;
+
+  }
+
+
+  const user = auth.currentUser;
+
+
+  if (!user || user.email !== ADMIN_EMAIL) {
+
+    showMessage("Admin login જરૂરી છે.");
+
+    return;
+
+  }
+
+
+  try {
+
+    await updateDoc(rateRef, {
+
+      gold24k: value
+
+    });
+
+
+    showMessage("Rate Successfully Updated");
+
+
+  }
+
+  catch (error) {
+
+    console.error(error);
+
+    showMessage("Update Failed: " + error.code);
+
+  }
+
+});
+
+
+
+/* LOGOUT */
+
+document
+.getElementById("logoutBtn")
+.addEventListener("click", async () => {
+
+  await signOut(auth);
+
+  showMessage("Logged Out");
+
+});
+
 
 </script>
 
