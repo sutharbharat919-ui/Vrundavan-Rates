@@ -4,52 +4,81 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VRUNDAVAN ORNAMENTS PVT LTD</title>
+<!-- ગૂગલના પ્રીમિયમ 'Poppins' ફોન્ટ્સ લિંક કર્યા છે -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#fff9df;color:#382b00;padding-bottom:39px}
-header{padding:25px 16px;text-align:center;background:linear-gradient(135deg,#ffd700,#f2b705);box-shadow:0 3px 14px #0002}
-header h1{margin:0;font-size:30px;letter-spacing:1px}
-header p{margin:6px 0 0;font-size:16px;font-weight:bold}
-main{max-width:550px;margin:auto;padding:15px}
-.card{background:#fff;border:1px solid #eed16a;border-radius:18px;padding:20px;margin-bottom:20px;box-shadow:0 6px 18px #0000000f}
-h2{margin-top:0;color:#614600;font-size:20px;border-bottom:2px solid #ffd700;padding-bottom:6px;margin-bottom:12px}
-.row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #f5f0d7}
-.row:last-child{border:0}
-.label{font-size:15px;font-weight:500}
-.price{font-weight:bold;color:#a87800;font-size:17px}
-.timestamp{font-size:12px;color:#7a6b48;display:block;margin-top:5px;text-align:right}
-input,select,button{width:100%;padding:12px;margin-top:10px;border-radius:10px;font-size:15px}
-input,select{border:1px solid #d5b63e;background:#fff}
-button{border:0;background:linear-gradient(135deg,#ffd700,#f2b705);font-weight:bold;color:#211900;cursor:pointer;transition:0.2s}
-button:hover{opacity:0.9}
-.btn-admin{background:#382b00;color:#ffd700;margin-top:20px}
-.result{text-align:center;margin-top:14px;padding:14px;background:#fff2a6;border-radius:12px;font-weight:bold;font-size:16px;color:#523a00}
-.admin-section{display:none;background:#fff0b8;border:2px dashed #a87800}
-.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.admin-grid label{font-size:12px;font-weight:bold;color:#523a00;margin-top:5px;display:block}
-.admin-grid input{margin-top:3px}
-.gst-text{text-align:center;font-size:12px;font-weight:bold;color:#ff3b30;margin:10px 0}
-footer{text-align:center;font-size:13px;color:#826900;padding:15px 0}
-.pass-section{margin-top:20px;padding-top:15px;border-top:2px dashed #a87800}
+*{box-sizing:border-box; font-family: 'Poppins', sans-serif; letter-spacing: 0.3px;}
+body{margin:0;background:#0d0d0d;color:#e6e6e6;padding-bottom:40px}
 
-/* પોપ-અપ મોડલ ડિઝાઇન */
-.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:1000;justify-content:center;align-items:center;padding:20px}
-.modal-box{background:#fff;width:100%;max-width:350px;padding:25px;border-radius:15px;border:2px solid #ffd700;box-shadow:0 10px 25px rgba(0,0,0,0.3)}
-.modal-buttons{display:flex;gap:10px;margin-top:15px}
+/* પ્રીમિયમ ડાર્ક ગોલ્ડન હેડર */
+header{padding:30px 16px;text-align:center;background:linear-gradient(180deg, #1a1a1a, #0a0a0a);border-bottom:2px solid #d4af37;box-shadow:0 4px 20px rgba(212,175,55,0.15)}
+header h1 {
+    margin: 0;
+    font-size: 5.2vw;
+    font-weight: 700;
+    color: #d4af37;
+    background: linear-gradient(135deg, #fff2cc, #d4af37, #aa7c11);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+}
+@media(min-width: 500px) { header h1 { font-size: 26px; } }
+header p{margin:8px 0 0;font-size:14px;font-weight:500;color:#b3b3b3}
+
+main{max-width:550px;margin:auto;padding:20px 15px}
+
+/* લક્ઝરી કાર્ડ ડિઝાઇન */
+.card{background:#141414;border:1px solid #2a2515;border-radius:16px;padding:22px;margin-bottom:22px;box-shadow:0 8px 25px rgba(0,0,0,0.4)}
+h2{margin-top:0;color:#d4af37;font-size:18px;font-weight:600;border-bottom:1px solid #2a2515;padding-bottom:10px;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+
+.row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid #1f1f1f}
+.row:last-child{border:0}
+.label{font-size:14px;font-weight:400;color:#cccccc}
+.price{font-weight:600;color:#f3e5ab;font-size:16px;text-shadow: 0 0 10px rgba(243,229,171,0.1)}
+.timestamp{font-size:11px;color:#777;display:block;margin-top:8px;text-align:right}
+
+/* ઇનપુટ અને બટન સ્ટાઇલ */
+input,select,button{width:100%;padding:14px;margin-top:12px;border-radius:12px;font-size:14px;outline:none;transition:all 0.3s ease}
+input,select{border:1px solid #2a2515;background:#1a1a1a;color:#fff}
+input:focus,select:focus{border-color:#d4af37;box-shadow:0 0 8px rgba(212,175,55,0.2)}
+
+button{border:0;background:linear-gradient(135deg,#d4af37,#aa7c11);font-weight:600;color:#000;cursor:pointer;box-shadow:0 4px 15px rgba(212,175,55,0.2)}
+button:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(212,175,55,0.3);opacity:0.95}
+
+.btn-admin{background:#1a1a1a;color:#d4af37;border:1px solid #2a2515;margin-top:25px;box-shadow:none}
+.btn-admin:hover{background:#222;color:#fff}
+
+.result{text-align:center;margin-top:16px;padding:16px;background:rgba(212,175,55,0.08);border:1px dashed #d4af37;border-radius:12px;font-weight:600;font-size:16px;color:#f3e5ab}
+
+.admin-section{display:none;background:#111111;border:1px dashed #d4af37}
+.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.admin-grid label{font-size:11px;font-weight:600;color:#b3b3b3;margin-top:6px;display:block}
+.admin-grid input{margin-top:4px}
+.gst-text{text-align:center;font-size:11px;font-weight:600;color:#ff4d4d;margin:15px 0;letter-spacing:1px}
+footer{text-align:center;font-size:12px;color:#555;padding:25px 0;border-top:1px solid #141414}
+.pass-section{margin-top:25px;padding-top:20px;border-top:1px dashed #2a2515}
+
+/* પ્રોફેશનલ ડાર્ક મોડલ પોપ-અપ */
+.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.75);backdrop-filter:blur(5px);z-index:1000;justify-content:center;align-items:center;padding:20px}
+.modal-box{background:#141414;width:100%;max-width:340px;padding:25px;border-radius:16px;border:1px solid #d4af37;box-shadow:0 10px 30px rgba(0,0,0,0.5)}
+.modal-buttons{display:flex;gap:12px;margin-top:18px}
 .modal-buttons button{margin-top:0}
-.btn-close{background:#e0e0e0;color:#333}
+.btn-close{background:#262626;color:#bbb;box-shadow:none}
+.btn-close:hover{background:#333;color:#fff}
 </style>
 </head>
 <body>
 
 <header>
-    <h1>VRUNDAVAN ORNAMENTS</h1>
-    <p>આજના ભાવ (તા. <span id="current-date"></span>)</p>
+    <!-- તમારો લોગો અહીં સેટ થશે -->
+    <img src="logo.png" alt="VRUNDAVAN LOGO" style="height:65px; width:auto; margin-bottom:10px; filter:drop-shadow(0px 4px 8px rgba(0,0,0,0.5));">
+    <h1>VRUNDAVAN ORNAMENTS PVT LTD</h1>
+    <p>આજના ભાવ — તા. <span id="current-date"></span></p>
 </header>
 
 <main>
     <div class="card">
-        <h2>સોનાનો ભાવ</h2>
+        <h2>✨ સોનાનો ભાવ</h2>
         <div class="row"><span class="label">૨૪ KT (૧૦ ગ્રામ)</span><span class="price">₹<span id="d_g24">0</span></span></div>
         <div class="row"><span class="label">૨૨ KT (૧૦ ગ્રામ)</span><span class="price">₹<span id="d_g22">0</span></span></div>
         <div class="row"><span class="label">૧૮ KT (૧૦ ગ્રામ)</span><span class="price">₹<span id="d_g18">0</span></span></div>
@@ -57,23 +86,23 @@ footer{text-align:center;font-size:13px;color:#826900;padding:15px 0}
     </div>
 
     <div class="card">
-        <h2>ચાંદીનો ભાવ (૧ કિલો)</h2>
-        <div class="row"><span class="label">૯૫/૭૫</span><span class="price">₹<span id="d_s95">0</span></span></div>
-        <div class="row"><span class="label">૯૦/૭૦</span><span class="price">₹<span id="d_s90">0</span></span></div>
-        <div class="row"><span class="label">૬૦/૮૦</span><span class="price">₹<span id="d_s60">0</span></span></div>
+        <h2>🪙 ચાંદીનો ભાવ (૧ કિલો)</h2>
+        <div class="row"><span class="label">૯૫/૭૫ ટ્રેડિંગ</span><span class="price">₹<span id="d_s95">0</span></span></div>
+        <div class="row"><span class="label">૯૦/૭૦ ટ્રેડિંગ</span><span class="price">₹<span id="d_s90">0</span></span></div>
+        <div class="row"><span class="label">૬૦/૮૦ ટ્રેડિંગ</span><span class="price">₹<span id="d_s60">0</span></span></div>
     </div>
 
-    <div class="gst-text">* 3% GST APPLY</div>
+    <div class="gst-text">⚠️ * 3% GST APPLY</div>
 
     <div class="card">
-        <h2>થરાદ રોકડ બજાર</h2>
+        <h2>📍 થરાદ રોકડ બજાર</h2>
         <div class="row"><span class="label">ગોલ્ડ ૯૯૯ imp</span><span class="price">₹<span id="d_th_g999">0</span></span></div>
         <div class="row"><span class="label">સિલ્વર ચોરસા ૯૯૯</span><span class="price">₹<span id="d_th_s999">0</span></span></div>
-        <div class="row"><span class="label">૨૨ કેરેટ</span><span class="price">₹<span id="d_th_g22">0</span></span></div>
+        <div class="row"><span class="label">૨૨ કેરેટ રોકડ</span><span class="price">₹<span id="d_th_g22">0</span></span></div>
     </div>
 
     <div class="card">
-        <h2>Rate Calculator</h2>
+        <h2>📊 Rate Calculator</h2>
         <select id="calc-item">
             <option value="g24">૨૪ KT સોનું</option>
             <option value="g22">૨૨ KT સોનું</option>
@@ -86,13 +115,12 @@ footer{text-align:center;font-size:13px;color:#826900;padding:15px 0}
             <option value="th_g22">થરાદ ૨૨ કેરેટ</option>
         </select>
         <input id="calc-weight" type="number" step="any" placeholder="વજન (ગ્રામ)">
-        <button onclick="calculatePrice()">હિસાબ કરો</button>
+        <button onclick="calculatePrice()">⚙️ હિસાબ કરો</button>
         <div id="calc-result" class="result">કુલ રકમ: ₹0</div>
     </div>
 
     <button class="btn-admin" onclick="openPasswordModal()">🔒 Settings</button>
 
-    <!-- એડમિન પેનલ સેક્શન -->
     <div id="admin-panel" class="card admin-section">
         <h2>Admin Panel</h2>
         <div class="admin-grid">
@@ -106,7 +134,7 @@ footer{text-align:center;font-size:13px;color:#826900;padding:15px 0}
             <div><label>થરાદ સિલ્વર</label><input id="in_th_s999" type="number"></div>
             <div><label>થરાદ ૨૨ K</label><input id="in_th_g22" type="number"></div>
         </div>
-        <button onclick="saveRates()" style="background:#27ae60;color:#fff;margin-top:15px;">Save</button>
+        <button onclick="saveRates()" style="background:#27ae60;color:#fff;margin-top:15px;">Save Rates</button>
         
         <div class="pass-section">
             <input id="new-password" type="password" placeholder="New Password">
@@ -115,7 +143,6 @@ footer{text-align:center;font-size:13px;color:#826900;padding:15px 0}
     </div>
 </main>
 
-<!-- કસ્ટમ સિક્રેટ મોડલ (કોઈ લખાણ વગર) -->
 <div id="custom-modal" class="modal-overlay">
     <div class="modal-box">
         <input id="modal-input" type="password" placeholder="Enter Code">
@@ -126,7 +153,7 @@ footer{text-align:center;font-size:13px;color:#826900;padding:15px 0}
     </div>
 </div>
 
-<footer>Vrundavan Ornaments Pvt. Ltd.</footer>
+<footer>© Vrundavan Ornaments Pvt. Ltd.</footer>
 
 <script>
 let rates = { 
