@@ -4,416 +4,1751 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VRUNDAVAN ORNAMENTS PVT LTD</title>
-<!-- ગૂગલના પ્રીમિયમ Noto Serif Gujarati અને Poppins ફોન્ટ્સ -->
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Gujarati:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Gujarati:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-*{box-sizing:border-box;}
+:root{
+    --navy:#171A35;
+    --purple:#6C4AB6;
+    --violet:#9B6DFF;
+    --pink:#F15B9B;
+    --rose:#FF8E8E;
+    --gold:#D7A84B;
+    --emerald:#168C78;
+    --cyan:#4CB8C4;
+    --cream:#FFF9F1;
+    --white:#FFFFFF;
+    --text:#24233A;
+    --muted:#7B7891;
+    --border:rgba(60,45,100,.10);
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     margin:0;
-    background: #EDE0D4; /* ઇમેજ 159110.jpg નો સોફ્ટ લાઇટ ક્રીમ કલર */
-    color: #7F5539;     /* ડાર્ક અર્થ બ્રાઉન ટેક્સ્ટ */
-    font-family: 'Noto Serif Gujarati', 'Poppins', serif;
-    padding-bottom:50px
+    min-height:100vh;
+    color:var(--text);
+    font-family:'Noto Serif Gujarati','Poppins',sans-serif;
+    padding-bottom:45px;
+    background:
+        radial-gradient(circle at 5% 10%,rgba(241,91,155,.16),transparent 28%),
+        radial-gradient(circle at 95% 18%,rgba(76,184,196,.18),transparent 28%),
+        radial-gradient(circle at 50% 100%,rgba(155,109,255,.13),transparent 35%),
+        #F8F5FF;
 }
 
-/* રીચ ડાર્ક બ્રાઉન હેડર */
+
+/* HEADER */
+
 header{
-    padding:35px 16px;
+    position:relative;
+    overflow:hidden;
+    padding:34px 16px 40px;
     text-align:center;
-    background: #7F5539; /* ઇમેજ 159110.jpg નો મેઇન ડાર્ક બ્રાઉન */
-    border-bottom: 5px solid #B08968; 
-    box-shadow: 0 4px 15px rgba(127, 85, 57, 0.15);
-}
-header h1 {
-    margin: 0;
-    font-size: 5.4vw;
-    font-weight: 700;
-    color: #EDE0D4; /* હેડર પર બ્રાઇટ લખાણ */
-    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    white-space: nowrap;
-    font-family: 'Poppins', 'Noto Serif Gujarati', sans-serif;
-    letter-spacing: 0.5px;
-}
-@media(min-width: 500px) { header h1 { font-size: 26px; } }
-header p{margin:10px 0 0;font-size:15px;font-weight:600;color:#DDB892}
 
-main{max-width:550px;margin:auto;padding:25px 15px}
+    background:
+        radial-gradient(circle at 15% 20%,rgba(255,255,255,.18),transparent 25%),
+        radial-gradient(circle at 90% 5%,rgba(255,180,210,.25),transparent 30%),
+        linear-gradient(135deg,#171A35 0%,#54369A 45%,#A34291 100%);
 
-/* પ્રીમિયમ પેસ્ટલ કાર્ડ લુક */
-.card{
-    background: #E6CCB2; /* ઇમેજ 159110.jpg નો રિચ મિડ-ટોન ક્રીમ */
-    border: 1px solid rgba(176, 137, 104, 0.4); 
-    border-radius: 20px;
-    padding: 24px;
-    margin-bottom: 26px;
-    box-shadow: 0 10px 20px rgba(127, 85, 57, 0.08); 
-    position: relative;
+    border-radius:0 0 34px 34px;
+
+    box-shadow:
+        0 16px 40px rgba(46,31,91,.25);
 }
 
-/* કાર્ડ હેડિંગ */
-h2{
-    margin-top:0;
-    color: #7F5539; 
-    font-size:20px;
-    font-weight:700;
-    border-bottom:2px solid rgba(176, 137, 104, 0.3);
-    padding-bottom:12px;
-    margin-bottom:18px;
+
+header::before,
+header::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    filter:blur(2px);
+}
+
+header::before{
+    width:160px;
+    height:160px;
+    background:rgba(255,255,255,.08);
+    top:-80px;
+    left:-50px;
+}
+
+header::after{
+    width:190px;
+    height:190px;
+    background:rgba(255,215,130,.10);
+    right:-90px;
+    bottom:-120px;
+}
+
+
+.logo-wrap{
+    width:105px;
+    height:105px;
+    margin:auto;
     display:flex;
     align-items:center;
-    gap:8px;
+    justify-content:center;
+
+    background:rgba(255,255,255,.10);
+
+    border:1px solid rgba(255,255,255,.25);
+
+    border-radius:50%;
+
+    backdrop-filter:blur(12px);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.20),
+        inset 0 0 20px rgba(255,255,255,.08);
 }
+
+
+.logo-wrap img{
+    max-width:88px;
+    max-height:88px;
+    object-fit:contain;
+}
+
+
+header h1{
+    position:relative;
+    margin:17px 0 0;
+
+    color:#FFFFFF;
+
+    font-family:'Poppins',sans-serif;
+
+    font-size:clamp(20px,5.3vw,28px);
+
+    font-weight:800;
+
+    letter-spacing:.5px;
+
+    text-shadow:0 3px 15px rgba(0,0,0,.25);
+}
+
+
+header p{
+    position:relative;
+
+    display:inline-flex;
+    align-items:center;
+
+    margin:12px 0 0;
+
+    padding:7px 15px;
+
+    border-radius:30px;
+
+    color:#FFF8D9;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    background:rgba(255,255,255,.10);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    backdrop-filter:blur(8px);
+}
+
+
+/* MAIN */
+
+main{
+    max-width:570px;
+    margin:auto;
+    padding:27px 15px;
+}
+
+
+/* CARD */
+
+.card{
+    position:relative;
+
+    overflow:hidden;
+
+    margin-bottom:23px;
+
+    padding:21px;
+
+    border-radius:24px;
+
+    background:rgba(255,255,255,.82);
+
+    border:1px solid rgba(255,255,255,.80);
+
+    box-shadow:
+        0 15px 40px rgba(67,51,120,.10);
+
+    backdrop-filter:blur(15px);
+}
+
+
+.card::after{
+    content:"";
+
+    position:absolute;
+
+    width:110px;
+
+    height:110px;
+
+    border-radius:50%;
+
+    right:-60px;
+
+    top:-60px;
+
+    background:var(--glow,rgba(155,109,255,.12));
+}
+
+
+.gold-card{
+    --accent:#D69B2D;
+    --accent2:#F6C85F;
+    --soft:#FFF6DB;
+    --glow:rgba(246,200,95,.20);
+}
+
+
+.silver-card{
+    --accent:#4776A8;
+    --accent2:#7DB7D9;
+    --soft:#EFF8FF;
+    --glow:rgba(125,183,217,.20);
+}
+
+
+.tharad-card{
+    --accent:#14856F;
+    --accent2:#43C59E;
+    --soft:#ECFFF8;
+    --glow:rgba(67,197,158,.18);
+}
+
+
+.calculator-card{
+    --accent:#7145C5;
+    --accent2:#F15B9B;
+    --soft:#F8F1FF;
+    --glow:rgba(241,91,155,.16);
+}
+
+
+h2{
+    position:relative;
+
+    z-index:2;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:11px;
+
+    margin:0 0 17px;
+
+    padding-bottom:14px;
+
+    font-size:19px;
+
+    font-weight:700;
+
+    color:var(--accent);
+
+    border-bottom:1px solid rgba(80,60,120,.10);
+}
+
+
+.icon-box{
+    width:38px;
+
+    height:38px;
+
+    display:inline-flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:12px;
+
+    color:white;
+
+    font-size:19px;
+
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+
+    box-shadow:0 6px 16px color-mix(in srgb,var(--accent) 25%,transparent);
+}
+
+
+/* RATE ROW */
 
 .row{
+    position:relative;
+
+    z-index:2;
+
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
-    padding:16px 12px;
-    border-bottom: 1px solid rgba(176, 137, 104, 0.2);
-    background: rgba(255, 255, 255, 0.4); /* કાર્ડની અંદર ડેટા રો વધુ ક્લીન દેખાશે */
-    margin-bottom: 6px;
-    border-radius: 8px;
-}
-.row:last-child{border:0; margin-bottom:0}
 
-/* ડાબી બાજુનું લખાણ હવે એકદમ ક્લાસી પ્રોફેશનલ દેખાશે */
+    gap:15px;
+
+    padding:15px 14px;
+
+    margin-bottom:8px;
+
+    border-radius:14px;
+
+    background:linear-gradient(135deg,var(--soft),rgba(255,255,255,.88));
+
+    border:1px solid rgba(70,60,110,.06);
+
+    transition:.25s ease;
+}
+
+
+.row:hover{
+    transform:translateY(-2px);
+
+    box-shadow:0 8px 18px rgba(50,40,90,.08);
+}
+
+
 .label{
-    font-size:16px;
+    font-size:15px;
+
     font-weight:600;
-    color: #9C6644; /* ઇમેજ નો સુંદર ટેરાકોટા બ્રાઉન કલર */
+
+    color:#5E5A72;
 }
 
-/* આજના રેટ - બોલ્ડ અને શાર્પ */
+
 .price{
-    font-weight:700;
-    color: #7F5539; 
-    font-size:19px; 
-    font-family: 'Poppins', sans-serif;
+    white-space:nowrap;
+
+    font-family:'Poppins',sans-serif;
+
+    font-size:18px;
+
+    font-weight:800;
+
+    color:var(--accent);
 }
 
-/* ટાઇમસ્ટેમ્પ */
+
 .timestamp{
-    font-size:12px;
-    color: #9C6644;
+    position:relative;
+
+    z-index:2;
+
     display:block;
+
     margin-top:12px;
+
     text-align:right;
-    font-weight: 500;
+
+    font-family:'Poppins',sans-serif;
+
+    font-size:11px;
+
+    color:var(--muted);
 }
 
-input,select,button{width:100%;padding:14px;margin-top:12px;border-radius:12px;font-size:15px;outline:none;transition:all 0.3s ease}
-input,select{
-    border: 1px solid #B08968;
-    background: #EDE0D4;
-    color: #7F5539;
-    font-weight: 500;
+
+/* GST */
+
+.gst-text{
+    margin:-3px 0 22px;
+
+    padding:11px;
+
+    text-align:center;
+
+    color:#B34A5A;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    border-radius:12px;
+
+    background:linear-gradient(135deg,#FFF0F2,#FFF8E7);
+
+    border:1px solid rgba(179,74,90,.12);
 }
-input:focus,select:focus{
-    border-color: #7F5539;
-    box-shadow: 0 0 0 3px rgba(127,85,57,0.1);
+
+
+/* INPUT */
+
+input,
+select,
+button{
+    width:100%;
+
+    padding:14px;
+
+    margin-top:11px;
+
+    border-radius:13px;
+
+    font-family:'Noto Serif Gujarati','Poppins',sans-serif;
+
+    font-size:15px;
+
+    outline:none;
+
+    transition:.25s ease;
 }
+
+
+input,
+select{
+    color:var(--text);
+
+    background:#FFFFFF;
+
+    border:1px solid rgba(95,74,160,.17);
+
+    box-shadow:inset 0 2px 5px rgba(70,50,110,.03);
+}
+
+
+input:focus,
+select:focus{
+    border-color:#8B62DD;
+
+    box-shadow:0 0 0 4px rgba(139,98,221,.10);
+}
+
 
 button{
     border:0;
-    background: #7F5539;
-    font-weight: 600;
-    color: #EDE0D4;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(127,85,57,0.2);
-}
-button:hover{
-    background: #9C6644;
-    transform: translateY(-1px);
+
+    cursor:pointer;
+
+    color:#FFFFFF;
+
+    font-weight:700;
+
+    background:linear-gradient(135deg,#6541B5,#D94E91);
+
+    box-shadow:0 9px 22px rgba(101,65,181,.23);
 }
 
-.btn-admin{
-    background: #E6CCB2;
-    color: #7F5539;
-    border: 1px solid #B08968;
-    margin-top: 25px;
-    font-weight: 600;
+
+button:hover{
+    transform:translateY(-2px);
+
+    box-shadow:0 12px 25px rgba(101,65,181,.30);
 }
-.btn-admin:hover{
-    background: #7F5539;
-    color: #EDE0D4;
+
+
+button:active{
+    transform:scale(.98);
 }
+
+
+/* RESULT */
 
 .result{
+    margin-top:17px;
+
+    padding:17px;
+
     text-align:center;
-    margin-top:18px;
-    padding:16px;
-    background: #EDE0D4;
-    border:2px dashed #7F5539;
-    border-radius:12px;
-    font-weight:700;
+
+    border-radius:15px;
+
+    color:#6040A5;
+
+    font-family:'Poppins',sans-serif;
+
     font-size:18px;
-    color: #7F5539;
+
+    font-weight:800;
+
+    background:linear-gradient(135deg,#F1E9FF,#FFEAF5);
+
+    border:1px dashed #9B6DFF;
 }
 
-.admin-section{display:none;background:#EDE0D4;border:2px dashed #7F5539}
-.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.admin-grid label{font-size:12px;font-weight:600;color:#7F5539;margin-top:6px;display:block}
-.admin-grid input{margin-top:4px; background:#fff; color:#000; border: 1px solid #B08968;}
-.gst-text{text-align:center;font-size:13px;font-weight:700;color:#b22222;margin:18px 0;letter-spacing:0.5px}
-footer{text-align:center;font-size:13px;color:#9C6644;padding:30px 0;font-weight:500}
-.pass-section{margin-top:25px;padding-top:20px;border-top:1px dashed #B08968}
 
-/* પોપ-અપ મોડલ */
-.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(127,85,57,0.4);backdrop-filter:blur(4px);z-index:1000;justify-content:center;align-items:center;padding:20px}
+/* SETTINGS BUTTON */
+
+.btn-admin{
+    margin-top:3px;
+
+    color:#4D367F;
+
+    background:rgba(255,255,255,.85);
+
+    border:1px solid rgba(108,74,182,.18);
+
+    box-shadow:0 10px 25px rgba(70,50,120,.10);
+}
+
+
+.btn-admin:hover{
+    color:white;
+
+    background:linear-gradient(135deg,#443078,#8056D3);
+}
+
+
+/* ADMIN */
+
+.admin-section{
+    display:none;
+
+    margin-top:20px;
+
+    background:
+        radial-gradient(circle at 100% 0%,rgba(241,91,155,.12),transparent 30%),
+        rgba(255,255,255,.94);
+
+    border:1px solid rgba(108,74,182,.18);
+}
+
+
+.admin-section h2{
+    color:#6541B5;
+}
+
+
+.admin-grid{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:12px;
+}
+
+
+.admin-grid label{
+    display:block;
+
+    margin-top:5px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    color:#69627A;
+}
+
+
+.admin-grid input{
+    margin-top:5px;
+
+    padding:12px;
+
+    color:#24233A;
+
+    background:#FBFAFF;
+}
+
+
+.save-button{
+    margin-top:17px;
+
+    background:linear-gradient(135deg,#168C78,#43C59E);
+
+    box-shadow:0 8px 20px rgba(22,140,120,.20);
+}
+
+
+.pass-section{
+    margin-top:23px;
+
+    padding-top:19px;
+
+    border-top:1px dashed rgba(108,74,182,.25);
+}
+
+
+.pass-button{
+    margin-top:6px;
+
+    background:linear-gradient(135deg,#E48B35,#F15B72);
+}
+
+
+/* MODAL */
+
+.modal-overlay{
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:1000;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+
+    background:rgba(25,20,55,.50);
+
+    backdrop-filter:blur(8px);
+}
+
+
 .modal-box{
-    background:#EDE0D4;
     width:100%;
-    max-width:340px;
+
+    max-width:350px;
+
     padding:25px;
-    border-radius:20px;
-    border:1px solid #B08968;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+
+    border-radius:24px;
+
+    background:
+        radial-gradient(circle at 100% 0%,rgba(241,91,155,.15),transparent 35%),
+        #FFFFFF;
+
+    border:1px solid rgba(255,255,255,.75);
+
+    box-shadow:0 25px 60px rgba(20,15,50,.30);
+
+    animation:modalShow .25s ease;
 }
-.modal-buttons{display:flex;gap:12px;margin-top:18px}
-.modal-buttons button{margin-top:0}
-.btn-close{background:#E6CCB2;color:#7F5539;box-shadow:none}
-.btn-close:hover{background:#B08968;color:#fff}
+
+
+@keyframes modalShow{
+    from{
+        opacity:0;
+        transform:translateY(20px) scale(.97);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+
+.modal-title{
+    margin:0 0 5px;
+
+    color:#51358C;
+
+    font-family:'Poppins',sans-serif;
+
+    font-size:20px;
+
+    font-weight:800;
+}
+
+
+.modal-subtitle{
+    margin:0 0 10px;
+
+    color:#8A849B;
+
+    font-size:13px;
+}
+
+
+.modal-buttons{
+    display:flex;
+
+    gap:11px;
+
+    margin-top:17px;
+}
+
+
+.modal-buttons button{
+    margin:0;
+}
+
+
+.btn-close{
+    color:#635E72;
+
+    background:#F0EDF7;
+
+    box-shadow:none;
+}
+
+
+.btn-close:hover{
+    color:#4A4560;
+
+    background:#E5E0EF;
+}
+
+
+/* FOOTER */
+
+footer{
+    padding:20px 15px 30px;
+
+    text-align:center;
+
+    font-family:'Poppins',sans-serif;
+
+    color:#858096;
+
+    font-size:12px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:400px){
+
+    main{
+        padding-left:11px;
+        padding-right:11px;
+    }
+
+    .card{
+        padding:17px;
+        border-radius:20px;
+    }
+
+    .row{
+        padding:14px 11px;
+    }
+
+    .label{
+        font-size:14px;
+    }
+
+    .price{
+        font-size:16px;
+    }
+
+    .admin-grid{
+        grid-template-columns:1fr;
+    }
+}
+
 </style>
 </head>
+
+
 <body>
 
+
 <header>
-    <!-- હાઇ-ક્વોલિટી ડ્રાઇવ ડાયરેક્ટ સોર્સ લોગો લિંક -->
-    <img src="https://lh3.googleusercontent.com/d/1XHVetU6xNNu-cvu0t7T3NIV6iRVyHiZW" alt="VRUNDAVAN LOGO" style="max-height:95px; width:auto; margin-bottom:12px; filter:drop-shadow(0px 4px 6px rgba(0,0,0,0.2));">
-    <h1>VRUNDAVAN ORNAMENTS PVT LTD</h1>
-    <p>આજના ભાવ — તા. <span id="current-date"></span></p>
-</header>
 
-<main>
-    <div class="card">
-        <h2>✨ સોનાનો ભાવ</h2>
-        <div class="row"><span class="label">૨૪ KT (૧૦ ગ્રામ)</span><span class="price">₹<span id="d_g24">0</span></span></div>
-        <div class="row"><span class="label">૨૨ KT (૧૦ ગ્રામ)</span><span class="price">₹<span id="d_g22">0</span></span></div>
-        <div class="row"><span class="label">૧૮ KT (૧૦ ગ્રામ)</span><span class="price">₹<span id="d_g18">0</span></span></div>
-        <span class="timestamp">Last Update: <span id="time-gold"></span></span>
-    </div>
+<div class="logo-wrap">
 
-    <div class="card">
-        <h2>🪙 ચાંદીનો ભાવ (૧ કિલો)</h2>
-        <div class="row"><span class="label">૯૫/૭૫ ટ્રેડિંગ</span><span class="price">₹<span id="d_s95">0</span></span></div>
-        <div class="row"><span class="label">૯૦/૭૦ ટ્રેડિંગ</span><span class="price">₹<span id="d_s90">0</span></span></div>
-        <div class="row"><span class="label">૬૦/૮૦ ટ્રેડિંગ</span><span class="price">₹<span id="d_s60">0</span></span></div>
-    </div>
+<img
+src="https://lh3.googleusercontent.com/d/1XHVetU6xNNu-cvu0t7T3NIV6iRVyHiZW"
+alt="VRUNDAVAN LOGO">
 
-    <div class="gst-text">⚠️ * 3% GST APPLY</div>
-
-    <div class="card">
-        <h2>📍 થરાદ રોકડ બજાર</h2>
-        <div class="row"><span class="label">ગોલ્ડ ૯૯૯ imp</span><span class="price">₹<span id="d_th_g999">0</span></span></div>
-        <div class="row"><span class="label">સિલ્વર ચોરસા ૯૯૯</span><span class="price">₹<span id="d_th_s999">0</span></span></div>
-        <div class="row"><span class="label">૨૨ કેરેટ રોકડ</span><span class="price">₹<span id="d_th_g22">0</span></span></div>
-    </div>
-
-    <!-- કેલ્ક્યુલેટર સેક્શન -->
-    <div class="card" style="background:#EDE0D4; border:1px solid #B08968;">
-        <h2 style="color:#7F5539; border-bottom:2px solid #E6CCB2;">📊 Rate Calculator</h2>
-        <select id="calc-item">
-            <option value="g24">૨૪ KT સોનું</option>
-            <option value="g22">૨૨ KT સોનું</option>
-            <option value="g18">૧૮ KT સોનું</option>
-            <option value="s95">ચાંદી ૯૫/૭૫</option>
-            <option value="s90">ચાંદી ૯૦/૭૦</option>
-            <option value="s60">ચાんだી ૬૦/૮૦</option>
-            <option value="th_g999">થરાદ ગોલ્ડ ૯૯૯</option>
-            <option value="th_s999">થરાદ સિલ્વર</option>
-            <option value="th_g22">થરાદ ૨૨ કેરેટ</option>
-        </select>
-        <input id="calc-weight" type="number" step="any" placeholder="વજન (ગ્રામ)">
-        <button onclick="calculatePrice()">⚙️ હિસાબ કરો</button>
-        <div id="calc-result" class="result">કુલ રકમ: ₹0</div>
-    </div>
-
-    <button class="btn-admin" onclick="openPasswordModal()">🔒 Settings</button>
-
-    <div id="admin-panel" class="card admin-section">
-        <h2>Admin Panel</h2>
-        <div class="admin-grid">
-            <div><label>૨૪ KT</label><input id="in_g24" type="number"></div>
-            <div><label>૨૨ KT</label><input id="in_g22" type="number"></div>
-            <div><label>૧૮ KT</label><input id="in_g18" type="number"></div>
-            <div><label>ચાંદી ૯૫/૭૫</label><input id="in_s95" type="number"></div>
-            <div><label>ચાંદી ૯૦/૭૦</label><input id="in_s90" type="number"></div>
-            <div><label>ચાંદી ૬૦/૮૦</label><input id="in_s60" type="number"></div>
-            <div><label>થરાદ ગોલ્ડ</label><input id="in_th_g999" type="number"></div>
-            <div><label>થરાદ સિલ્વર</label><input id="in_th_s999" type="number"></div>
-            <div><label>થરાદ ૨૨ K</label><input id="in_th_g22" type="number"></div>
-        </div>
-        <button onclick="saveRates()" style="background:#27ae60;color:#fff;margin-top:15px;">Save Rates</button>
-        
-        <div class="pass-section">
-            <input id="new-password" type="password" placeholder="New Password">
-            <button onclick="changePassword()" style="background:#e67e22;color:#fff;margin-top:5px;">Update Pass</button>
-        </div>
-    </div>
-</main>
-
-<div id="custom-modal" class="modal-overlay">
-    <div class="modal-box">
-        <input id="modal-input" type="password" placeholder="Enter Code">
-        <div class="modal-buttons">
-            <button class="btn-close" onclick="closeModal()">Cancel</button>
-            <button onclick="submitModal()">OK</button>
-        </div>
-    </div>
 </div>
 
-<footer>© Vrundavan Ornaments Pvt. Ltd.</footer>
+
+<h1>VRUNDAVAN ORNAMENTS PVT LTD</h1>
+
+
+<p>આજના ભાવ&nbsp; • &nbsp;તા. <span id="current-date"></span></p>
+
+</header>
+
+
+
+<main>
+
+
+<div class="card gold-card">
+
+<h2>
+
+<span class="icon-box">✦</span>
+
+સોનાનો ભાવ
+
+</h2>
+
+
+<div class="row">
+
+<span class="label">૨૪ KT (૧૦ ગ્રામ)</span>
+
+<span class="price">₹<span id="d_g24">0</span></span>
+
+</div>
+
+
+<div class="row">
+
+<span class="label">૨૨ KT (૧૦ ગ્રામ)</span>
+
+<span class="price">₹<span id="d_g22">0</span></span>
+
+</div>
+
+
+<div class="row">
+
+<span class="label">૧૮ KT (૧૦ ગ્રામ)</span>
+
+<span class="price">₹<span id="d_g18">0</span></span>
+
+</div>
+
+
+<span class="timestamp">
+
+Last Update: <span id="time-gold"></span>
+
+</span>
+
+</div>
+
+
+
+
+<div class="card silver-card">
+
+<h2>
+
+<span class="icon-box">◆</span>
+
+ચાંદીનો ભાવ (૧ કિલો)
+
+</h2>
+
+
+<div class="row">
+
+<span class="label">૯૫/૭૫ ટ્રેડિંગ</span>
+
+<span class="price">₹<span id="d_s95">0</span></span>
+
+</div>
+
+
+<div class="row">
+
+<span class="label">૯૦/૭૦ ટ્રેડિંગ</span>
+
+<span class="price">₹<span id="d_s90">0</span></span>
+
+</div>
+
+
+<div class="row">
+
+<span class="label">૬૦/૮૦ ટ્રેડિંગ</span>
+
+<span class="price">₹<span id="d_s60">0</span></span>
+
+</div>
+
+</div>
+
+
+
+<div class="gst-text">
+
+⚠️ * 3% GST APPLY
+
+</div>
+
+
+
+
+<div class="card tharad-card">
+
+<h2>
+
+<span class="icon-box">⌖</span>
+
+થરાદ રોકડ બજાર
+
+</h2>
+
+
+<div class="row">
+
+<span class="label">ગોલ્ડ ૯૯૯ imp</span>
+
+<span class="price">₹<span id="d_th_g999">0</span></span>
+
+</div>
+
+
+<div class="row">
+
+<span class="label">સિલ્વર ચોરસા ૯૯૯</span>
+
+<span class="price">₹<span id="d_th_s999">0</span></span>
+
+</div>
+
+
+<div class="row">
+
+<span class="label">૨૨ કેરેટ રોકડ</span>
+
+<span class="price">₹<span id="d_th_g22">0</span></span>
+
+</div>
+
+</div>
+
+
+
+
+<div class="card calculator-card">
+
+<h2>
+
+<span class="icon-box">⌗</span>
+
+Rate Calculator
+
+</h2>
+
+
+<select id="calc-item">
+
+<option value="g24">૨૪ KT સોનું</option>
+
+<option value="g22">૨૨ KT સોનું</option>
+
+<option value="g18">૧૮ KT સોનું</option>
+
+<option value="s95">ચાંદી ૯૫/૭૫</option>
+
+<option value="s90">ચાંદી ૯૦/૭૦</option>
+
+<option value="s60">ચાંદી ૬૦/૮૦</option>
+
+<option value="th_g999">થરાદ ગોલ્ડ ૯૯૯</option>
+
+<option value="th_s999">થરાદ સિલ્વર</option>
+
+<option value="th_g22">થરાદ ૨૨ કેરેટ</option>
+
+</select>
+
+
+<input
+id="calc-weight"
+type="number"
+step="any"
+placeholder="વજન (ગ્રામ)">
+
+
+<button onclick="calculatePrice()">
+
+⚙️ હિસાબ કરો
+
+</button>
+
+
+<div id="calc-result" class="result">
+
+કુલ રકમ: ₹0
+
+</div>
+
+
+</div>
+
+
+
+
+<button
+class="btn-admin"
+onclick="openPasswordModal()">
+
+🔒 Settings
+
+</button>
+
+
+
+
+<div
+id="admin-panel"
+class="card admin-section">
+
+
+<h2>Admin Panel</h2>
+
+
+<div class="admin-grid">
+
+
+<div>
+
+<label>૨૪ KT</label>
+
+<input id="in_g24" type="number">
+
+</div>
+
+
+<div>
+
+<label>૨૨ KT</label>
+
+<input id="in_g22" type="number">
+
+</div>
+
+
+<div>
+
+<label>૧૮ KT</label>
+
+<input id="in_g18" type="number">
+
+</div>
+
+
+<div>
+
+<label>ચાંદી ૯૫/૭૫</label>
+
+<input id="in_s95" type="number">
+
+</div>
+
+
+<div>
+
+<label>ચાંદી ૯૦/૭૦</label>
+
+<input id="in_s90" type="number">
+
+</div>
+
+
+<div>
+
+<label>ચાંદી ૬૦/૮૦</label>
+
+<input id="in_s60" type="number">
+
+</div>
+
+
+<div>
+
+<label>થરાદ ગોલ્ડ</label>
+
+<input id="in_th_g999" type="number">
+
+</div>
+
+
+<div>
+
+<label>થરાદ સિલ્વર</label>
+
+<input id="in_th_s999" type="number">
+
+</div>
+
+
+<div>
+
+<label>થરાદ ૨૨ K</label>
+
+<input id="in_th_g22" type="number">
+
+</div>
+
+
+</div>
+
+
+
+<button
+class="save-button"
+onclick="saveRates()">
+
+✓ Save Rates
+
+</button>
+
+
+
+<div class="pass-section">
+
+
+<input
+id="new-password"
+type="password"
+placeholder="New Password">
+
+
+<button
+class="pass-button"
+onclick="changePassword()">
+
+Update Password
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+</main>
+
+
+
+
+<div
+id="custom-modal"
+class="modal-overlay">
+
+
+<div class="modal-box">
+
+
+<h3 class="modal-title">
+
+Secure Settings
+
+</h3>
+
+
+<p class="modal-subtitle">
+
+Enter admin access code
+
+</p>
+
+
+<input
+id="modal-input"
+type="password"
+placeholder="Enter Code">
+
+
+<div class="modal-buttons">
+
+
+<button
+class="btn-close"
+onclick="closeModal()">
+
+Cancel
+
+</button>
+
+
+<button onclick="submitModal()">
+
+Continue
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+<footer>
+
+© Vrundavan Ornaments Pvt. Ltd. • Premium Rate Dashboard
+
+</footer>
+
+
+
 
 <script>
-let rates = { 
-    g24: +localStorage.getItem('g24') || 143480, 
-    g22: +localStorage.getItem('g22') || 134400, 
-    g18: +localStorage.getItem('g18') || 108730, 
-    s95: +localStorage.getItem('s95') || 221260, 
-    s90: +localStorage.getItem('s90') || 209240, 
-    s60: +localStorage.getItem('s60') || 185185, 
-    th_g999: +localStorage.getItem('th_g999') || 146300, 
-    th_s999: +localStorage.getItem('th_s999') || 231250, 
-    th_g22: +localStorage.getItem('th_g22') || 134600 
+
+
+let rates={
+
+g24:+localStorage.getItem('g24')||143480,
+
+g22:+localStorage.getItem('g22')||134400,
+
+g18:+localStorage.getItem('g18')||108730,
+
+s95:+localStorage.getItem('s95')||221260,
+
+s90:+localStorage.getItem('s90')||209240,
+
+s60:+localStorage.getItem('s60')||185185,
+
+th_g999:+localStorage.getItem('th_g999')||146300,
+
+th_s999:+localStorage.getItem('th_s999')||231250,
+
+th_g22:+localStorage.getItem('th_g22')||134600
+
 };
-const M_EMAIL = "office.vopl@gmail.com"; 
-const M_CODE = "Khulja99"; 
-let step = 1;
 
-function getFormattedDate(customDateStr) {
-    let d = customDateStr ? new Date(customDateStr.split('/').reverse().join('-')) : new Date();
-    if (isNaN(d.getTime())) d = new Date();
-    let day = String(d.getDate()).padStart(2, '0');
-    let month = String(d.getMonth() + 1).padStart(2, '0');
-    let year = d.getFullYear();
-    return `${day}/${month}/${year}`;
+
+
+const M_EMAIL="office.vopl@gmail.com";
+
+const M_CODE="Khulja99";
+
+let step=1;
+
+
+
+
+function getFormattedDate(customDateStr){
+
+let d=customDateStr
+
+?new Date(customDateStr.split('/').reverse().join('-'))
+
+:new Date();
+
+
+if(isNaN(d.getTime()))
+
+d=new Date();
+
+
+let day=String(d.getDate()).padStart(2,'0');
+
+let month=String(d.getMonth()+1).padStart(2,'0');
+
+let year=d.getFullYear();
+
+
+return `${day}/${month}/${year}`;
+
 }
 
-function updateDisplay() {
-    document.getElementById('d_g24').textContent = rates.g24.toLocaleString('en-IN');
-    document.getElementById('d_g22').textContent = rates.g22.toLocaleString('en-IN');
-    document.getElementById('d_g18').textContent = rates.g18.toLocaleString('en-IN');
-    document.getElementById('d_s95').textContent = rates.s95.toLocaleString('en-IN');
-    document.getElementById('d_s90').textContent = rates.s90.toLocaleString('en-IN');
-    document.getElementById('d_s60').textContent = rates.s60.toLocaleString('en-IN');
-    document.getElementById('d_th_g999').textContent = rates.th_g999.toLocaleString('en-IN');
-    document.getElementById('d_th_s999').textContent = rates.th_s999.toLocaleString('en-IN');
-    document.getElementById('d_th_g22').textContent = rates.th_g22.toLocaleString('en-IN');
-    
-    document.getElementById('in_g24').value = rates.g24; 
-    document.getElementById('in_g22').value = rates.g22; 
-    document.getElementById('in_g18').value = rates.g18; 
-    document.getElementById('in_s95').value = rates.s95; 
-    document.getElementById('in_s90').value = rates.s90; 
-    document.getElementById('in_s60').value = rates.s60; 
-    document.getElementById('in_th_g999').value = rates.th_g999; 
-    document.getElementById('in_th_s999').value = rates.th_s999; 
-    document.getElementById('in_th_g22').value = rates.th_g22;
-    
-    document.getElementById('time-gold').textContent = localStorage.getItem('update_time') || new Date().toLocaleTimeString('en-IN', {hour:'2-digit', minute:'2-digit'});
-    
-    let storedDate = localStorage.getItem('update_date');
-    document.getElementById('current-date').textContent = storedDate ? getFormattedDate(storedDate) : getFormattedDate();
+
+
+
+function updateDisplay(){
+
+
+document.getElementById('d_g24').textContent=rates.g24.toLocaleString('en-IN');
+
+document.getElementById('d_g22').textContent=rates.g22.toLocaleString('en-IN');
+
+document.getElementById('d_g18').textContent=rates.g18.toLocaleString('en-IN');
+
+
+document.getElementById('d_s95').textContent=rates.s95.toLocaleString('en-IN');
+
+document.getElementById('d_s90').textContent=rates.s90.toLocaleString('en-IN');
+
+document.getElementById('d_s60').textContent=rates.s60.toLocaleString('en-IN');
+
+
+document.getElementById('d_th_g999').textContent=rates.th_g999.toLocaleString('en-IN');
+
+document.getElementById('d_th_s999').textContent=rates.th_s999.toLocaleString('en-IN');
+
+document.getElementById('d_th_g22').textContent=rates.th_g22.toLocaleString('en-IN');
+
+
+
+for(let key in rates){
+
+let input=document.getElementById('in_'+key);
+
+if(input)
+
+input.value=rates[key];
+
 }
 
-function openPasswordModal() {
-    if(document.getElementById('admin-panel').style.display === 'block') { 
-        document.getElementById('admin-panel').style.display = 'none'; 
-        return; 
-    }
-    step = 1; 
-    let inputField = document.getElementById('modal-input');
-    inputField.value = ""; 
-    inputField.type = "password"; 
-    inputField.placeholder = "Enter Code";
-    document.getElementById('custom-modal').style.display = 'flex';
+
+
+document.getElementById('time-gold').textContent=
+
+localStorage.getItem('update_time')
+
+||
+
+new Date().toLocaleTimeString(
+
+'en-IN',
+
+{
+
+hour:'2-digit',
+
+minute:'2-digit'
+
 }
 
-function closeModal() { 
-    document.getElementById('custom-modal').style.display = 'none'; 
+);
+
+
+
+let storedDate=
+
+localStorage.getItem('update_date');
+
+
+
+document.getElementById('current-date').textContent=
+
+storedDate
+
+?getFormattedDate(storedDate)
+
+:getFormattedDate();
+
 }
 
-function submitModal() {
-    let val = document.getElementById('modal-input').value.trim();
-    if(!val) return;
 
-    if(step === 1) {
-        if(val === (localStorage.getItem('admin_password') || "vopl77")) { 
-            closeModal(); 
-            document.getElementById('admin-panel').style.display = 'block'; 
-        }
-        else if(val === "FORGOT") { 
-            step = 2; 
-            let inputField = document.getElementById('modal-input');
-            inputField.value = ""; 
-            inputField.type = "text"; 
-            inputField.placeholder = "Enter Email";
-        } else {
-            alert("Wrong Code");
-            closeModal();
-        }
-    } else if(step === 2) {
-        if(val.toLowerCase() === M_EMAIL) { 
-            step = 3; 
-            let inputField = document.getElementById('modal-input');
-            inputField.value = ""; 
-            inputField.type = "password"; 
-            inputField.placeholder = "Enter Master Code";
-        }
-        else { 
-            closeModal(); 
-        }
-    } else if(step === 3) {
-        if(val === M_CODE) { 
-            localStorage.setItem('admin_password', "vopl77"); 
-            alert("Done."); 
-            closeModal(); 
-        }
-        else { 
-            closeModal(); 
-        }
-    }
+
+
+function openPasswordModal(){
+
+
+if(
+
+document.getElementById('admin-panel').style.display==='block'
+
+){
+
+document.getElementById('admin-panel').style.display='none';
+
+return;
+
 }
 
-function changePassword() {
-    let newPass = document.getElementById('new-password').value.trim();
-    if(newPass === "") return;
-    localStorage.setItem('admin_password', newPass);
-    alert("Updated.");
-    document.getElementById('new-password').value = "";
-    document.getElementById('admin-panel').style.display = 'none';
+
+step=1;
+
+
+let inputField=
+
+document.getElementById('modal-input');
+
+
+inputField.value="";
+
+inputField.type="password";
+
+inputField.placeholder="Enter Code";
+
+
+document.getElementById('custom-modal').style.display='flex';
+
+
+setTimeout(()=>inputField.focus(),100);
+
 }
 
-function saveRates() {
-    rates.g24 = +document.getElementById('in_g24').value; 
-    rates.g22 = +document.getElementById('in_g22').value; 
-    rates.g18 = +document.getElementById('in_g18').value; 
-    rates.s95 = +document.getElementById('in_s95').value; 
-    rates.s90 = +document.getElementById('in_s90').value; 
-    rates.s60 = +document.getElementById('in_s60').value; 
-    rates.th_g999 = +document.getElementById('in_th_g999').value; 
-    rates.th_s999 = +document.getElementById('in_th_s999').value; 
-    rates.th_g22 = +document.getElementById('in_th_g22').value;
-    
-    for(let k in rates) localStorage.setItem(k, rates[k]);
-    
-    localStorage.setItem('update_time', new Date().toLocaleTimeString('en-IN', {hour:'2-digit', minute:'2-digit'}));
-    localStorage.setItem('update_date', getFormattedDate()); 
-    
-    updateDisplay(); 
-    document.getElementById('admin-panel').style.display = 'none';
-    alert("Saved.");
+
+
+
+function closeModal(){
+
+document.getElementById('custom-modal').style.display='none';
+
 }
 
-function calculatePrice() {
-    let w = +document.getElementById('calc-weight').value;
-    let item = document.getElementById('calc-item').value;
-    let r = rates[item];
-    if(!w || w <= 0) return;
-    let p = (['s95','s90','s60','th_s999'].includes(item)) ? (r/1000)*w : (r/10)*w;
-    document.getElementById('calc-result').textContent = 'કુલ રકમ: ₹' + Math.round(p).toLocaleString('en-IN');
+
+
+
+function submitModal(){
+
+
+let val=
+
+document.getElementById('modal-input').value.trim();
+
+
+if(!val)
+
+return;
+
+
+
+if(step===1){
+
+
+if(
+
+val===
+
+(
+
+localStorage.getItem('admin_password')
+
+||
+
+"vopl77"
+
+)
+
+){
+
+
+closeModal();
+
+
+document.getElementById('admin-panel').style.display='block';
+
+
+document.getElementById('admin-panel').scrollIntoView({
+
+behavior:'smooth'
+
+});
+
+
 }
+
+
+else if(val==="FORGOT"){
+
+
+step=2;
+
+
+let inputField=
+
+document.getElementById('modal-input');
+
+
+inputField.value="";
+
+inputField.type="text";
+
+inputField.placeholder="Enter Email";
+
+
+}
+
+
+else{
+
+
+alert("Wrong Code");
+
+
+closeModal();
+
+
+}
+
+
+}
+
+
+
+else if(step===2){
+
+
+if(val.toLowerCase()===M_EMAIL){
+
+
+step=3;
+
+
+let inputField=
+
+document.getElementById('modal-input');
+
+
+inputField.value="";
+
+inputField.type="password";
+
+inputField.placeholder="Enter Master Code";
+
+
+}
+
+
+else{
+
+
+closeModal();
+
+
+}
+
+
+}
+
+
+
+else if(step===3){
+
+
+if(val===M_CODE){
+
+
+localStorage.setItem(
+
+'admin_password',
+
+"vopl77"
+
+);
+
+
+alert("Password reset completed.");
+
+
+closeModal();
+
+
+}
+
+
+else{
+
+
+closeModal();
+
+
+}
+
+
+}
+
+
+}
+
+
+
+
+function changePassword(){
+
+
+let newPass=
+
+document.getElementById('new-password').value.trim();
+
+
+if(newPass==="")
+
+return;
+
+
+localStorage.setItem(
+
+'admin_password',
+
+newPass
+
+);
+
+
+alert("Password Updated.");
+
+
+document.getElementById('new-password').value="";
+
+
+document.getElementById('admin-panel').style.display='none';
+
+}
+
+
+
+
+function saveRates(){
+
+
+for(let key in rates){
+
+
+let input=
+
+document.getElementById('in_'+key);
+
+
+rates[key]=Number(input.value)||0;
+
+
+localStorage.setItem(
+
+key,
+
+rates[key]
+
+);
+
+
+}
+
+
+
+localStorage.setItem(
+
+'update_time',
+
+new Date().toLocaleTimeString(
+
+'en-IN',
+
+{
+
+hour:'2-digit',
+
+minute:'2-digit'
+
+}
+
+)
+
+);
+
+
+
+localStorage.setItem(
+
+'update_date',
+
+getFormattedDate()
+
+);
+
+
+
 updateDisplay();
+
+
+document.getElementById('admin-panel').style.display='none';
+
+
+alert("Rates Saved Successfully.");
+
+}
+
+
+
+
+function calculatePrice(){
+
+
+let w=
+
+Number(
+
+document.getElementById('calc-weight').value
+
+);
+
+
+let item=
+
+document.getElementById('calc-item').value;
+
+
+let r=rates[item];
+
+
+if(!w||w<=0){
+
+document.getElementById('calc-result').textContent=
+
+'કૃપા કરીને યોગ્ય વજન દાખલ કરો';
+
+return;
+
+}
+
+
+
+let p=
+
+['s95','s90','s60','th_s999'].includes(item)
+
+?
+
+(r/1000)*w
+
+:
+
+(r/10)*w;
+
+
+
+document.getElementById('calc-result').textContent=
+
+'કુલ રકમ: ₹'+
+
+Math.round(p).toLocaleString('en-IN');
+
+}
+
+
+
+
+document.getElementById('modal-input').addEventListener(
+
+'keydown',
+
+function(event){
+
+if(event.key==='Enter')
+
+submitModal();
+
+}
+
+);
+
+
+
+document.getElementById('custom-modal').addEventListener(
+
+'click',
+
+function(event){
+
+if(event.target===this)
+
+closeModal();
+
+}
+
+);
+
+
+
+updateDisplay();
+
+
 </script>
+
+
 </body>
+
 </html>
