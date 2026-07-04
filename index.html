@@ -10,108 +10,173 @@
 *{box-sizing:border-box;}
 body{
     margin:0;
-    background:#faf6e9; /* શોરૂમના સોફ્ટ વ્હાઇટ અને વૂડન વાઇબ સાથે મેચ થતો કલર */
-    color:#2b2204;
+    background:#f4f0e1; /* કોફી થીમ જેવું સોફ્ટ ક્રીમી બેકગ્રાઉન્ડ */
+    color:#1e292b;
     font-family: 'Noto Serif Gujarati', 'Poppins', serif;
-    padding-bottom:40px
+    padding-bottom:50px
 }
 
-/* શોરૂમના બેકગ્રાઉન્ડ મસ્ટર્ડ યેલો અને વૂડન ફિનિશ જેવું પ્રીમિયમ હેડર */
+/* 3D સોફ્ટ શેડો વાળું પ્રીમિયમ હેડર */
 header{
-    padding:30px 16px;
+    padding:35px 16px;
     text-align:center;
-    background:linear-gradient(135deg, #e5b822, #c6990a); /* શોરૂમની દીવાલનો પર્ફેક્ટ યેલો ટોન */
-    border-bottom:4px solid #5a4116; /* લાકડા જેવો બ્રાઉન ટોન */
-    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+    background: linear-gradient(135deg, #e5b822, #c6990a);
+    border-bottom: 5px solid #5a4116;
+    box-shadow: 0 10px 25px rgba(90, 65, 22, 0.25), inset 0 -3px 6px rgba(0,0,0,0.1);
 }
 header h1 {
     margin: 0;
     font-size: 5.4vw;
     font-weight: 700;
     color: #ffffff;
-    text-shadow: 2px 2px 4px rgba(90,65,22,0.4);
+    text-shadow: 0 4px 8px rgba(90,65,22,0.5);
     white-space: nowrap;
     font-family: 'Poppins', 'Noto Serif Gujarati', sans-serif;
     letter-spacing: 0.5px;
 }
 @media(min-width: 500px) { header h1 { font-size: 26px; } }
-header p{margin:8px 0 0;font-size:15px;font-weight:600;color:#4a360d}
+header p{margin:10px 0 0;font-size:15px;font-weight:600;color:#3d2c0b}
 
-main{max-width:550px;margin:auto;padding:20px 15px}
+main{max-width:550px;margin:auto;padding:25px 15px}
 
-/* શોરૂમની ડિસ્પ્લે બોર્ડ (ડીપ ટીલ બ્લુ) જેવી પ્રીમિયમ કાર્ડ ડિઝાઇન */
+/* "159104.jpg" જેવી 3D અને સોફ્ટ ગ્લાસ કાર્ડ ડિઝાઇન */
 .card{
-    background:#06262d; /* શોરૂમના દાગીના ગોઠવેલા છે તેવો જ સેમ ડીપ ટીલ/બ્લુ કલર */
-    border:2px solid #e5b822; 
-    border-radius:16px;
-    padding:22px;
-    margin-bottom:22px;
-    box-shadow:0 6px 18px rgba(6,38,45,0.2);
+    background: linear-gradient(145deg, #07313a, #041d22); /* રીચ 3D ગ્રેડિયન્ટ ટીલ કલર */
+    border: 1px solid rgba(229, 184, 34, 0.4); 
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 26px;
+    /* 3D જેવો ડબલ શેડો ઈફેક્ટ */
+    box-shadow: 0 15px 30px rgba(6, 38, 45, 0.25), 0 5px 10px rgba(0, 0, 0, 0.15); 
+    position: relative;
+    overflow: hidden;
 }
+
+/* કાર્ડની અંદર ગ્લો આપવા માટે */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 50%;
+    background: linear-gradient(rgba(255,255,255,0.05), transparent);
+    pointer-events: none;
+}
+
 h2{
     margin-top:0;
-    color:#e5b822; /* સોનેરી અક્ષરો */
-    font-size:19px;
+    color:#e5b822;
+    font-size:20px;
     font-weight:600;
-    border-bottom:1px solid #144954;
-    padding-bottom:10px;
-    margin-bottom:16px;
+    border-bottom:2px solid #0d434f;
+    padding-bottom:12px;
+    margin-bottom:18px;
     display:flex;
     align-items:center;
-    gap:8px
+    gap:8px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
-.row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid #0d3b45}
-.row:last-child{border:0}
+.row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 10px;
+    border-bottom:1px solid #0d3b45;
+    background: rgba(255, 255, 255, 0.02);
+    margin-bottom: 5px;
+    border-radius: 8px;
+}
+.row:last-child{border:0; margin-bottom:0}
 .label{font-size:15px;font-weight:500;color:#e2ecedd1}
 .price{
     font-weight:700;
     color:#f7df8c; 
     font-size:18px; 
     font-family: 'Poppins', sans-serif;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
-.timestamp{font-size:12px;color:#70979f;display:block;margin-top:8px;text-align:right}
+.timestamp{font-size:12px;color:#70979f;display:block;margin-top:10px;text-align:right}
 
-/* ઇનપુટ અને સિલેક્ટ બોક્સ - લાઇટ થીમ */
-input,select,button{width:100%;padding:14px;margin-top:12px;border-radius:12px;font-size:15px;outline:none;transition:all 0.3s ease}
+/* 3D ઇનપુટ અને સિલેક્ટ બોક્સ */
+input,select,button{width:100%;padding:14px;margin-top:12px;border-radius:12px;font-size:15px;outline:none;transition:all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)}
 input,select{
-    border:1px solid #c6990a;
-    background:#ffffff;
-    color:#06262d;
-    font-weight:500;
+    border: 1px solid #c6990a;
+    background: #ffffff;
+    color: #06262d;
+    font-weight: 500;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
 }
-input:focus,select:focus{border-color:#06262d;box-shadow:0 0 8px rgba(6,38,45,0.2)}
+input:focus,select:focus{
+    border-color: #06262d;
+    box-shadow: 0 0 0 3px rgba(6,38,45,0.15), inset 0 2px 4px rgba(0,0,0,0.06);
+}
 
-/* મસ્ટર્ડ યેલો બટન */
+/* 3D ઇફેક્ટ વાળું પિલાવ / સરસવ બટન */
 button{
     border:0;
-    background:linear-gradient(135deg, #e5b822, #c6990a);
-    font-weight:600;
-    color:#ffffff;
-    cursor:pointer;
-    box-shadow:0 4px 12px rgba(198,153,10,0.3);
+    background: linear-gradient(180deg, #e5b822, #c6990a);
+    font-weight: 600;
+    color: #ffffff;
+    cursor: pointer;
+    border-bottom: 4px solid #947104; /* નીચે જાડી બોર્ડરથી 3D લુક આવશે */
+    box-shadow: 0 5px 15px rgba(198,153,10,0.3);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
-button:hover{transform:translateY(-1px);box-shadow:0 6px 15px rgba(198,153,10,0.4)}
+button:hover{
+    transform: translateY(1px);
+    border-bottom-width: 2px;
+    box-shadow: 0 3px 10px rgba(198,153,10,0.4);
+}
+button:active{
+    transform: translateY(3px);
+    border-bottom-width: 0px;
+}
 
-.btn-admin{background:#ffffff;color:#c6990a;border:1px solid #e5b822;margin-top:25px;box-shadow:none}
+.btn-admin{
+    background: #ffffff;
+    color: #c6990a;
+    border: 1px solid #e5b822;
+    border-bottom: 4px solid #dcd0b1;
+    margin-top: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
 .btn-admin:hover{background:#06262d;color:#ffffff;border-color:#06262d}
 
-.result{text-align:center;margin-top:16px;padding:16px;background:#ffffff;border:1px dashed #06262d;border-radius:12px;font-weight:700;font-size:17px;color:#06262d}
+.result{
+    text-align:center;
+    margin-top:18px;
+    padding:16px;
+    background:#ffffff;
+    border:2px dashed #06262d;
+    border-radius:12px;
+    font-weight:700;
+    font-size:18px;
+    color:#06262d;
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.05);
+}
 
 .admin-section{display:none;background:#031417;border:2px dashed #e5b822}
 .admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .admin-grid label{font-size:12px;font-weight:600;color:#70979f;margin-top:6px;display:block}
-.admin-grid input{margin-top:4px; background:#ffffff; color:#000;}
-.gst-text{text-align:center;font-size:12px;font-weight:700;color:#cc241d;margin:15px 0;letter-spacing:0.5px}
-footer{text-align:center;font-size:13px;color:#7c6934;padding:25px 0;font-weight:500}
+.admin-grid input{margin-top:4px; background:#ffffff; color:#000; border-bottom:1px solid #ddd;}
+.gst-text{text-align:center;font-size:12px;font-weight:700;color:#cc241d;margin:18px 0;letter-spacing:0.5px}
+footer{text-align:center;font-size:13px;color:#7c6934;padding:30px 0;font-weight:500}
 .pass-section{margin-top:25px;padding-top:20px;border-top:1px dashed #144954}
 
-/* પોપ-અપ મોડલ */
-.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(6,38,45,0.6);backdrop-filter:blur(4px);z-index:1000;justify-content:center;align-items:center;padding:20px}
-.modal-box{background:#ffffff;width:100%;max-width:340px;padding:25px;border-radius:16px;border:2px solid #e5b822;box-shadow:0 10px 30px rgba(0,0,0,0.2)}
+/* 3D પોપ-અપ મોડલ */
+.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(6,38,45,0.55);backdrop-filter:blur(5px);z-index:1000;justify-content:center;align-items:center;padding:20px}
+.modal-box{
+    background:#ffffff;
+    width:100%;
+    max-width:340px;
+    padding:25px;
+    border-radius:20px;
+    border:1px solid #e5b822;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    transform: scale(1);
+}
 .modal-buttons{display:flex;gap:12px;margin-top:18px}
 .modal-buttons button{margin-top:0}
-.btn-close{background:#e8dfc7;color:#5a4116;box-shadow:none}
+.btn-close{background:#e8dfc7;color:#5a4116;border-bottom-color:#bdae8a;box-shadow:none}
 .btn-close:hover{background:#dcd0b1}
 </style>
 </head>
@@ -119,7 +184,7 @@ footer{text-align:center;font-size:13px;color:#7c6934;padding:25px 0;font-weight
 
 <header>
     <!-- તમારો લોગો અહીં સેટ થશે -->
-    <img src="logo.png" alt="VRUNDAVAN LOGO" style="height:65px; width:auto; margin-bottom:10px; filter:drop-shadow(0px 2px 4px rgba(0,0,0,0.15));">
+    <img src="logo.png" alt="VRUNDAVAN LOGO" style="height:70px; width:auto; margin-bottom:10px; filter:drop-shadow(0px 5px 6px rgba(0,0,0,0.2));">
     <h1>VRUNDAVAN ORNAMENTS PVT LTD</h1>
     <p>આજના ભાવ — તા. <span id="current-date"></span></p>
 </header>
@@ -127,8 +192,8 @@ footer{text-align:center;font-size:13px;color:#7c6934;padding:25px 0;font-weight
 <main>
     <div class="card">
         <h2>✨ સોનાનો ભાવ</h2>
-        <div class="row"><span class="label">૨૪ KT (૧૦ ગ્રામ)</span><span class="price">₹<span id="d_g24">0</span></span></div>
-        <div class="row"><span class="label">૨૨ KT (૧૦ ગ્રામ)</span><span class="price">₹<span id="d_g22">0</span></span></div>
+        <div class="row"><span class="label">૨૪ KT (૧ો ગ્રામ)</span><span class="price">₹<span id="d_g24">0</span></span></div>
+        <div class="row"><span class="label">૨૨ KT (૧ો ગ્રામ)</span><span class="price">₹<span id="d_g22">0</span></span></div>
         <div class="row"><span class="label">૧૮ KT (૧ો ગ્રામ)</span><span class="price">₹<span id="d_g18">0</span></span></div>
         <span class="timestamp">Last Update: <span id="time-gold"></span></span>
     </div>
@@ -149,8 +214,9 @@ footer{text-align:center;font-size:13px;color:#7c6934;padding:25px 0;font-weight
         <div class="row"><span class="label">૨૨ કેરેટ રોકડ</span><span class="price">₹<span id="d_th_g22">0</span></span></div>
     </div>
 
-    <div class="card" style="background:#ffffff; border:1px solid #e5b822;">
-        <h2 style="color:#06262d; border-bottom:1px solid #eaeaea;">📊 Rate Calculator</h2>
+    <!-- કેલ્ક્યુલેટર માટે વાઇટ 3D લુક કાર્ડ -->
+    <div class="card" style="background:#ffffff; border:1px solid #e5b822; box-shadow: 0 10px 25px rgba(0,0,0,0.08);">
+        <h2 style="color:#06262d; border-bottom:2px solid #f4f0e1;">📊 Rate Calculator</h2>
         <select id="calc-item">
             <option value="g24">૨૪ KT સોનું</option>
             <option value="g22">૨૨ KT સોનું</option>
@@ -182,11 +248,11 @@ footer{text-align:center;font-size:13px;color:#7c6934;padding:25px 0;font-weight
             <div><label>થરાદ સિલ્વર</label><input id="in_th_s999" type="number"></div>
             <div><label>થરાદ ૨૨ K</label><input id="in_th_g22" type="number"></div>
         </div>
-        <button onclick="saveRates()" style="background:#27ae60;color:#fff;margin-top:15px;">Save Rates</button>
+        <button onclick="saveRates()" style="background:#27ae60;color:#fff;margin-top:15px; border-bottom-color:#1e7e43;">Save Rates</button>
         
         <div class="pass-section">
             <input id="new-password" type="password" placeholder="New Password">
-            <button onclick="changePassword()" style="background:#e67e22;color:#fff;margin-top:5px;">Update Pass</button>
+            <button onclick="changePassword()" style="background:#e67e22;color:#fff;margin-top:5px; border-bottom-color:#b76215;">Update Pass</button>
         </div>
     </div>
 </main>
@@ -226,7 +292,7 @@ function updateDisplay() {
     document.getElementById('d_s95').textContent = rates.s95.toLocaleString('en-IN');
     document.getElementById('d_s90').textContent = rates.s90.toLocaleString('en-IN');
     document.getElementById('d_s60').textContent = rates.s60.toLocaleString('en-IN');
-    document.getElementById('d_th_g999').textContent = rates.th_g999.textContent = rates.th_g999.toLocaleString('en-IN');
+    document.getElementById('d_th_g999').textContent = rates.th_g999.toLocaleString('en-IN');
     document.getElementById('d_th_s999').textContent = rates.th_s999.toLocaleString('en-IN');
     document.getElementById('d_th_g22').textContent = rates.th_g22.toLocaleString('en-IN');
     
