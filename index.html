@@ -10,53 +10,53 @@
 *{box-sizing:border-box;}
 body{
     margin:0;
-    background:#ebdccb; /* સોફ્ટ ક્રીમી કોફી બેકગ્રાઉન્ડ */
-    color:#2d1a10;
+    background: #EDE0D4; /* ઇમેજ 159110.jpg નો સોફ્ટ લાઇટ ક્રીમ કલર */
+    color: #7F5539;     /* ડાર્ક અર્થ બ્રાઉન ટેક્સ્ટ */
     font-family: 'Noto Serif Gujarati', 'Poppins', serif;
     padding-bottom:50px
 }
 
-/* રીચ ડાર્ક કોફી બ્રાઉન હેડર */
+/* રીચ ડાર્ક બ્રાઉન હેડર */
 header{
     padding:35px 16px;
     text-align:center;
-    background: #2d1a10; 
-    border-bottom: 5px solid #bd9b75; 
-    box-shadow: 0 10px 25px rgba(45, 26, 16, 0.15);
+    background: #7F5539; /* ઇમેજ 159110.jpg નો મેઇન ડાર્ક બ્રાઉન */
+    border-bottom: 5px solid #B08968; 
+    box-shadow: 0 4px 15px rgba(127, 85, 57, 0.15);
 }
 header h1 {
     margin: 0;
     font-size: 5.4vw;
     font-weight: 700;
-    color: #ebdccb; 
-    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    color: #EDE0D4; /* હેડર પર બ્રાઇટ લખાણ */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
     white-space: nowrap;
     font-family: 'Poppins', 'Noto Serif Gujarati', sans-serif;
     letter-spacing: 0.5px;
 }
 @media(min-width: 500px) { header h1 { font-size: 26px; } }
-header p{margin:10px 0 0;font-size:15px;font-weight:600;color:#bd9b75}
+header p{margin:10px 0 0;font-size:15px;font-weight:600;color:#DDB892}
 
 main{max-width:550px;margin:auto;padding:25px 15px}
 
-/* ડાર્ક કોફી કાર્ડ */
+/* પ્રીમિયમ પેસ્ટલ કાર્ડ લુક */
 .card{
-    background: #3a2215; 
-    border: 1px solid rgba(189, 155, 117, 0.3); 
+    background: #E6CCB2; /* ઇમેજ 159110.jpg નો રિચ મિડ-ટોન ક્રીમ */
+    border: 1px solid rgba(176, 137, 104, 0.4); 
     border-radius: 20px;
     padding: 24px;
     margin-bottom: 26px;
-    box-shadow: 0 12px 24px rgba(45, 26, 16, 0.25); 
+    box-shadow: 0 10px 20px rgba(127, 85, 57, 0.08); 
     position: relative;
 }
 
-/* હેડિંગ ટેક્સ્ટ બ્રાઇટ ક્રીમ કલર */
+/* કાર્ડ હેડિંગ */
 h2{
     margin-top:0;
-    color: #f7ede2; 
+    color: #7F5539; 
     font-size:20px;
     font-weight:700;
-    border-bottom:2px solid #5a3d2a;
+    border-bottom:2px solid rgba(176, 137, 104, 0.3);
     padding-bottom:12px;
     margin-bottom:18px;
     display:flex;
@@ -69,34 +69,32 @@ h2{
     justify-content:space-between;
     align-items:center;
     padding:16px 12px;
-    border-bottom:1px solid #4d3020;
-    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(176, 137, 104, 0.2);
+    background: rgba(255, 255, 255, 0.4); /* કાર્ડની અંદર ડેટા રો વધુ ક્લીન દેખાશે */
     margin-bottom: 6px;
     border-radius: 8px;
 }
 .row:last-child{border:0; margin-bottom:0}
 
-/* ડાબી બાજુનું લખાણ હવે એકદમ ઘાટું અને સ્પષ્ટ દેખાશે */
+/* ડાબી બાજુનું લખાણ હવે એકદમ ક્લાસી પ્રોફેશનલ દેખાશે */
 .label{
     font-size:16px;
     font-weight:600;
-    color: #f7ede2; 
-    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    color: #9C6644; /* ઇમેજ નો સુંદર ટેરાકોટા બ્રાઉન કલર */
 }
 
-/* ભાવના અક્ષરો પણ વધુ બ્રાઇટ કર્યા */
+/* આજના રેટ - બોલ્ડ અને શાર્પ */
 .price{
     font-weight:700;
-    color: #fffbfa; 
+    color: #7F5539; 
     font-size:19px; 
     font-family: 'Poppins', sans-serif;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
 }
 
-/* ટાઇમસ્ટેમ્પ પણ સુવાચ્ય કર્યો */
+/* ટાઇમસ્ટેમ્પ */
 .timestamp{
     font-size:12px;
-    color:#bcaba0;
+    color: #9C6644;
     display:block;
     margin-top:12px;
     text-align:right;
@@ -105,80 +103,83 @@ h2{
 
 input,select,button{width:100%;padding:14px;margin-top:12px;border-radius:12px;font-size:15px;outline:none;transition:all 0.3s ease}
 input,select{
-    border: 1px solid #bcaba0;
-    background: #fdfaf6;
-    color: #2d1a10;
+    border: 1px solid #B08968;
+    background: #EDE0D4;
+    color: #7F5539;
     font-weight: 500;
 }
 input:focus,select:focus{
-    border-color: #3a2215;
-    box-shadow: 0 0 0 3px rgba(58,34,21,0.1);
+    border-color: #7F5539;
+    box-shadow: 0 0 0 3px rgba(127,85,57,0.1);
 }
 
 button{
     border:0;
-    background: #3a2215;
+    background: #7F5539;
     font-weight: 600;
-    color: #ebdccb;
+    color: #EDE0D4;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(58,34,21,0.2);
+    box-shadow: 0 5px 15px rgba(127,85,57,0.2);
 }
 button:hover{
-    background: #2d1a10;
+    background: #9C6644;
     transform: translateY(-1px);
 }
 
 .btn-admin{
-    background: #fdfaf6;
-    color: #3a2215;
-    border: 1px solid #bcaba0;
+    background: #E6CCB2;
+    color: #7F5539;
+    border: 1px solid #B08968;
     margin-top: 25px;
     font-weight: 600;
 }
-.btn-admin:hover{background:#3a2215;color:#ebdccb}
+.btn-admin:hover{
+    background: #7F5539;
+    color: #EDE0D4;
+}
 
 .result{
     text-align:center;
     margin-top:18px;
     padding:16px;
-    background:#fdfaf6;
-    border:2px dashed #3a2215;
+    background: #EDE0D4;
+    border:2px dashed #7F5539;
     border-radius:12px;
     font-weight:700;
     font-size:18px;
-    color:#2d1a10;
+    color: #7F5539;
 }
 
-.admin-section{display:none;background:#23130b;border:2px dashed #bd9b75}
+.admin-section{display:none;background:#EDE0D4;border:2px dashed #7F5539}
 .admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.admin-grid label{font-size:12px;font-weight:600;color:#bcaba0;margin-top:6px;display:block}
-.admin-grid input{margin-top:4px; background:#fdfaf6; color:#000;}
-.gst-text{text-align:center;font-size:13px;font-weight:700;color:#d93838;margin:18px 0;letter-spacing:0.5px}
-footer{text-align:center;font-size:13px;color:#5a4130;padding:30px 0;font-weight:500}
-.pass-section{margin-top:25px;padding-top:20px;border-top:1px dashed #4d3020}
+.admin-grid label{font-size:12px;font-weight:600;color:#7F5539;margin-top:6px;display:block}
+.admin-grid input{margin-top:4px; background:#fff; color:#000; border: 1px solid #B08968;}
+.gst-text{text-align:center;font-size:13px;font-weight:700;color:#b22222;margin:18px 0;letter-spacing:0.5px}
+footer{text-align:center;font-size:13px;color:#9C6644;padding:30px 0;font-weight:500}
+.pass-section{margin-top:25px;padding-top:20px;border-top:1px dashed #B08968}
 
 /* પોપ-અપ મોડલ */
-.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(45,26,16,0.5);backdrop-filter:blur(4px);z-index:1000;justify-content:center;align-items:center;padding:20px}
+.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(127,85,57,0.4);backdrop-filter:blur(4px);z-index:1000;justify-content:center;align-items:center;padding:20px}
 .modal-box{
-    background:#fdfaf6;
+    background:#EDE0D4;
     width:100%;
     max-width:340px;
     padding:25px;
     border-radius:20px;
-    border:1px solid #bcaba0;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    border:1px solid #B08968;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 .modal-buttons{display:flex;gap:12px;margin-top:18px}
 .modal-buttons button{margin-top:0}
-.btn-close{background:#ebdccb;color:#2d1a10;box-shadow:none}
-.btn-close:hover{background:#dfd0c0}
+.btn-close{background:#E6CCB2;color:#7F5539;box-shadow:none}
+.btn-close:hover{background:#B08968;color:#fff}
 </style>
 </head>
 <body>
 
 <header>
-    <!-- નવો અને ડાયરેક્ટ સોર્સ વાળો લોગો કોડ -->
-    <img src="https://lh3.googleusercontent.com/d/1XHVetU6xNNu-cvu0t7T3NIV6iRVyHiZW" alt="VRUNDAVAN LOGO" style="max-height:95px; width:auto; margin-bottom:12px; filter:drop-shadow(0px 4px 8px rgba(0,0,0,0.5));">
+    <!-- હાઇ-ક્વોલિટી ડ્રાઇવ ડાયરેક્ટ સોર્સ લોગો લિંક -->
+    <img src="https://lh3.googleusercontent.com/d/1XHVetU6xNNu-cvu0t7T3NIV6iRVyHiZW" alt="VRUNDAVAN LOGO" style="max-height:95px; width:auto; margin-bottom:12px; filter:drop-shadow(0px 4px 6px rgba(0,0,0,0.2));">
     <h1>VRUNDAVAN ORNAMENTS PVT LTD</h1>
     <p>આજના ભાવ — તા. <span id="current-date"></span></p>
 </header>
@@ -186,7 +187,7 @@ footer{text-align:center;font-size:13px;color:#5a4130;padding:30px 0;font-weight
 <main>
     <div class="card">
         <h2>✨ સોનાનો ભાવ</h2>
-        <div class="row"><span class="label">૨૪ KT (૧ો ગ્રામ)</span><span class="price">₹<span id="d_g24">0</span></span></div>
+        <div class="row"><span class="label">૨૪ KT (૧૦ ગ્રામ)</span><span class="price">₹<span id="d_g24">0</span></span></div>
         <div class="row"><span class="label">૨૨ KT (૧૦ ગ્રામ)</span><span class="price">₹<span id="d_g22">0</span></span></div>
         <div class="row"><span class="label">૧૮ KT (૧૦ ગ્રામ)</span><span class="price">₹<span id="d_g18">0</span></span></div>
         <span class="timestamp">Last Update: <span id="time-gold"></span></span>
@@ -209,15 +210,15 @@ footer{text-align:center;font-size:13px;color:#5a4130;padding:30px 0;font-weight
     </div>
 
     <!-- કેલ્ક્યુલેટર સેક્શન -->
-    <div class="card" style="background:#fdfaf6; border:1px solid #bcaba0;">
-        <h2 style="color:#2d1a10; border-bottom:2px solid #ebdccb;">📊 Rate Calculator</h2>
+    <div class="card" style="background:#EDE0D4; border:1px solid #B08968;">
+        <h2 style="color:#7F5539; border-bottom:2px solid #E6CCB2;">📊 Rate Calculator</h2>
         <select id="calc-item">
             <option value="g24">૨૪ KT સોનું</option>
             <option value="g22">૨૨ KT સોનું</option>
             <option value="g18">૧૮ KT સોનું</option>
             <option value="s95">ચાંદી ૯૫/૭૫</option>
             <option value="s90">ચાંદી ૯૦/૭૦</option>
-            <option value="s60">ચાંદી ૬૦/૮૦</option>
+            <option value="s60">ચાんだી ૬૦/૮૦</option>
             <option value="th_g999">થરાદ ગોલ્ડ ૯૯૯</option>
             <option value="th_s999">થરાદ સિલ્વર</option>
             <option value="th_g22">થરાદ ૨૨ કેરેટ</option>
