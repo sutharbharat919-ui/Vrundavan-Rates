@@ -10,25 +10,25 @@
 *{box-sizing:border-box;}
 body{
     margin:0;
-    background:#ebdccb; /* "159104_2.jpg" નું સેમ ટુ સેમ સોફ્ટ ક્રીમી કોફી બેકગ્રાઉન્ડ */
+    background:#ebdccb; /* સોફ્ટ ક્રીમી કોફી બેકગ્રાઉન્ડ */
     color:#2d1a10;
     font-family: 'Noto Serif Gujarati', 'Poppins', serif;
     padding-bottom:50px
 }
 
-/* ઈમેજ જેવું રીચ ડાર્ક કોફી બ્રાઉન હેડર */
+/* રીચ ડાર્ક કોફી બ્રાઉન હેડર */
 header{
     padding:35px 16px;
     text-align:center;
-    background: #2d1a10; /* પર્ફેક્ટ ડાર્ક કોફી ચોકલેટ કલર */
-    border-bottom: 5px solid #bd9b75; /* કોફી ક્રીમ જેવી સુંદર લાઇન */
+    background: #2d1a10; 
+    border-bottom: 5px solid #bd9b75; 
     box-shadow: 0 10px 25px rgba(45, 26, 16, 0.15);
 }
 header h1 {
     margin: 0;
     font-size: 5.4vw;
     font-weight: 700;
-    color: #ebdccb; /* ક્રીમ કલરના અક્ષરો */
+    color: #ebdccb; 
     text-shadow: 0 2px 4px rgba(0,0,0,0.4);
     white-space: nowrap;
     font-family: 'Poppins', 'Noto Serif Gujarati', sans-serif;
@@ -39,23 +39,24 @@ header p{margin:10px 0 0;font-size:15px;font-weight:600;color:#bd9b75}
 
 main{max-width:550px;margin:auto;padding:25px 15px}
 
-/* "159104_2.jpg" ના "Why Choose Us" સેક્શન જેવું કોપી ટુ કોપી ડાર્ક કોફી કાર્ડ */
+/* ડાર્ક કોફી કાર્ડ */
 .card{
-    background: #3a2215; /* રીચ કોફી બ્રાઉન */
-    border: 1px solid rgba(189, 155, 117, 0.2); 
+    background: #3a2215; 
+    border: 1px solid rgba(189, 155, 117, 0.3); 
     border-radius: 20px;
     padding: 24px;
     margin-bottom: 26px;
-    box-shadow: 0 12px 24px rgba(45, 26, 16, 0.15); 
+    box-shadow: 0 12px 24px rgba(45, 26, 16, 0.25); 
     position: relative;
 }
 
+/* હેડિંગ ટેક્સ્ટ બ્રાઇટ ક્રીમ કલર */
 h2{
     margin-top:0;
-    color:#ebdccb; /* સોફ્ટ ક્રીમ કલરના હેડિંગ */
+    color: #f7ede2; 
     font-size:20px;
-    font-weight:600;
-    border-bottom:2px solid #4d3020;
+    font-weight:700;
+    border-bottom:2px solid #5a3d2a;
     padding-bottom:12px;
     margin-bottom:18px;
     display:flex;
@@ -67,23 +68,41 @@ h2{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:15px 10px;
+    padding:16px 12px;
     border-bottom:1px solid #4d3020;
-    background: rgba(255, 255, 255, 0.02);
-    margin-bottom: 5px;
+    background: rgba(255, 255, 255, 0.03);
+    margin-bottom: 6px;
     border-radius: 8px;
 }
 .row:last-child{border:0; margin-bottom:0}
-.label{font-size:15px;font-weight:500;color:#dfd0c0}
+
+/* ડાબી બાજુનું લખાણ હવે એકદમ ઘાટું અને સ્પષ્ટ દેખાશે */
+.label{
+    font-size:16px;
+    font-weight:600;
+    color: #f7ede2; 
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+/* ભાવના અક્ષરો પણ વધુ બ્રાઇટ કર્યા */
 .price{
     font-weight:700;
-    color:#f2e3d3; /* લાઈટ ગોલ્ડન કોફી ટિંટ */
-    font-size:18px; 
+    color: #fffbfa; 
+    font-size:19px; 
     font-family: 'Poppins', sans-serif;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
 }
-.timestamp{font-size:12px;color:#917865;display:block;margin-top:10px;text-align:right}
 
-/* ઈમેજના ક્રીમ બોક્સ જેવા ઇનપુટ બોક્સ */
+/* ટાઇમસ્ટેમ્પ પણ સુવાચ્ય કર્યો */
+.timestamp{
+    font-size:12px;
+    color:#bcaba0;
+    display:block;
+    margin-top:12px;
+    text-align:right;
+    font-weight: 500;
+}
+
 input,select,button{width:100%;padding:14px;margin-top:12px;border-radius:12px;font-size:15px;outline:none;transition:all 0.3s ease}
 input,select{
     border: 1px solid #bcaba0;
@@ -96,7 +115,6 @@ input:focus,select:focus{
     box-shadow: 0 0 0 3px rgba(58,34,21,0.1);
 }
 
-/* ઈમેજમાં નીચે દેખાતા ડાર્ક કોફી બટન જેવું જ સેમ બટન */
 button{
     border:0;
     background: #3a2215;
@@ -115,6 +133,7 @@ button:hover{
     color: #3a2215;
     border: 1px solid #bcaba0;
     margin-top: 25px;
+    font-weight: 600;
 }
 .btn-admin:hover{background:#3a2215;color:#ebdccb}
 
@@ -132,9 +151,9 @@ button:hover{
 
 .admin-section{display:none;background:#23130b;border:2px dashed #bd9b75}
 .admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.admin-grid label{font-size:12px;font-weight:600;color:#917865;margin-top:6px;display:block}
+.admin-grid label{font-size:12px;font-weight:600;color:#bcaba0;margin-top:6px;display:block}
 .admin-grid input{margin-top:4px; background:#fdfaf6; color:#000;}
-.gst-text{text-align:center;font-size:12px;font-weight:700;color:#b22222;margin:18px 0;letter-spacing:0.5px}
+.gst-text{text-align:center;font-size:13px;font-weight:700;color:#d93838;margin:18px 0;letter-spacing:0.5px}
 footer{text-align:center;font-size:13px;color:#5a4130;padding:30px 0;font-weight:500}
 .pass-section{margin-top:25px;padding-top:20px;border-top:1px dashed #4d3020}
 
@@ -158,8 +177,8 @@ footer{text-align:center;font-size:13px;color:#5a4130;padding:30px 0;font-weight
 <body>
 
 <header>
-    <!-- ગૂગલ ડ્રાઇવની ડાયરેક્ટ લોગો લિંક અહીં સેટ કરી દીધી છે -->
-    <img src="https://docs.google.com/uc?export=view&id=1XHVetU6xNNu-cvu0t7T3NIV6iRVyHiZW" alt="VRUNDAVAN LOGO" style="max-height:85px; width:auto; margin-bottom:12px; filter:drop-shadow(0px 4px 8px rgba(0,0,0,0.4));">
+    <!-- નવો અને ડાયરેક્ટ સોર્સ વાળો લોગો કોડ -->
+    <img src="https://lh3.googleusercontent.com/d/1XHVetU6xNNu-cvu0t7T3NIV6iRVyHiZW" alt="VRUNDAVAN LOGO" style="max-height:95px; width:auto; margin-bottom:12px; filter:drop-shadow(0px 4px 8px rgba(0,0,0,0.5));">
     <h1>VRUNDAVAN ORNAMENTS PVT LTD</h1>
     <p>આજના ભાવ — તા. <span id="current-date"></span></p>
 </header>
@@ -167,7 +186,7 @@ footer{text-align:center;font-size:13px;color:#5a4130;padding:30px 0;font-weight
 <main>
     <div class="card">
         <h2>✨ સોનાનો ભાવ</h2>
-        <div class="row"><span class="label">૨૪ KT (૧૦ ગ્રામ)</span><span class="price">₹<span id="d_g24">0</span></span></div>
+        <div class="row"><span class="label">૨૪ KT (૧ો ગ્રામ)</span><span class="price">₹<span id="d_g24">0</span></span></div>
         <div class="row"><span class="label">૨૨ KT (૧૦ ગ્રામ)</span><span class="price">₹<span id="d_g22">0</span></span></div>
         <div class="row"><span class="label">૧૮ KT (૧૦ ગ્રામ)</span><span class="price">₹<span id="d_g18">0</span></span></div>
         <span class="timestamp">Last Update: <span id="time-gold"></span></span>
