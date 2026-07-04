@@ -10,69 +10,57 @@
 *{box-sizing:border-box;}
 body{
     margin:0;
-    background:#f4f0e1; /* કોફી થીમ જેવું સોફ્ટ ક્રીમી બેકગ્રાઉન્ડ */
-    color:#1e292b;
+    background:#ebdccb; /* "159104_2.jpg" નું સેમ ટુ સેમ સોફ્ટ ક્રીમી કોફી બેકગ્રાઉન્ડ */
+    color:#2d1a10;
     font-family: 'Noto Serif Gujarati', 'Poppins', serif;
     padding-bottom:50px
 }
 
-/* 3D સોફ્ટ શેડો વાળું પ્રીમિયમ હેડર */
+/* ઈમેજ જેવું રીચ ડાર્ક કોફી બ્રાઉન હેડર */
 header{
     padding:35px 16px;
     text-align:center;
-    background: linear-gradient(135deg, #e5b822, #c6990a);
-    border-bottom: 5px solid #5a4116;
-    box-shadow: 0 10px 25px rgba(90, 65, 22, 0.25), inset 0 -3px 6px rgba(0,0,0,0.1);
+    background: #2d1a10; /* પર્ફેક્ટ ડાર્ક કોફી ચોકલેટ કલર */
+    border-bottom: 5px solid #bd9b75; /* કોફી ક્રીમ જેવી સુંદર લાઇન */
+    box-shadow: 0 10px 25px rgba(45, 26, 16, 0.15);
 }
 header h1 {
     margin: 0;
     font-size: 5.4vw;
     font-weight: 700;
-    color: #ffffff;
-    text-shadow: 0 4px 8px rgba(90,65,22,0.5);
+    color: #ebdccb; /* ક્રીમ કલરના અક્ષરો */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
     white-space: nowrap;
     font-family: 'Poppins', 'Noto Serif Gujarati', sans-serif;
     letter-spacing: 0.5px;
 }
 @media(min-width: 500px) { header h1 { font-size: 26px; } }
-header p{margin:10px 0 0;font-size:15px;font-weight:600;color:#3d2c0b}
+header p{margin:10px 0 0;font-size:15px;font-weight:600;color:#bd9b75}
 
 main{max-width:550px;margin:auto;padding:25px 15px}
 
-/* "159104.jpg" જેવી 3D અને સોફ્ટ ગ્લાસ કાર્ડ ડિઝાઇન */
+/* "159104_2.jpg" ના "Why Choose Us" સેક્શન જેવું કોપી ટુ કોપી ડાર્ક કોફી કાર્ડ */
 .card{
-    background: linear-gradient(145deg, #07313a, #041d22); /* રીચ 3D ગ્રેડિયન્ટ ટીલ કલર */
-    border: 1px solid rgba(229, 184, 34, 0.4); 
+    background: #3a2215; /* રીચ કોફી બ્રાઉન */
+    border: 1px solid rgba(189, 155, 117, 0.2); 
     border-radius: 20px;
     padding: 24px;
     margin-bottom: 26px;
-    /* 3D જેવો ડબલ શેડો ઈફેક્ટ */
-    box-shadow: 0 15px 30px rgba(6, 38, 45, 0.25), 0 5px 10px rgba(0, 0, 0, 0.15); 
+    box-shadow: 0 12px 24px rgba(45, 26, 16, 0.15); 
     position: relative;
-    overflow: hidden;
-}
-
-/* કાર્ડની અંદર ગ્લો આપવા માટે */
-.card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; height: 50%;
-    background: linear-gradient(rgba(255,255,255,0.05), transparent);
-    pointer-events: none;
 }
 
 h2{
     margin-top:0;
-    color:#e5b822;
+    color:#ebdccb; /* સોફ્ટ ક્રીમ કલરના હેડિંગ */
     font-size:20px;
     font-weight:600;
-    border-bottom:2px solid #0d434f;
+    border-bottom:2px solid #4d3020;
     padding-bottom:12px;
     margin-bottom:18px;
     display:flex;
     align-items:center;
     gap:8px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 .row{
@@ -80,111 +68,98 @@ h2{
     justify-content:space-between;
     align-items:center;
     padding:15px 10px;
-    border-bottom:1px solid #0d3b45;
+    border-bottom:1px solid #4d3020;
     background: rgba(255, 255, 255, 0.02);
     margin-bottom: 5px;
     border-radius: 8px;
 }
 .row:last-child{border:0; margin-bottom:0}
-.label{font-size:15px;font-weight:500;color:#e2ecedd1}
+.label{font-size:15px;font-weight:500;color:#dfd0c0}
 .price{
     font-weight:700;
-    color:#f7df8c; 
+    color:#f2e3d3; /* લાઈટ ગોલ્ડન કોફી ટિંટ */
     font-size:18px; 
     font-family: 'Poppins', sans-serif;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
-.timestamp{font-size:12px;color:#70979f;display:block;margin-top:10px;text-align:right}
+.timestamp{font-size:12px;color:#917865;display:block;margin-top:10px;text-align:right}
 
-/* 3D ઇનપુટ અને સિલેક્ટ બોક્સ */
-input,select,button{width:100%;padding:14px;margin-top:12px;border-radius:12px;font-size:15px;outline:none;transition:all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)}
+/* ઈમેજના ક્રીમ બોક્સ જેવા ઇનપુટ બોક્સ */
+input,select,button{width:100%;padding:14px;margin-top:12px;border-radius:12px;font-size:15px;outline:none;transition:all 0.3s ease}
 input,select{
-    border: 1px solid #c6990a;
-    background: #ffffff;
-    color: #06262d;
+    border: 1px solid #bcaba0;
+    background: #fdfaf6;
+    color: #2d1a10;
     font-weight: 500;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
 }
 input:focus,select:focus{
-    border-color: #06262d;
-    box-shadow: 0 0 0 3px rgba(6,38,45,0.15), inset 0 2px 4px rgba(0,0,0,0.06);
+    border-color: #3a2215;
+    box-shadow: 0 0 0 3px rgba(58,34,21,0.1);
 }
 
-/* 3D ઇફેક્ટ વાળું પિલાવ / સરસવ બટન */
+/* ઈમેજમાં નીચે દેખાતા ડાર્ક કોફી બટન જેવું જ સેમ બટન */
 button{
     border:0;
-    background: linear-gradient(180deg, #e5b822, #c6990a);
+    background: #3a2215;
     font-weight: 600;
-    color: #ffffff;
+    color: #ebdccb;
     cursor: pointer;
-    border-bottom: 4px solid #947104; /* નીચે જાડી બોર્ડરથી 3D લુક આવશે */
-    box-shadow: 0 5px 15px rgba(198,153,10,0.3);
-    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 15px rgba(58,34,21,0.2);
 }
 button:hover{
-    transform: translateY(1px);
-    border-bottom-width: 2px;
-    box-shadow: 0 3px 10px rgba(198,153,10,0.4);
-}
-button:active{
-    transform: translateY(3px);
-    border-bottom-width: 0px;
+    background: #2d1a10;
+    transform: translateY(-1px);
 }
 
 .btn-admin{
-    background: #ffffff;
-    color: #c6990a;
-    border: 1px solid #e5b822;
-    border-bottom: 4px solid #dcd0b1;
+    background: #fdfaf6;
+    color: #3a2215;
+    border: 1px solid #bcaba0;
     margin-top: 25px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
-.btn-admin:hover{background:#06262d;color:#ffffff;border-color:#06262d}
+.btn-admin:hover{background:#3a2215;color:#ebdccb}
 
 .result{
     text-align:center;
     margin-top:18px;
     padding:16px;
-    background:#ffffff;
-    border:2px dashed #06262d;
+    background:#fdfaf6;
+    border:2px dashed #3a2215;
     border-radius:12px;
     font-weight:700;
     font-size:18px;
-    color:#06262d;
-    box-shadow: inset 0 2px 8px rgba(0,0,0,0.05);
+    color:#2d1a10;
 }
 
-.admin-section{display:none;background:#031417;border:2px dashed #e5b822}
+.admin-section{display:none;background:#23130b;border:2px dashed #bd9b75}
 .admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.admin-grid label{font-size:12px;font-weight:600;color:#70979f;margin-top:6px;display:block}
-.admin-grid input{margin-top:4px; background:#ffffff; color:#000; border-bottom:1px solid #ddd;}
-.gst-text{text-align:center;font-size:12px;font-weight:700;color:#cc241d;margin:18px 0;letter-spacing:0.5px}
-footer{text-align:center;font-size:13px;color:#7c6934;padding:30px 0;font-weight:500}
-.pass-section{margin-top:25px;padding-top:20px;border-top:1px dashed #144954}
+.admin-grid label{font-size:12px;font-weight:600;color:#917865;margin-top:6px;display:block}
+.admin-grid input{margin-top:4px; background:#fdfaf6; color:#000;}
+.gst-text{text-align:center;font-size:12px;font-weight:700;color:#b22222;margin:18px 0;letter-spacing:0.5px}
+footer{text-align:center;font-size:13px;color:#5a4130;padding:30px 0;font-weight:500}
+.pass-section{margin-top:25px;padding-top:20px;border-top:1px dashed #4d3020}
 
-/* 3D પોપ-અપ મોડલ */
-.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(6,38,45,0.55);backdrop-filter:blur(5px);z-index:1000;justify-content:center;align-items:center;padding:20px}
+/* પોપ-અપ મોડલ */
+.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(45,26,16,0.5);backdrop-filter:blur(4px);z-index:1000;justify-content:center;align-items:center;padding:20px}
 .modal-box{
-    background:#ffffff;
+    background:#fdfaf6;
     width:100%;
     max-width:340px;
     padding:25px;
     border-radius:20px;
-    border:1px solid #e5b822;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-    transform: scale(1);
+    border:1px solid #bcaba0;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
 }
 .modal-buttons{display:flex;gap:12px;margin-top:18px}
 .modal-buttons button{margin-top:0}
-.btn-close{background:#e8dfc7;color:#5a4116;border-bottom-color:#bdae8a;box-shadow:none}
-.btn-close:hover{background:#dcd0b1}
+.btn-close{background:#ebdccb;color:#2d1a10;box-shadow:none}
+.btn-close:hover{background:#dfd0c0}
 </style>
 </head>
 <body>
 
 <header>
     <!-- તમારો લોગો અહીં સેટ થશે -->
-    <img src="logo.png" alt="VRUNDAVAN LOGO" style="height:70px; width:auto; margin-bottom:10px; filter:drop-shadow(0px 5px 6px rgba(0,0,0,0.2));">
+    <img src="logo.png" alt="VRUNDAVAN LOGO" style="height:70px; width:auto; margin-bottom:10px; filter:drop-shadow(0px 4px 6px rgba(0,0,0,0.3));">
     <h1>VRUNDAVAN ORNAMENTS PVT LTD</h1>
     <p>આજના ભાવ — તા. <span id="current-date"></span></p>
 </header>
@@ -192,9 +167,9 @@ footer{text-align:center;font-size:13px;color:#7c6934;padding:30px 0;font-weight
 <main>
     <div class="card">
         <h2>✨ સોનાનો ભાવ</h2>
-        <div class="row"><span class="label">૨૪ KT (૧ો ગ્રામ)</span><span class="price">₹<span id="d_g24">0</span></span></div>
-        <div class="row"><span class="label">૨૨ KT (૧ો ગ્રામ)</span><span class="price">₹<span id="d_g22">0</span></span></div>
-        <div class="row"><span class="label">૧૮ KT (૧ો ગ્રામ)</span><span class="price">₹<span id="d_g18">0</span></span></div>
+        <div class="row"><span class="label">૨૪ KT (૧૦ ગ્રામ)</span><span class="price">₹<span id="d_g24">0</span></span></div>
+        <div class="row"><span class="label">૨૨ KT (૧૦ ગ્રામ)</span><span class="price">₹<span id="d_g22">0</span></span></div>
+        <div class="row"><span class="label">૧૮ KT (૧૦ ગ્રામ)</span><span class="price">₹<span id="d_g18">0</span></span></div>
         <span class="timestamp">Last Update: <span id="time-gold"></span></span>
     </div>
 
@@ -214,9 +189,9 @@ footer{text-align:center;font-size:13px;color:#7c6934;padding:30px 0;font-weight
         <div class="row"><span class="label">૨૨ કેરેટ રોકડ</span><span class="price">₹<span id="d_th_g22">0</span></span></div>
     </div>
 
-    <!-- કેલ્ક્યુલેટર માટે વાઇટ 3D લુક કાર્ડ -->
-    <div class="card" style="background:#ffffff; border:1px solid #e5b822; box-shadow: 0 10px 25px rgba(0,0,0,0.08);">
-        <h2 style="color:#06262d; border-bottom:2px solid #f4f0e1;">📊 Rate Calculator</h2>
+    <!-- કેલ્ક્યુલેટર સેક્શન -->
+    <div class="card" style="background:#fdfaf6; border:1px solid #bcaba0;">
+        <h2 style="color:#2d1a10; border-bottom:2px solid #ebdccb;">📊 Rate Calculator</h2>
         <select id="calc-item">
             <option value="g24">૨૪ KT સોનું</option>
             <option value="g22">૨૨ KT સોનું</option>
@@ -248,11 +223,11 @@ footer{text-align:center;font-size:13px;color:#7c6934;padding:30px 0;font-weight
             <div><label>થરાદ સિલ્વર</label><input id="in_th_s999" type="number"></div>
             <div><label>થરાદ ૨૨ K</label><input id="in_th_g22" type="number"></div>
         </div>
-        <button onclick="saveRates()" style="background:#27ae60;color:#fff;margin-top:15px; border-bottom-color:#1e7e43;">Save Rates</button>
+        <button onclick="saveRates()" style="background:#27ae60;color:#fff;margin-top:15px;">Save Rates</button>
         
         <div class="pass-section">
             <input id="new-password" type="password" placeholder="New Password">
-            <button onclick="changePassword()" style="background:#e67e22;color:#fff;margin-top:5px; border-bottom-color:#b76215;">Update Pass</button>
+            <button onclick="changePassword()" style="background:#e67e22;color:#fff;margin-top:5px;">Update Pass</button>
         </div>
     </div>
 </main>
@@ -285,6 +260,15 @@ const M_EMAIL = "office.vopl@gmail.com";
 const M_CODE = "Khulja99"; 
 let step = 1;
 
+// DD/MM/YYYY ફોર્મેટમાં કરન્ટ ડેટ મેળવવાનું ફંક્શન
+function getFormattedDate() {
+    let d = new Date();
+    let day = String(d.getDate()).padStart(2, '0');
+    let month = String(d.getMonth() + 1).padStart(2, '0'); // જાન્યુઆરી 0 છે એટલે +1
+    let year = d.getFullYear();
+    return `${day}/${month}/${year}`;
+}
+
 function updateDisplay() {
     document.getElementById('d_g24').textContent = rates.g24.toLocaleString('en-IN');
     document.getElementById('d_g22').textContent = rates.g22.toLocaleString('en-IN');
@@ -307,7 +291,9 @@ function updateDisplay() {
     document.getElementById('in_th_g22').value = rates.th_g22;
     
     document.getElementById('time-gold').textContent = localStorage.getItem('update_time') || new Date().toLocaleTimeString('en-IN', {hour:'2-digit', minute:'2-digit'});
-    document.getElementById('current-date').textContent = localStorage.getItem('update_date') || new Date().toLocaleDateString('en-IN');
+    
+    // અહીં DD/MM/YYYY ફોર્મેટ લાગુ થશે
+    document.getElementById('current-date').textContent = localStorage.getItem('update_date') || getFormattedDate();
 }
 
 function openPasswordModal() {
@@ -392,7 +378,7 @@ function saveRates() {
     for(let k in rates) localStorage.setItem(k, rates[k]);
     
     localStorage.setItem('update_time', new Date().toLocaleTimeString('en-IN', {hour:'2-digit', minute:'2-digit'}));
-    localStorage.setItem('update_date', new Date().toLocaleDateString('en-IN'));
+    localStorage.setItem('update_date', getFormattedDate()); // સેવ કરતી વખતે પણ નવું ફોર્મેટ સેવ થશે
     
     updateDisplay(); 
     document.getElementById('admin-panel').style.display = 'none';
