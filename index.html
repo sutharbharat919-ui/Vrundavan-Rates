@@ -158,8 +158,8 @@ footer{text-align:center;font-size:13px;color:#5a4130;padding:30px 0;font-weight
 <body>
 
 <header>
-    <!-- તમારો લોગો અહીં સેટ થશે -->
-    <img src="logo.png" alt="VRUNDAVAN LOGO" style="height:70px; width:auto; margin-bottom:10px; filter:drop-shadow(0px 4px 6px rgba(0,0,0,0.3));">
+    <!-- ગૂગલ ડ્રાઇવની ડાયરેક્ટ લોગો લિંક અહીં સેટ કરી દીધી છે -->
+    <img src="https://docs.google.com/uc?export=view&id=1XHVetU6xNNu-cvu0t7T3NIV6iRVyHiZW" alt="VRUNDAVAN LOGO" style="max-height:85px; width:auto; margin-bottom:12px; filter:drop-shadow(0px 4px 8px rgba(0,0,0,0.4));">
     <h1>VRUNDAVAN ORNAMENTS PVT LTD</h1>
     <p>આજના ભાવ — તા. <span id="current-date"></span></p>
 </header>
@@ -260,11 +260,11 @@ const M_EMAIL = "office.vopl@gmail.com";
 const M_CODE = "Khulja99"; 
 let step = 1;
 
-// DD/MM/YYYY ફોર્મેટમાં કરન્ટ ડેટ મેળવવાનું ફંક્શન
-function getFormattedDate() {
-    let d = new Date();
+function getFormattedDate(customDateStr) {
+    let d = customDateStr ? new Date(customDateStr.split('/').reverse().join('-')) : new Date();
+    if (isNaN(d.getTime())) d = new Date();
     let day = String(d.getDate()).padStart(2, '0');
-    let month = String(d.getMonth() + 1).padStart(2, '0'); // જાન્યુઆરી 0 છે એટલે +1
+    let month = String(d.getMonth() + 1).padStart(2, '0');
     let year = d.getFullYear();
     return `${day}/${month}/${year}`;
 }
@@ -292,8 +292,8 @@ function updateDisplay() {
     
     document.getElementById('time-gold').textContent = localStorage.getItem('update_time') || new Date().toLocaleTimeString('en-IN', {hour:'2-digit', minute:'2-digit'});
     
-    // અહીં DD/MM/YYYY ફોર્મેટ લાગુ થશે
-    document.getElementById('current-date').textContent = localStorage.getItem('update_date') || getFormattedDate();
+    let storedDate = localStorage.getItem('update_date');
+    document.getElementById('current-date').textContent = storedDate ? getFormattedDate(storedDate) : getFormattedDate();
 }
 
 function openPasswordModal() {
@@ -378,7 +378,7 @@ function saveRates() {
     for(let k in rates) localStorage.setItem(k, rates[k]);
     
     localStorage.setItem('update_time', new Date().toLocaleTimeString('en-IN', {hour:'2-digit', minute:'2-digit'}));
-    localStorage.setItem('update_date', getFormattedDate()); // સેવ કરતી વખતે પણ નવું ફોર્મેટ સેવ થશે
+    localStorage.setItem('update_date', getFormattedDate()); 
     
     updateDisplay(); 
     document.getElementById('admin-panel').style.display = 'none';
