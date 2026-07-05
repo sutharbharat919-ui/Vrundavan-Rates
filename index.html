@@ -3,472 +3,75 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>VOPL GOLD</title>
+<title>VRUNDAVAN ORNAMENTS PVT LTD</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Gujarati:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
+:root{
+  --bg:#f5eee8;--surface:#fffdfb;--soft:#f4e9e1;--light:#e8d8cc;
+  --coffee:#c7a995;--medium:#967460;--button:#6e5142;--dark:#4a352b;
+  --text:#352721;--muted:#806b60;--border:#ddcec4;--danger:#9a453d;
+}
 *{box-sizing:border-box}
-
-body{
-margin:0;
-min-height:100vh;
-background:linear-gradient(#2b1608,#100c09 45%,#0d0d0d);
-color:#f4e4dc;
-font-family:Arial,sans-serif;
-}
-
-header{
-padding:50px 20px;
-text-align:center;
-background:#2b1608;
-border-bottom:1px solid #765132;
-}
-
-header h1{
-margin:0;
-font-size:38px;
-}
-
-header p{
-font-size:21px;
-color:#d8bfb3;
-}
-
-.container{
-max-width:700px;
-margin:auto;
-padding:40px 25px;
-}
-
-.card{
-background:#1d1d1d;
-border:1px solid #66554d;
-border-radius:28px;
-padding:35px;
-margin-bottom:30px;
-}
-
-h2{margin-top:0}
-
-.rate{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:25px;
-background:#1d1917;
-border:1px solid #66554d;
-border-radius:20px;
-font-size:22px;
-}
-
-.price{
-font-size:25px;
-font-weight:bold;
-}
-
-input{
-width:100%;
-padding:18px;
-margin:8px 0;
-border-radius:15px;
-border:1px solid #765132;
-background:#292929;
-color:white;
-font-size:17px;
-}
-
-button{
-width:100%;
-padding:17px;
-margin-top:12px;
-border:0;
-border-radius:15px;
-background:#d4af37;
-font-size:17px;
-font-weight:bold;
-cursor:pointer;
-}
-
-button:disabled{
-opacity:.6;
-}
-
-.secondary{
-background:#444;
-color:white;
-}
-
-.hidden{
-display:none!important;
-}
-
-#message{
-text-align:center;
-margin-top:20px;
-min-height:25px;
-line-height:1.5;
-}
-
-.adminEmail{
-text-align:center;
-color:#d4af37;
-margin-bottom:15px;
-}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Noto Serif Gujarati','Poppins',sans-serif;padding-bottom:35px}
+header{text-align:center;padding:30px 14px;background:var(--light);border-bottom:1px solid var(--coffee)}
+.logo{max-height:90px;max-width:100px;margin-bottom:10px}
+header h1{margin:0;font:700 clamp(19px,5vw,27px) 'Poppins',sans-serif;color:var(--dark)}
+header p{margin:9px 0 0;color:var(--button);font-weight:600}
+main{max-width:570px;margin:auto;padding:24px 13px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:20px;margin-bottom:21px;box-shadow:0 8px 24px rgba(74,53,43,.07)}
+h2{margin:0 0 16px;padding-bottom:12px;border-bottom:1px solid var(--light);font-size:19px;color:var(--dark)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:15px 12px;margin-bottom:8px;background:#f8f2ed;border:1px solid #e8ddd5;border-radius:12px}
+.label{font-size:15px;font-weight:600;color:#5d473c}
+.price{font:700 18px 'Poppins',sans-serif;white-space:nowrap;color:var(--text)}
+.timestamp{text-align:right;display:block;margin-top:11px;font:500 11px 'Poppins';color:var(--muted)}
+.gst{text-align:center;padding:11px;margin:-2px 0 21px;background:var(--soft);border:1px solid var(--border);border-radius:11px;color:#7a443b;font-weight:700;font-size:13px}
+input,select,button{width:100%;padding:14px;margin-top:10px;border-radius:11px;font:600 15px 'Noto Serif Gujarati','Poppins',sans-serif}
+input,select{background:#fff;border:1px solid var(--coffee);color:var(--text);outline:none}
+input:focus,select:focus{border-color:var(--button);box-shadow:0 0 0 3px rgba(110,81,66,.1)}
+button{border:0;background:var(--button);color:#fff;cursor:pointer}
+button:disabled{opacity:.55;cursor:not-allowed}
+.secondary{background:var(--medium)}
+.admin-btn{background:var(--surface);color:var(--dark);border:1px solid var(--coffee)}
+.hidden{display:none!important}
+.result{text-align:center;margin-top:15px;padding:15px;background:var(--soft);border:1px dashed var(--medium);border-radius:11px;font:700 17px 'Poppins'}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.grid label{display:block;font-size:12px;font-weight:700;color:var(--dark);margin-top:4px}
+.grid input{margin-top:4px;padding:12px}
+.message{text-align:center;min-height:20px;margin-top:12px;color:var(--dark);font-weight:600;font-size:13px}
+.login-email{font-size:12px;color:var(--muted);text-align:center;word-break:break-all;margin-bottom:8px}
+@media(max-width:400px){.grid{grid-template-columns:1fr}.card{padding:17px}.label{font-size:14px}.price{font-size:16px}}
 </style>
 </head>
 
 <body>
-
 <header>
-<h1>VOPL GOLD</h1>
-<p>Live Gold Rate</p>
+  <img class="logo" src="https://lh3.googleusercontent.com/d/1XHVetU6xNNu-cvu0t7T3NIV6iRVyHiZW" alt="VRUNDAVAN LOGO">
+  <h1>VRUNDAVAN ORNAMENTS PVT LTD</h1>
+  <p>આજના ભાવ • તા. <span id="currentDate">--/--/----</span></p>
 </header>
 
-<div class="container">
-
-<div class="card">
-
-<h2>આજનો ભાવ</h2>
-
-<div class="rate">
-
-<span>Gold 24K</span>
-
-<span class="price">
-₹<span id="gold24k">Loading...</span>
-</span>
-
-</div>
-
-</div>
-
-
-<div id="loginBox" class="card">
-
-<h2>Admin Login</h2>
-
-<input
-id="email"
-type="email"
-placeholder="Admin Email"
-autocomplete="username">
-
-<input
-id="password"
-type="password"
-placeholder="Admin Password"
-autocomplete="current-password">
-
-<button id="loginBtn">
-LOGIN
-</button>
-
-</div>
-
-
-<div id="adminBox" class="card hidden">
-
-<h2>Admin Rate Update</h2>
-
-<div id="adminEmail" class="adminEmail"></div>
-
-<input
-id="newGold24k"
-type="number"
-inputmode="decimal"
-placeholder="Enter Gold 24K Rate">
-
-<button id="updateBtn">
-UPDATE RATE
-</button>
-
-<button id="logoutBtn" class="secondary">
-LOGOUT
-</button>
-
-</div>
-
-<div id="message"></div>
-
-</div>
-
-
-<script type="module">
-
-import{
-initializeApp
-}from"https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
-
-
-import{
-getAuth,
-signInWithEmailAndPassword,
-signOut,
-onAuthStateChanged
-}from"https://www.gstatic.com/firebasejs/12.15.0/firebase-auth.js";
-
-
-import{
-getFirestore,
-doc,
-onSnapshot,
-updateDoc,
-serverTimestamp
-}from"https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
-
-
-const firebaseConfig={
-
-apiKey:"AIzaSyACpWFqxs1AaIx7C6kMpu45bD79fWJeR60",
-
-authDomain:"reset-de458.firebaseapp.com",
-
-projectId:"reset-de458",
-
-storageBucket:"reset-de458.firebasestorage.app",
-
-messagingSenderId:"192490668353",
-
-appId:"1:192490668353:web:e8ce193dab2d3c4f7061c0",
-
-measurementId:"G-NKVEWN4YSC"
-
-};
-
-
-const ADMIN_EMAIL="office.vopl@gmail.com";
-
-
-const app=initializeApp(firebaseConfig);
-
-const auth=getAuth(app);
-
-const db=getFirestore(app);
-
-const rateRef=doc(db,"rates","current");
-
-
-const gold24k=document.getElementById("gold24k");
-
-const loginBox=document.getElementById("loginBox");
-
-const adminBox=document.getElementById("adminBox");
-
-const emailInput=document.getElementById("email");
-
-const passwordInput=document.getElementById("password");
-
-const newGoldInput=document.getElementById("newGold24k");
-
-const adminEmail=document.getElementById("adminEmail");
-
-const message=document.getElementById("message");
-
-const loginBtn=document.getElementById("loginBtn");
-
-const updateBtn=document.getElementById("updateBtn");
-
-const logoutBtn=document.getElementById("logoutBtn");
-
-
-function showMessage(text){
-
-message.textContent=text;
-
-}
-
-
-/* LIVE RATE */
-
-
-onSnapshot(rateRef,
-
-(snapshot)=>{
-
-if(!snapshot.exists()){
-
-gold24k.textContent="No Data";
-
-showMessage("Firestore rates/current document મળ્યો નથી.");
-
-return;
-
-}
-
-const data=snapshot.data();
-
-const value=Number(data.gold24k);
-
-if(!Number.isFinite(value)){
-
-gold24k.textContent="Invalid";
-
-return;
-
-}
-
-gold24k.textContent=value.toLocaleString("en-IN");
-
-newGoldInput.value=value;
-
-},
-
-(error)=>{
-
-console.error(error);
-
-gold24k.textContent="Error";
-
-showMessage("Rate Load Error: "+error.code);
-
-});
-
-
-/* ADMIN LOGIN */
-
-
-loginBtn.addEventListener("click",async()=>{
-
-const email=emailInput.value.trim().toLowerCase();
-
-const password=passwordInput.value;
-
-
-if(email!==ADMIN_EMAIL){
-
-showMessage("આ Email Admin નથી.");
-
-return;
-
-}
-
-
-if(!password){
-
-showMessage("Password દાખલ કરો.");
-
-return;
-
-}
-
-
-loginBtn.disabled=true;
-
-showMessage("Login થઈ રહ્યું છે...");
-
-
-try{
-
-const credential=
-
-await signInWithEmailAndPassword(
-
-auth,
-
-email,
-
-password
-
-);
-
-
-if(
-
-!credential.user.email ||
-
-credential.user.email.toLowerCase()!==ADMIN_EMAIL
-
-){
-
-await signOut(auth);
-
-showMessage("Unauthorized Account");
-
-return;
-
-}
-
-
-passwordInput.value="";
-
-showMessage("Admin Login Successful");
-
-
-}catch(error){
-
-console.error(error);
-
-showMessage("Login Failed: "+error.code);
-
-}
-
-
-finally{
-
-loginBtn.disabled=false;
-
-}
-
-});
-
-
-/* AUTH STATUS */
-
-
-onAuthStateChanged(auth,async(user)=>{
-
-const isAdmin=
-
-user &&
-
-user.email &&
-
-user.email.toLowerCase()===ADMIN_EMAIL;
-
-
-if(isAdmin){
-
-loginBox.classList.add("hidden");
-
-adminBox.classList.remove("hidden");
-
-adminEmail.textContent=user.email;
-
-}
-
-else{
-
-if(user){
-
-await signOut(auth);
-
-}
-
-loginBox.classList.remove("hidden");
-
-adminBox.classList.add("hidden");
-
-adminEmail.textContent="";
-
-}
-
-});
-
-
-/* UPDATE RATE */
-
-
-updateBtn.addEventListener("click",async()=>{
-
-const value=Number(newGoldInput.value);
-
-
-if(!Number.isFinite(value)||value<=0){
-
-showMessage("સાચો Rate દાખલ કરો.");
-
-return;
-
-}
-
-
-const user=auth.currentUser;
+<main>
+  <div class="card">
+    <h2>✨ સોનાનો ભાવ</h2>
+    <div class="row"><span class="label">૨૪ KT (૧૦ ગ્રામ)</span><span class="price">₹<span id="d_g24">...</span></span></div>
+    <div class="row"><span class="label">૨૨ KT (૧૦ ગ્રામ)</span><span class="price">₹<span id="d_g22">...</span></span></div>
+    <div class="row"><span class="label">૧૮ KT (૧૦ ગ્રામ)</span><span class="price">₹<span id="d_g18">...</span></span></div>
+    <span class="timestamp">Last Update: <span id="lastUpdate">--</span></span>
+  </div>
+
+  <div class="card">
+    <h2>🪙 ચાંદીનો ભાવ (૧ કિલો)</h2>
+    <div class="row"><span class="label">૯૫/૭૫ ટ્રેડિંગ</span><span class="price">₹<span id="d_s95">...</span></span></div>
+    <div class="row"><span class="label">૯૦/૭૦ ટ્રેડિંગ</span><span class="price">₹<span id="d_s90">...</span></span></div>
+    <div class="row"><span class="label">૬૦/૮૦ ટ્રેડિંગ</span><span class="price">₹<span id="d_s60">...</span></span></div>
+  </div>
+
+  <div class="gst">⚠️ * 3% GST APPLY</div>
+
+  <div class="card">
+    <h2>📍 થરાદ રોકડ બજાર</h2>
+    <div class="row"><span class="label">ગોલ્ડ ૯૯૯ imp</span><span class="price">₹<span id="d_th_g999">...</span></span></div>
+    <div class="row"><span class="label">સિલ્વર ચોરસા ૯૯૯</span><span class="price">₹<span id="d_th_s999">...</span></span></div>
+    <div class="row"><span class="label">૨૨ કેરેટ રોક
