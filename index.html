@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>VOPL GOLD</title>
 
 <style>
@@ -12,6 +13,7 @@
 
 body{
   margin:0;
+  min-height:100vh;
   font-family:Arial,sans-serif;
   background:#f7f0e8;
   color:#49372f;
@@ -19,21 +21,33 @@ body{
 
 header{
   background:#876451;
-  color:white;
+  color:#fff;
   text-align:center;
-  padding:25px 15px;
+  padding:24px 15px;
+}
+
+.logo{
+  width:90px;
+  height:90px;
+  object-fit:contain;
+  border-radius:50%;
+  background:white;
+  padding:5px;
+  margin-bottom:8px;
 }
 
 header h1{
-  margin:0;
+  margin:4px 0;
   font-size:34px;
 }
 
 header p{
-  margin:8px 0 0;
+  margin:5px 0 0;
+  font-size:17px;
 }
 
 .container{
+  width:100%;
   max-width:750px;
   margin:auto;
   padding:18px;
@@ -63,7 +77,7 @@ h2{
 }
 
 .rate:last-child{
-  border-bottom:0;
+  border-bottom:none;
 }
 
 .price{
@@ -80,12 +94,8 @@ select{
   border:1px solid #cbb6a7;
   border-radius:12px;
   font-size:17px;
-  outline:none;
-}
-
-input:focus,
-select:focus{
-  border-color:#876451;
+  background:#fff;
+  color:#49372f;
 }
 
 button{
@@ -110,20 +120,8 @@ button:disabled{
   background:#ad8b78;
 }
 
-.logout-button{
-  background:#9b4d45;
-}
-
 .hidden{
   display:none !important;
-}
-
-.message{
-  text-align:center;
-  font-weight:bold;
-  margin:15px 0 0;
-  min-height:20px;
-  line-height:1.5;
 }
 
 .total{
@@ -133,33 +131,38 @@ button:disabled{
   margin-top:15px;
   border:1px dashed #876451;
   border-radius:15px;
+  font-weight:bold;
+}
+
+#message{
+  text-align:center;
+  font-weight:bold;
+  min-height:24px;
+  margin:15px 0;
 }
 
 .admin-status{
   text-align:center;
   font-size:14px;
   margin-bottom:15px;
-  color:#876451;
-  word-break:break-all;
 }
 
 .last-update{
   text-align:right;
-  font-size:12px;
-  margin-top:15px;
-  color:#806b60;
+  font-size:14px;
+  margin-top:18px;
+  color:#8b7b72;
 }
 
-footer{
+.admin-title{
   text-align:center;
-  padding:20px;
-  font-size:13px;
-  color:#806b60;
+  margin-bottom:18px;
 }
 
-@media(max-width:450px){
-  header h1{
-    font-size:28px;
+@media(max-width:500px){
+
+  .container{
+    padding:14px;
   }
 
   .card{
@@ -167,7 +170,11 @@ footer{
   }
 
   .rate{
-    font-size:17px;
+    font-size:18px;
+  }
+
+  header h1{
+    font-size:30px;
   }
 }
 </style>
@@ -176,275 +183,304 @@ footer{
 
 <body>
 
+
 <header>
+
+  <!--
+  અહીં તમારો logo URL નાખી શકો.
+  હાલ logo ન મળે તો hide થઈ જશે.
+  -->
+
+  <img
+    id="companyLogo"
+    class="logo"
+    src="logo.png"
+    alt="VOPL Logo"
+    onerror="this.style.display='none'"
+  >
+
   <h1>VOPL GOLD</h1>
+
   <p>Live Gold & Silver Rates</p>
+
 </header>
+
 
 
 <div class="container">
 
 
-  <!-- CUSTOMER RATE VIEW -->
+<!-- ========================= -->
+<!-- CUSTOMER RATE SECTION -->
+<!-- ========================= -->
 
-  <div class="card">
 
-    <h2>આજનો ભાવ</h2>
+<div class="card">
 
+<h2>આજનો ભાવ</h2>
 
-    <div class="rate">
-      <span>Gold 24K</span>
 
-      <span class="price">
-        ₹<span id="gold24k">Loading...</span>
-      </span>
-    </div>
+<div class="rate">
 
+<span>Gold 24K</span>
 
-    <div class="rate">
-      <span>Gold 22K</span>
+<span class="price">
+₹<span id="gold24k">Loading...</span>
+</span>
 
-      <span class="price">
-        ₹<span id="gold22k">Loading...</span>
-      </span>
-    </div>
+</div>
 
 
-    <div class="rate">
-      <span>Gold 18K</span>
+<div class="rate">
 
-      <span class="price">
-        ₹<span id="gold18k">Loading...</span>
-      </span>
-    </div>
+<span>Gold 22K</span>
 
+<span class="price">
+₹<span id="gold22k">Loading...</span>
+</span>
 
-    <div class="rate">
-      <span>Silver 999</span>
+</div>
 
-      <span class="price">
-        ₹<span id="silver999">Loading...</span>
-      </span>
-    </div>
 
+<div class="rate">
 
-    <div class="last-update">
-      Last Update:
-      <span id="lastUpdate">--</span>
-    </div>
+<span>Gold 18K</span>
 
-  </div>
+<span class="price">
+₹<span id="gold18k">Loading...</span>
+</span>
 
+</div>
 
 
-  <!-- CALCULATOR -->
+<div class="rate">
 
-  <div class="card">
+<span>Silver 999</span>
 
-    <h2>Rate Calculator</h2>
+<span class="price">
+₹<span id="silver999">Loading...</span>
+</span>
 
+</div>
 
-    <select id="calcItem">
 
-      <option value="gold24k">
-        Gold 24K - 10 Gram
-      </option>
-
-      <option value="gold22k">
-        Gold 22K - 10 Gram
-      </option>
-
-      <option value="gold18k">
-        Gold 18K - 10 Gram
-      </option>
-
-      <option value="silver999">
-        Silver 999 - 1 KG
-      </option>
-
-    </select>
-
-
-    <input
-      id="weight"
-      type="number"
-      inputmode="decimal"
-      step="0.001"
-      placeholder="વજન ગ્રામમાં દાખલ કરો"
-    >
-
-
-    <button id="calculateBtn">
-      હિસાબ કરો
-    </button>
-
-
-    <div class="total">
-
-      કુલ રકમ:
-
-      ₹<span id="total">0</span>
-
-    </div>
-
-  </div>
-
-
-
-  <!--
-  ADMIN LOGIN
-
-  NORMAL CUSTOMER LINK:
-  https://YOUR-SITE/
-
-  ADMIN LINK:
-  https://YOUR-SITE/?admin=vopl
-  -->
-
-
-  <div
-    id="loginBox"
-    class="card hidden"
-  >
-
-    <h2>🔐 Admin Login</h2>
-
-
-    <input
-      id="adminEmail"
-      type="email"
-      autocomplete="username"
-      placeholder="Admin Email"
-    >
-
-
-    <input
-      id="adminPassword"
-      type="password"
-      autocomplete="current-password"
-      placeholder="Admin Password"
-    >
-
-
-    <button id="loginBtn">
-      LOGIN
-    </button>
-
-
-    <button
-      id="closeLoginBtn"
-      class="secondary"
-    >
-      CLOSE
-    </button>
-
-
-    <div
-      id="loginMessage"
-      class="message"
-    ></div>
-
-  </div>
-
-
-
-  <!-- ADMIN PANEL -->
-
-
-  <div
-    id="adminBox"
-    class="card hidden"
-  >
-
-    <h2>🔐 Admin Panel</h2>
-
-
-    <div
-      id="adminStatus"
-      class="admin-status"
-    ></div>
-
-
-    <input
-      id="newGold24k"
-      type="number"
-      inputmode="decimal"
-      placeholder="Gold 24K Rate"
-    >
-
-
-    <input
-      id="newGold22k"
-      type="number"
-      inputmode="decimal"
-      placeholder="Gold 22K Rate"
-    >
-
-
-    <input
-      id="newGold18k"
-      type="number"
-      inputmode="decimal"
-      placeholder="Gold 18K Rate"
-    >
-
-
-    <input
-      id="newSilver999"
-      type="number"
-      inputmode="decimal"
-      placeholder="Silver 999 Rate"
-    >
-
-
-    <button id="updateBtn">
-      SAVE ALL RATES
-    </button>
-
-
-    <button
-      id="logoutBtn"
-      class="logout-button"
-    >
-      LOGOUT
-    </button>
-
-
-    <div
-      id="adminMessage"
-      class="message"
-    ></div>
-
-  </div>
-
-
-  <div
-    id="publicMessage"
-    class="message"
-  ></div>
+<div
+  id="lastUpdate"
+  class="last-update"
+>
+Last Update: -
+</div>
 
 
 </div>
 
 
-<footer>
-  © Vrundavan Ornaments Pvt. Ltd.
-</footer>
+
+<!-- ========================= -->
+<!-- RATE CALCULATOR -->
+<!-- ========================= -->
+
+
+<div class="card">
+
+<h2>Rate Calculator</h2>
+
+
+<select id="calcItem">
+
+<option value="gold24k">
+Gold 24K - 10 Gram
+</option>
+
+<option value="gold22k">
+Gold 22K - 10 Gram
+</option>
+
+<option value="gold18k">
+Gold 18K - 10 Gram
+</option>
+
+<option value="silver999">
+Silver 999 - 1 KG
+</option>
+
+</select>
+
+
+<input
+  id="weight"
+  type="number"
+  min="0"
+  step="0.001"
+  placeholder="વજન ગ્રામમાં દાખલ કરો"
+>
+
+
+<button id="calculateBtn">
+હિસાબ કરો
+</button>
+
+
+<div class="total">
+
+કુલ રકમ:
+₹<span id="total">0</span>
+
+</div>
+
+
+</div>
+
+
+
+<!-- ========================= -->
+<!-- ADMIN LOGIN -->
+<!-- ONLY ADMIN URL -->
+<!-- ========================= -->
+
+
+<div
+  id="adminLoginBox"
+  class="card hidden"
+>
+
+
+<h2 class="admin-title">
+🔐 Admin Login
+</h2>
+
+
+<input
+  id="email"
+  type="email"
+  placeholder="Admin Email"
+  autocomplete="username"
+>
+
+
+<input
+  id="password"
+  type="password"
+  placeholder="Password"
+  autocomplete="current-password"
+>
+
+
+<button id="loginBtn">
+LOGIN
+</button>
+
+
+<button
+  id="closeAdminBtn"
+  class="secondary"
+>
+CLOSE ADMIN MODE
+</button>
+
+
+</div>
+
+
+
+<!-- ========================= -->
+<!-- ADMIN PANEL -->
+<!-- LOGIN SUCCESS પછી જ -->
+<!-- ========================= -->
+
+
+<div
+  id="adminBox"
+  class="card hidden"
+>
+
+
+<h2 class="admin-title">
+🔒 Admin Panel
+</h2>
+
+
+<div
+  id="adminStatus"
+  class="admin-status"
+>
+Admin Logged In
+</div>
+
+
+<input
+  id="newGold24k"
+  type="number"
+  min="0"
+  step="0.01"
+  placeholder="Gold 24K Rate"
+>
+
+
+<input
+  id="newGold22k"
+  type="number"
+  min="0"
+  step="0.01"
+  placeholder="Gold 22K Rate"
+>
+
+
+<input
+  id="newGold18k"
+  type="number"
+  min="0"
+  step="0.01"
+  placeholder="Gold 18K Rate"
+>
+
+
+<input
+  id="newSilver999"
+  type="number"
+  min="0"
+  step="0.01"
+  placeholder="Silver 999 Rate"
+>
+
+
+<button id="updateBtn">
+SAVE ALL RATES
+</button>
+
+
+<button
+  id="logoutBtn"
+  class="secondary"
+>
+LOGOUT
+</button>
+
+
+</div>
+
+
+
+<div id="message"></div>
+
+
+</div>
 
 
 
 <script type="module">
 
 
-/* ===================================
-   FIREBASE IMPORTS
-=================================== */
+/* ============================= */
+/* FIREBASE IMPORTS */
+/* ============================= */
 
 
 import {
   initializeApp
 }
-from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+from
+"https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
 
 
 import {
@@ -453,7 +489,8 @@ import {
   signOut,
   onAuthStateChanged
 }
-from "https://www.gstatic.com/firebasejs/12.15.0/firebase-auth.js";
+from
+"https://www.gstatic.com/firebasejs/12.15.0/firebase-auth.js";
 
 
 import {
@@ -463,13 +500,14 @@ import {
   setDoc,
   serverTimestamp
 }
-from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
+from
+"https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
 
 
 
-/* ===================================
-   FIREBASE CONFIG
-=================================== */
+/* ============================= */
+/* FIREBASE CONFIG */
+/* ============================= */
 
 
 const firebaseConfig = {
@@ -499,141 +537,141 @@ const firebaseConfig = {
 
 
 
-/* ===================================
-   SETTINGS
-=================================== */
+/* ============================= */
+/* ADMIN EMAIL */
+/* ============================= */
 
 
 const ADMIN_EMAIL =
-  "office.vopl@gmail.com";
+"office.vopl@gmail.com";
+
+
+
+/* ============================= */
+/* INITIALIZE FIREBASE */
+/* ============================= */
 
 
 const app =
-  initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
 
 const auth =
-  getAuth(app);
+getAuth(app);
 
 
 const db =
-  getFirestore(app);
+getFirestore(app);
 
 
 const rateRef =
-  doc(db,"rates","current");
+doc(db,"rates","current");
 
 
 
-/* ===================================
-   ELEMENTS
-=================================== */
+/* ============================= */
+/* ELEMENTS */
+/* ============================= */
 
 
-const gold24kEl =
-  document.getElementById("gold24k");
+const gold24k =
+document.getElementById("gold24k");
 
 
-const gold22kEl =
-  document.getElementById("gold22k");
+const gold22k =
+document.getElementById("gold22k");
 
 
-const gold18kEl =
-  document.getElementById("gold18k");
+const gold18k =
+document.getElementById("gold18k");
 
 
-const silver999El =
-  document.getElementById("silver999");
+const silver999 =
+document.getElementById("silver999");
 
 
 const lastUpdate =
-  document.getElementById("lastUpdate");
+document.getElementById("lastUpdate");
 
 
-const loginBox =
-  document.getElementById("loginBox");
+const calcItem =
+document.getElementById("calcItem");
+
+
+const weight =
+document.getElementById("weight");
+
+
+const total =
+document.getElementById("total");
+
+
+const adminLoginBox =
+document.getElementById("adminLoginBox");
 
 
 const adminBox =
-  document.getElementById("adminBox");
+document.getElementById("adminBox");
 
 
-const adminEmail =
-  document.getElementById("adminEmail");
+const emailInput =
+document.getElementById("email");
 
 
-const adminPassword =
-  document.getElementById("adminPassword");
-
-
-const loginBtn =
-  document.getElementById("loginBtn");
-
-
-const closeLoginBtn =
-  document.getElementById("closeLoginBtn");
-
-
-const loginMessage =
-  document.getElementById("loginMessage");
-
-
-const adminStatus =
-  document.getElementById("adminStatus");
+const passwordInput =
+document.getElementById("password");
 
 
 const newGold24k =
-  document.getElementById("newGold24k");
+document.getElementById("newGold24k");
 
 
 const newGold22k =
-  document.getElementById("newGold22k");
+document.getElementById("newGold22k");
 
 
 const newGold18k =
-  document.getElementById("newGold18k");
+document.getElementById("newGold18k");
 
 
 const newSilver999 =
-  document.getElementById("newSilver999");
+document.getElementById("newSilver999");
+
+
+const adminStatus =
+document.getElementById("adminStatus");
+
+
+const message =
+document.getElementById("message");
+
+
+const loginBtn =
+document.getElementById("loginBtn");
 
 
 const updateBtn =
-  document.getElementById("updateBtn");
-
-
-const logoutBtn =
-  document.getElementById("logoutBtn");
-
-
-const adminMessage =
-  document.getElementById("adminMessage");
-
-
-const publicMessage =
-  document.getElementById("publicMessage");
+document.getElementById("updateBtn");
 
 
 
-/* ===================================
-   ADMIN MODE
-=================================== */
+/* ============================= */
+/* ADMIN URL CHECK */
+/* ============================= */
 
 
 const params =
-  new URLSearchParams(
-    window.location.search
-  );
+new URLSearchParams(window.location.search);
 
 
-const adminMode =
-  params.get("admin") === "vopl";
+const isAdminURL =
+params.get("admin") === "vopl";
 
 
 
-/* ===================================
-   RATES
-=================================== */
+/* ============================= */
+/* RATE MEMORY */
+/* ============================= */
 
 
 let rates = {
@@ -650,147 +688,52 @@ let rates = {
 
 
 
-/* ===================================
-   HELPERS
-=================================== */
+/* ============================= */
+/* HELPER FUNCTIONS */
+/* ============================= */
 
 
-function formatPrice(value){
+function showMessage(text){
 
-  return Number(value || 0)
-    .toLocaleString("en-IN");
+  message.textContent = text;
 
 }
 
 
-function isAdminUser(user){
+function formatMoney(value){
 
-  return Boolean(
+  const number = Number(value);
 
-    user &&
+  if(!Number.isFinite(number)){
 
-    user.email &&
+    return "0";
 
-    user.email.toLowerCase()
+  }
 
-    ===
-
-    ADMIN_EMAIL.toLowerCase()
-
+  return number.toLocaleString(
+    "en-IN",
+    {
+      maximumFractionDigits:2
+    }
   );
 
 }
 
 
-function showPublicMessage(text){
+function validRate(value){
 
-  publicMessage.textContent =
-    text;
-
-}
-
-
-function formatTime(timestamp){
-
-  if(
-
-    !timestamp ||
-
-    typeof timestamp.toDate
-
-    !==
-
-    "function"
-
-  ){
-
-    return "--";
-
-  }
-
-
-  return timestamp
-    .toDate()
-    .toLocaleString(
-
-      "en-IN",
-
-      {
-
-        day:"2-digit",
-
-        month:"2-digit",
-
-        year:"numeric",
-
-        hour:"2-digit",
-
-        minute:"2-digit"
-
-      }
-
-    );
-
-}
-
-
-function updateScreen(){
-
-
-  gold24kEl.textContent =
-
-    formatPrice(
-      rates.gold24k
-    );
-
-
-  gold22kEl.textContent =
-
-    formatPrice(
-      rates.gold22k
-    );
-
-
-  gold18kEl.textContent =
-
-    formatPrice(
-      rates.gold18k
-    );
-
-
-  silver999El.textContent =
-
-    formatPrice(
-      rates.silver999
-    );
-
-
-  newGold24k.value =
-
-    rates.gold24k || "";
-
-
-  newGold22k.value =
-
-    rates.gold22k || "";
-
-
-  newGold18k.value =
-
-    rates.gold18k || "";
-
-
-  newSilver999.value =
-
-    rates.silver999 || "";
+  return (
+    Number.isFinite(value) &&
+    value >= 0
+  );
 
 }
 
 
 
-/* ===================================
-   FIRESTORE LIVE RATES
-=================================== */
+/* ============================= */
+/* REALTIME FIRESTORE RATES */
+/* ============================= */
 
 
 onSnapshot(
@@ -801,31 +744,20 @@ onSnapshot(
   snapshot => {
 
 
-    if(
-
-      !snapshot.exists()
-
-    ){
+    if(!snapshot.exists()){
 
 
-      gold24kEl.textContent =
-        "No Data";
+      gold24k.textContent = "No Data";
 
+      gold22k.textContent = "No Data";
 
-      gold22kEl.textContent =
-        "No Data";
+      gold18k.textContent = "No Data";
 
-
-      gold18kEl.textContent =
-        "No Data";
-
-
-      silver999El.textContent =
-        "No Data";
+      silver999.textContent = "No Data";
 
 
       lastUpdate.textContent =
-        "No Firestore Data";
+      "Last Update: -";
 
 
       return;
@@ -833,52 +765,86 @@ onSnapshot(
     }
 
 
+
     const data =
-      snapshot.data();
+    snapshot.data();
 
 
 
     rates.gold24k =
-
-      Number(
-        data.gold24k || 0
-      );
+    Number(data.gold24k || 0);
 
 
     rates.gold22k =
-
-      Number(
-        data.gold22k || 0
-      );
+    Number(data.gold22k || 0);
 
 
     rates.gold18k =
-
-      Number(
-        data.gold18k || 0
-      );
+    Number(data.gold18k || 0);
 
 
     rates.silver999 =
+    Number(data.silver999 || 0);
 
-      Number(
-        data.silver999 || 0
+
+
+    gold24k.textContent =
+    formatMoney(rates.gold24k);
+
+
+    gold22k.textContent =
+    formatMoney(rates.gold22k);
+
+
+    gold18k.textContent =
+    formatMoney(rates.gold18k);
+
+
+    silver999.textContent =
+    formatMoney(rates.silver999);
+
+
+
+    newGold24k.value =
+    rates.gold24k || "";
+
+
+    newGold22k.value =
+    rates.gold22k || "";
+
+
+    newGold18k.value =
+    rates.gold18k || "";
+
+
+    newSilver999.value =
+    rates.silver999 || "";
+
+
+
+    if(
+      data.updatedAt &&
+      typeof data.updatedAt.toDate === "function"
+    ){
+
+      lastUpdate.textContent =
+
+      "Last Update: " +
+
+      data.updatedAt
+      .toDate()
+      .toLocaleString(
+        "en-IN"
       );
 
+    }
 
+    else{
 
-    updateScreen();
+      lastUpdate.textContent =
+      "Last Update: -";
 
-
-
-    lastUpdate.textContent =
-
-      formatTime(
-        data.updatedAt
-      );
-
-
-    showPublicMessage("");
+    }
 
 
   },
@@ -887,24 +853,21 @@ onSnapshot(
   error => {
 
 
-    console.error(
-
-      "Firestore Read Error:",
-
-      error
-
-    );
+    console.error(error);
 
 
-    showPublicMessage(
+    gold24k.textContent = "Error";
 
+    gold22k.textContent = "Error";
+
+    gold18k.textContent = "Error";
+
+    silver999.textContent = "Error";
+
+
+    showMessage(
       "Rate Load Error: " +
-
-      (
-        error.code ||
-        error.message
-      )
-
+      error.code
     );
 
 
@@ -914,895 +877,495 @@ onSnapshot(
 
 
 
-/* ===================================
-   CALCULATOR
-=================================== */
+/* ============================= */
+/* CALCULATOR */
+/* ============================= */
 
 
 document
 .getElementById("calculateBtn")
 .addEventListener(
+"click",
+()=>{
 
-  "click",
 
-  () => {
+  const selected =
+  calcItem.value;
 
 
-    const item =
+  const enteredWeight =
+  Number(weight.value);
 
-      document
-      .getElementById("calcItem")
-      .value;
 
 
-    const weight =
+  if(
+    !Number.isFinite(enteredWeight) ||
+    enteredWeight <= 0
+  ){
 
-      Number(
+    total.textContent = "0";
 
-        document
-        .getElementById("weight")
-        .value
+    showMessage(
+      "સાચું વજન દાખલ કરો."
+    );
 
-      );
-
-
-    if(
-
-      !Number.isFinite(weight)
-
-      ||
-
-      weight <= 0
-
-    ){
-
-
-      showPublicMessage(
-
-        "સાચું વજન દાખલ કરો."
-
-      );
-
-
-      return;
-
-    }
-
-
-
-    const rate =
-
-      Number(
-
-        rates[item] || 0
-
-      );
-
-
-
-    if(
-
-      !Number.isFinite(rate)
-
-      ||
-
-      rate <= 0
-
-    ){
-
-
-      showPublicMessage(
-
-        "Rate ઉપલબ્ધ નથી."
-
-      );
-
-
-      return;
-
-    }
-
-
-
-    let total = 0;
-
-
-
-    if(
-
-      item === "silver999"
-
-    ){
-
-
-      total =
-
-        (rate / 1000)
-
-        *
-
-        weight;
-
-
-    }
-
-
-    else{
-
-
-      total =
-
-        (rate / 10)
-
-        *
-
-        weight;
-
-
-    }
-
-
-
-    document
-    .getElementById("total")
-    .textContent =
-
-      Math.round(total)
-      .toLocaleString("en-IN");
-
-
-    showPublicMessage("");
-
+    return;
 
   }
 
-);
+
+
+  const selectedRate =
+  rates[selected] || 0;
 
 
 
-/* ===================================
-   ADMIN MODE START
-=================================== */
-
-
-if(adminMode){
-
-
-  adminEmail.value =
-    ADMIN_EMAIL;
-
-
-  loginBox
-    .classList
-    .remove("hidden");
-
-
-}
+  let amount = 0;
 
 
 
-/* ===================================
-   ADMIN LOGIN
-=================================== */
+  if(selected === "silver999"){
+
+    amount =
+    selectedRate *
+    enteredWeight /
+    1000;
+
+  }
+
+  else{
+
+    amount =
+    selectedRate *
+    enteredWeight /
+    10;
+
+  }
+
+
+
+  total.textContent =
+  formatMoney(amount);
+
+
+  showMessage("");
+
+
+
+});
+
+
+
+/* ============================= */
+/* ADMIN LOGIN */
+/* ============================= */
 
 
 loginBtn.addEventListener(
-
-  "click",
-
-  async () => {
+"click",
+async()=>{
 
 
-    const email =
-
-      adminEmail
-      .value
-      .trim()
-      .toLowerCase();
+  const email =
+  emailInput.value
+  .trim()
+  .toLowerCase();
 
 
-    const password =
-
-      adminPassword
-      .value;
+  const password =
+  passwordInput.value;
 
 
 
-    if(
+  if(!email || !password){
 
-      !email
+    showMessage(
+      "Email અને Password દાખલ કરો."
+    );
 
-      ||
+    return;
 
-      !password
-
-    ){
-
-
-      loginMessage.textContent =
-
-        "Email અને Password દાખલ કરો.";
-
-
-      return;
-
-    }
+  }
 
 
 
-    if(
+  if(email !== ADMIN_EMAIL){
 
-      email
+    showMessage(
+      "આ Email Admin નથી."
+    );
 
-      !==
+    return;
 
-      ADMIN_EMAIL.toLowerCase()
-
-    ){
-
-
-      loginMessage.textContent =
-
-        "આ Email Admin નથી.";
+  }
 
 
-      return;
 
-    }
-
+  try{
 
 
     loginBtn.disabled = true;
 
 
-    loginMessage.textContent =
+    await signInWithEmailAndPassword(
 
-      "Login થઈ રહ્યું છે...";
+      auth,
 
+      email,
 
+      password
 
-    try{
+    );
 
 
-      const credential =
+    passwordInput.value = "";
 
-        await signInWithEmailAndPassword(
 
-          auth,
-
-          email,
-
-          password
-
-        );
-
-
-
-      if(
-
-        !isAdminUser(
-
-          credential.user
-
-        )
-
-      ){
-
-
-        await signOut(auth);
-
-
-        loginMessage.textContent =
-
-          "Unauthorized Account";
-
-
-        return;
-
-      }
-
-
-
-      loginBox
-        .classList
-        .add("hidden");
-
-
-      adminBox
-        .classList
-        .remove("hidden");
-
-
-      adminStatus.textContent =
-
-        "Logged in: " +
-
-        credential.user.email;
-
-
-      adminPassword.value = "";
-
-
-      loginMessage.textContent = "";
-
-
-      updateScreen();
-
-
-
-      adminBox
-        .scrollIntoView({
-
-          behavior:"smooth",
-
-          block:"start"
-
-        });
-
-
-    }
-
-
-    catch(error){
-
-
-      console.error(
-
-        "Login Error:",
-
-        error
-
-      );
-
-
-      if(
-
-        error.code
-
-        ===
-
-        "auth/invalid-credential"
-
-      ){
-
-
-        loginMessage.textContent =
-
-          "Email અથવા Password ખોટો છે.";
-
-
-      }
-
-
-      else{
-
-
-        loginMessage.textContent =
-
-          "Login Failed: " +
-
-          (
-            error.code ||
-            error.message
-          );
-
-
-      }
-
-
-    }
-
-
-    finally{
-
-
-      loginBtn.disabled = false;
-
-
-    }
+    showMessage(
+      "Admin Login Successful"
+    );
 
 
   }
 
-);
+
+  catch(error){
 
 
-
-/* ===================================
-   ENTER KEY LOGIN
-=================================== */
+    console.error(error);
 
 
-adminPassword.addEventListener(
+    showMessage(
 
-  "keydown",
+      "Login Failed: " +
+      error.code
 
-  event => {
-
-
-    if(
-
-      event.key === "Enter"
-
-    ){
-
-
-      loginBtn.click();
-
-
-    }
+    );
 
 
   }
 
-);
 
+  finally{
 
-
-/* ===================================
-   CLOSE LOGIN
-=================================== */
-
-
-closeLoginBtn.addEventListener(
-
-  "click",
-
-  () => {
-
-
-    loginBox
-      .classList
-      .add("hidden");
-
-
-    adminPassword.value = "";
-
-
-    loginMessage.textContent = "";
-
+    loginBtn.disabled = false;
 
   }
 
-);
+
+});
 
 
 
-/* ===================================
-   AUTH STATE CHECK
-=================================== */
+/* ============================= */
+/* AUTH STATE */
+/* ============================= */
 
 
 onAuthStateChanged(
 
-  auth,
+auth,
 
-  user => {
-
-
-    /*
-
-    CUSTOMER NORMAL URL
-
-    ADMIN PANEL NEVER SHOW
-
-    */
+async user => {
 
 
-    if(!adminMode){
+  const isAdmin =
 
+  user &&
 
-      loginBox
-        .classList
-        .add("hidden");
+  user.email &&
 
-
-      adminBox
-        .classList
-        .add("hidden");
-
-
-      return;
-
-    }
+  user.email.toLowerCase()
+  === ADMIN_EMAIL;
 
 
 
-    /* ADMIN URL + VALID LOGIN */
+  /*
+  CUSTOMER NORMAL URL
+  ADMIN કંઈ દેખાશે નહીં.
+  */
 
 
-    if(
-
-      isAdminUser(user)
-
-    ){
+  if(!isAdminURL){
 
 
-      loginBox
-        .classList
-        .add("hidden");
-
-
-      adminBox
-        .classList
-        .remove("hidden");
-
-
-      adminStatus.textContent =
-
-        "Logged in: " +
-
-        user.email;
-
-
-      updateScreen();
-
-
-      return;
-
-    }
-
-
-
-    /* ADMIN URL BUT NOT LOGGED IN */
+    adminLoginBox
+    .classList
+    .add("hidden");
 
 
     adminBox
-      .classList
-      .add("hidden");
+    .classList
+    .add("hidden");
 
 
-    loginBox
-      .classList
-      .remove("hidden");
+    return;
+
+  }
 
 
-    adminEmail.value =
-      ADMIN_EMAIL;
+
+  /*
+  ADMIN URL
+  */
+
+
+  if(isAdmin){
+
+
+    adminLoginBox
+    .classList
+    .add("hidden");
+
+
+    adminBox
+    .classList
+    .remove("hidden");
+
+
+    adminStatus.textContent =
+    "Logged in: " +
+    user.email;
 
 
   }
 
-);
+
+  else{
+
+
+    /*
+    Wrong account logged in હોય
+    તો logout.
+    */
+
+
+    if(user){
+
+      await signOut(auth);
+
+    }
+
+
+    adminBox
+    .classList
+    .add("hidden");
+
+
+    adminLoginBox
+    .classList
+    .remove("hidden");
+
+
+  }
+
+
+});
 
 
 
-/* ===================================
-   UPDATE RATES
-=================================== */
+/* ============================= */
+/* UPDATE ALL RATES */
+/* ============================= */
 
 
 updateBtn.addEventListener(
 
-  "click",
+"click",
 
-  async () => {
+async()=>{
 
 
-    const user =
-      auth.currentUser;
+  const user =
+  auth.currentUser;
 
 
 
-    if(
+  if(
 
-      !adminMode
+    !isAdminURL ||
 
-      ||
+    !user ||
 
-      !isAdminUser(user)
+    !user.email ||
 
-    ){
+    user.email.toLowerCase()
+    !== ADMIN_EMAIL
 
+  ){
 
-      adminMessage.textContent =
 
-        "Admin authorization failed.";
+    showMessage(
+      "Admin Login જરૂરી છે."
+    );
 
 
-      return;
+    return;
 
-    }
+  }
 
 
 
-    const values = {
+  const g24 =
+  Number(newGold24k.value);
 
 
-      gold24k:
+  const g22 =
+  Number(newGold22k.value);
 
-        Number(
-          newGold24k.value
-        ),
 
+  const g18 =
+  Number(newGold18k.value);
 
-      gold22k:
 
-        Number(
-          newGold22k.value
-        ),
+  const silver =
+  Number(newSilver999.value);
 
 
-      gold18k:
 
-        Number(
-          newGold18k.value
-        ),
+  if(
 
+    !validRate(g24) ||
 
-      silver999:
+    !validRate(g22) ||
 
-        Number(
-          newSilver999.value
-        )
+    !validRate(g18) ||
 
+    !validRate(silver)
 
-    };
+  ){
 
 
+    showMessage(
+      "બધા Rates સાચા દાખલ કરો."
+    );
 
-    if(
 
-      !Number.isFinite(
+    return;
 
-        values.gold24k
+  }
 
-      )
 
-      ||
 
-      !Number.isFinite(
-
-        values.gold22k
-
-      )
-
-      ||
-
-      !Number.isFinite(
-
-        values.gold18k
-
-      )
-
-      ||
-
-      !Number.isFinite(
-
-        values.silver999
-
-      )
-
-      ||
-
-      values.gold24k <= 0
-
-      ||
-
-      values.gold22k <= 0
-
-      ||
-
-      values.gold18k <= 0
-
-      ||
-
-      values.silver999 <= 0
-
-    ){
-
-
-      adminMessage.textContent =
-
-        "બધા સાચા Rates દાખલ કરો.";
-
-
-      return;
-
-    }
-
+  try{
 
 
     updateBtn.disabled = true;
 
 
-    adminMessage.textContent =
 
-      "Rates Save થઈ રહ્યા છે...";
+    await setDoc(
 
+      rateRef,
 
+      {
 
-    try{
+        gold24k:g24,
 
+        gold22k:g22,
 
-      await setDoc(
+        gold18k:g18,
 
-        rateRef,
+        silver999:silver,
 
-        {
+        updatedAt:
+        serverTimestamp()
 
-          ...values,
+      },
 
-          updatedAt:
-
-            serverTimestamp(),
-
-          updatedBy:
-
-            user.email
-
-        },
-
-        {
-
-          merge:true
-
-        }
-
-      );
-
-
-
-      rates = {
-
-        ...rates,
-
-        ...values
-
-      };
-
-
-      updateScreen();
-
-
-
-      adminMessage.textContent =
-
-        "Rates Successfully Updated.";
-
-
-    }
-
-
-    catch(error){
-
-
-      console.error(
-
-        "Update Error:",
-
-        error
-
-      );
-
-
-      if(
-
-        error.code
-
-        ===
-
-        "permission-denied"
-
-      ){
-
-
-        adminMessage.textContent =
-
-          "Permission Denied. Firestore Rules check કરો.";
-
-
+      {
+        merge:true
       }
 
-
-      else{
-
-
-        adminMessage.textContent =
-
-          "Update Failed: " +
-
-          (
-            error.code ||
-            error.message
-          );
+    );
 
 
-      }
 
-
-    }
-
-
-    finally{
-
-
-      updateBtn.disabled = false;
-
-
-    }
+    showMessage(
+      "બધા Rates Successfully Updated"
+    );
 
 
   }
 
-);
+
+  catch(error){
 
 
-
-/* ===================================
-   LOGOUT
-=================================== */
+    console.error(error);
 
 
-logoutBtn.addEventListener(
+    showMessage(
 
-  "click",
+      "Update Failed: " +
+      error.code
 
-  async () => {
-
-
-    try{
-
-
-      await signOut(auth);
-
-
-      adminBox
-        .classList
-        .add("hidden");
-
-
-      if(adminMode){
-
-
-        loginBox
-          .classList
-          .remove("hidden");
-
-
-        adminEmail.value =
-          ADMIN_EMAIL;
-
-
-      }
-
-
-      adminPassword.value = "";
-
-
-      adminMessage.textContent = "";
-
-
-      loginMessage.textContent =
-
-        "Logged Out.";
-
-
-    }
-
-
-    catch(error){
-
-
-      adminMessage.textContent =
-
-        "Logout Failed: " +
-
-        (
-          error.code ||
-          error.message
-        );
-
-
-    }
+    );
 
 
   }
 
-);
+
+  finally{
+
+    updateBtn.disabled = false;
+
+  }
+
+
+});
+
+
+
+/* ============================= */
+/* LOGOUT */
+/* ============================= */
+
+
+document
+.getElementById("logoutBtn")
+.addEventListener(
+
+"click",
+
+async()=>{
+
+
+  await signOut(auth);
+
+
+  showMessage(
+    "Logged Out"
+  );
+
+
+});
+
+
+
+/* ============================= */
+/* CLOSE ADMIN MODE */
+/* ============================= */
+
+
+document
+.getElementById("closeAdminBtn")
+.addEventListener(
+
+"click",
+
+()=>{
+
+
+  window.location.href =
+  window.location.pathname;
+
+
+});
 
 
 </script>
+
 
 </body>
 </html>
