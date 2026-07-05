@@ -1,1252 +1,474 @@
 <!DOCTYPE html>
 <html lang="gu">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VOPL GOLD</title>
 
-  <title>VOPL GOLD</title>
+<style>
+*{box-sizing:border-box}
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+body{
+margin:0;
+min-height:100vh;
+background:linear-gradient(#2b1608,#100c09 45%,#0d0d0d);
+color:#f4e4dc;
+font-family:Arial,sans-serif;
+}
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background:
-        radial-gradient(circle at top, #321b0b 0%, #160e08 35%, #0d0d0d 100%);
-      color: #f4e4dc;
-      font-family: Arial, sans-serif;
-    }
+header{
+padding:50px 20px;
+text-align:center;
+background:#2b1608;
+border-bottom:1px solid #765132;
+}
 
-    header {
-      text-align: center;
-      padding: 55px 20px;
-      background: rgba(45, 22, 6, 0.75);
-      border-bottom: 1px solid #765132;
-    }
+header h1{
+margin:0;
+font-size:38px;
+}
 
-    header h1 {
-      margin: 0;
-      font-size: 38px;
-      letter-spacing: 2px;
-    }
+header p{
+font-size:21px;
+color:#d8bfb3;
+}
 
-    header p {
-      margin: 14px 0 0;
-      font-size: 21px;
-      color: #d8bfb3;
-    }
+.container{
+max-width:700px;
+margin:auto;
+padding:40px 25px;
+}
 
-    .container {
-      max-width: 700px;
-      margin: auto;
-      padding: 40px 25px;
-    }
+.card{
+background:#1d1d1d;
+border:1px solid #66554d;
+border-radius:28px;
+padding:35px;
+margin-bottom:30px;
+}
 
-    .card {
-      background: rgba(30, 30, 30, 0.96);
-      border: 1px solid #66554d;
-      border-radius: 30px;
-      padding: 38px;
-      margin-bottom: 35px;
-    }
+h2{margin-top:0}
 
-    h2 {
-      margin-top: 0;
-      font-size: 31px;
-    }
+.rate{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:25px;
+background:#1d1917;
+border:1px solid #66554d;
+border-radius:20px;
+font-size:22px;
+}
 
-    .line {
-      height: 1px;
-      background: #5b514d;
-      margin: 25px 0 30px;
-    }
+.price{
+font-size:25px;
+font-weight:bold;
+}
 
-    .rate {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+input{
+width:100%;
+padding:18px;
+margin:8px 0;
+border-radius:15px;
+border:1px solid #765132;
+background:#292929;
+color:white;
+font-size:17px;
+}
 
-      background: #1d1917;
-      border: 1px solid #66554d;
-      border-radius: 22px;
+button{
+width:100%;
+padding:17px;
+margin-top:12px;
+border:0;
+border-radius:15px;
+background:#d4af37;
+font-size:17px;
+font-weight:bold;
+cursor:pointer;
+}
 
-      padding: 28px 25px;
+button:disabled{
+opacity:.6;
+}
 
-      font-size: 23px;
-    }
+.secondary{
+background:#444;
+color:white;
+}
 
-    .price {
-      font-size: 26px;
-      font-weight: bold;
-    }
+.hidden{
+display:none!important;
+}
 
-    input {
-      width: 100%;
+#message{
+text-align:center;
+margin-top:20px;
+min-height:25px;
+line-height:1.5;
+}
 
-      padding: 20px;
-
-      margin: 8px 0;
-
-      border-radius: 18px;
-      border: 1px solid #765132;
-
-      background: #292929;
-      color: white;
-
-      font-size: 18px;
-    }
-
-    button {
-      width: 100%;
-
-      padding: 18px;
-
-      margin-top: 15px;
-
-      border: none;
-      border-radius: 18px;
-
-      background: #d4af37;
-      color: #111;
-
-      font-size: 18px;
-      font-weight: bold;
-
-      cursor: pointer;
-    }
-
-    button:disabled {
-      opacity: 0.55;
-      cursor: not-allowed;
-    }
-
-    .secondary {
-      background: #444;
-      color: white;
-    }
-
-    .hidden {
-      display: none !important;
-    }
-
-    #message {
-      text-align: center;
-      font-size: 17px;
-      line-height: 1.5;
-      min-height: 25px;
-      margin-top: 20px;
-    }
-
-    .admin-email {
-      text-align: center;
-      color: #d4af37;
-      margin-bottom: 20px;
-      word-break: break-all;
-    }
-
-    @media (max-width: 500px) {
-
-      header {
-        padding: 45px 15px;
-      }
-
-      header h1 {
-        font-size: 32px;
-      }
-
-      .container {
-        padding: 30px 20px;
-      }
-
-      .card {
-        padding: 28px 25px;
-      }
-
-      .rate {
-        font-size: 20px;
-      }
-
-      .price {
-        font-size: 22px;
-      }
-    }
-  </style>
+.adminEmail{
+text-align:center;
+color:#d4af37;
+margin-bottom:15px;
+}
+</style>
 </head>
-
 
 <body>
 
-
 <header>
-
-  <h1>VOPL GOLD</h1>
-
-  <p>Live Gold Rate</p>
-
+<h1>VOPL GOLD</h1>
+<p>Live Gold Rate</p>
 </header>
-
-
 
 <div class="container">
 
+<div class="card">
 
-  <!-- LIVE RATE -->
+<h2>આજનો ભાવ</h2>
 
+<div class="rate">
 
-  <div class="card">
+<span>Gold 24K</span>
 
-    <h2>આજનો ભાવ</h2>
+<span class="price">
+₹<span id="gold24k">Loading...</span>
+</span>
 
-    <div class="line"></div>
-
-
-    <div class="rate">
-
-      <span>Gold 24K</span>
-
-
-      <span class="price">
-
-        ₹<span id="gold24k">Loading...</span>
-
-      </span>
-
-    </div>
-
-  </div>
-
-
-
-  <!-- LOGIN BOX -->
-
-
-  <div id="loginBox" class="card">
-
-    <h2>Admin Panel</h2>
-
-    <div class="line"></div>
-
-
-    <input
-      id="email"
-      type="email"
-      placeholder="Admin Email"
-      autocomplete="email"
-    >
-
-
-    <button id="sendLinkBtn">
-
-      SEND LOGIN LINK
-
-    </button>
-
-
-    <div id="finishLoginBox" class="hidden">
-
-      <input
-        id="confirmEmail"
-        type="email"
-        placeholder="Confirm Admin Email"
-        autocomplete="email"
-      >
-
-
-      <button id="finishLoginBtn">
-
-        COMPLETE LOGIN
-
-      </button>
-
-    </div>
-
-  </div>
-
-
-
-  <!-- ADMIN PANEL -->
-
-
-  <div id="adminBox" class="card hidden">
-
-
-    <h2>Admin Rate Update</h2>
-
-    <div class="line"></div>
-
-
-    <div
-      id="loggedAdmin"
-      class="admin-email">
-    </div>
-
-
-    <input
-      id="newGold24k"
-      type="number"
-      inputmode="decimal"
-      step="0.01"
-      placeholder="Enter Gold 24K Rate"
-    >
-
-
-    <button id="updateBtn">
-
-      UPDATE RATE
-
-    </button>
-
-
-    <button
-      id="logoutBtn"
-      class="secondary">
-
-      LOGOUT
-
-    </button>
-
-
-  </div>
-
-
-  <div id="message"></div>
-
+</div>
 
 </div>
 
 
+<div id="loginBox" class="card">
+
+<h2>Admin Login</h2>
+
+<input
+id="email"
+type="email"
+placeholder="Admin Email"
+autocomplete="username">
+
+<input
+id="password"
+type="password"
+placeholder="Admin Password"
+autocomplete="current-password">
+
+<button id="loginBtn">
+LOGIN
+</button>
+
+</div>
+
+
+<div id="adminBox" class="card hidden">
+
+<h2>Admin Rate Update</h2>
+
+<div id="adminEmail" class="adminEmail"></div>
+
+<input
+id="newGold24k"
+type="number"
+inputmode="decimal"
+placeholder="Enter Gold 24K Rate">
+
+<button id="updateBtn">
+UPDATE RATE
+</button>
+
+<button id="logoutBtn" class="secondary">
+LOGOUT
+</button>
+
+</div>
+
+<div id="message"></div>
+
+</div>
+
 
 <script type="module">
 
-
-/* =============================
-
-FIREBASE IMPORTS
-
-============================= */
+import{
+initializeApp
+}from"https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
 
 
-import {
-
-  initializeApp
-
-}
-
-from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
-
+import{
+getAuth,
+signInWithEmailAndPassword,
+signOut,
+onAuthStateChanged
+}from"https://www.gstatic.com/firebasejs/12.15.0/firebase-auth.js";
 
 
-import {
-
-  getAuth,
-
-  sendSignInLinkToEmail,
-
-  isSignInWithEmailLink,
-
-  signInWithEmailLink,
-
-  onAuthStateChanged,
-
-  signOut
-
-}
-
-from "https://www.gstatic.com/firebasejs/12.15.0/firebase-auth.js";
+import{
+getFirestore,
+doc,
+onSnapshot,
+updateDoc,
+serverTimestamp
+}from"https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
 
 
+const firebaseConfig={
 
-import {
+apiKey:"AIzaSyACpWFqxs1AaIx7C6kMpu45bD79fWJeR60",
 
-  getFirestore,
+authDomain:"reset-de458.firebaseapp.com",
 
-  doc,
+projectId:"reset-de458",
 
-  onSnapshot,
+storageBucket:"reset-de458.firebasestorage.app",
 
-  updateDoc
+messagingSenderId:"192490668353",
 
-}
+appId:"1:192490668353:web:e8ce193dab2d3c4f7061c0",
 
-from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
-
-
-
-
-/* =============================
-
-FIREBASE CONFIG
-
-============================= */
-
-
-const firebaseConfig = {
-
-  apiKey:
-  "AIzaSyACpWFqxs1AaIx7C6kMpu45bD79fWJeR60",
-
-  authDomain:
-  "reset-de458.firebaseapp.com",
-
-  projectId:
-  "reset-de458",
-
-  storageBucket:
-  "reset-de458.firebasestorage.app",
-
-  messagingSenderId:
-  "192490668353",
-
-  appId:
-  "1:192490668353:web:e8ce193dab2d3c4f7061c0",
-
-  measurementId:
-  "G-NKVEWN4YSC"
+measurementId:"G-NKVEWN4YSC"
 
 };
 
 
+const ADMIN_EMAIL="office.vopl@gmail.com";
 
-/* =============================
 
-SETTINGS
+const app=initializeApp(firebaseConfig);
 
-============================= */
+const auth=getAuth(app);
 
+const db=getFirestore(app);
 
-const ADMIN_EMAIL =
+const rateRef=doc(db,"rates","current");
 
-"office.vopl@gmail.com";
 
+const gold24k=document.getElementById("gold24k");
 
+const loginBox=document.getElementById("loginBox");
 
-const app = initializeApp(firebaseConfig);
+const adminBox=document.getElementById("adminBox");
 
+const emailInput=document.getElementById("email");
 
-const auth = getAuth(app);
+const passwordInput=document.getElementById("password");
 
+const newGoldInput=document.getElementById("newGold24k");
 
-const db = getFirestore(app);
+const adminEmail=document.getElementById("adminEmail");
 
+const message=document.getElementById("message");
 
-const rateRef =
+const loginBtn=document.getElementById("loginBtn");
 
-doc(db, "rates", "current");
+const updateBtn=document.getElementById("updateBtn");
 
+const logoutBtn=document.getElementById("logoutBtn");
 
 
+function showMessage(text){
 
-/* =============================
-
-HTML ELEMENTS
-
-============================= */
-
-
-const gold24k =
-
-document.getElementById("gold24k");
-
-
-const loginBox =
-
-document.getElementById("loginBox");
-
-
-const adminBox =
-
-document.getElementById("adminBox");
-
-
-const emailInput =
-
-document.getElementById("email");
-
-
-const confirmEmailInput =
-
-document.getElementById("confirmEmail");
-
-
-const finishLoginBox =
-
-document.getElementById("finishLoginBox");
-
-
-const newGoldInput =
-
-document.getElementById("newGold24k");
-
-
-const loggedAdmin =
-
-document.getElementById("loggedAdmin");
-
-
-const message =
-
-document.getElementById("message");
-
-
-const sendLinkBtn =
-
-document.getElementById("sendLinkBtn");
-
-
-const finishLoginBtn =
-
-document.getElementById("finishLoginBtn");
-
-
-const updateBtn =
-
-document.getElementById("updateBtn");
-
-
-const logoutBtn =
-
-document.getElementById("logoutBtn");
-
-
-
-
-/* =============================
-
-MESSAGE
-
-============================= */
-
-
-function showMessage(text) {
-
-  message.textContent = text;
+message.textContent=text;
 
 }
 
 
+/* LIVE RATE */
 
 
-/* =============================
+onSnapshot(rateRef,
 
-LIVE FIRESTORE RATE
+(snapshot)=>{
 
-============================= */
+if(!snapshot.exists()){
 
+gold24k.textContent="No Data";
 
-onSnapshot(
+showMessage("Firestore rates/current document મળ્યો નથી.");
 
-  rateRef,
+return;
 
+}
 
-  (snapshot) => {
+const data=snapshot.data();
 
+const value=Number(data.gold24k);
 
-    if (!snapshot.exists()) {
+if(!Number.isFinite(value)){
 
-      gold24k.textContent = "No Data";
+gold24k.textContent="Invalid";
 
-      showMessage(
-        "Firestore rates/current document મળ્યો નથી."
-      );
+return;
 
-      return;
+}
 
-    }
+gold24k.textContent=value.toLocaleString("en-IN");
 
+newGoldInput.value=value;
 
-    const data = snapshot.data();
+},
 
+(error)=>{
 
-    const value = Number(data.gold24k);
+console.error(error);
 
+gold24k.textContent="Error";
 
-    if (!Number.isFinite(value)) {
+showMessage("Rate Load Error: "+error.code);
 
-      gold24k.textContent = "Invalid Rate";
-
-      return;
-
-    }
-
-
-    gold24k.textContent =
-
-      value.toLocaleString("en-IN");
+});
 
 
-    newGoldInput.value = value;
-
-  },
+/* ADMIN LOGIN */
 
 
-  (error) => {
+loginBtn.addEventListener("click",async()=>{
 
-    console.error(error);
+const email=emailInput.value.trim().toLowerCase();
 
-    gold24k.textContent = "Error";
+const password=passwordInput.value;
 
-    showMessage(
 
-      "Rate Load Error: " + error.code
+if(email!==ADMIN_EMAIL){
 
-    );
+showMessage("આ Email Admin નથી.");
 
-  }
+return;
+
+}
+
+
+if(!password){
+
+showMessage("Password દાખલ કરો.");
+
+return;
+
+}
+
+
+loginBtn.disabled=true;
+
+showMessage("Login થઈ રહ્યું છે...");
+
+
+try{
+
+const credential=
+
+await signInWithEmailAndPassword(
+
+auth,
+
+email,
+
+password
 
 );
 
 
+if(
 
+!credential.user.email ||
 
-/* =============================
+credential.user.email.toLowerCase()!==ADMIN_EMAIL
 
-SEND EMAIL LOGIN LINK
+){
 
-============================= */
+await signOut(auth);
 
+showMessage("Unauthorized Account");
 
-sendLinkBtn.addEventListener(
-
-"click",
-
-async () => {
-
-
-  const email =
-
-  emailInput.value
-  .trim()
-  .toLowerCase();
-
-
-
-  if (!email) {
-
-    showMessage(
-      "Admin email દાખલ કરો."
-    );
-
-    return;
-
-  }
-
-
-
-  if (email !== ADMIN_EMAIL) {
-
-    showMessage(
-      "આ email Admin નથી."
-    );
-
-    return;
-
-  }
-
-
-
-  sendLinkBtn.disabled = true;
-
-
-  showMessage(
-
-    "Login link મોકલવામાં આવી રહી છે..."
-
-  );
-
-
-
-  try {
-
-
-    const actionCodeSettings = {
-
-      url:
-
-      window.location.origin +
-
-      window.location.pathname,
-
-      handleCodeInApp: true
-
-    };
-
-
-
-    await sendSignInLinkToEmail(
-
-      auth,
-
-      email,
-
-      actionCodeSettings
-
-    );
-
-
-
-    window.localStorage.setItem(
-
-      "voplAdminEmail",
-
-      email
-
-    );
-
-
-
-    showMessage(
-
-      "Login link email પર મોકલવામાં આવી છે. Email ખોલીને link પર click કરો."
-
-    );
-
-
-  }
-
-
-  catch (error) {
-
-
-    console.error(error);
-
-
-    showMessage(
-
-      "Send Link Failed: " +
-
-      error.code
-
-    );
-
-
-  }
-
-
-  finally {
-
-
-    sendLinkBtn.disabled = false;
-
-
-  }
-
-
-});
-
-
-
-
-/* =============================
-
-COMPLETE EMAIL LINK LOGIN
-
-============================= */
-
-
-async function completeEmailLogin() {
-
-
-  if (!isSignInWithEmailLink(
-
-    auth,
-
-    window.location.href
-
-  )) {
-
-    return;
-
-  }
-
-
-
-  let email =
-
-  window.localStorage.getItem(
-
-    "voplAdminEmail"
-
-  );
-
-
-
-  if (!email) {
-
-
-    finishLoginBox.classList.remove(
-
-      "hidden"
-
-    );
-
-
-    showMessage(
-
-      "Login complete કરવા Admin Email ફરી દાખલ કરો."
-
-    );
-
-
-    return;
-
-  }
-
-
-
-  await finishSignIn(email);
+return;
 
 }
 
 
+passwordInput.value="";
 
+showMessage("Admin Login Successful");
 
-async function finishSignIn(email) {
 
+}catch(error){
 
-  email =
+console.error(error);
 
-  email.trim().toLowerCase();
-
-
-
-  if (email !== ADMIN_EMAIL) {
-
-    showMessage(
-
-      "આ email Admin નથી."
-
-    );
-
-    return;
-
-  }
-
-
-
-  try {
-
-
-    const credential =
-
-    await signInWithEmailLink(
-
-      auth,
-
-      email,
-
-      window.location.href
-
-    );
-
-
-
-    if (
-
-      !credential.user.email ||
-
-      credential.user.email.toLowerCase()
-
-      !== ADMIN_EMAIL
-
-    ) {
-
-
-      await signOut(auth);
-
-
-      showMessage(
-
-        "Unauthorized Account"
-
-      );
-
-
-      return;
-
-    }
-
-
-
-    window.localStorage.removeItem(
-
-      "voplAdminEmail"
-
-    );
-
-
-
-    showMessage(
-
-      "Admin Login Successful"
-
-    );
-
-
-
-    window.history.replaceState(
-
-      {},
-
-      document.title,
-
-      window.location.origin +
-
-      window.location.pathname
-
-    );
-
-
-  }
-
-
-  catch (error) {
-
-
-    console.error(error);
-
-
-    showMessage(
-
-      "Login Failed: " +
-
-      error.code
-
-    );
-
-
-  }
-
+showMessage("Login Failed: "+error.code);
 
 }
 
 
+finally{
 
+loginBtn.disabled=false;
 
-finishLoginBtn.addEventListener(
-
-"click",
-
-async () => {
-
-
-  const email =
-
-  confirmEmailInput.value.trim();
-
-
-  if (!email) {
-
-    showMessage(
-
-      "Admin email દાખલ કરો."
-
-    );
-
-    return;
-
-  }
-
-
-  await finishSignIn(email);
-
+}
 
 });
 
 
+/* AUTH STATUS */
 
 
-/* =============================
+onAuthStateChanged(auth,async(user)=>{
 
-AUTH STATUS
+const isAdmin=
 
-============================= */
+user &&
 
+user.email &&
 
-onAuthStateChanged(
-
-auth,
-
-async (user) => {
+user.email.toLowerCase()===ADMIN_EMAIL;
 
 
-  const isAdmin =
+if(isAdmin){
 
-    user &&
+loginBox.classList.add("hidden");
 
-    user.email &&
+adminBox.classList.remove("hidden");
 
-    user.email.toLowerCase()
+adminEmail.textContent=user.email;
 
-    === ADMIN_EMAIL;
+}
 
+else{
 
+if(user){
 
-  if (isAdmin) {
+await signOut(auth);
 
+}
 
-    loginBox.classList.add(
+loginBox.classList.remove("hidden");
 
-      "hidden"
+adminBox.classList.add("hidden");
 
-    );
+adminEmail.textContent="";
 
-
-    adminBox.classList.remove(
-
-      "hidden"
-
-    );
-
-
-    loggedAdmin.textContent =
-
-      user.email;
-
-
-  }
-
-
-  else {
-
-
-    if (user) {
-
-      await signOut(auth);
-
-    }
-
-
-    loginBox.classList.remove(
-
-      "hidden"
-
-    );
-
-
-    adminBox.classList.add(
-
-      "hidden"
-
-    );
-
-
-    loggedAdmin.textContent = "";
-
-
-  }
-
+}
 
 });
 
 
+/* UPDATE RATE */
 
 
-/* =============================
+updateBtn.addEventListener("click",async()=>{
 
-UPDATE GOLD RATE
+const value=Number(newGoldInput.value);
 
-============================= */
 
+if(!Number.isFinite(value)||value<=0){
 
-updateBtn.addEventListener(
+showMessage("સાચો Rate દાખલ કરો.");
 
-"click",
+return;
 
-async () => {
+}
 
 
-  const value =
-
-  Number(newGoldInput.value);
-
-
-
-  if (
-
-    !Number.isFinite(value) ||
-
-    value <= 0
-
-  ) {
-
-
-    showMessage(
-
-      "સાચો rate દાખલ કરો."
-
-    );
-
-
-    return;
-
-  }
-
-
-
-  const user = auth.currentUser;
-
-
-
-  if (
-
-    !user ||
-
-    !user.email ||
-
-    user.email.toLowerCase()
-
-    !== ADMIN_EMAIL
-
-  ) {
-
-
-    showMessage(
-
-      "Admin Login જરૂરી છે."
-
-    );
-
-
-    return;
-
-  }
-
-
-
-  updateBtn.disabled = true;
-
-
-  showMessage(
-
-    "Rate update થઈ રહ્યો છે..."
-
-  );
-
-
-
-  try {
-
-
-    await updateDoc(
-
-      rateRef,
-
-      {
-
-        gold24k: value
-
-      }
-
-    );
-
-
-    showMessage(
-
-      "Rate Successfully Updated"
-
-    );
-
-
-  }
-
-
-  catch (error) {
-
-
-    console.error(error);
-
-
-    showMessage(
-
-      "Update Failed: " +
-
-      error.code
-
-    );
-
-
-  }
-
-
-  finally {
-
-
-    updateBtn.disabled = false;
-
-
-  }
-
-
-});
-
-
-
-
-/* =============================
-
-LOGOUT
-
-============================= */
-
-
-logoutBtn.addEventListener(
-
-"click",
-
-async () => {
-
-
-  try {
-
-
-    await signOut(auth);
-
-
-    showMessage(
-
-      "Logged Out"
-
-    );
-
-
-  }
-
-
-  catch (error) {
-
-
-    showMessage(
-
-      "Logout Failed: " +
-
-      error.code
-
-    );
-
-
-  }
-
-
-});
-
-
-
-
-/* =============================
-
-START EMAIL LOGIN CHECK
-
-============================= */
-
-
-completeEmailLogin();
-
-
-</script>
-
-
-</body>
-</html>
+const user=auth.currentUser;
