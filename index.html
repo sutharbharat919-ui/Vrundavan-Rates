@@ -2,14 +2,16 @@
 <html lang="gu">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>VOPL GOLD</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Gujarati:wght@400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Gujarati:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
 :root{
   --bg:#f7f2ee;
   --surface:#fffdfc;
@@ -24,28 +26,48 @@
   --danger:#9a5c55;
 }
 
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
 
 body{
   margin:0;
   min-height:100vh;
-  background:linear-gradient(180deg,#f3e9e2,#f9f5f2 300px,#f7f2ee);
+  background:linear-gradient(
+    180deg,
+    #f3e9e2 0,
+    #f9f5f2 280px,
+    #f7f2ee 100%
+  );
   color:var(--text);
   font-family:'Noto Serif Gujarati',serif;
 }
 
 header{
-  padding:20px 12px 25px;
+  padding:18px 12px 24px;
   text-align:center;
-  background:linear-gradient(145deg,#eadbd0,#dcc5b5);
+  background:linear-gradient(
+    145deg,
+    #eadbd0,
+    #dcc5b5
+  );
   border-bottom:1px solid var(--coffee);
+  box-shadow:0 6px 25px rgba(73,54,45,.08);
 }
+
+
+/* LOGO */
 
 .logo-box{
   width:100%;
-  max-width:340px;
-  height:160px;
-  margin:0 auto 8px;
+  max-width:360px;
+  height:165px;
+  margin:0 auto 4px;
+  padding:0;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -58,20 +80,28 @@ header{
   height:100%;
   object-fit:contain;
   object-position:center;
+  border:0;
+  border-radius:0;
 }
+
 
 header h1{
   margin:0;
   color:var(--heading);
   font-family:'Poppins',sans-serif;
-  font-size:29px;
+  font-size:30px;
+  font-weight:700;
 }
 
 header p{
   margin:5px 0 0;
   color:var(--dark);
+  font-size:15px;
   font-weight:600;
 }
+
+
+/* MAIN */
 
 .container{
   width:100%;
@@ -80,31 +110,55 @@ header p{
   padding:16px 11px 40px;
 }
 
+
+/* CARDS */
+
 .card{
+  position:relative;
   margin-bottom:20px;
   padding:19px;
-  background:var(--surface);
+  overflow:hidden;
+  background:rgba(255,253,252,.98);
   border:1px solid var(--border);
   border-radius:19px;
   box-shadow:0 10px 30px rgba(73,54,45,.07);
+}
+
+.card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:22px;
+  right:22px;
+  height:3px;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    var(--coffee),
+    transparent
+  );
 }
 
 h2{
   margin:0 0 16px;
   color:var(--heading);
   font-size:21px;
+  font-weight:700;
 }
 
 .section-title{
-  margin:20px 0 8px;
+  margin:21px 0 8px;
   padding:9px 12px;
+  color:var(--dark);
   background:var(--soft);
   border:1px solid var(--border);
   border-radius:10px;
-  color:var(--dark);
   font-size:14px;
   font-weight:700;
 }
+
+
+/* RATES */
 
 .rate{
   display:flex;
@@ -120,6 +174,7 @@ h2{
 }
 
 .rate-label{
+  color:var(--text);
   font-size:14px;
   font-weight:600;
 }
@@ -131,6 +186,9 @@ h2{
   font-weight:700;
   white-space:nowrap;
 }
+
+
+/* DATE */
 
 .date-box{
   margin-top:15px;
@@ -147,7 +205,11 @@ h2{
   text-align:right;
 }
 
-input,select{
+
+/* INPUTS */
+
+input,
+select{
   width:100%;
   margin-top:9px;
   padding:14px 13px;
@@ -160,13 +222,22 @@ input,select{
   font-size:15px;
 }
 
+input:focus,
+select:focus{
+  border-color:var(--dark);
+  box-shadow:0 0 0 3px rgba(118,85,67,.10);
+}
+
+
+/* BUTTONS */
+
 button{
   width:100%;
   margin-top:11px;
   padding:14px;
   border:0;
   border-radius:11px;
-  color:white;
+  color:#fff;
   background:var(--dark);
   font-family:'Noto Serif Gujarati',serif;
   font-size:15px;
@@ -174,11 +245,25 @@ button{
   cursor:pointer;
 }
 
-button:disabled{opacity:.55}
+button:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+}
 
-.secondary{background:#a98b78}
-.save-button{background:var(--success)}
-.logout-button{background:var(--danger)}
+.secondary{
+  background:#a98b78;
+}
+
+.save-button{
+  background:var(--success);
+}
+
+.logout-button{
+  background:var(--danger);
+}
+
+
+/* CALCULATOR TOTAL */
 
 .total{
   margin-top:15px;
@@ -192,10 +277,14 @@ button:disabled{opacity:.55}
   font-weight:700;
 }
 
+
+/* ADMIN */
+
 .admin-status{
   margin-bottom:14px;
   padding:10px;
   text-align:center;
+  word-break:break-all;
   color:var(--dark);
   background:var(--soft);
   border-radius:10px;
@@ -209,9 +298,15 @@ button:disabled{opacity:.55}
   color:var(--dark);
   font-size:13px;
   font-weight:700;
+  line-height:1.5;
 }
 
-.hidden{display:none!important}
+.hidden{
+  display:none !important;
+}
+
+
+/* FOOTER */
 
 footer{
   padding:5px 15px 30px;
@@ -220,170 +315,463 @@ footer{
   font-size:12px;
 }
 
+
+/* MOBILE */
+
 @media(max-width:500px){
-  .logo-box{
-    max-width:310px;
-    height:145px;
+
+  header{
+    padding:15px 10px 22px;
   }
+
+  .logo-box{
+    max-width:330px;
+    height:150px;
+  }
+
+  header h1{
+    font-size:27px;
+  }
+
+  .container{
+    padding:14px 10px 38px;
+  }
+
+  .card{
+    padding:17px;
+  }
+
+  .rate-label{
+    font-size:13px;
+  }
+
+  .price{
+    font-size:14px;
+  }
+
 }
+
 </style>
 </head>
 
+
 <body>
 
-<header>
-  <div class="logo-box">
-    <img src="./logo.png" class="logo" alt="Vrundavan Ornaments Logo">
-  </div>
 
-  <h1>VOPL GOLD</h1>
-  <p>લાઇવ સોના અને ચાંદીના ભાવ</p>
+<header>
+
+<div class="logo-box">
+
+<img
+  src="./logo.png"
+  class="logo"
+  alt="Vrundavan Ornaments Logo"
+>
+
+</div>
+
+<h1>VOPL GOLD</h1>
+
+<p>લાઇવ સોના અને ચાંદીના ભાવ</p>
+
 </header>
+
 
 <main class="container">
 
+
+<!-- TODAY RATES -->
+
+
 <section class="card">
+
 <h2>આજના ભાવ</h2>
 
-<div class="section-title">સોનાનો ભાવ</div>
 
-<div class="rate">
-  <span class="rate-label">૨૪ કેરેટ (૧૦ ગ્રામ)</span>
-  <span class="price">₹<span id="g24">Loading...</span></span>
+<div class="section-title">
+સોનાનો ભાવ
 </div>
 
-<div class="rate">
-  <span class="rate-label">૨૨ કેરેટ (૧૦ ગ્રામ)</span>
-  <span class="price">₹<span id="g22">Loading...</span></span>
-</div>
 
 <div class="rate">
-  <span class="rate-label">૧૮ કેરેટ (૧૦ ગ્રામ)</span>
-  <span class="price">₹<span id="g18">Loading...</span></span>
+  <span class="rate-label">
+    ૨૪ કેરેટ (૧૦ ગ્રામ)
+  </span>
+
+  <span class="price">
+    ₹<span id="g24">Loading...</span>
+  </span>
 </div>
 
-<div class="section-title">ચાંદીનો ભાવ (૧ કિલો)</div>
 
 <div class="rate">
-  <span class="rate-label">૯૫/૭૫ ટ્રેડિંગ</span>
-  <span class="price">₹<span id="s95">Loading...</span></span>
+  <span class="rate-label">
+    ૨૨ કેરેટ (૧૦ ગ્રામ)
+  </span>
+
+  <span class="price">
+    ₹<span id="g22">Loading...</span>
+  </span>
 </div>
+
 
 <div class="rate">
-  <span class="rate-label">૯૦/૭૦ ટ્રેડિંગ</span>
-  <span class="price">₹<span id="s90">Loading...</span></span>
+  <span class="rate-label">
+    ૧૮ કેરેટ (૧૦ ગ્રામ)
+  </span>
+
+  <span class="price">
+    ₹<span id="g18">Loading...</span>
+  </span>
 </div>
+
+
+<div class="section-title">
+ચાંદીનો ભાવ (૧ કિલો)
+</div>
+
 
 <div class="rate">
-  <span class="rate-label">૬૦/૮૦ ટ્રેડિંગ</span>
-  <span class="price">₹<span id="s60">Loading...</span></span>
+  <span class="rate-label">
+    ૯૫/૭૫ ટ્રેડિંગ
+  </span>
+
+  <span class="price">
+    ₹<span id="s95">Loading...</span>
+  </span>
 </div>
 
-<div class="section-title">થરાદ રોકડ બજાર</div>
-
-<div class="rate">
-  <span class="rate-label">ગોલ્ડ ૯૯૯ IMP</span>
-  <span class="price">₹<span id="th_g999">Loading...</span></span>
-</div>
-
-<div class="rate">
-  <span class="rate-label">સિલ્વર ચોરસા ૯૯૯</span>
-  <span class="price">₹<span id="th_s999">Loading...</span></span>
-</div>
 
 <div class="rate">
-  <span class="rate-label">૨૨ કેરેટ રોકડ</span>
-  <span class="price">₹<span id="th_g22">Loading...</span></span>
+  <span class="rate-label">
+    ૯૦/૭૦ ટ્રેડિંગ
+  </span>
+
+  <span class="price">
+    ₹<span id="s90">Loading...</span>
+  </span>
 </div>
+
+
+<div class="rate">
+  <span class="rate-label">
+    ૬૦/૮૦ ટ્રેડિંગ
+  </span>
+
+  <span class="price">
+    ₹<span id="s60">Loading...</span>
+  </span>
+</div>
+
+
+<div class="section-title">
+થરાદ રોકડ બજાર
+</div>
+
+
+<div class="rate">
+  <span class="rate-label">
+    ગોલ્ડ ૯૯૯ IMP
+  </span>
+
+  <span class="price">
+    ₹<span id="th_g999">Loading...</span>
+  </span>
+</div>
+
+
+<div class="rate">
+  <span class="rate-label">
+    સિલ્વર ચોરસા ૯૯૯
+  </span>
+
+  <span class="price">
+    ₹<span id="th_s999">Loading...</span>
+  </span>
+</div>
+
+
+<div class="rate">
+  <span class="rate-label">
+    ૨૨ કેરેટ રોકડ
+  </span>
+
+  <span class="price">
+    ₹<span id="th_g22">Loading...</span>
+  </span>
+</div>
+
 
 <div class="date-box">
-  <div id="currentDate" class="date-line">આજની તારીખ: -</div>
-  <div id="lastUpdate" class="date-line">છેલ્લો અપડેટ: -</div>
+
+  <div
+    id="currentDate"
+    class="date-line"
+  >
+    આજની તારીખ: -
+  </div>
+
+  <div
+    id="lastUpdate"
+    class="date-line"
+  >
+    છેલ્લો અપડેટ: -
+  </div>
+
 </div>
+
+
 </section>
+
+
+<!-- RATE CALCULATOR -->
 
 
 <section class="card">
+
 <h2>રેટ કેલ્ક્યુલેટર</h2>
 
+
 <select id="calcItem">
-  <option value="g24">૨૪ કેરેટ સોનું</option>
-  <option value="g22">૨૨ કેરેટ સોનું</option>
-  <option value="g18">૧૮ કેરેટ સોનું</option>
-  <option value="s95">ચાંદી ૯૫/૭૫</option>
-  <option value="s90">ચાંદી ૯૦/૭૦</option>
-  <option value="s60">ચાંદી ૬૦/૮૦</option>
-  <option value="th_g999">થરાદ ગોલ્ડ ૯૯૯</option>
-  <option value="th_s999">થરાદ સિલ્વર ૯૯૯</option>
-  <option value="th_g22">થરાદ ૨૨ કેરેટ</option>
+
+  <option value="g24">
+    ૨૪ કેરેટ સોનું
+  </option>
+
+  <option value="g22">
+    ૨૨ કેરેટ સોનું
+  </option>
+
+  <option value="g18">
+    ૧૮ કેરેટ સોનું
+  </option>
+
+  <option value="s95">
+    ચાંદી ૯૫/૭૫
+  </option>
+
+  <option value="s90">
+    ચાંદી ૯૦/૭૦
+  </option>
+
+  <option value="s60">
+    ચાંદી ૬૦/૮૦
+  </option>
+
+  <option value="th_g999">
+    થરાદ ગોલ્ડ ૯૯૯
+  </option>
+
+  <option value="th_s999">
+    થરાદ સિલ્વર ૯૯૯
+  </option>
+
+  <option value="th_g22">
+    થરાદ ૨૨ કેરેટ
+  </option>
+
 </select>
 
-<input id="weight" type="number" inputmode="decimal" step="0.001" placeholder="વજન ગ્રામમાં દાખલ કરો">
 
-<button id="calculateBtn">હિસાબ કરો</button>
+<input
+  id="weight"
+  type="number"
+  inputmode="decimal"
+  min="0"
+  step="0.001"
+  placeholder="વજન ગ્રામમાં દાખલ કરો"
+>
+
+
+<button id="calculateBtn">
+હિસાબ કરો
+</button>
+
 
 <div class="total">
-  કુલ રકમ: ₹<span id="total">0</span>
+
+કુલ રકમ:
+
+₹<span id="total">0</span>
+
 </div>
+
+
 </section>
 
+
+<!-- ADMIN LOGIN -->
 
 <section id="adminLoginBox" class="card hidden">
-<h2>🔐 એડમિન લોગિન</h2>
 
-<input id="email" type="email" autocomplete="username" placeholder="એડમિન ઈમેલ">
+<h2>એડમિન લોગિન</h2>
 
-<input id="password" type="password" autocomplete="current-password" placeholder="પાસવર્ડ">
+<input
+  id="email"
+  type="email"
+  autocomplete="username"
+  placeholder="એડમિન ઈમેલ"
+>
 
-<button id="loginBtn">લોગિન</button>
+<input
+  id="password"
+  type="password"
+  autocomplete="current-password"
+  placeholder="પાસવર્ડ"
+>
 
-<button id="closeAdminBtn" class="secondary">એડમિન મોડ બંધ કરો</button>
+<button id="loginBtn">
+લોગિન
+</button>
 
-<div id="loginMessage" class="message"></div>
+<button
+  id="closeAdminBtn"
+  class="secondary"
+>
+એડમિન મોડ બંધ કરો
+</button>
+
+<div
+  id="loginMessage"
+  class="message"
+></div>
+
 </section>
 
+
+<!-- ADMIN PANEL -->
 
 <section id="adminBox" class="card hidden">
-<h2>🔐 એડમિન પેનલ</h2>
 
-<div id="adminStatus" class="admin-status"></div>
+<h2>એડમિન પેનલ</h2>
 
-<div class="section-title">સોનાના ભાવ બદલો</div>
+<div
+  id="adminStatus"
+  class="admin-status"
+></div>
 
-<input id="new_g24" type="number" placeholder="૨૪ કેરેટનો ભાવ">
-<input id="new_g22" type="number" placeholder="૨૨ કેરેટનો ભાવ">
-<input id="new_g18" type="number" placeholder="૧૮ કેરેટનો ભાવ">
 
-<div class="section-title">ચાંદીના ભાવ બદલો</div>
+<div class="section-title">
+સોનાના ભાવ બદલો
+</div>
 
-<input id="new_s95" type="number" placeholder="૯૫/૭૫ ટ્રેડિંગ ભાવ">
-<input id="new_s90" type="number" placeholder="૯૦/૭૦ ટ્રેડિંગ ભાવ">
-<input id="new_s60" type="number" placeholder="૬૦/૮૦ ટ્રેડિંગ ભાવ">
+<input
+  id="new_g24"
+  type="number"
+  inputmode="decimal"
+  placeholder="૨૪ કેરેટનો ભાવ"
+>
 
-<div class="section-title">થરાદ રોકડ બજારના ભાવ બદલો</div>
+<input
+  id="new_g22"
+  type="number"
+  inputmode="decimal"
+  placeholder="૨૨ કેરેટનો ભાવ"
+>
 
-<input id="new_th_g999" type="number" placeholder="થરાદ ગોલ્ડ ૯૯૯ ભાવ">
-<input id="new_th_s999" type="number" placeholder="થરાદ સિલ્વર ૯૯૯ ભાવ">
-<input id="new_th_g22" type="number" placeholder="થરાદ ૨૨ કેરેટ ભાવ">
+<input
+  id="new_g18"
+  type="number"
+  inputmode="decimal"
+  placeholder="૧૮ કેરેટનો ભાવ"
+>
 
-<button id="updateBtn" class="save-button">બધા ભાવ સેવ કરો</button>
 
-<button id="logoutBtn" class="logout-button">લોગઆઉટ</button>
+<div class="section-title">
+ચાંદીના ભાવ બદલો
+</div>
 
-<div id="adminMessage" class="message"></div>
+<input
+  id="new_s95"
+  type="number"
+  inputmode="decimal"
+  placeholder="૯૫/૭૫ ટ્રેડિંગ ભાવ"
+>
+
+<input
+  id="new_s90"
+  type="number"
+  inputmode="decimal"
+  placeholder="૯૦/૭૦ ટ્રેડિંગ ભાવ"
+>
+
+<input
+  id="new_s60"
+  type="number"
+  inputmode="decimal"
+  placeholder="૬૦/૮૦ ટ્રેડિંગ ભાવ"
+>
+
+
+<div class="section-title">
+થરાદ રોકડ બજારના ભાવ બદલો
+</div>
+
+<input
+  id="new_th_g999"
+  type="number"
+  inputmode="decimal"
+  placeholder="થરાદ ગોલ્ડ ૯૯૯ ભાવ"
+>
+
+<input
+  id="new_th_s999"
+  type="number"
+  inputmode="decimal"
+  placeholder="થરાદ સિલ્વર ૯૯૯ ભાવ"
+>
+
+<input
+  id="new_th_g22"
+  type="number"
+  inputmode="decimal"
+  placeholder="થરાદ ૨૨ કેરેટ ભાવ"
+>
+
+
+<button
+  id="updateBtn"
+  class="save-button"
+>
+બધા ભાવ સેવ કરો
+</button>
+
+<button
+  id="logoutBtn"
+  class="logout-button"
+>
+લોગઆઉટ
+</button>
+
+<div
+  id="adminMessage"
+  class="message"
+></div>
+
 </section>
 
-<div id="publicMessage" class="message"></div>
+
+<div
+  id="publicMessage"
+  class="message"
+></div>
 
 </main>
 
-<footer>© Vrundavan Ornaments Pvt. Ltd.</footer>
+
+<footer>
+© Vrundavan Ornaments Pvt. Ltd.
+</footer>
 
 
 <script type="module">
 
+
+/* FIREBASE IMPORTS */
+
 import { initializeApp }
 from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+
 
 import {
   getAuth,
@@ -392,6 +780,7 @@ import {
   onAuthStateChanged
 }
 from "https://www.gstatic.com/firebasejs/12.15.0/firebase-auth.js";
+
 
 import {
   getFirestore,
@@ -403,369 +792,1062 @@ import {
 from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
 
 
-const firebaseConfig={
-  apiKey:"AIzaSyACpWFqxs1AaIx7C6kMpu45bD79fWJeR60",
-  authDomain:"reset-de458.firebaseapp.com",
-  projectId:"reset-de458",
-  storageBucket:"reset-de458.firebasestorage.app",
-  messagingSenderId:"192490668353",
-  appId:"1:192490668353:web:e8ce193dab2d3c4f7061c0",
-  measurementId:"G-NKVEWN4YSC"
+/* FIREBASE CONFIG */
+
+const firebaseConfig = {
+
+  apiKey:
+  "AIzaSyACpWFqxs1AaIx7C6kMpu45bD79fWJeR60",
+
+  authDomain:
+  "reset-de458.firebaseapp.com",
+
+  projectId:
+  "reset-de458",
+
+  storageBucket:
+  "reset-de458.firebasestorage.app",
+
+  messagingSenderId:
+  "192490668353",
+
+  appId:
+  "1:192490668353:web:e8ce193dab2d3c4f7061c0",
+
+  measurementId:
+  "G-NKVEWN4YSC"
+
 };
 
 
-const ADMIN_EMAIL="office.vopl@gmail.com";
+/* ADMIN EMAIL */
 
-const app=initializeApp(firebaseConfig);
-const auth=getAuth(app);
-const db=getFirestore(app);
-
-const rateRef=doc(db,"rates","current");
+const ADMIN_EMAIL =
+"office.vopl@gmail.com";
 
 
-const RATE_KEYS=[
+/* INITIALIZE FIREBASE */
+
+const app =
+initializeApp(firebaseConfig);
+
+const auth =
+getAuth(app);
+
+const db =
+getFirestore(app);
+
+const rateRef =
+doc(
+  db,
+  "rates",
+  "current"
+);
+
+
+/* RATE SETTINGS */
+
+const RATE_KEYS = [
+
   "g24",
+
   "g22",
+
   "g18",
+
   "s95",
+
   "s90",
+
   "s60",
+
   "th_g999",
+
   "th_s999",
+
   "th_g22"
+
 ];
 
-const SILVER_KEYS=[
+
+const SILVER_KEYS = [
+
   "s95",
+
   "s90",
+
   "s60",
+
   "th_s999"
+
 ];
 
-let rates={};
+
+let rates = {};
 
 
-const adminLoginBox=document.getElementById("adminLoginBox");
-const adminBox=document.getElementById("adminBox");
-const emailInput=document.getElementById("email");
-const passwordInput=document.getElementById("password");
-const loginBtn=document.getElementById("loginBtn");
-const updateBtn=document.getElementById("updateBtn");
-const loginMessage=document.getElementById("loginMessage");
-const adminMessage=document.getElementById("adminMessage");
-const publicMessage=document.getElementById("publicMessage");
-const adminStatus=document.getElementById("adminStatus");
-const currentDateEl=document.getElementById("currentDate");
-const lastUpdateEl=document.getElementById("lastUpdate");
-const totalEl=document.getElementById("total");
+/* HTML ELEMENTS */
+
+const adminLoginBox =
+document.getElementById(
+  "adminLoginBox"
+);
+
+const adminBox =
+document.getElementById(
+  "adminBox"
+);
+
+const emailInput =
+document.getElementById(
+  "email"
+);
+
+const passwordInput =
+document.getElementById(
+  "password"
+);
+
+const loginBtn =
+document.getElementById(
+  "loginBtn"
+);
+
+const updateBtn =
+document.getElementById(
+  "updateBtn"
+);
+
+const loginMessage =
+document.getElementById(
+  "loginMessage"
+);
+
+const adminMessage =
+document.getElementById(
+  "adminMessage"
+);
+
+const publicMessage =
+document.getElementById(
+  "publicMessage"
+);
+
+const adminStatus =
+document.getElementById(
+  "adminStatus"
+);
+
+const currentDateEl =
+document.getElementById(
+  "currentDate"
+);
+
+const lastUpdateEl =
+document.getElementById(
+  "lastUpdate"
+);
+
+const totalEl =
+document.getElementById(
+  "total"
+);
+
+const calcItem =
+document.getElementById(
+  "calcItem"
+);
+
+const weightInput =
+document.getElementById(
+  "weight"
+);
 
 
-const params=new URLSearchParams(window.location.search);
-const isAdminURL=params.get("admin")==="vopl";
+/* ADMIN URL CHECK */
+
+const params =
+new URLSearchParams(
+  window.location.search
+);
+
+const isAdminURL =
+params.get("admin") === "vopl";
 
 
-function money(value){
-  const n=Number(value);
+/* MONEY FORMAT */
 
-  if(!Number.isFinite(n)){
+function formatMoney(value){
+
+  const number =
+  Number(value);
+
+  if(
+    !Number.isFinite(number)
+  ){
+
     return "0";
+
   }
 
-  return n.toLocaleString("en-IN",{
-    maximumFractionDigits:2
-  });
-}
+  return number.toLocaleString(
 
+    "en-IN",
 
-function isAdmin(user){
-  return Boolean(
-    user &&
-    user.email &&
-    user.email.toLowerCase()===ADMIN_EMAIL.toLowerCase()
+    {
+      maximumFractionDigits:2
+    }
+
   );
+
 }
 
 
-function showCurrentDate(){
-  currentDateEl.textContent=
-  "આજની તારીખ: "+
-  new Date().toLocaleDateString("gu-IN",{
-    day:"2-digit",
-    month:"2-digit",
-    year:"numeric"
-  });
+/* ADMIN USER CHECK */
+
+function isAdminUser(user){
+
+  return Boolean(
+
+    user &&
+
+    user.email &&
+
+    user.email.toLowerCase()
+
+    ===
+
+    ADMIN_EMAIL.toLowerCase()
+
+  );
+
 }
 
-showCurrentDate();
-setInterval(showCurrentDate,60000);
 
+/* DATE FUNCTIONS */
 
-function fillRates(){
-  RATE_KEYS.forEach(key=>{
-    const display=document.getElementById(key);
+function formatCurrentDate(date){
 
-    if(display){
-      display.textContent=money(rates[key] || 0);
+  return date.toLocaleDateString(
+
+    "gu-IN",
+
+    {
+
+      day:"2-digit",
+
+      month:"2-digit",
+
+      year:"numeric"
+
     }
 
-    const input=document.getElementById("new_"+key);
+  );
 
-    if(input){
-      input.value=rates[key] ?? "";
-    }
-  });
 }
 
 
-/* LIVE RATES */
+function formatUpdateDateTime(date){
+
+  return date.toLocaleString(
+
+    "gu-IN",
+
+    {
+
+      day:"2-digit",
+
+      month:"2-digit",
+
+      year:"numeric",
+
+      hour:"2-digit",
+
+      minute:"2-digit",
+
+      second:"2-digit"
+
+    }
+
+  );
+
+}
+
+
+/* SHOW CURRENT DATE */
+
+function updateCurrentDate(){
+
+  currentDateEl.textContent =
+
+  "આજની તારીખ: "
+
+  +
+
+  formatCurrentDate(
+    new Date()
+  );
+
+}
+
+
+updateCurrentDate();
+
+
+setInterval(
+
+  updateCurrentDate,
+
+  60000
+
+);
+
+
+/* UPDATE RATE DISPLAY */
+
+function updateRateDisplay(){
+
+  RATE_KEYS.forEach(
+
+    key => {
+
+
+      const display =
+
+      document
+      .getElementById(key);
+
+
+      if(display){
+
+        display.textContent =
+
+        formatMoney(
+
+          rates[key] || 0
+
+        );
+
+      }
+
+
+      const adminInput =
+
+      document
+      .getElementById(
+
+        "new_" + key
+
+      );
+
+
+      if(adminInput){
+
+        adminInput.value =
+
+        rates[key] ?? "";
+
+      }
+
+
+    }
+
+  );
+
+}
+
+
+/* LIVE FIRESTORE RATES */
 
 onSnapshot(
+
   rateRef,
 
-  snapshot=>{
 
-    if(!snapshot.exists()){
-      publicMessage.textContent="rates/current data મળ્યો નથી.";
+  snapshot => {
 
-      RATE_KEYS.forEach(key=>{
-        document.getElementById(key).textContent="No Data";
-      });
+
+    if(
+      !snapshot.exists()
+    ){
+
+
+      RATE_KEYS.forEach(
+
+        key => {
+
+
+          const display =
+
+          document
+          .getElementById(key);
+
+
+          if(display){
+
+            display.textContent =
+            "No Data";
+
+          }
+
+
+        }
+
+      );
+
+
+      lastUpdateEl.textContent =
+
+      "છેલ્લો અપડેટ: -";
+
+
+      publicMessage.textContent =
+
+      "Firestoreમાં rates/current data મળ્યો નથી.";
+
 
       return;
+
     }
 
-    const data=snapshot.data();
 
-    RATE_KEYS.forEach(key=>{
-      const value=Number(data[key]);
-      rates[key]=Number.isFinite(value) ? value : 0;
-    });
+    const data =
+    snapshot.data();
 
-    fillRates();
 
-    if(data.updatedAt && typeof data.updatedAt.toDate==="function"){
-      lastUpdateEl.textContent=
-      "છેલ્લો અપડેટ: "+
-      data.updatedAt.toDate().toLocaleString("gu-IN",{
-        day:"2-digit",
-        month:"2-digit",
-        year:"numeric",
-        hour:"2-digit",
-        minute:"2-digit"
-      });
-    }else{
-      lastUpdateEl.textContent="છેલ્લો અપડેટ: -";
+    RATE_KEYS.forEach(
+
+      key => {
+
+
+        const value =
+
+        Number(
+          data[key]
+        );
+
+
+        rates[key] =
+
+        Number.isFinite(value)
+
+        ?
+
+        value
+
+        :
+
+        0;
+
+
+      }
+
+    );
+
+
+    updateRateDisplay();
+
+
+    if(
+
+      data.updatedAt &&
+
+      typeof data.updatedAt.toDate
+
+      ===
+
+      "function"
+
+    ){
+
+
+      lastUpdateEl.textContent =
+
+      "છેલ્લો અપડેટ: "
+
+      +
+
+      formatUpdateDateTime(
+
+        data.updatedAt.toDate()
+
+      );
+
+
     }
 
-    publicMessage.textContent="";
+
+    else{
+
+
+      lastUpdateEl.textContent =
+
+      "છેલ્લો અપડેટ: -";
+
+
+    }
+
+
+    publicMessage.textContent = "";
+
+
   },
 
-  error=>{
-    console.error(error);
 
-    publicMessage.textContent=
-    "ભાવ લોડ કરવામાં Error: "+
-    (error.code || error.message);
+  error => {
+
+
+    console.error(
+
+      "Firestore Read Error:",
+
+      error
+
+    );
+
+
+    publicMessage.textContent =
+
+    "ભાવ લોડ કરવામાં Error: "
+
+    +
+
+    (
+      error.code ||
+      error.message
+    );
+
+
   }
+
 );
 
 
 /* CALCULATOR */
 
-document.getElementById("calculateBtn").addEventListener("click",()=>{
+document
+.getElementById(
+  "calculateBtn"
+)
+.addEventListener(
 
-  const selected=document.getElementById("calcItem").value;
-  const weight=Number(document.getElementById("weight").value);
-  const rate=Number(rates[selected] || 0);
+  "click",
 
-  if(!Number.isFinite(weight) || weight<=0){
-    totalEl.textContent="0";
-    publicMessage.textContent="સાચું વજન દાખલ કરો.";
-    return;
-  }
-
-  if(!Number.isFinite(rate) || rate<=0){
-    totalEl.textContent="0";
-    publicMessage.textContent="આ ભાવ ઉપલબ્ધ નથી.";
-    return;
-  }
-
-  const amount=
-  SILVER_KEYS.includes(selected)
-  ? rate*weight/1000
-  : rate*weight/10;
-
-  totalEl.textContent=money(amount);
-  publicMessage.textContent="";
-});
+  () => {
 
 
-/* LOGIN */
+    const selected =
 
-loginBtn.addEventListener("click",async()=>{
-
-  const email=emailInput.value.trim().toLowerCase();
-  const password=passwordInput.value;
-
-  if(!email || !password){
-    loginMessage.textContent="ઈમેલ અને પાસવર્ડ દાખલ કરો.";
-    return;
-  }
-
-  if(email!==ADMIN_EMAIL.toLowerCase()){
-    loginMessage.textContent="આ ઈમેલ Admin નથી.";
-    return;
-  }
-
-  loginBtn.disabled=true;
-  loginMessage.textContent="લોગિન થઈ રહ્યું છે...";
-
-  try{
-    const credential=
-    await signInWithEmailAndPassword(auth,email,password);
-
-    if(!isAdmin(credential.user)){
-      await signOut(auth);
-      loginMessage.textContent="આ Account Admin નથી.";
-      return;
-    }
-
-    passwordInput.value="";
-    loginMessage.textContent="Admin Login Successful";
-  }
-
-  catch(error){
-    console.error(error);
-
-    if(error.code==="auth/invalid-credential"){
-      loginMessage.textContent="ઈમેલ અથવા પાસવર્ડ ખોટો છે.";
-    }else{
-      loginMessage.textContent=
-      "Login Failed: "+
-      (error.code || error.message);
-    }
-  }
-
-  finally{
-    loginBtn.disabled=false;
-  }
-});
+    calcItem.value;
 
 
-passwordInput.addEventListener("keydown",event=>{
-  if(event.key==="Enter"){
-    loginBtn.click();
-  }
-});
+    const weight =
 
-
-/* AUTH STATUS */
-
-onAuthStateChanged(auth,async user=>{
-
-  if(!isAdminURL){
-    adminLoginBox.classList.add("hidden");
-    adminBox.classList.add("hidden");
-    return;
-  }
-
-  if(isAdmin(user)){
-    adminLoginBox.classList.add("hidden");
-    adminBox.classList.remove("hidden");
-
-    adminStatus.textContent="લોગિન: "+user.email;
-
-    fillRates();
-    return;
-  }
-
-  if(user){
-    await signOut(auth);
-    return;
-  }
-
-  adminBox.classList.add("hidden");
-  adminLoginBox.classList.remove("hidden");
-
-  emailInput.value=ADMIN_EMAIL;
-});
-
-
-/* SAVE RATES */
-
-updateBtn.addEventListener("click",async()=>{
-
-  const user=auth.currentUser;
-
-  if(!isAdminURL || !isAdmin(user)){
-    adminMessage.textContent="Admin Login જરૂરી છે.";
-    return;
-  }
-
-  const newRates={};
-
-  for(const key of RATE_KEYS){
-    const input=document.getElementById("new_"+key);
-    const value=Number(input.value);
-
-    if(!Number.isFinite(value) || value<=0){
-      adminMessage.textContent="બધા ભાવ સાચા દાખલ કરો.";
-      input.focus();
-      return;
-    }
-
-    newRates[key]=value;
-  }
-
-  updateBtn.disabled=true;
-  adminMessage.textContent="ભાવ સેવ થઈ રહ્યા છે...";
-
-  try{
-    await setDoc(
-      rateRef,
-      {
-        ...newRates,
-        updatedAt:serverTimestamp(),
-        updatedBy:user.email
-      },
-      {merge:true}
+    Number(
+      weightInput.value
     );
 
-    rates={...rates,...newRates};
 
-    fillRates();
+    if(
 
-    adminMessage.textContent=
-    "બધા ભાવ સફળતાપૂર્વક અપડેટ થયા.";
+      !Number.isFinite(weight)
+
+      ||
+
+      weight <= 0
+
+    ){
+
+
+      totalEl.textContent =
+      "0";
+
+
+      publicMessage.textContent =
+
+      "કૃપા કરીને સાચું વજન દાખલ કરો.";
+
+
+      return;
+
+    }
+
+
+    const rate =
+
+    Number(
+
+      rates[selected] || 0
+
+    );
+
+
+    if(
+
+      !Number.isFinite(rate)
+
+      ||
+
+      rate <= 0
+
+    ){
+
+
+      totalEl.textContent =
+      "0";
+
+
+      publicMessage.textContent =
+
+      "આ ભાવ ઉપલબ્ધ નથી.";
+
+
+      return;
+
+    }
+
+
+    let amount = 0;
+
+
+    if(
+
+      SILVER_KEYS.includes(
+        selected
+      )
+
+    ){
+
+
+      amount =
+
+      rate
+
+      *
+
+      weight
+
+      /
+
+      1000;
+
+
+    }
+
+
+    else{
+
+
+      amount =
+
+      rate
+
+      *
+
+      weight
+
+      /
+
+      10;
+
+
+    }
+
+
+    totalEl.textContent =
+
+    formatMoney(amount);
+
+
+    publicMessage.textContent = "";
+
+
   }
 
-  catch(error){
-    console.error(error);
+);
 
-    adminMessage.textContent=
-    error.code==="permission-denied"
-    ? "Permission Denied. Firestore Rules check કરો."
-    : "Update Failed: "+(error.code || error.message);
+
+/* ADMIN LOGIN */
+
+loginBtn.addEventListener("click", async () => {
+
+  const email =
+    emailInput.value.trim().toLowerCase();
+
+  const password =
+    passwordInput.value;
+
+  if (!email || !password) {
+
+    loginMessage.textContent =
+      "ઈમેલ અને પાસવર્ડ દાખલ કરો.";
+
+    return;
   }
 
-  finally{
-    updateBtn.disabled=false;
+  if (email !== ADMIN_EMAIL.toLowerCase()) {
+
+    loginMessage.textContent =
+      "આ ઈમેલ Admin નથી.";
+
+    return;
   }
+
+  loginBtn.disabled = true;
+
+  loginMessage.textContent =
+    "લોગિન થઈ રહ્યું છે...";
+
+  try {
+
+    const credential =
+      await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+    if (!isAdminUser(credential.user)) {
+
+      await signOut(auth);
+
+      loginMessage.textContent =
+        "આ Account Admin નથી.";
+
+      return;
+    }
+
+    passwordInput.value = "";
+
+    loginMessage.textContent =
+      "Admin Login Successful";
+
+  }
+
+  catch (error) {
+
+    console.error(
+      "Login Error:",
+      error
+    );
+
+    if (
+      error.code ===
+      "auth/invalid-credential"
+    ) {
+
+      loginMessage.textContent =
+        "ઈમેલ અથવા પાસવર્ડ ખોટો છે.";
+
+    }
+
+    else if (
+      error.code ===
+      "auth/too-many-requests"
+    ) {
+
+      loginMessage.textContent =
+        "ઘણા Login પ્રયાસ થયા છે. થોડા સમય પછી ફરી પ્રયાસ કરો.";
+
+    }
+
+    else {
+
+      loginMessage.textContent =
+        "Login Failed: " +
+        (error.code || error.message);
+
+    }
+
+  }
+
+  finally {
+
+    loginBtn.disabled = false;
+
+  }
+
 });
+
+
+/* ENTER KEY LOGIN */
+
+passwordInput.addEventListener(
+  "keydown",
+  event => {
+
+    if (event.key === "Enter") {
+
+      loginBtn.click();
+
+    }
+
+  }
+);
+
+
+/* AUTH STATE */
+
+onAuthStateChanged(
+  auth,
+  async user => {
+
+    /*
+    CUSTOMER URL:
+    Admin Login અને Admin Panel
+    બંને hidden રહેશે.
+    */
+
+    if (!isAdminURL) {
+
+      adminLoginBox
+        .classList
+        .add("hidden");
+
+      adminBox
+        .classList
+        .add("hidden");
+
+      return;
+    }
+
+
+    /*
+    ADMIN URL + CORRECT ADMIN LOGIN
+    */
+
+    if (isAdminUser(user)) {
+
+      adminLoginBox
+        .classList
+        .add("hidden");
+
+      adminBox
+        .classList
+        .remove("hidden");
+
+      adminStatus.textContent =
+        "લોગિન: " + user.email;
+
+      updateRateDisplay();
+
+      return;
+    }
+
+
+    /*
+    WRONG FIREBASE USER LOGGED IN
+    */
+
+    if (user) {
+
+      await signOut(auth);
+
+      return;
+    }
+
+
+    /*
+    ADMIN URL BUT NOT LOGGED IN
+    */
+
+    adminBox
+      .classList
+      .add("hidden");
+
+    adminLoginBox
+      .classList
+      .remove("hidden");
+
+    emailInput.value =
+      ADMIN_EMAIL;
+
+  }
+);
+
+
+/* SAVE ALL 9 RATES */
+
+updateBtn.addEventListener(
+  "click",
+  async () => {
+
+    const user =
+      auth.currentUser;
+
+    if (
+      !isAdminURL ||
+      !isAdminUser(user)
+    ) {
+
+      adminMessage.textContent =
+        "Admin Login જરૂરી છે.";
+
+      return;
+    }
+
+
+    const newRates = {};
+
+
+    for (const key of RATE_KEYS) {
+
+      const input =
+        document.getElementById(
+          "new_" + key
+        );
+
+      const value =
+        Number(input.value);
+
+      if (
+        !Number.isFinite(value) ||
+        value <= 0
+      ) {
+
+        adminMessage.textContent =
+          "બધા ભાવ સાચા દાખલ કરો.";
+
+        input.focus();
+
+        return;
+      }
+
+      newRates[key] = value;
+
+    }
+
+
+    updateBtn.disabled = true;
+
+    adminMessage.textContent =
+      "ભાવ સેવ થઈ રહ્યા છે...";
+
+
+    try {
+
+      await setDoc(
+
+        rateRef,
+
+        {
+
+          ...newRates,
+
+          updatedAt:
+            serverTimestamp(),
+
+          updatedBy:
+            user.email
+
+        },
+
+        {
+          merge: true
+        }
+
+      );
+
+
+      rates = {
+
+        ...rates,
+
+        ...newRates
+
+      };
+
+
+      updateRateDisplay();
+
+
+      adminMessage.textContent =
+        "બધા ભાવ સફળતાપૂર્વક અપડેટ થયા.";
+
+    }
+
+    catch (error) {
+
+      console.error(
+        "Firestore Update Error:",
+        error
+      );
+
+
+      if (
+        error.code ===
+        "permission-denied"
+      ) {
+
+        adminMessage.textContent =
+          "Permission Denied. Firestore Rules check કરો.";
+
+      }
+
+      else {
+
+        adminMessage.textContent =
+          "Update Failed: " +
+          (error.code || error.message);
+
+      }
+
+    }
+
+    finally {
+
+      updateBtn.disabled = false;
+
+    }
+
+  }
+);
 
 
 /* LOGOUT */
 
-document.getElementById("logoutBtn").addEventListener("click",async()=>{
-  await signOut(auth);
-});
+document
+  .getElementById("logoutBtn")
+  .addEventListener(
+    "click",
+    async () => {
+
+      try {
+
+        await signOut(auth);
+
+        adminMessage.textContent = "";
+
+        loginMessage.textContent =
+          "લોગઆઉટ સફળ થયું.";
+
+      }
+
+      catch (error) {
+
+        adminMessage.textContent =
+          "Logout Failed: " +
+          (error.code || error.message);
+
+      }
+
+    }
+  );
 
 
 /* CLOSE ADMIN MODE */
 
-document.getElementById("closeAdminBtn").addEventListener("click",()=>{
-  window.location.href=window.location.pathname;
-});
+document
+  .getElementById("closeAdminBtn")
+  .addEventListener(
+    "click",
+    () => {
+
+      window.location.href =
+        window.location.pathname;
+
+    }
+  );
 
 </script>
 
