@@ -725,7 +725,7 @@ loginBtn.addEventListener("click", async () => {
   const email = emailInput.value.trim().toLowerCase();
   const password = passwordInput.value;
   if (!email || !password) { loginMessage.textContent = "ઈમેલ અને પાસવર્ડ દાખલ કરો."; return; }
-  if (email !== ADMIN_EMAIL.toLowerCase()) { loginMessage.textContent = "આ ઈમેલ Admin નથી."; return; }
+  if (email !== ADMIN_EMAIL.toLowerCase()) { loginMessage.textContent = "આ ઈમેલ Admin નથી.."; return; }
   loginBtn.disabled = true; loginMessage.textContent = "લોગિન થઈ રહ્યું છે...";
   try {
     const credential = await signInWithEmailAndPassword(auth, email, password);
