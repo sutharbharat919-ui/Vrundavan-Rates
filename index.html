@@ -469,7 +469,7 @@ footer {
       <span class="price">₹<span id="s95">Loading...</span></span>
     </div>
     <div class="rate">
-      <span class="rate-label"><i class="fa-solid fa-coins" style="color: #d3d3d3;"></i> ૯૦/૭૦ ટ્રેડિંગ</span>
+      <span class="rate-label"><i class="fa-solid fa-coins" style="color: #d3d3d3;"></i> ૯0/૭૦ ટ્રેડિંગ</span>
       <span class="price">₹<span id="s90">Loading...</span></span>
     </div>
     <div class="rate">
@@ -559,8 +559,8 @@ footer {
   <div id="publicMessage" class="message"></div>
 </main>
 
-<!-- WHATSAPP FLOATING BUTTON (તમારો નંબર સેટ કરેલ છે) -->
-<a href="https://wa.me/918758383303?text=નમસ્તે%20VOPL%20GOLD,%20મને%20સોના-ચાંદીના%20લાઈવ%20ભાવ%20વિશે%20માહિતી%20જોઈએ%20છે." class="whatsapp-float" target="_blank" title="WhatsApp પર સંપર્ક કરો">
+<!-- WHATSAPP FLOATING BUTTON -->
+<a href="https://wa.me/918758383303?text=નમસ્તે%20VOPL%20GOLD,%20મને%20સોના-ચાんだીના%20લાઈવ%20ભાવ%20વિશે%20માહિતી%20જોઈએ%20છે." class="whatsapp-float" target="_blank" title="WhatsApp પર સંપર્ક કરો">
   <i class="fa-brands fa-whatsapp"></i>
 </a>
 
@@ -572,7 +572,7 @@ footer {
   <a href="tel:+918758383303" class="nav-item"><i class="fa-solid fa-phone"></i>કોલ કરો</a>
 </nav>
 
-<!-- UPGRADED FOOTER -->
+<!-- UPGRADED FOOTER WITH SOCIAL LINKS -->
 <footer>
   <div class="footer-links" style="margin-bottom: 20px;">
     <a href="#rates-sec"><i class="fa-solid fa-house"></i> મુખ્ય પેજ</a> | 
@@ -580,10 +580,11 @@ footer {
     <a href="https://wa.me/918758383303" target="_blank"><i class="fa-brands fa-whatsapp"></i> વોટ્સએપ સંપર્ક</a>
   </div>
 
+  <!-- INSTAGRAM & FACEBOOK LINKS UPDATED -->
   <div style="font-size: 22px; margin-bottom: 20px; display: flex; justify-content: center; gap: 20px;">
-    <a href="https://instagram.com/" target="_blank" style="color: #e1306c;"><i class="fa-brands fa-instagram"></i></a>
-    <a href="https://facebook.com/" target="_blank" style="color: #1877f2;"><i class="fa-brands fa-facebook"></i></a>
-    <a href="mailto:office.vopl@gmail.com" style="color: var(--text);"><i class="fa-solid fa-envelope"></i></a>
+    <a href="https://instagram.com/vrundavanornamets" target="_blank" style="color: #e1306c;" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://facebook.com/VrundavanOrnaments" target="_blank" style="color: #1877f2;" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+    <a href="mailto:office.vopl@gmail.com" style="color: var(--text);" title="Email"><i class="fa-solid fa-envelope"></i></a>
   </div>
 
   <div style="line-height: 1.8; margin-bottom: 20px; font-family: sans-serif; font-size: 14px; color: var(--text);">
@@ -701,7 +702,7 @@ onSnapshot(rateRef, snapshot => {
   RATE_KEYS.forEach(key => { const value = Number(data[key]); rates[key] = Number.isFinite(value) ? value : 0; });
   updateRateDisplay();
   if(data.updatedAt && typeof data.updatedAt.toDate === "function"){
-    lastUpdateEl.textContent = "છેલ્લો અપધેટ: " + formatUpdateDateTime(data.updatedAt.toDate());
+    lastUpdateEl.textContent = "છેલ્લો અપડેટ: " + formatUpdateDateTime(data.updatedAt.toDate());
   } else { lastUpdateEl.textContent = "છેલ્લો અપડેટ: -"; }
   publicMessage.textContent = "";
 }, error => {
