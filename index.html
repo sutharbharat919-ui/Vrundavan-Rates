@@ -583,7 +583,8 @@ footer {
   <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 15px;">
   
   <p>© 2026 Vrundavan Ornaments Pvt. Ltd. | All Rights Reserved.</p>
-  <p style="font-size: 11px; margin-top: 5px; color: var(--muted);">Developed by Bharat Suhar</p>
+  <!-- Interactive Dev Text -->
+  <p style="font-size: 11px; margin-top: 5px; color: var(--muted); cursor: pointer;" id="devBharatText">Developed by Bharat Suhar</p>
 </footer>
 
 <script type="module">
@@ -869,36 +870,29 @@ document.getElementById("closeAdminBtn").addEventListener("click", () => {
   window.location.href = window.location.pathname; 
 });
 
-<footer>
+// INTERACTIVE DEV TEXT: 1 Click = Instagram, Fast 3 Clicks = Secret Admin Panel
+const footerDevText = document.getElementById("devBharatText");
+if(footerDevText) {
+  let clickCount = 0;
+  let clickTimer = null;
 
-© Vrundavan Ornaments Pvt. Ltd.
-
-<br><br>
-
-<a href="https://www.instagram.com/b_s_0022?igsh=MXhwM3ZjeGJqbnNtdw=="
-target="_blank"
-rel="noopener noreferrer"
-style="
-text-decoration:none;
-color:#b9967d;
-font-size:15px;
-font-weight:700;
-transition:.3s;
-">
-
-💻 Developed with ❤️ by Bharat Suthar
-
-</a>
-
-</footer> => {
+  footerDevText.addEventListener("click", (e) => {
     clickCount++;
+    clearTimeout(clickTimer);
+
     if(clickCount === 3) {
       clickCount = 0;
       forceAdminShow = true;
       renderAdminPanels(auth.currentUser);
       adminLoginBox.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      clickTimer = setTimeout(() => {
+        if (clickCount === 1) {
+          window.open("https://www.instagram.com/b_s_0022?igsh=MWthbDZqeGdldjc2dA==", "_blank");
+        }
+        clickCount = 0;
+      }, 400);
     }
-    setTimeout(() => { clickCount = 0; }, 2000);
   });
 }
 </script>
