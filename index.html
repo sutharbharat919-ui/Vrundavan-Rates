@@ -87,28 +87,18 @@ button:disabled { opacity: .55; cursor: not-allowed; }
 .message { min-height: 22px; margin: 15px 0; text-align: center; color: var(--dark); font-size: 14px; font-weight: 700; }
 .hidden { display: none !important; }
 
-.whatsapp-float { position: fixed; bottom: 85px; right: 20px; background-color: #25d366; color: white; border-radius: 50%; width: 55px; height: 55px; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 99; text-decoration: none; }
-
 .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; height: 65px; background: var(--surface); border-top: 1px solid var(--border); display: flex; justify-content: space-around; align-items: center; z-index: 100; box-shadow: 0 -4px 10px rgba(0,0,0,0.05); }
 .nav-item { display: flex; flex-direction: column; align-items: center; color: var(--muted); text-decoration: none; font-size: 11px; font-weight: 600; }
 .nav-item i { font-size: 20px; margin-bottom: 4px; }
 .nav-item.active { color: var(--coffee); }
 
 footer { padding: 25px 15px 90px; text-align: center; color: var(--muted); font-size: 13px; border-top: 1px solid var(--border); background: var(--soft); }
-.footer-links { margin-bottom: 15px; }
-.footer-links a { color: var(--text); text-decoration: none; margin: 0 10px; font-weight: 600; }
-
-@media(max-width:500px){
-  header h1 { font-size: 24px; }
-  .logo-box { height: 110px; }
-  .price { font-size: 15px; }
-}
 </style>
 </head>
 <body>
 
 <div class="notification-bar">
-  <div class="marquee">✨ સ્વાગત છે! વ્રુન્દાવન ઓર્નામેન્ટ્સ માં સોના ચાんだીના લાઈવ ભાવ અહીં જોઈ શકાશે. રોજના સચોટ અને તાજા અપડેટ માટે પેજ વિઝિટ કરતા રહો. ✨</div>
+  <div class="marquee">✨ સ્વાગત છે! વ્રુન્દાવન ઓર્નામેન્ટ્સ માં સોના ચાંદીના લાઈવ ભાવ અહીં જોઈ શકાશે. રોજના સચોટ અને તાજા અપડેટ માટે પેજ વિઝિટ કરતા રહો. ✨</div>
 </div>
 
 <header>
@@ -217,7 +207,6 @@ footer { padding: 25px 15px 90px; text-align: center; color: var(--muted); font-
   <section id="adminBox" class="card hidden">
     <h2><i class="fa-solid fa-user-gear"></i> એડમિન ઓવરરાઈડ પેનલ</h2>
     <div id="adminStatus" class="admin-status"></div>
-    <p style="font-size:12px; color:var(--muted);">* જો તમે અહીં ભાવ નાખશો તો તે ગૂગલ શીટના ભાવ કરતા પહેલા દેખાશે.</p>
     <div class="section-title">સોનાના ભાવ (મેન્યુઅલ ઓવરરાઇડ)</div>
     <input id="new_g24" type="number" placeholder="૨૪ કેરેટનો ભાવ">
     <input id="new_g22" type="number" placeholder="૨૨ કેરેટનો ભાવ">
@@ -263,9 +252,9 @@ const firebaseConfig = {
   appId: "1:192490668353:web:e8ce193dab2d3c4f7061c0"
 };
 
+// LIVE SYNC USING GOOGLE SHEET PUBLISHED URL
 const SHEET_ID = '1ixR39Oy7ZJV4ldOm-uT_KbTXyYRmrfoXm-MuyrGSdHA';
-// Advanced JSON Visualization string fetch to eliminate row indexing errors
-const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
+const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/pub?output=csv`;
 
 const ADMIN_EMAIL = "office.vopl@gmail.com";
 const app = initializeApp(firebaseConfig);
@@ -302,46 +291,68 @@ function updateLiveClock() {
 }
 setInterval(updateLiveClock, 1000); updateLiveClock();
 
-// Clean numeric conversion helper
 function cleanNum(val) {
   if (!val) return 0;
   let s = String(val).replace(/[^0-9.]/g, '');
   return Number(s) || 0;
 }
 
-// BULLETPROOF FETCH VIA GOOGLE VISUALIZATION API JSON
+function parseCSV(text) {
+  return text.split("\n").map(line => {
+    return line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(cell => cell.replace(/^"|"$/g, '').trim());
+  });
+}
+
+// INTELLIGENT CONTENT-MATCH AUTO SCANNER
 async function fetchGoogleSheetRates() {
   try {
-    const response = await fetch(SHEET_URL + "&cb=" + new Date().getTime());
-    const rawText = await response.text();
-    
-    // Google API returns standard object wrapper, stripping it down safely
-    const jsonString = rawText.substring(rawText.indexOf('{'), rawText.lastIndexOf('}') + 1);
-    const data = JSON.parse(jsonString);
-    const rows = data.table.rows;
+    const response = await fetch(SHEET_URL + "&cachebuster=" + new Date().getTime());
+    const text = await response.text();
+    const rows = parseCSV(text);
 
     if (rows && rows.length > 0) {
-      // Direct Row Mapping Matrix
-      sheetRates["th_g999"] = cleanNum(rows[6]?.c[1]?.v);  // B7
-      sheetRates["th_s999"] = cleanNum(rows[9]?.c[1]?.v);  // B10
-      sheetRates["th_g22"]  = cleanNum(rows[6]?.c[3]?.v);  // D7
+      rows.forEach((row) => {
+        const fullRowText = row.join(" ");
+        
+        // Smart matching pattern based on textual keyword appearances
+        if (fullRowText.includes("24 કેરેટ") || fullRowText.includes("24k") || fullRowText.includes("24K")) {
+          if (cleanNum(row[2]) > 0) sheetRates["g24"] = cleanNum(row[2]);
+        }
+        if (fullRowText.includes("22 કેરેટ") || fullRowText.includes("22k") || fullRowText.includes("22K")) {
+          if (cleanNum(row[2]) > 0) sheetRates["g22"] = cleanNum(row[2]);
+        }
+        if (fullRowText.includes("18 કેરેટ") || fullRowText.includes("18k") || fullRowText.includes("18K")) {
+          if (cleanNum(row[2]) > 0) sheetRates["g18"] = cleanNum(row[2]);
+        }
+        if (fullRowText.includes("95/75") || fullRowText.includes("95")) {
+          if (cleanNum(row[2]) > 0) sheetRates["s95"] = cleanNum(row[2]);
+        }
+        if (fullRowText.includes("90/70") || fullRowText.includes("90")) {
+          if (cleanNum(row[2]) > 0) sheetRates["s90"] = cleanNum(row[2]);
+        }
+        if (fullRowText.includes("60/80") || fullRowText.includes("60")) {
+          if (cleanNum(row[2]) > 0) sheetRates["s60"] = cleanNum(row[2]);
+        }
+        if (fullRowText.includes("ગોલ્ડ ૯૯૯ CASH") || fullRowText.includes("999 CASH")) {
+          if (cleanNum(row[1]) > 0) sheetRates["th_g999"] = cleanNum(row[1]);
+        }
+        if (fullRowText.includes("સિલ્વર ચોરસા") || fullRowText.includes("LO CASH")) {
+          if (cleanNum(row[1]) > 0) sheetRates["th_s999"] = cleanNum(row[1]);
+        }
+        if (fullRowText.includes("ગોલ્ડ ૯૯૯ CHEQUE") || fullRowText.includes("CHEQUE")) {
+          if (cleanNum(row[3]) > 0) sheetRates["th_g22"] = cleanNum(row[3]);
+        }
+      });
 
-      sheetRates["g24"] = cleanNum(rows[16]?.c[2]?.v); // C17
-      sheetRates["g22"] = cleanNum(rows[17]?.c[2]?.v); // C18
-      sheetRates["g18"] = cleanNum(rows[20]?.c[2]?.v); // C21
-      sheetRates["s95"] = cleanNum(rows[21]?.c[2]?.v); // C22
-      sheetRates["s90"] = cleanNum(rows[22]?.c[2]?.v); // C23
-      sheetRates["s60"] = cleanNum(rows[23]?.c[2]?.v); // C24
-
-      combineAndRenderRates(true);
+      combineAndRenderRates();
     }
   } catch (e) {
-    console.error("Critical: Google Sheet connection timed out or permissions missing.", e);
-    combineAndRenderRates(false);
+    console.error("Sheet Sync Failed", e);
+    combineAndRenderRates();
   }
 }
 
-function combineAndRenderRates(sheetSuccess = true) {
+function combineAndRenderRates() {
   RATE_KEYS.forEach(key => {
     if (firebaseRates[key] && firebaseRates[key] > 0) {
       currentActiveRates[key] = firebaseRates[key];
@@ -354,7 +365,7 @@ function combineAndRenderRates(sheetSuccess = true) {
       if (currentActiveRates[key] > 0) {
         display.textContent = Number(currentActiveRates[key]).toLocaleString("en-IN");
       } else {
-        display.textContent = sheetSuccess ? "0" : "વેઇટિંગ...";
+        display.textContent = "વેઇટિંગ...";
       }
     }
     
@@ -363,7 +374,7 @@ function combineAndRenderRates(sheetSuccess = true) {
   });
 }
 
-// REALTIME MONITOR
+// FIREBASE REALTIME MONITOR
 onSnapshot(rateRef, snapshot => {
   if(snapshot.exists()){
     const data = snapshot.data();
@@ -379,7 +390,7 @@ onSnapshot(rateRef, snapshot => {
 
 setInterval(fetchGoogleSheetRates, 10000);
 
-// CALCULATOR
+// CALCULATOR CODE
 document.getElementById("calculateBtn").addEventListener("click", () => {
   const selected = calcItem.value;
   const weight = Number(weightInput.value);
@@ -389,7 +400,7 @@ document.getElementById("calculateBtn").addEventListener("click", () => {
   totalEl.textContent = Math.round(amount).toLocaleString("en-IN");
 });
 
-// THEME SYSTEM WITH PROPER DOCUMENT ROOT ELEMENT MANIPULATION
+// THEME SYSTEM
 document.getElementById("themeToggle").addEventListener("click", () => {
   const isDark = document.documentElement.hasAttribute("data-theme");
   if (isDark) {
@@ -436,7 +447,7 @@ document.getElementById("clearOverrideBtn").addEventListener("click", async () =
   const emptyRates = {}; RATE_KEYS.forEach(key => emptyRates[key] = 0);
   try {
     await setDoc(rateRef, { ...emptyRates, updatedAt: serverTimestamp() }, { merge: true });
-    adminMessage.textContent = "ઓવરરાઇડ સાફ થયું. ગુગલ શીટ રનિંગ છે.";
+    adminMessage.textContent = "ઓવરરાઇડ સાફ થયું!";
     RATE_KEYS.forEach(key => document.getElementById("new_" + key).value = "");
   } catch (e) {}
 });
