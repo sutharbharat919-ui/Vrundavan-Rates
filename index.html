@@ -1,23 +1,18 @@
+
 <!DOCTYPE html>
 <html lang="gu">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vrundavan Ornaments - Updating</title>
+<title>Updating</title>
 
+<!-- Google Fonts & FontAwesome -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Gujarati:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
-  :root {
-    --bg: #f7f2ee;
-    --heading: #49362d;
-    --coffee: #b9967d;
-    --dark: #765543;
-  }
-
   * {
     box-sizing: border-box;
     margin: 0;
@@ -25,94 +20,141 @@
   }
 
   body {
-    background: var(--bg);
-    font-family: 'Noto Serif Gujarati', serif;
+    /* ફાયર ટાઇપ લુક માટે ડાર્ક રેડિશ-બ્લેક બેકગ્રાઉન્ડ */
+    background: radial-gradient(circle at center, #1c0a02 0%, #0a0401 100%);
+    font-family: 'Poppins', sans-serif;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
     padding: 20px;
     overflow: hidden;
-  }
-
-  /* Center Container Layout */
-  .update-box {
-    background: #ffffff;
-    padding: 40px 30px;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(73, 54, 45, 0.1);
-    border: 1px solid #e2d3c9;
-    max-width: 450px;
-    width: 100%;
     position: relative;
   }
 
-  /* Decorative top border line */
-  .update-box::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 5px;
-    background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 50%, #aa771c 100%);
-    border-top-left-radius: 16px;
-    border-top-right-radius: 16px;
+  /* Center Message */
+  .message-container {
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
   }
 
-  .brand-name {
-    font-family: 'Poppins', sans-serif;
-    font-size: 18px;
+  /* Updating this side... (Fire & Blinking Effect) */
+  .msg-main {
+    font-size: 32px;
     font-weight: 600;
-    color: var(--coffee);
+    color: #fff;
     letter-spacing: 1px;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    /* ફાયર ગ્લો અને બ્લિંકિંગ એનિમેશન */
+    animation: fireBlink 2s infinite alternate;
   }
 
-  /* Animated Gear / Loader Icon */
-  .icon-wrapper {
-    margin-bottom: 20px;
-  }
-  .icon-wrapper i {
-    font-size: 45px;
-    color: var(--dark);
-    animation: rotateGear 3s linear infinite;
-  }
-
-  .main-text {
-    font-size: 22px;
-    color: var(--heading);
-    font-weight: 700;
-    margin-bottom: 12px;
-    line-height: 1.4;
+  /* Thank you! */
+  .msg-thanks {
+    font-size: 18px;
+    color: #ff9f43;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(255, 159, 67, 0.5);
+    opacity: 0.8;
   }
 
-  .thanks-text {
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-    color: var(--coffee);
-    font-weight: 600;
-    margin-top: 15px;
+  /* Premium Footer for Developer */
+  .dev-footer {
+    position: absolute;
+    bottom: 30px;
+    text-align: center;
+    font-size: 13px;
+    letter-spacing: 0.8px;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 300;
   }
 
-  @keyframes rotateGear {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+  .dev-footer span {
+    font-weight: 500;
+    color: #ff9f43;
+  }
+
+  .insta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    color: rgba(255, 255, 255, 0.4);
+    text-decoration: none;
+    font-size: 12px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 159, 67, 0.1);
+  }
+
+  .insta-link i {
+    font-size: 14px;
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .insta-link:hover {
+    color: #fff;
+    border-color: rgba(255, 159, 67, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 159, 67, 0.2);
+  }
+
+  /* Fire Glowing & Blinking Animation Logic */
+  @keyframes fireBlink {
+    0% {
+      text-shadow: 
+        0 0 4px #fff, 
+        0 0 10px #ffdd00, 
+        0 0 20px #ff8800, 
+        0 0 30px #ff3300;
+      opacity: 1;
+    }
+    50% {
+      text-shadow: 
+        0 0 4px #fff, 
+        0 0 15px #ffdd00, 
+        0 0 30px #ffbb00, 
+        0 0 40px #ff4400,
+        0 0 60px #ff0000;
+      opacity: 0.85;
+    }
+    100% {
+      text-shadow: 
+        0 0 2px #fff, 
+        0 0 8px #ffaa00, 
+        0 0 15px #ff5500, 
+        0 0 25px #cc1100;
+      opacity: 0.6;
+    }
   }
 </style>
 </head>
 <body>
 
-<div class="update-box">
-  <div class="brand-name">VRUNDAVAN ORNAMENTS</div>
-  
-  <div class="icon-wrapper">
-    <i class="fa-solid fa-gears"></i>
-  </div>
-  
-  <div class="main-text">Updating this side...</div>
-  <div class="thanks-text">Thank you!</div>
+<!-- Center Message -->
+<div class="message-container">
+  <div class="msg-main">Updating this side...</div>
+  <div class="msg-thanks">Thank you!</div>
+</div>
+
+<!-- Developer Footer -->
+<div class="dev-footer">
+  Developer by <span>Bharat Suthar</span>
+  <br>
+  <a href="https://www.instagram.com/b_s_0022?igsh=MWthbDZqeGdldjc2dA==" target="_blank" class="insta-link">
+    <i class="fa-brands fa-instagram"></i> Instagram
+  </a>
 </div>
 
 </body>
