@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vrundavan Ornaments - Premium Store</title>
+<title>Vrundavan Flipkart - Premium Jewelry Hub</title>
 
+<!-- Fonts & Icons -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Gujarati:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -12,168 +13,190 @@
 
 <style>
 :root {
-  --bg: #f7f2ee;
+  --bg: #f4ece6;
   --surface: #ffffff;
-  --soft: #f5ece5;
+  --soft: #fbf7f4;
   --coffee: #b9967d;
   --dark: #765543;
   --heading: #49362d;
   --text: #554239;
-  --border: #e2d3c9;
-  --success: #647c65;
-  --gold-gradient: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
-  --shadow: 0 10px 30px rgba(73, 54, 45, 0.07);
+  --border: #e8ded7;
+  --fk-blue: #2874f0;
+  --fk-yellow: #ff9f00;
+  --fk-orange: #fb641b;
+  --success: #388e3c;
+  --shadow: 0 4px 16px rgba(73, 54, 45, 0.08);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: var(--bg); color: var(--text); font-family: 'Noto Serif Gujarati', serif; padding-bottom: 80px; }
+body { background: var(--bg); color: var(--text); font-family: 'Noto Serif Gujarati', serif; padding-bottom: 70px; }
 
-header { padding: 25px 15px; text-align: center; background: linear-gradient(145deg, #eadbd0, #dcc5b5); border-bottom: 2px solid var(--coffee); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-.logo-box { max-width: 180px; margin: 0 auto 10px; }
-.logo { width: 100%; height: auto; object-fit: contain; }
-header h1 { font-family: 'Poppins', sans-serif; font-size: 26px; color: var(--heading); font-weight: 700; }
-header p { font-size: 14px; color: var(--dark); font-weight: 600; margin-top: 5px; }
+/* Flipkart Style Header */
+.fk-header { background: linear-gradient(135deg, var(--heading), var(--dark)); color: white; padding: 12px 15px; position: sticky; top: 0; z-index: 500; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.header-container { max-width: 1000px; margin: auto; display: flex; flex-direction: column; gap: 10px; }
+.top-row { display: flex; justify-content: space-between; align-items: center; }
+.brand h1 { font-family: 'Poppins', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: 0.5px; color: #fff; }
+.brand span { font-size: 11px; color: #fcf6ba; font-style: italic; display: block; margin-top: -4px; }
 
-.container { width: 100%; max-width: 800px; margin: auto; padding: 15px; }
+/* Search Bar */
+.search-container { position: relative; width: 100%; }
+.search-input { width: 100%; padding: 10px 40px 10px 12px; border: none; border-radius: 4px; font-family: inherit; font-size: 14px; outline: none; box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); }
+.search-icon { position: absolute; right: 12px; top: 11px; color: var(--coffee); font-size: 16px; }
 
-.about-card { background: var(--surface); padding: 20px; border-radius: 15px; border: 1px solid var(--border); box-shadow: var(--shadow); margin-bottom: 25px; position: relative; overflow: hidden; }
-.about-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--gold-gradient); }
-.about-card h2 { color: var(--heading); font-size: 20px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
-.about-card p { font-size: 14px; line-height: 1.6; color: var(--text); }
+/* Cart Icon Badge */
+.cart-btn-holder { background: none; border: none; color: white; position: relative; cursor: pointer; font-size: 22px; display: flex; align-items: center; }
+.cart-badge { position: absolute; top: -8px; right: -10px; background: var(--fk-orange); color: white; font-family: 'Poppins', sans-serif; font-size: 11px; font-weight: 700; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 
-.section-title { font-size: 18px; color: var(--heading); margin: 20px 0 15px; padding-left: 8px; border-left: 4px solid var(--coffee); }
-.products-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-@media (max-width: 480px) { .products-grid { grid-template-columns: 1fr; } }
+/* Main Layout */
+.container { width: 100%; max-width: 1000px; margin: auto; padding: 12px; }
 
-.product-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; }
-.product-img-box { width: 100%; aspect-ratio: 1; background: var(--soft); display: flex; align-items: center; justify-content: center; position: relative; }
-.product-img-box i { font-size: 48px; color: var(--coffee); }
-.product-info { padding: 12px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-.product-name { font-size: 16px; color: var(--heading); font-weight: 700; margin-bottom: 5px; }
-.product-desc { font-size: 12px; color: #8b776c; margin-bottom: 10px; }
-.product-price { font-family: 'Poppins', sans-serif; font-size: 16px; color: var(--dark); font-weight: 700; margin-bottom: 12px; }
+/* Category Scroll */
+.category-bar { display: flex; gap: 10px; overflow-x: auto; padding: 5px 0 12px; scrollbar-width: none; }
+.category-bar::-webkit-scrollbar { display: none; }
+.cat-item { background: var(--surface); padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; white-space: nowrap; cursor: pointer; border: 1px solid var(--border); box-shadow: 0 2px 5px rgba(0,0,0,0.03); }
+.cat-item.active { background: var(--coffee); color: white; border-color: var(--coffee); }
 
-.buy-btn { width: 100%; padding: 10px; background: var(--dark); color: white; border: none; border-radius: 8px; font-family: 'Noto Serif Gujarati', serif; font-size: 14px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background 0.2s; }
-.buy-btn:hover { background: var(--heading); }
+/* Banner */
+.promo-banner { background: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728); color: #49362d; padding: 15px; border-radius: 8px; text-align: center; font-weight: 700; font-size: 14px; margin-bottom: 15px; box-shadow: var(--shadow); }
 
-/* Order Modal (Pop-up Form) */
-.modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 15px; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
-.modal-overlay.active { opacity: 1; pointer-events: auto; }
-.modal-box { background: var(--surface); width: 100%; max-width: 450px; border-radius: 16px; padding: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.2); position: relative; transform: translateY(-20px); transition: transform 0.3s ease; }
-.modal-overlay.active .modal-box { transform: translateY(0); }
+/* Product Grid - Flipkart Layout */
+.products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
+@media (max-width: 400px) { .products-grid { grid-template-columns: 1fr 1fr; gap: 8px; padding: 0; } }
 
-.modal-box h3 { color: var(--heading); margin-bottom: 15px; font-size: 18px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
-.modal-close { position: absolute; top: 15px; right: 15px; font-size: 20px; color: var(--muted); cursor: pointer; background: none; border: none; }
+.product-card { background: var(--surface); border-radius: 6px; overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; position: relative; border: 1px solid rgba(232,222,231,0.5); }
+.img-box { width: 100%; aspect-ratio: 1; background: var(--soft); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
+.img-box i { font-size: 40px; color: var(--border); }
+.prod-img { width: 100%; height: 100%; object-fit: cover; position: absolute; }
 
-.form-group { margin-bottom: 15px; }
-.form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--dark); margin-bottom: 5px; }
-.form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px; font-family: inherit; font-size: 14px; outline: none; background: var(--bg); }
-.form-group textarea { resize: none; height: 70px; }
+.info-box { padding: 10px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+.prod-title { font-size: 14px; font-weight: 700; color: #212121; line-height: 1.4; height: 40px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.prod-tag { font-size: 11px; color: #878787; margin: 3px 0 6px; }
+.price-row { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
+.curr-price { font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 700; color: #212121; }
+.old-price { font-family: 'Poppins', sans-serif; font-size: 12px; text-decoration: line-through; color: #878787; }
 
-.submit-btn { width: 100%; padding: 12px; background: var(--success); color: white; border: none; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit; }
-.status-msg { margin-top: 10px; text-align: center; font-size: 14px; font-weight: 600; color: var(--success); }
+.add-cart-btn { width: 100%; padding: 8px; background: var(--fk-yellow); color: #212121; border: none; border-radius: 4px; font-family: inherit; font-size: 12px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
 
-footer { text-align: center; padding: 30px 15px 40px; color: #8b776c; font-size: 12px; background: var(--soft); border-top: 1px solid var(--border); margin-top: 40px; }
+/* Cart Drawer Slider */
+.cart-drawer { position: fixed; top: 0; right: -100%; width: 100%; max-width: 400px; height: 100vh; background: var(--surface); z-index: 1000; box-shadow: -5px 0 25px rgba(0,0,0,0.15); transition: right 0.3s ease; display: flex; flex-direction: column; }
+.cart-drawer.active { right: 0; }
+.cart-header { background: var(--heading); color: white; padding: 15px; display: flex; justify-content: space-between; align-items: center; }
+.cart-close-btn { background: none; border: none; color: white; font-size: 22px; cursor: pointer; }
+.cart-body { flex-grow: 1; overflow-y: auto; padding: 15px; }
+
+.cart-item-row { display: flex; gap: 10px; padding: 12px 0; border-bottom: 1px solid var(--border); align-items: center; }
+.cart-item-info { flex-grow: 1; }
+.cart-item-title { font-size: 13px; font-weight: 700; }
+.cart-item-price { font-family: 'Poppins', sans-serif; font-size: 13px; color: var(--dark); font-weight: 600; margin-top: 2px; }
+.qty-controls { display: flex; align-items: center; gap: 8px; margin-top: 5px; }
+.qty-btn { width: 24px; height: 24px; border: 1px solid var(--border); background: var(--soft); border-radius: 4px; cursor: pointer; font-weight: 700; }
+.qty-val { font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600; }
+
+.cart-footer { padding: 15px; border-top: 1px solid var(--border); background: var(--soft); }
+.total-summary { display: flex; justify-content: space-between; font-size: 16px; font-weight: 700; margin-bottom: 15px; color: var(--heading); }
+.checkout-btn { width: 100%; padding: 12px; background: var(--fk-orange); color: white; border: none; border-radius: 4px; font-family: inherit; font-size: 15px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 10px rgba(251,100,27,0.2); text-align: center; }
+
+/* Checkout Dialog Modal */
+.modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1200; padding: 15px; display: none; }
+.modal-box { background: var(--surface); width: 100%; max-width: 440px; border-radius: 8px; padding: 20px; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+.modal-box h3 { color: var(--heading); margin-bottom: 15px; border-bottom: 1px solid var(--border); padding-bottom: 8px; font-size: 18px; }
+.form-group { margin-bottom: 12px; }
+.form-group label { display: block; font-size: 12px; font-weight: 600; color: var(--dark); margin-bottom: 4px; }
+.form-group input, .form-group textarea { width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 4px; font-family: inherit; font-size: 14px; outline: none; background: var(--soft); }
+.submit-order-btn { width: 100%; padding: 12px; background: var(--success); color: white; border: none; border-radius: 4px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit; margin-top: 10px; }
+.status-msg { margin-top: 10px; text-align: center; font-size: 13px; font-weight: 600; }
 </style>
 </head>
 <body>
 
-<header>
-  <h1>VRUNDAVAN ORNAMENTS</h1>
-  <p>ઓનલાઇન બુકિંગ પ્લેટફોર્મ</p>
+<!-- Header -->
+<header class="fk-header">
+  <div class="header-container">
+    <div class="top-row">
+      <div class="brand">
+        <h1>VRUNDAVAN</h1>
+        <span>Plus Store ✨</span>
+      </div>
+      <button class="cart-btn-holder" onclick="toggleCart(true)">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <div class="cart-badge" id="cartCount">0</div>
+      </button>
+    </div>
+    <div class="search-container">
+      <input type="text" id="searchInput" class="search-input" placeholder="દાગીના, સેટ અથવા સિલ્વર આઇટમ શોધો...">
+      <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    </div>
+  </div>
 </header>
 
 <main class="container">
   
-  <section class="about-card">
-    <h2><i class="fa-solid fa-store" style="color: var(--coffee);"></i> અમારા વિશે</h2>
-    <p>૧૦૦% હોલમાર્ક દાગીના અને શુદ્ધ સોના-ચાંદીના ઘરેણાં માટેનું વિશ્વાસપાત્ર સ્થળ. તમે નીચેના લિસ્ટમાંથી કોઈપણ દાગીના સીધા આ પ્લેટફોર્મ પરથી જ બુક કરાવી શકો છો. ઓર્ડર મળ્યા બાદ અમારી ટીમ વેરિફિકેશન માટે તમારો સંપર્ક કરશે.</p>
-  </section>
+  <!-- Categories Row -->
+  <div class="category-bar">
+    <div class="cat-item active" onclick="filterCategory('all', this)">બધું જ કલેક્શન</div>
+    <div class="cat-item" onclick="filterCategory('gold', this)">સોનાના ઘરેણાં</div>
+    <div class="cat-item" onclick="filterCategory('silver', this)">ચાંદીની આઇટમ</div>
+    <div class="cat-item" onclick="filterCategory('antique', this)">એન્ટિક કલેક્શન</div>
+  </div>
 
-  <div class="section-title">અમારું કલેક્શન (બુકિંગ માટે ઉપલબ્ધ)</div>
+  <!-- Banner -->
+  <div class="promo-banner">
+    💥 ઑફર ઓફ ધ ડે: ૧૦૦% હોલમાર્ક દાગીના પર વિશેષ બુકિંગ ડિસ્કાઉન્ટ!
+  </div>
 
-  <!-- Products Grid -->
-  <section class="products-grid">
-    
-    <!-- Product 1 -->
-    <div class="product-card">
-      <div class="product-img-box"><i class="fa-solid fa-gem"></i></div>
-      <div class="product-info">
-        <div>
-          <div class="product-name" id="p1-name">રાણી હાર (ફેન્સી ગોલ્ડ)</div>
-          <div class="product-desc">૨૨ કેરેટ હોલમાર્ક સોનું, અંદાજિત વજન: ૨૫ ગ્રામ</div>
-        </div>
-        <div>
-          <div class="product-price">₹ ૧,૭૫,૦૦૦*</div>
-          <button class="buy-btn" onclick="openOrderModal('રાણી હાર (ફેન્સી ગોલ્ડ)', '₹ ૧,૭૫,૦૦૦*')">
-            <i class="fa-solid fa-cart-shopping"></i> ઓર્ડર કરો
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Product 2 -->
-    <div class="product-card">
-      <div class="product-img-box"><i class="fa-solid fa-ring"></i></div>
-      <div class="product-info">
-        <div>
-          <div class="product-name" id="p2-name">સોનાના કડા (એન્ટિક ડીઝાઇન)</div>
-          <div class="product-desc">૨૨ કેરેટ હોલમાર્ક ગોલ્ડ, જોડી (૨ નંગ)</div>
-        </div>
-        <div>
-          <div class="product-price">₹ ૧,૪૦,૦૦૦*</div>
-          <button class="buy-btn" onclick="openOrderModal('સોનાના કડા (એન્ટિક ડીઝાઇન)', '₹ ૧,૪૦,૦૦૦*')">
-            <i class="fa-solid fa-cart-shopping"></i> ઓર્ડર કરો
-          </button>
-        </div>
-      </div>
-    </div>
-
+  <!-- Product Catalog Grid -->
+  <section class="products-grid" id="productGridContainer">
+    <!-- Products Will Be Injected By JavaScript Logic Dynamically -->
   </section>
 </main>
 
-<!-- Order Modal Overlay -->
-<div class="modal-overlay" id="orderModal">
+<!-- Shopping Cart Slider Panel -->
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <h2><i class="fa-solid fa-basket-shopping"></i> માય કાર્ટ</h2>
+    <button class="cart-close-btn" onclick="toggleCart(false)">×</button>
+  </div>
+  <div class="cart-body" id="cartItemsContainer">
+    <!-- Cart Items Grid -->
+  </div>
+  <div class="cart-footer">
+    <div class="total-summary">
+      <span>કુલ રકમ (Total):</span>
+      <span>₹<span id="cartTotalPrice">0</span></span>
+    </div>
+    <button class="checkout-btn" onclick="openCheckout()">ઓર્ડર પ્લેસ કરો (Place Order)</button>
+  </div>
+</div>
+
+<!-- Customer Checkout Details Form Modal -->
+<div class="modal-overlay" id="checkoutModal">
   <div class="modal-box">
-    <button class="modal-close" onclick="closeOrderModal()">×</button>
-    <h3>ઓર્ડર ફોર્મ (Order Booking)</h3>
+    <button class="cart-close-btn" onclick="closeCheckout()" style="color:#000; position:absolute; right:15px; top:12px;">×</button>
+    <h3>ડિલિવરી એડ્રેસ વિગતો</h3>
     
     <div class="form-group">
-      <label>પસંદ કરેલ પ્રોડક્ટ</label>
-      <input type="text" id="modalProdName" readonly style="font-weight: bold; background: #eef2f5;">
-    </div>
-    <div class="form-group">
-      <label>અંદાજિત કિંમત</label>
-      <input type="text" id="modalProdPrice" readonly style="background: #eef2f5;">
-    </div>
-    <div class="form-group">
-      <label>તમારું પૂરું નામ *</label>
+      <label>તમારું આખું નામ *</label>
       <input type="text" id="custName" placeholder="નામ લખો" required>
     </div>
     <div class="form-group">
       <label>મોબાઇલ નંબર *</label>
-      <input type="tel" id="custPhone" placeholder="મોબાઈલ નંબર દાખલ કરો" required>
+      <input type="tel" id="custPhone" placeholder="૧૦ અંકનો નંબર" required>
     </div>
     <div class="form-group">
-      <label>પૂરું સરનામું (Address) *</label>
-      <textarea id="custAddress" placeholder="ગામ, સોસાયટી, તાલુકો, જીલ્લો લખો" required></textarea>
+      <label>પૂરું સરનામું (ગામ/શહેર, જીલ્લો) *</label>
+      <textarea id="custAddress" rows="3" placeholder="સરનામું લખો" required style="resize:none; font-family:inherit;"></textarea>
     </div>
 
-    <button class="submit-btn" id="confirmOrderBtn">ઓર્ડર કન્ફર્મ કરો</button>
+    <button class="submit-order-btn" id="finalSubmitBtn">ઓર્ડર કન્ફર્મ કરો</button>
     <div id="statusMsg" class="status-msg"></div>
   </div>
 </div>
 
-<footer>
-  <p>© 2026 Vrundavan Ornaments Pvt. Ltd. | All Rights Reserved.</p>
-</footer>
-
-<!-- Firebase Initialization and Integration -->
+<!-- Firebase Infrastructure Core Execution Module -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
 import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
 
-// તમારું એ જ કરંટ ફાયરબેઝ કન્ફિગરેશન
 const firebaseConfig = {
   apiKey: "AIzaSyACpWFqxs1AaIx7C6kMpu45bD79fWJeR60",
   authDomain: "reset-de458.firebaseapp.com",
@@ -186,64 +209,212 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// મોડલ ખોલવા અને બંધ કરવાની વિન્ડોઝ ફંક્શન્સ
-window.openOrderModal = function(name, price) {
-  document.getElementById("modalProdName").value = name;
-  document.getElementById("modalProdPrice").value = price;
-  document.getElementById("orderModal").classList.add("active");
+// Flipkart Inventory Database Mock
+const PRODUCTS = [
+  { id: 1, name: "જોધપુરી ફેન્સી રાણી હાર", cat: "gold", price: 175000, oldPrice: 190000, desc: "૨૨ કેરેટ હોલમાર્ક ગોલ્ડ", img: "gold_necklace.jpg" },
+  { id: 2, name: "પ્રીમિયમ લગ્ન કડા સેટ", cat: "antique", price: 140000, oldPrice: 155000, desc: "રાજવાડી એન્ટિક ડીઝાઇન", img: "gold_bangles.jpg" },
+  { id: 3, name: "રોયલ જોધપુરી પાયલ (જોડી)", cat: "silver", price: 12500, oldPrice: 15000, desc: "૯૨.૫ પ્યોર સ્ટર્લિંગ સિલ્વર", img: "silver_payal.jpg" },
+  { id: 4, name: "જેન્ટ્સ ડેઈલી વેર વીંટી", cat: "gold", price: 35000, oldPrice: 38000, desc: "૨૨ કેરેટ લાઈટવેઈટ સોનું", img: "gold_ring.jpg" },
+  { id: 5, name: "ફેન્સી ચાંદી કંદોરો", cat: "silver", price: 42000, oldPrice: 48000, desc: "હેવી ટ્રેડિશનલ કંદોરો", img: "silver_kandora.jpg" },
+  { id: 6, name: "એન્ટિક નેકલેસ સેટ લાઈટ", cat: "antique", price: 95000, oldPrice: 105000, desc: "મીનાકારી વર્ક જ્વેલરી", img: "antique_set.jpg" }
+];
+
+let cart = [];
+let currentCategory = 'all';
+
+// Render Products Dashboard
+function renderProducts(filterData = PRODUCTS) {
+  const container = document.getElementById("productGridContainer");
+  container.innerHTML = "";
+  
+  filterData.forEach(p => {
+    container.innerHTML += `
+      <div class="product-card">
+        <div class="img-box">
+          <i class="fa-solid fa-gem"></i>
+          <img src="${p.img}" class="prod-img" alt="${p.name}" onerror="this.style.display='none'">
+        </div>
+        <div class="info-box">
+          <div>
+            <div class="prod-title">${p.name}</div>
+            <div class="prod-tag">${p.desc}</div>
+          </div>
+          <div>
+            <div class="price-row">
+              <span class="curr-price">₹${p.price.toLocaleString("en-IN")}</span>
+              <span class="old-price">₹${p.oldPrice.toLocaleString("en-IN")}</span>
+            </div>
+            <button class="add-cart-btn" onclick="addToCart(${p.id})">
+              <i class="fa-solid fa-cart-plus"></i> Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+}
+
+// Filter Systems
+window.filterCategory = function(cat, element) {
+  currentCategory = cat;
+  document.querySelectorAll('.cat-item').forEach(el => el.classList.remove('active'));
+  element.classList.add('active');
+  applyFilters();
+}
+
+// Live Search Input Logic
+document.getElementById("searchInput").addEventListener("input", (e) => {
+  applyFilters();
+});
+
+function applyFilters() {
+  const query = document.getElementById("searchInput").value.toLowerCase().trim();
+  let results = PRODUCTS;
+  
+  if (currentCategory !== 'all') {
+    results = results.filter(p => p.cat === currentCategory);
+  }
+  if (query !== "") {
+    results = results.filter(p => p.name.toLowerCase().includes(query) || p.desc.toLowerCase().includes(query));
+  }
+  renderProducts(results);
+}
+
+// Cart Engine Mechanics
+window.toggleCart = function(show) {
+  const drawer = document.getElementById("cartDrawer");
+  if(show) drawer.classList.add("active");
+  else drawer.classList.remove("active");
+}
+
+window.addToCart = function(id) {
+  const existing = cart.find(item => item.id === id);
+  if (existing) {
+    existing.qty++;
+  } else {
+    const p = PRODUCTS.find(prod => prod.id === id);
+    cart.push({ ...p, qty: 1 });
+  }
+  updateCartUI();
+  toggleCart(true); // ફ્લિપકાર્ટની જેમ આઈટમ ઉમેરતા જ કાર્ટ સ્લાઈડર ખુલશે
+}
+
+window.changeQty = function(id, amt) {
+  const item = cart.find(i => i.id === id);
+  if (!item) return;
+  item.qty += amt;
+  if(item.qty <= 0) {
+    cart = cart.filter(i => i.id !== id);
+  }
+  updateCartUI();
+}
+
+function updateCartUI() {
+  const container = document.getElementById("cartItemsContainer");
+  const countBadge = document.getElementById("cartCount");
+  const totalPriceEl = document.getElementById("cartTotalPrice");
+  
+  container.innerHTML = "";
+  let totalCount = 0;
+  let totalPrice = 0;
+  
+  cart.forEach(item => {
+    totalCount += item.qty;
+    totalPrice += (item.price * item.qty);
+    
+    container.innerHTML += `
+      <div class="cart-item-row">
+        <div class="cart-item-info">
+          <div class="cart-item-title">${item.name}</div>
+          <div class="cart-item-price">₹${item.price.toLocaleString("en-IN")} × ${item.qty}</div>
+        </div>
+        <div class="qty-controls">
+          <button class="qty-btn" onclick="changeQty(${item.id}, -1)">-</button>
+          <span class="qty-val">${item.qty}</span>
+          <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
+        </div>
+      </div>
+    `;
+  });
+  
+  countBadge.textContent = totalCount;
+  totalPriceEl.textContent = totalPrice.toLocaleString("en-IN");
+  if(cart.length === 0) {
+    container.innerHTML = `<div style="text-align:center; color:#878787; padding-top:40px;">તમારું કાર્ટ ખાલી છે.</div>`;
+  }
+}
+
+// Checkout Form Windows Trigger
+window.openCheckout = function() {
+  if (cart.length === 0) { alert("કૃપા કરીને કાર્ટમાં પ્રોડક્ટ ઉમેરો!"); return; }
+  document.getElementById("checkoutModal").style.display = "flex";
   document.getElementById("statusMsg").textContent = "";
 }
 
-window.closeOrderModal = function() {
-  document.getElementById("orderModal").classList.remove("active");
+window.closeCheckout = function() {
+  document.getElementById("checkoutModal").style.display = "none";
 }
 
-// ઓર્ડર સબમિટ કરવાનો લોજિક
-document.getElementById("confirmOrderBtn").addEventListener("click", async () => {
-  const pName = document.getElementById("modalProdName").value;
-  const pPrice = document.getElementById("modalProdPrice").value;
+// Final Secure Multi-Product Database Submission Pipeline
+document.getElementById("finalSubmitBtn").addEventListener("click", async () => {
   const cName = document.getElementById("custName").value.trim();
   const cPhone = document.getElementById("custPhone").value.trim();
   const cAddress = document.getElementById("custAddress").value.trim();
+  const submitBtn = document.getElementById("finalSubmitBtn");
+  const msgEl = document.getElementById("statusMsg");
 
-  if(!cName || !cPhone || !cAddress) {
-    alert("કૃપા કરીને બધી વિગતો ભરો!");
-    return;
-  }
+  if (!cName || !cPhone || !cAddress) { alert("બધી વિગતો ભરવી ફરજિયાત છે!"); return; }
 
-  document.getElementById("confirmOrderBtn").disabled = true;
-  document.getElementById("statusMsg").textContent = "ઓર્ડર સેવ થઈ રહ્યો છે...";
+  submitBtn.disabled = true;
+  msgEl.style.color = "#49362d";
+  msgEl.textContent = "ઓર્ડર સબમિટ થઈ રહ્યો છે...";
+
+  // કાર્ટની આઈટમોનું લિસ્ટ એડમિન માટે સ્ટ્રક્ચર કરવું
+  const orderItemsList = cart.map(i => ({
+    productId: i.id,
+    productName: i.name,
+    quantity: i.qty,
+    unitPrice: i.price,
+    totalPrice: (i.price * i.qty)
+  }));
+
+  const totalBillAmount = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
 
   try {
-    // Firebase માં "orders" નામના કલેક્શનમાં નવો ડેટા જશે
+    // Firebase Firestore સિંક્રોનાઇઝેશન
     await addDoc(collection(db, "orders"), {
-      productName: pName,
-      price: pPrice,
       customerName: cName,
       customerPhone: cPhone,
-      address: cAddress,
-      orderDate: serverTimestamp()
+      deliveryAddress: cAddress,
+      items: orderItemsList,
+      finalBill: totalBillAmount,
+      orderStatus: "Pending", // નવો ઓર્ડર પેન્ડિંગ સ્ટેટસમાં જશે
+      createdAt: serverTimestamp()
     });
 
-    document.getElementById("statusMsg").style.color = "#647c65";
-    document.getElementById("statusMsg").textContent = "🎉 ઓર્ડર સફળતાપૂર્વક નોંધાઈ ગયો છે!";
+    msgEl.style.color = "var(--success)";
+    msgEl.textContent = "🎉 તમારો ઓર્ડર ફ્લિપકાર્ટની જેમ સફળતાપૂર્વક પ્લેસ થઈ ગયો છે!";
     
-    // ફોર્મ ક્લીન કરવા માટે
+    // ક્લીનઅપ સ્ટેજ
+    cart = [];
+    updateCartUI();
     document.getElementById("custName").value = "";
     document.getElementById("custPhone").value = "";
     document.getElementById("custAddress").value = "";
-
-    setTimeout(() => { closeOrderModal(); }, 2500);
+    
+    setTimeout(() => { closeCheckout(); toggleCart(false); }, 2500);
 
   } catch (error) {
-    console.error("Error saving order: ", error);
-    document.getElementById("statusMsg").style.color = "#9a5c55";
-    document.getElementById("statusMsg").textContent = "ભૂલ આવી! ફરી પ્રયાસ કરો.";
+    console.error("Firestore Transaction Failed: ", error);
+    msgEl.style.color = "red";
+    msgEl.textContent = "કનેક્શન પ્રોબ્લેમ આવ્યો, ફરી ટ્રાય કરો.";
   } finally {
-    document.getElementById("confirmOrderBtn").disabled = false;
+    submitBtn.disabled = false;
   }
 });
-</script>
 
+// App Initiation Entrypoint
+renderProducts();
+</script>
 </body>
 </html>
