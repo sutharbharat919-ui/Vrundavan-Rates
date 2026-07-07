@@ -858,13 +858,24 @@ updateBtn.addEventListener("click", async () => {
       timestamp: serverTimestamp()
     });
 
-    rates = { ...rates, ...newRates }; updateRateDisplay();
-    adminMessage.textContent = "બધા ભાવ સફળતાપૂર્વક અપડેટ થયા અને ગ્રાફ લાઈવ થયો.";
-  } catch (error) {
-    adminMessage.textContent = "અપડેટ કરવામાં ભૂલ આવી.";
-  } finally { updateBtn.disabled = false; }
-});
+rules_version = '2';
 
+service cloud.firestore {
+  match /databases/{database}/documents {
+  
+    // Rates અને History બંને માટેનો નિયમ
+    match /rates/current {
+      allow read: true;
+      allow write: if request.auth != null && request.auth.token.email == 'office.vopl@gmail.com';
+    }
+    
+    match /rate_history/{document} {
+      allow read: true;
+      allow create, write: if request.auth != null && request.auth.token.email == 'office.vopl@gmail.com';
+    }
+    
+  }
+}
 document.getElementById("logoutBtn").addEventListener("click", async () => {
   try { await signOut(auth); adminMessage.textContent = ""; loginMessage.textContent = "લોગઆઉટ સફળ થયું."; } catch (error) {}
 });
