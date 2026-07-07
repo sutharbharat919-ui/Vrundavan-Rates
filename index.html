@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VOPL GOLD - Premium Edition</title>
+<title>Vrundavan Ornaments - Premium Store</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,236 +13,167 @@
 <style>
 :root {
   --bg: #f7f2ee;
-  --surface: rgba(255, 253, 252, 0.98);
+  --surface: #ffffff;
   --soft: #f5ece5;
   --coffee: #b9967d;
   --dark: #765543;
   --heading: #49362d;
   --text: #554239;
-  --muted: #8b776c;
   --border: #e2d3c9;
   --success: #647c65;
-  --danger: #9a5c55;
   --gold-gradient: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
   --shadow: 0 10px 30px rgba(73, 54, 45, 0.07);
 }
 
-html[data-theme="dark"], body[data-theme="dark"] {
-  --bg: #121212;
-  --surface: #1e1e1e;
-  --soft: #2d2521;
-  --coffee: #d4af37;
-  --dark: #e5c158;
-  --heading: #f3e9e2;
-  --text: #e0d5cd;
-  --muted: #a69286;
-  --border: #3d3530;
-  --shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: 'Noto Serif Gujarati', serif; padding-bottom: 80px; }
 
-* { box-sizing: border-box; transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease; }
-html { scroll-behavior: smooth; }
-body { margin: 0; padding-bottom: 70px; min-height: 100vh; background: var(--bg); color: var(--text); font-family: 'Noto Serif Gujarati', serif; }
+header { padding: 25px 15px; text-align: center; background: linear-gradient(145deg, #eadbd0, #dcc5b5); border-bottom: 2px solid var(--coffee); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+.logo-box { max-width: 180px; margin: 0 auto 10px; }
+.logo { width: 100%; height: auto; object-fit: contain; }
+header h1 { font-family: 'Poppins', sans-serif; font-size: 26px; color: var(--heading); font-weight: 700; }
+header p { font-size: 14px; color: var(--dark); font-weight: 600; margin-top: 5px; }
 
-.notification-bar { background: var(--gold-gradient); color: #000; padding: 8px 10px; font-size: 13px; font-weight: 700; overflow: hidden; position: relative; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-.marquee { display: inline-block; white-space: nowrap; animation: marquee 25s linear infinite; padding-left: 100%; }
-@keyframes marquee { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
+.container { width: 100%; max-width: 800px; margin: auto; padding: 15px; }
 
-header { padding: 20px 15px 30px; text-align: center; background: linear-gradient(145deg, #eadbd0, #dcc5b5); border-bottom: 2px solid var(--coffee); box-shadow: 0 6px 25px rgba(73,54,45,.12); position: relative; }
-html[data-theme="dark"] header { background: linear-gradient(145deg, #231b15, #120d0a); }
-.header-tools { position: absolute; top: 15px; right: 15px; display: flex; gap: 10px; }
-.theme-toggle-btn { background: var(--surface); border: 1px solid var(--border); color: var(--text); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px; box-shadow: var(--shadow); }
+.about-card { background: var(--surface); padding: 20px; border-radius: 15px; border: 1px solid var(--border); box-shadow: var(--shadow); margin-bottom: 25px; position: relative; overflow: hidden; }
+.about-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--gold-gradient); }
+.about-card h2 { color: var(--heading); font-size: 20px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+.about-card p { font-size: 14px; line-height: 1.6; color: var(--text); }
 
-.logo-box { width: 100%; max-width: 360px; height: 140px; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; }
-.logo { width: 100%; height: 100%; object-fit: contain; }
-header h1 { margin: 0; color: var(--heading); font-family: 'Poppins', sans-serif; font-size: 32px; font-weight: 700; letter-spacing: 1px; }
-header p { margin: 8px 0 0; color: var(--dark); font-size: 16px; font-weight: 600; letter-spacing: 0.5px; }
+.section-title { font-size: 18px; color: var(--heading); margin: 20px 0 15px; padding-left: 8px; border-left: 4px solid var(--coffee); }
+.products-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+@media (max-width: 480px) { .products-grid { grid-template-columns: 1fr; } }
 
-.live-clock-box { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; padding: 6px 16px; background: rgba(255,255,255,0.2); border-radius: 20px; font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 600; color: var(--heading); border: 1px solid rgba(255,255,255,0.3); }
+.product-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; }
+.product-img-box { width: 100%; aspect-ratio: 1; background: var(--soft); display: flex; align-items: center; justify-content: center; position: relative; }
+.product-img-box i { font-size: 48px; color: var(--coffee); }
+.product-info { padding: 12px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+.product-name { font-size: 16px; color: var(--heading); font-weight: 700; margin-bottom: 5px; }
+.product-desc { font-size: 12px; color: #8b776c; margin-bottom: 10px; }
+.product-price { font-family: 'Poppins', sans-serif; font-size: 16px; color: var(--dark); font-weight: 700; margin-bottom: 12px; }
 
-.container { width: 100%; max-width: 720px; margin: auto; padding: 20px 12px 40px; }
-.card { position: relative; margin-bottom: 25px; padding: 22px; overflow: hidden; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; box-shadow: var(--shadow); }
-.card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--gold-gradient); }
+.buy-btn { width: 100%; padding: 10px; background: var(--dark); color: white; border: none; border-radius: 8px; font-family: 'Noto Serif Gujarati', serif; font-size: 14px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background 0.2s; }
+.buy-btn:hover { background: var(--heading); }
 
-h2 { margin: 0 0 18px; color: var(--heading); font-size: 22px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
-.section-title { margin: 20px 0 10px; padding: 10px 14px; color: var(--dark); background: var(--soft); border-left: 4px solid var(--coffee); border-radius: 4px 10px 10px 4px; font-size: 14px; font-weight: 700; }
+/* Order Modal (Pop-up Form) */
+.modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 15px; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+.modal-overlay.active { opacity: 1; pointer-events: auto; }
+.modal-box { background: var(--surface); width: 100%; max-width: 450px; border-radius: 16px; padding: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.2); position: relative; transform: translateY(-20px); transition: transform 0.3s ease; }
+.modal-overlay.active .modal-box { transform: translateY(0); }
 
-.disclaimer-box { background: rgba(154, 92, 85, 0.08); border: 1px solid var(--danger); border-radius: 12px; padding: 12px 15px; margin-top: 15px; font-size: 13px; color: var(--danger); line-height: 1.5; font-weight: 600; }
+.modal-box h3 { color: var(--heading); margin-bottom: 15px; font-size: 18px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+.modal-close { position: absolute; top: 15px; right: 15px; font-size: 20px; color: var(--muted); cursor: pointer; background: none; border: none; }
 
-.rate { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 60px; margin-bottom: 10px; padding: 12px 16px; background: var(--bg); border: 1px solid var(--border); border-radius: 14px; }
-.rate-label { color: var(--text); font-size: 15px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
-.price { color: var(--dark); font-family: 'Poppins', sans-serif; font-size: 17px; font-weight: 700; white-space: nowrap; background: var(--soft); padding: 6px 12px; border-radius: 8px; }
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--dark); margin-bottom: 5px; }
+.form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px; font-family: inherit; font-size: 14px; outline: none; background: var(--bg); }
+.form-group textarea { resize: none; height: 70px; }
 
-.date-box { margin-top: 20px; padding: 14px; background: var(--soft); border-radius: 12px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
-.date-line { color: var(--muted); font-size: 13px; font-weight: 600; }
+.submit-btn { width: 100%; padding: 12px; background: var(--success); color: white; border: none; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit; }
+.status-msg { margin-top: 10px; text-align: center; font-size: 14px; font-weight: 600; color: var(--success); }
 
-input, select { width: 100%; margin-top: 10px; padding: 14px; outline: none; color: var(--heading); background: var(--bg); border: 1px solid var(--border); border-radius: 12px; font-family: 'Noto Serif Gujarati', serif; font-size: 15px; }
-button { width: 100%; margin-top: 15px; padding: 14px; border: 0; border-radius: 12px; color: #fff; background: var(--dark); font-family: 'Noto Serif Gujarati', serif; font-size: 16px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-button:disabled { opacity: .55; cursor: not-allowed; }
-.secondary { background: #a98b78; }
-.save-button { background: var(--success); }
-.logout-button { background: var(--danger); }
-
-.total { margin-top: 20px; padding: 20px; text-align: center; color: var(--heading); background: var(--soft); border: 2px dashed var(--coffee); border-radius: 14px; font-size: 22px; font-weight: 700; }
-.message { min-height: 22px; margin: 15px 0; text-align: center; color: var(--dark); font-size: 14px; font-weight: 700; }
-.hidden { display: none !important; }
-
-.bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; height: 65px; background: var(--surface); border-top: 1px solid var(--border); display: flex; justify-content: space-around; align-items: center; z-index: 100; box-shadow: 0 -4px 10px rgba(0,0,0,0.05); }
-.nav-item { display: flex; flex-direction: column; align-items: center; color: var(--muted); text-decoration: none; font-size: 11px; font-weight: 600; }
-.nav-item i { font-size: 20px; margin-bottom: 4px; }
-.nav-item.active { color: var(--coffee); }
-
-footer { padding: 25px 15px 90px; text-align: center; color: var(--muted); font-size: 13px; border-top: 1px solid var(--border); background: var(--soft); }
+footer { text-align: center; padding: 30px 15px 40px; color: #8b776c; font-size: 12px; background: var(--soft); border-top: 1px solid var(--border); margin-top: 40px; }
 </style>
 </head>
 <body>
 
-<div class="notification-bar">
-  <div class="marquee">✨ સ્વાગત છે! વ્રુન્દાવન ઓર્નામેન્ટ્સ માં સોના ચાંદીના લાઈવ ભાવ અહીં જોઈ શકાશે. રોજના સચોટ અને તાજા અપડેટ માટે પેજ વિઝિટ કરતા રહો. ✨</div>
-</div>
-
 <header>
-  <div class="header-tools">
-    <button class="theme-toggle-btn" id="themeToggle" title="સ્વિચ થીમ"><i class="fa-solid fa-moon"></i></button>
-  </div>
-  <div class="logo-box">
-    <img src="./logo.png" class="logo" alt="Vrundavan Ornaments Logo">
-  </div>
-  <h1>VRUNDAVAN ORNAMENTS PVT LTD</h1>
-  <p><i class="fa-solid fa-gavel"></i> સોના ચાંદીના સત્તાવાર ભાવ</p>
-  <div class="live-clock-box">
-    <i class="fa-regular fa-clock"></i>
-    <span id="liveClock">00:00:00 AM</span>
-  </div>
+  <h1>VRUNDAVAN ORNAMENTS</h1>
+  <p>ઓનલાઇન બુકિંગ પ્લેટફોર્મ</p>
 </header>
 
 <main class="container">
-  <!-- TODAY RATES SECTION -->
-  <section id="rates-sec" class="card">
-    <h2><i class="fa-solid fa-chart-line" style="color: var(--coffee);"></i> આજના અંદાજિત ભાવ</h2>
-
-    <div class="section-title">સોનાનો ભાવ (૧૦ ગ્રામ) [GST સાથે]</div>
-    <div class="rate">
-      <span class="rate-label"><i class="fa-solid fa-award" style="color: #ffd700;"></i> ૨૪ કેરેટ ગોલ્ડ (100%)</span>
-      <span class="price">₹<span id="g24">લોડિંગ...</span></span>
-    </div>
-    <div class="rate">
-      <span class="rate-label"><i class="fa-solid fa-award" style="color: #e6b800;"></i> ૨૨ કેરેટ ગોલ્ડ (92%)</span>
-      <span class="price">₹<span id="g22">લોડિંગ...</span></span>
-    </div>
-    <div class="rate">
-      <span class="rate-label"><i class="fa-solid fa-award" style="color: #cc9900;"></i> ૧૮ કેરેટ ગોલ્ડ (75%)</span>
-      <span class="price">₹<span id="g18">લોડિંગ...</span></span>
-    </div>
-
-    <div class="section-title">ચાんだીનો ભાવ (૧ કિલો) [GST સાથે]</div>
-    <div class="rate">
-      <span class="rate-label"><i class="fa-solid fa-coins" style="color: #c0c0c0;"></i> ચાંદી ૯૫/૭૫</span>
-      <span class="price">₹<span id="s95">લોડિંગ...</span></span>
-    </div>
-    <div class="rate">
-      <span class="rate-label"><i class="fa-solid fa-coins" style="color: #d3d3d3;"></i> ચાંદી ૯૦/૭૦</span>
-      <span class="price">₹<span id="s90">લોડિંગ...</span></span>
-    </div>
-    <div class="rate">
-      <span class="rate-label"><i class="fa-solid fa-coins" style="color: #e5e5e5;"></i> ચાંદી ૬૦/૮૦</span>
-      <span class="price">₹<span id="s60">લોડિંગ...</span></span>
-    </div>
-
-    <div class="section-title">થરાદ રોકડ બજાર (માત્ર કાચા/ચોરસા માટે)</div>
-    <div class="rate">
-      <span class="rate-label"><i class="fa-solid fa-cubes" style="color: gold;"></i> ગોલ્ડ ૯૯૯ CASH</span>
-      <span class="price">₹<span id="th_g999">લોડિંગ...</span></span>
-    </div>
-    <div class="rate">
-      <span class="rate-label"><i class="fa-solid fa-cube" style="color: silver;"></i> સિલ્વર ચોરસા LO CASH</span>
-      <span class="price">₹<span id="th_s999">લોડિંગ...</span></span>
-    </div>
-    <div class="rate">
-      <span class="rate-label"><i class="fa-solid fa-money-bill-1-wave" style="color: #647c65;"></i> ગોલ્ડ ૯૯૯ CHEQUE</span>
-      <span class="price">₹<span id="th_g22">લોડિંગ...</span></span>
-    </div>
-
-    <div class="date-box">
-      <div id="currentDate" class="date-line">આજની તારીખ: -</div>
-      <div id="lastUpdate" class="date-line">છેલ્લો અપડેટ: -</div>
-    </div>
-
-    <div class="disclaimer-box">
-      <i class="fa-solid fa-triangle-exclamation"></i> 
-      <b>ખાસ નોંધ:</b> આ ભાવ માત્ર ગ્રાહકોની માહિતી અને અંદાજ માટે છે. બજારમાં સતત વધ-ઘટ થતી હોવાથી, આ રેટ બિલિંગ કે પાકા સોદા માટે માન્ય ગણાશે નહીં.
-    </div>
+  
+  <section class="about-card">
+    <h2><i class="fa-solid fa-store" style="color: var(--coffee);"></i> અમારા વિશે</h2>
+    <p>૧૦૦% હોલમાર્ક દાગીના અને શુદ્ધ સોના-ચાંદીના ઘરેણાં માટેનું વિશ્વાસપાત્ર સ્થળ. તમે નીચેના લિસ્ટમાંથી કોઈપણ દાગીના સીધા આ પ્લેટફોર્મ પરથી જ બુક કરાવી શકો છો. ઓર્ડર મળ્યા બાદ અમારી ટીમ વેરિફિકેશન માટે તમારો સંપર્ક કરશે.</p>
   </section>
 
-  <!-- CALCULATOR SECTION -->
-  <section id="calc-sec" class="card">
-    <h2><i class="fa-solid fa-calculator" style="color: var(--coffee);"></i> સ્માર્ટ રેટ કેલ્ક્યુલેટર</h2>
-    <select id="calcItem">
-      <option value="g24">૨૪ કેરેટ સોનું (૧0 ગ્રામ)</option>
-      <option value="g22">૨૨ કેરેટ સોનું (૧0 ગ્રામ)</option>
-      <option value="g18">૧૮ કેરેટ સોનું (૧0 ગ્રામ)</option>
-      <option value="s95">ચાંદી ૯૫/૭૫ (૧ કિલો)</option>
-      <option value="s90">ચાંદી ૯૦/૭૦ (૧ કિલો)</option>
-      <option value="s60">ચાંદી ૬૦/૮૦ (૧ કિલો)</option>
-      <option value="th_g999">થરાદ ગોલ્ડ ૯૯૯ CASH</option>
-      <option value="th_s999">થરાદ સિલ્વર LO CASH</option>
-      <option value="th_g22">થરાદ ગોલ્ડ ૯૯૯ CHEQUE</option>
-    </select>
-    <input id="weight" type="number" inputmode="decimal" min="0" step="0.001" placeholder="વજન ગ્રામમાં દાખલ કરો">
-    <button id="calculateBtn"><i class="fa-solid fa-calculator"></i> હિસાબ કરો</button>
-    <div class="total">અંદાજિત રકમ: <br>₹<span id="total">0</span></div>
-  </section>
+  <div class="section-title">અમારું કલેક્શન (બુકિંગ માટે ઉપલબ્ધ)</div>
 
-  <!-- ADMIN LOGIN BOX -->
-  <section id="adminLoginBox" class="card hidden">
-    <h2><i class="fa-solid fa-lock"></i> એડમિન લોગિન</h2>
-    <input id="email" type="email" placeholder="એડમિન ઈમેલ">
-    <input id="password" type="password" placeholder="પાસવર્ડ">
-    <button id="loginBtn">લોગિન</button>
-    <button id="closeAdminBtn" class="secondary">એડમિન મોડ બંધ કરો</button>
-    <div id="loginMessage" class="message"></div>
-  </section>
+  <!-- Products Grid -->
+  <section class="products-grid">
+    
+    <!-- Product 1 -->
+    <div class="product-card">
+      <div class="product-img-box"><i class="fa-solid fa-gem"></i></div>
+      <div class="product-info">
+        <div>
+          <div class="product-name" id="p1-name">રાણી હાર (ફેન્સી ગોલ્ડ)</div>
+          <div class="product-desc">૨૨ કેરેટ હોલમાર્ક સોનું, અંદાજિત વજન: ૨૫ ગ્રામ</div>
+        </div>
+        <div>
+          <div class="product-price">₹ ૧,૭૫,૦૦૦*</div>
+          <button class="buy-btn" onclick="openOrderModal('રાણી હાર (ફેન્સી ગોલ્ડ)', '₹ ૧,૭૫,૦૦૦*')">
+            <i class="fa-solid fa-cart-shopping"></i> ઓર્ડર કરો
+          </button>
+        </div>
+      </div>
+    </div>
 
-  <!-- ADMIN PANEL -->
-  <section id="adminBox" class="card hidden">
-    <h2><i class="fa-solid fa-user-gear"></i> એડમિન ઓવરરાઈડ પેનલ</h2>
-    <div id="adminStatus" class="admin-status"></div>
-    <div class="section-title">સોનાના ભાવ (મેન્યુઅલ ઓવરરાઇડ)</div>
-    <input id="new_g24" type="number" placeholder="૨૪ કેરેટનો ભાવ">
-    <input id="new_g22" type="number" placeholder="૨૨ કેરેટનો ભાવ">
-    <input id="new_g18" type="number" placeholder="૧૮ કેરેટનો ભાવ">
-    <div class="section-title">ચાંદીના ભાવ (મેન્યુઅલ ઓવરરાઇડ)</div>
-    <input id="new_s95" type="number" placeholder="૯૫/૭૫ ટ્રેડિંગ ભાવ">
-    <input id="new_s90" type="number" placeholder="૯૦/૭૦ ટ્રેડિંગ ભાવ">
-    <input id="new_s60" type="number" placeholder="૬૦/૮૦ ટ્રેડિંગ ભાવ">
-    <div class="section-title">થરાદ રોકડ બજાર (મેન્યુઅલ ઓવરરાઇડ)</div>
-    <input id="new_th_g999" type="number" placeholder="ગોલ્ડ ૯૯૯ CASH">
-    <input id="new_th_s999" type="number" placeholder="સિલ્વર LO CASH">
-    <input id="new_th_g22" type="number" placeholder="ગોલ્ડ ૯૯૯ CHEQUE">
-    <button id="updateBtn" class="save-button">ઓવરરાઇડ સેવ કરો</button>
-    <button id="clearOverrideBtn" class="secondary" style="background:#d9534f;">ઓવરરાઇડ હટાવો</button>
-    <button id="logoutBtn" class="logout-button">લોગઆઉટ</button>
-    <div id="adminMessage" class="message"></div>
+    <!-- Product 2 -->
+    <div class="product-card">
+      <div class="product-img-box"><i class="fa-solid fa-ring"></i></div>
+      <div class="product-info">
+        <div>
+          <div class="product-name" id="p2-name">સોનાના કડા (એન્ટિક ડીઝાઇન)</div>
+          <div class="product-desc">૨૨ કેરેટ હોલમાર્ક ગોલ્ડ, જોડી (૨ નંગ)</div>
+        </div>
+        <div>
+          <div class="product-price">₹ ૧,૪૦,૦૦૦*</div>
+          <button class="buy-btn" onclick="openOrderModal('સોનાના કડા (એન્ટિક ડીઝાઇન)', '₹ ૧,૪૦,૦૦૦*')">
+            <i class="fa-solid fa-cart-shopping"></i> ઓર્ડર કરો
+          </button>
+        </div>
+      </div>
+    </div>
+
   </section>
 </main>
 
-<nav class="bottom-nav">
-  <a href="#rates-sec" class="nav-item active"><i class="fa-solid fa-indian-rupee-sign"></i>ભાવ</a>
-  <a href="#calc-sec" class="nav-item"><i class="fa-solid fa-calculator"></i>કેલ્ક્યુલેટર</a>
-  <a href="https://wa.me/918758383303" target="_blank" class="nav-item" style="color: #25d366;"><i class="fa-brands fa-whatsapp"></i>ચેટ કરો</a>
-  <a href="tel:+918758383303" class="nav-item"><i class="fa-solid fa-phone"></i>કોલ કરો</a>
-</nav>
+<!-- Order Modal Overlay -->
+<div class="modal-overlay" id="orderModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeOrderModal()">×</button>
+    <h3>ઓર્ડર ફોર્મ (Order Booking)</h3>
+    
+    <div class="form-group">
+      <label>પસંદ કરેલ પ્રોડક્ટ</label>
+      <input type="text" id="modalProdName" readonly style="font-weight: bold; background: #eef2f5;">
+    </div>
+    <div class="form-group">
+      <label>અંદાજિત કિંમત</label>
+      <input type="text" id="modalProdPrice" readonly style="background: #eef2f5;">
+    </div>
+    <div class="form-group">
+      <label>તમારું પૂરું નામ *</label>
+      <input type="text" id="custName" placeholder="નામ લખો" required>
+    </div>
+    <div class="form-group">
+      <label>મોબાઇલ નંબર *</label>
+      <input type="tel" id="custPhone" placeholder="મોબાઈલ નંબર દાખલ કરો" required>
+    </div>
+    <div class="form-group">
+      <label>પૂરું સરનામું (Address) *</label>
+      <textarea id="custAddress" placeholder="ગામ, સોસાયટી, તાલુકો, જીલ્લો લખો" required></textarea>
+    </div>
+
+    <button class="submit-btn" id="confirmOrderBtn">ઓર્ડર કન્ફર્મ કરો</button>
+    <div id="statusMsg" class="status-msg"></div>
+  </div>
+</div>
 
 <footer>
   <p>© 2026 Vrundavan Ornaments Pvt. Ltd. | All Rights Reserved.</p>
-  <p style="font-size: 11px; color: var(--muted); cursor: pointer;" id="devBharatText">Developed by Bharat Suthar</p>
 </footer>
 
+<!-- Firebase Initialization and Integration -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-auth.js";
-import { getFirestore, doc, onSnapshot, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
 
+// તમારું એ જ કરંટ ફાયરબેઝ કન્ફિગરેશન
 const firebaseConfig = {
   apiKey: "AIzaSyACpWFqxs1AaIx7C6kMpu45bD79fWJeR60",
   authDomain: "reset-de458.firebaseapp.com",
@@ -252,246 +183,67 @@ const firebaseConfig = {
   appId: "1:192490668353:web:e8ce193dab2d3c4f7061c0"
 };
 
-// MULTI-FALLBACK SECURE SYNC SYSTEM
-const SHEET_ID = '1ixR39Oy7ZJV4ldOm-uT_KbTXyYRmrfoXm-MuyrGSdHA';
-const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/pub?output=csv`;
-
-const ADMIN_EMAIL = "office.vopl@gmail.com";
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
 const db = getFirestore(app);
-const rateRef = doc(db, "rates", "current");
 
-const RATE_KEYS = ["g24", "g22", "g18", "s95", "s90", "s60", "th_g999", "th_s999", "th_g22"];
-const SILVER_KEYS = ["s95", "s90", "s60", "th_s999"];
-let firebaseRates = {};
-let sheetRates = {};
-let currentActiveRates = {};
-let forceAdminShow = false;
-
-const adminLoginBox = document.getElementById("adminLoginBox");
-const adminBox = document.getElementById("adminBox");
-const emailInput = document.getElementById("email");
-const passwordInput = document.getElementById("password");
-const loginBtn = document.getElementById("loginBtn");
-const updateBtn = document.getElementById("updateBtn");
-const loginMessage = document.getElementById("loginMessage");
-const adminMessage = document.getElementById("adminMessage");
-const adminStatus = document.getElementById("adminStatus");
-const currentDateEl = document.getElementById("currentDate");
-const lastUpdateEl = document.getElementById("lastUpdate");
-const totalEl = document.getElementById("total");
-const calcItem = document.getElementById("calcItem");
-const weightInput = document.getElementById("weight");
-
-function checkAdminAccess() { return new URLSearchParams(window.location.search).get("admin") === "vopl" || forceAdminShow; }
-
-function updateLiveClock() {
-  document.getElementById("liveClock").textContent = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
-}
-setInterval(updateLiveClock, 1000); updateLiveClock();
-
-function cleanNum(val) {
-  if (!val) return 0;
-  let s = String(val).replace(/[^0-9.]/g, '');
-  return Number(s) || 0;
+// મોડલ ખોલવા અને બંધ કરવાની વિન્ડોઝ ફંક્શન્સ
+window.openOrderModal = function(name, price) {
+  document.getElementById("modalProdName").value = name;
+  document.getElementById("modalProdPrice").value = price;
+  document.getElementById("orderModal").classList.add("active");
+  document.getElementById("statusMsg").textContent = "";
 }
 
-function parseCSV(text) {
-  return text.split("\n").map(line => {
-    return line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(cell => cell.replace(/^"|"$/g, '').trim());
-  });
+window.closeOrderModal = function() {
+  document.getElementById("orderModal").classList.remove("active");
 }
 
-// BULLETPROOF LOGICAL SCANNER (Matches both Gujarati & English text structures)
-async function fetchGoogleSheetRates() {
-  try {
-    const response = await fetch(CSV_URL + "&cb=" + new Date().getTime());
-    const text = await response.text();
-    const rows = parseCSV(text);
+// ઓર્ડર સબમિટ કરવાનો લોજિક
+document.getElementById("confirmOrderBtn").addEventListener("click", async () => {
+  const pName = document.getElementById("modalProdName").value;
+  const pPrice = document.getElementById("modalProdPrice").value;
+  const cName = document.getElementById("custName").value.trim();
+  const cPhone = document.getElementById("custPhone").value.trim();
+  const cAddress = document.getElementById("custAddress").value.trim();
 
-    if (rows && rows.length > 0) {
-      rows.forEach((row) => {
-        const lineStr = row.join(" ");
-        
-        // Gold 24K Matrix Check
-        if (lineStr.includes("24 કેરેટ") || lineStr.includes("૨૪ કેરેટ") || lineStr.includes("24k") || lineStr.includes("24K")) {
-          let val = cleanNum(row[2]) || cleanNum(row[1]);
-          if (val > 0) sheetRates["g24"] = val;
-        }
-        // Gold 22K Matrix Check
-        if (lineStr.includes("22 કેરેટ") || lineStr.includes("૨૨ કેરેટ") || lineStr.includes("22k") || lineStr.includes("22K")) {
-          let val = cleanNum(row[2]) || cleanNum(row[1]);
-          if (val > 0) sheetRates["g22"] = val;
-        }
-        // Gold 18K Matrix Check
-        if (lineStr.includes("18 કેરેટ") || lineStr.includes("૧૮ કેરેટ") || lineStr.includes("18k") || lineStr.includes("18K")) {
-          let val = cleanNum(row[2]) || cleanNum(row[1]);
-          if (val > 0) sheetRates["g18"] = val;
-        }
-        // Silver 95 Check
-        if (lineStr.includes("95/75") || lineStr.includes("૯૫/૭૫")) {
-          let val = cleanNum(row[2]) || cleanNum(row[1]);
-          if (val > 0) sheetRates["s95"] = val;
-        }
-        // Silver 90 Check
-        if (lineStr.includes("90/70") || lineStr.includes("૯૦/૭૦")) {
-          let val = cleanNum(row[2]) || cleanNum(row[1]);
-          if (val > 0) sheetRates["s90"] = val;
-        }
-        // Silver 60 Check
-        if (lineStr.includes("60/80") || lineStr.includes("૬૦/૮૦")) {
-          let val = cleanNum(row[2]) || cleanNum(row[1]);
-          if (val > 0) sheetRates["s60"] = val;
-        }
-        // Tharad Gold Cash
-        if (lineStr.includes("CASH") || lineStr.includes("રોકડ") || lineStr.includes("૯૯૯ CASH")) {
-          if(lineStr.includes("ગોલ્ડ") || lineStr.includes("Gold")) {
-            let val = cleanNum(row[1]) || cleanNum(row[2]);
-            if (val > 0) sheetRates["th_g999"] = val;
-          }
-        }
-        // Tharad Silver Cash
-        if (lineStr.includes("LO CASH") || lineStr.includes("ચોરસા")) {
-          let val = cleanNum(row[1]) || cleanNum(row[2]);
-          if (val > 0) sheetRates["th_s999"] = val;
-        }
-        // Tharad Gold Cheque
-        if (lineStr.includes("CHEQUE") || lineStr.includes("ચેક")) {
-          let val = cleanNum(row[3]) || cleanNum(row[2]) || cleanNum(row[1]);
-          if (val > 0) sheetRates["th_g22"] = val;
-        }
-      });
-
-      // BACKUP HARD RECOVERY DICTIONARY (If text scan misses due to extreme shifts)
-      if(!sheetRates["g24"] && rows[16]) sheetRates["g24"] = cleanNum(rows[16][2]) || cleanNum(rows[16][1]);
-      if(!sheetRates["g22"] && rows[17]) sheetRates["g22"] = cleanNum(rows[17][2]) || cleanNum(rows[17][1]);
-      if(!sheetRates["g18"] && rows[20]) sheetRates["g18"] = cleanNum(rows[20][2]) || cleanNum(rows[20][1]);
-      if(!sheetRates["th_g999"] && rows[6]) sheetRates["th_g999"] = cleanNum(rows[6][1]);
-      if(!sheetRates["th_s999"] && rows[9]) sheetRates["th_s999"] = cleanNum(rows[9][1]);
-      if(!sheetRates["th_g22"] && rows[6]) sheetRates["th_g22"] = cleanNum(rows[6][3]);
-
-      combineAndRenderRates();
-    }
-  } catch (e) {
-    console.error("Sheet Connection Error", e);
-    combineAndRenderRates();
+  if(!cName || !cPhone || !cAddress) {
+    alert("કૃપા કરીને બધી વિગતો ભરો!");
+    return;
   }
-}
 
-function combineAndRenderRates() {
-  RATE_KEYS.forEach(key => {
-    if (firebaseRates[key] && firebaseRates[key] > 0) {
-      currentActiveRates[key] = firebaseRates[key];
-    } else {
-      currentActiveRates[key] = sheetRates[key] || 0;
-    }
+  document.getElementById("confirmOrderBtn").disabled = true;
+  document.getElementById("statusMsg").textContent = "ઓર્ડર સેવ થઈ રહ્યો છે...";
 
-    const display = document.getElementById(key);
-    if(display) {
-      if (currentActiveRates[key] > 0) {
-        display.textContent = Number(currentActiveRates[key]).toLocaleString("en-IN");
-      } else {
-        display.textContent = "અપડેટિંગ...";
-      }
-    }
+  try {
+    // Firebase માં "orders" નામના કલેક્શનમાં નવો ડેટા જશે
+    await addDoc(collection(db, "orders"), {
+      productName: pName,
+      price: pPrice,
+      customerName: cName,
+      customerPhone: cPhone,
+      address: cAddress,
+      orderDate: serverTimestamp()
+    });
+
+    document.getElementById("statusMsg").style.color = "#647c65";
+    document.getElementById("statusMsg").textContent = "🎉 ઓર્ડર સફળતાપૂર્વક નોંધાઈ ગયો છે!";
     
-    const adminInput = document.getElementById("new_" + key);
-    if(adminInput && !adminInput.matches(':focus')) adminInput.value = firebaseRates[key] || "";
-  });
-}
+    // ફોર્મ ક્લીન કરવા માટે
+    document.getElementById("custName").value = "";
+    document.getElementById("custPhone").value = "";
+    document.getElementById("custAddress").value = "";
 
-// FIREBASE MONITOR
-onSnapshot(rateRef, snapshot => {
-  if(snapshot.exists()){
-    const data = snapshot.data();
-    RATE_KEYS.forEach(key => { firebaseRates[key] = Number(data[key] || 0); });
-    if(data.updatedAt && typeof data.updatedAt.toDate === "function"){
-      lastUpdateEl.textContent = "છેલ્લો અપડેટ: " + data.updatedAt.toDate().toLocaleString("gu-IN");
-    } else {
-      lastUpdateEl.textContent = "છેલ્લો અપડેટ: લાઈવ કનેક્ટેડ";
-    }
-  }
-  fetchGoogleSheetRates();
-});
+    setTimeout(() => { closeOrderModal(); }, 2500);
 
-setInterval(fetchGoogleSheetRates, 10000);
-
-// CALCULATOR
-document.getElementById("calculateBtn").addEventListener("click", () => {
-  const selected = calcItem.value;
-  const weight = Number(weightInput.value);
-  if(!weight || weight <= 0){ totalEl.textContent = "0"; return; }
-  const rate = Number(currentActiveRates[selected] || 0);
-  let amount = SILVER_KEYS.includes(selected) ? (rate * weight / 1000) : (rate * weight / 10);
-  totalEl.textContent = Math.round(amount).toLocaleString("en-IN");
-});
-
-// THEME SYSTEM
-document.getElementById("themeToggle").addEventListener("click", () => {
-  const isDark = document.documentElement.hasAttribute("data-theme");
-  if (isDark) {
-    document.documentElement.removeAttribute("data-theme");
-    document.body.removeAttribute("data-theme");
-    document.getElementById("themeToggle").innerHTML = '<i class="fa-solid fa-moon"></i>';
-  } else {
-    document.documentElement.setAttribute("data-theme", "dark");
-    document.body.setAttribute("data-theme", "dark");
-    document.getElementById("themeToggle").innerHTML = '<i class="fa-solid fa-sun"></i>';
+  } catch (error) {
+    console.error("Error saving order: ", error);
+    document.getElementById("statusMsg").style.color = "#9a5c55";
+    document.getElementById("statusMsg").textContent = "ભૂલ આવી! ફરી પ્રયાસ કરો.";
+  } finally {
+    document.getElementById("confirmOrderBtn").disabled = false;
   }
 });
-
-function renderAdminPanels(user) {
-  if (!checkAdminAccess()) { adminLoginBox.classList.add("hidden"); adminBox.classList.add("hidden"); return; }
-  if (user && user.email.toLowerCase() === ADMIN_EMAIL.toLowerCase()) {
-    adminLoginBox.classList.add("hidden"); adminBox.classList.remove("hidden");
-    adminStatus.textContent = "બ્રાન્ચ: " + user.email;
-  } else {
-    adminBox.classList.add("hidden"); adminLoginBox.classList.remove("hidden");
-    emailInput.value = ADMIN_EMAIL;
-  }
-}
-
-loginBtn.addEventListener("click", async () => {
-  try {
-    await signInWithEmailAndPassword(auth, emailInput.value.trim(), passwordInput.value);
-    passwordInput.value = ""; loginMessage.textContent = "";
-  } catch (error) { loginMessage.textContent = "ખોટો પાસવર્ડ!"; }
-});
-
-onAuthStateChanged(auth, user => renderAdminPanels(user));
-
-updateBtn.addEventListener("click", async () => {
-  const newRates = {};
-  RATE_KEYS.forEach(key => { newRates[key] = Number(document.getElementById("new_" + key).value) || 0; });
-  try {
-    await setDoc(rateRef, { ...newRates, updatedAt: serverTimestamp() }, { merge: true });
-    adminMessage.textContent = "સેવ થઈ ગયું!";
-  } catch (e) { adminMessage.textContent = "સર્વર એરર."; }
-});
-
-document.getElementById("clearOverrideBtn").addEventListener("click", async () => {
-  const emptyRates = {}; RATE_KEYS.forEach(key => emptyRates[key] = 0);
-  try {
-    await setDoc(rateRef, { ...emptyRates, updatedAt: serverTimestamp() }, { merge: true });
-    adminMessage.textContent = "ઓવરરાઇડ સાફ થયું!";
-    RATE_KEYS.forEach(key => document.getElementById("new_" + key).value = "");
-  } catch (e) {}
-});
-
-document.getElementById("logoutBtn").addEventListener("click", () => signOut(auth));
-document.getElementById("closeAdminBtn").addEventListener("click", () => { forceAdminShow = false; window.location.href = window.location.pathname; });
-
-document.getElementById("devBharatText").addEventListener("click", (() => {
-  let count = 0; let timer;
-  return () => {
-    count++; clearTimeout(timer);
-    if(count === 3) { count = 0; forceAdminShow = true; renderAdminPanels(auth.currentUser); adminLoginBox.scrollIntoView({ behavior: 'smooth' }); }
-    else { timer = setTimeout(() => { count = 0; }, 400); }
-  };
-})());
-
-currentDateEl.textContent = "આજની તારીખ: " + new Date().toLocaleDateString("gu-IN");
 </script>
+
 </body>
 </html>
