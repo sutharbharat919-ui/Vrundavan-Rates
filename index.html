@@ -218,6 +218,22 @@ h2 {
   font-weight: 700;
 }
 
+/* DISCLAIMER BOX */
+.disclaimer-box {
+  background: rgba(154, 92, 85, 0.08);
+  border: 1px solid var(--danger);
+  border-radius: 12px;
+  padding: 12px 15px;
+  margin-top: 15px;
+  font-size: 13px;
+  color: var(--danger);
+  line-height: 1.5;
+  font-weight: 600;
+}
+.disclaimer-box i {
+  margin-right: 5px;
+}
+
 /* PREMIUM RATE CARDS */
 .rate {
   display: flex;
@@ -437,9 +453,9 @@ footer {
 
   <!-- TODAY RATES SECTION -->
   <section id="rates-sec" class="card">
-    <h2><i class="fa-solid fa-chart-line" style="color: var(--coffee);"></i> આજના લાઈવ ભાવ</h2>
+    <h2><i class="fa-solid fa-chart-line" style="color: var(--coffee);"></i> આજના અંદાજિત ભાવ</h2>
 
-    <div class="section-title">સોનાનો ભાવ (૧૦ ગ્રામ)</div>
+    <div class="section-title">સોનાનો ભાવ (૧૦ ગ્રામ) [GST અલગ]</div>
     <div class="rate">
       <span class="rate-label"><i class="fa-solid fa-award" style="color: #ffd700;"></i> ૨૪ કેરેટ ગોલ્ડ</span>
       <span class="price">₹<span id="g24">Loading...</span></span>
@@ -453,7 +469,7 @@ footer {
       <span class="price">₹<span id="g18">Loading...</span></span>
     </div>
 
-    <div class="section-title">ચાંદીનો ભાવ (૧ કિલો)</div>
+    <div class="section-title">ચાંદીનો ભાવ (૧ કિલો) [GST અલગ]</div>
     <div class="rate">
       <span class="rate-label"><i class="fa-solid fa-coins" style="color: #c0c0c0;"></i> ૯૫/૭૫ ટ્રેડિંગ</span>
       <span class="price">₹<span id="s95">Loading...</span></span>
@@ -463,27 +479,33 @@ footer {
       <span class="price">₹<span id="s90">Loading...</span></span>
     </div>
     <div class="rate">
-      <span class="rate-label"><i class="fa-solid fa-coins" style="color: #e5e5e5;"></i> ૬૦/૮૦ ટ્રેડિંગ</span>
+      <span class="rate-label"><i class="fa-solid fa-coins" style="color: #e5e5e5;"></i> ૬૦/૮０ ટ્રેડિંગ</span>
       <span class="price">₹<span id="s60">Loading...</span></span>
     </div>
 
-    <div class="section-title">થરાદ રોકડ બજાર</div>
+    <div class="section-title">થરાદ રોકડ બજાર (માત્ર કાચા/ચોરસા માટે)</div>
     <div class="rate">
-      <span class="rate-label"><i class="fa-solid fa-cubes" style="color: gold;"></i> ગોલ્ડ ૯૯૯ IMP</span>
+      <span class="rate-label"><i class="fa-solid fa-cubes" style="color: gold;"></i> ગોલ્ડ ૯૯૯ IMP (રોકડ)</span>
       <span class="price">₹<span id="th_g999">Loading...</span></span>
     </div>
     <div class="rate">
-      <span class="rate-label"><i class="fa-solid fa-cube" style="color: silver;"></i> સિલ્વર ચોરસા ૯૯૯</span>
+      <span class="rate-label"><i class="fa-solid fa-cube" style="color: silver;"></i> સિલ્વર ચોરસા ૯૯૯ (રોકડ)</span>
       <span class="price">₹<span id="th_s999">Loading...</span></span>
     </div>
     <div class="rate">
-      <span class="rate-label"><i class="fa-solid fa-store"></i> ૨૨ કેરેટ રોકડ</span>
+      <span class="rate-label"><i class="fa-solid fa-store"></i> ૨૨ કેરેટ રોકડ બજાર</span>
       <span class="price">₹<span id="th_g22">Loading...</span></span>
     </div>
 
     <div class="date-box">
       <div id="currentDate" class="date-line">આજની તારીખ: -</div>
       <div id="lastUpdate" class="date-line">છેલ્લો અપડેટ: -</div>
+    </div>
+
+    <!-- BUSINESS DISCLAIMER -->
+    <div class="disclaimer-box">
+      <i class="fa-solid fa-triangle-exclamation"></i> 
+      <b>ખાસ નોંધ:</b> આ ભાવ માત્ર ગ્રાહકોની માહિતી અને અંદાજ માટે છે. બજારમાં સતત વધ-ઘટ થતી હોવાથી, આ રેટ બિલિંગ કે પાકા સોદા માટે માન્ય ગણાશે નહીં. કાચું સોનું-ચાંદી કે ચોરસા લેતી વખતે આખરી સોદો લાઈવ બુલિયન માર્કેટ અને ફોન કન્ફર્મેશન મુજબ જ નક્કી કરવામાં આવશે.
     </div>
   </section>
 
@@ -497,21 +519,25 @@ footer {
 
   <!-- CALCULATOR SECTION -->
   <section id="calc-sec" class="card">
-    <h2><i class="fa-solid fa-calculator" style="color: var(--coffee);"></i> સ્માાર્ટ રેટ કેલ્ક્યુલેટર</h2>
+    <h2><i class="fa-solid fa-calculator" style="color: var(--coffee);"></i> સ્માર્ટ રેટ કેલ્ક્યુલેટર</h2>
     <select id="calcItem">
       <option value="g24">૨૪ કેરેટ સોનું (૧0 ગ્રામ)</option>
       <option value="g22">૨૨ કેરેટ સોનું (૧0 ગ્રામ)</option>
       <option value="g18">૧૮ કેરેટ સોનું (૧0 ગ્રામ)</option>
-      <option value="s95">ચાんだી ૯૫/૭૫ (૧ કિલો)</option>
+      <option value="s95">ચાંદી ૯૫/૭૫ (૧ કિલો)</option>
       <option value="s90">ચાંદી ૯૦/૭૦ (૧ કિલો)</option>
       <option value="s60">ચાંદી ૬૦/૮૦ (૧ કિલો)</option>
-      <option value="th_g999">થરાદ ગોલ્ડ ૯૯૯</option>
-      <option value="th_s999">થરાદ સિલ્વર ૯૯૯</option>
-      <option value="th_g22">થરાદ ૨૨ કેરેટ</option>
+      <option value="th_g999">થરાદ ગોલ્ડ ૯૯૯ (રોકડ)</option>
+      <option value="th_s999">થરાદ સિલ્વર ૯૯૯ (રોકડ)</option>
+      <option value="th_g22">થરાદ ૨૨ કેરેટ (રોકડ)</option>
     </select>
     <input id="weight" type="number" inputmode="decimal" min="0" step="0.001" placeholder="વજન ગ્રામમાં દાખલ કરો">
     <button id="calculateBtn"><i class="fa-solid fa-calculator"></i> હિસાબ કરો</button>
-    <div class="total">કુલ અંદાજિત રકમ: <br>₹<span id="total">0</span></div>
+    <div class="total">અંદાજિત રકમ: <br>₹<span id="total">0</span></div>
+    
+    <div class="disclaimer-box" style="margin-top:15px; background:transparent; border-color:var(--border); color:var(--muted);">
+      * કેલ્ક્યુલેટર માત્ર પ્રાથમિક ગણતરી માટે છે. આમાં મજૂરી ખર્ચ કે GST ગણેલ નથી. સોદા સમયે લાઈવ રેટ જ આખરી ગણાશે.
+    </div>
   </section>
 
   <!-- ADMIN LOGIN BOX -->
