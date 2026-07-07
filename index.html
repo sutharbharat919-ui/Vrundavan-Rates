@@ -487,7 +487,7 @@ footer {
     </div>
   </section>
 
-  <!-- GRAPH SECTION (WORKING NOW) -->
+  <!-- GRAPH SECTION -->
   <section id="graph-sec" class="card">
     <h2><i class="fa-solid fa-chart-area" style="color: var(--coffee);"></i> બજાર વલણ (Market Trends)</h2>
     <div class="graph-wrapper">
@@ -499,9 +499,9 @@ footer {
   <section id="calc-sec" class="card">
     <h2><i class="fa-solid fa-calculator" style="color: var(--coffee);"></i> સ્માાર્ટ રેટ કેલ્ક્યુલેટર</h2>
     <select id="calcItem">
-      <option value="g24">૨૪ કેરેટ સોનું (૧૦ ગ્રામ)</option>
-      <option value="g22">૨૨ કેરેટ સોનું (૧૦ ગ્રામ)</option>
-      <option value="g18">૧૮ કેરેટ સોનું (૧૦ ગ્રામ)</option>
+      <option value="g24">૨૪ કેરેટ સોનું (૧0 ગ્રામ)</option>
+      <option value="g22">૨૨ કેરેટ સોનું (૧0 ગ્રામ)</option>
+      <option value="g18">૧૮ કેરેટ સોનું (૧0 ગ્રામ)</option>
       <option value="s95">ચાંદી ૯૫/૭૫ (૧ કિલો)</option>
       <option value="s90">ચાંદી ૯૦/૭૦ (૧ કિલો)</option>
       <option value="s60">ચાંદી ૬૦/૮૦ (૧ કિલો)</option>
@@ -561,7 +561,7 @@ footer {
   <a href="tel:+918758383303" class="nav-item"><i class="fa-solid fa-phone"></i>કોલ કરો</a>
 </nav>
 
-<!-- UPGRADED FOOTER WITH ACTIVE SOCIAL LINKS -->
+<!-- FOOTER WITH ACTIVE SOCIAL LINKS -->
 <footer>
   <div class="footer-links" style="margin-bottom: 20px;">
     <a href="#rates-sec"><i class="fa-solid fa-house"></i> મુખ્ય પેજ</a> | 
@@ -589,7 +589,7 @@ footer {
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-auth.js";
-import { getFirestore, doc, onSnapshot, setDoc, serverTimestamp, collection, query, orderBy, limit, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
+import { getFirestore, doc, onSnapshot, setDoc, serverTimestamp, collection, query, orderBy, limit, addDoc } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyACpWFqxs1AaIx7C6kMpu45bD79fWJeR60",
@@ -612,6 +612,7 @@ const RATE_KEYS = ["g24", "g22", "g18", "s95", "s90", "s60", "th_g999", "th_s999
 const SILVER_KEYS = ["s95", "s90", "s60", "th_s999"];
 let rates = {};
 let trendsChart = null;
+let forceAdminShow = false;
 
 const adminLoginBox = document.getElementById("adminLoginBox");
 const adminBox = document.getElementById("adminBox");
@@ -629,8 +630,10 @@ const totalEl = document.getElementById("total");
 const calcItem = document.getElementById("calcItem");
 const weightInput = document.getElementById("weight");
 
-const params = new URLSearchParams(window.location.search);
-const isAdminURL = params.get("admin") === "vopl";
+function checkAdminAccess() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("admin") === "vopl" || forceAdminShow;
+}
 
 // LIVE CLOCK
 function updateLiveClock() {
@@ -680,7 +683,7 @@ function updateRateDisplay(){
   });
 }
 
-// INITIALIZE AND UPDATE GRAPH FROM SNAPSHOT HISTORY
+// LIVE GRAPH LOGIC
 function initGraph(historyData) {
   const ctx = document.getElementById('trendsChart').getContext('2d');
   const labels = historyData.map(d => d.timeLabel).reverse();
@@ -703,7 +706,7 @@ function initGraph(historyData) {
       labels: labels,
       datasets: [
         {
-          label: '૨૪K સોનું (૧૦ ગ્રામ)',
+          label: '૨૪K સોનું (૧0 ગ્રામ)',
           data: gold24Data,
           borderColor: '#bf953f',
           backgroundColor: 'rgba(191, 149, 63, 0.1)',
@@ -752,7 +755,7 @@ function initGraph(historyData) {
   });
 }
 
-// LISTEN TO LIVE HISTORICAL TRENDS (LAST 5 UPDATES)
+// FETCH HISTORY TRENDS FOR CHART
 const historyQuery = query(historyCollectionRef, orderBy("timestamp", "desc"), limit(5));
 onSnapshot(historyQuery, snapshot => {
   const historyData = [];
@@ -763,82 +766,80 @@ onSnapshot(historyQuery, snapshot => {
       const t = data.timestamp.toDate();
       timeLabel = t.toLocaleTimeString('gu-IN', { hour: '2-digit', minute: '2-digit' });
     }
-    historyData.push({
-      timeLabel: timeLabel,
-      g24: data.g24 || 0,
-      s95: data.s95 || 0
-    });
+    historyData.push({ timeLabel: timeLabel, g24: data.g24 || 0, s95: data.s95 || 0 });
   });
-  
-  if(historyData.length > 0) {
-    initGraph(historyData);
-  }
+  if(historyData.length > 0) { initGraph(historyData); }
 });
 
-// LISTEN LIVE RATES
+// STREAM LIVE RATES
 onSnapshot(rateRef, snapshot => {
-  if(!snapshot.exists()){
-    RATE_KEYS.forEach(key => { const display = document.getElementById(key); if(display){ display.textContent = "No Data"; } });
-    lastUpdateEl.textContent = "છેલ્લો અપડેટ: -";
-    publicMessage.textContent = "Firestoreમાં ડેટા મળ્યો નથી.";
-    return;
-  }
+  if(!snapshot.exists()){ return; }
   const data = snapshot.data();
   RATE_KEYS.forEach(key => { const value = Number(data[key]); rates[key] = Number.isFinite(value) ? value : 0; });
   updateRateDisplay();
   if(data.updatedAt && typeof data.updatedAt.toDate === "function"){
     lastUpdateEl.textContent = "છેલ્લો અપડેટ: " + formatUpdateDateTime(data.updatedAt.toDate());
-  } else { lastUpdateEl.textContent = "છેલ્લો અપડેટ: -"; }
-  publicMessage.textContent = "";
+  }
 }, error => {
   publicMessage.textContent = "ભાવ લોડ કરવામાં ભૂલ આવી.";
 });
 
-/* CALCULATOR LOGIC */
+// CALCULATOR LOGIC
 document.getElementById("calculateBtn").addEventListener("click", () => {
   const selected = calcItem.value;
   const weight = Number(weightInput.value);
-  if(!Number.isFinite(weight) || weight <= 0){ totalEl.textContent = "0"; publicMessage.textContent = "કૃપા કરીને સાચું વજન દાખલ કરો."; return; }
+  if(!Number.isFinite(weight) || weight <= 0){ totalEl.textContent = "0"; return; }
   const rate = Number(rates[selected] || 0);
-  if(!Number.isFinite(rate) || rate <= 0){ totalEl.textContent = "0"; publicMessage.textContent = "આ ભાવ ઉપલબ્ધ નથી."; return; }
   let amount = SILVER_KEYS.includes(selected) ? (rate * weight / 1000) : (rate * weight / 10);
   totalEl.textContent = formatMoney(amount);
-  publicMessage.textContent = "";
 });
 
-/* LOGIN / LOGOUT LOGIC */
+// SHOW/HIDE ADMIN PANELS
+function renderAdminPanels(user) {
+  if (!checkAdminAccess()) {
+    adminLoginBox.classList.add("hidden");
+    adminBox.classList.add("hidden");
+    return;
+  }
+  if (isAdminUser(user)) {
+    adminLoginBox.classList.add("hidden");
+    adminBox.classList.remove("hidden");
+    adminStatus.textContent = "લોગિન: " + user.email;
+    updateRateDisplay();
+  } else {
+    adminBox.classList.add("hidden");
+    adminLoginBox.classList.remove("hidden");
+    emailInput.value = ADMIN_EMAIL;
+  }
+}
+
+// ADMIN LOGIN CLICK
 loginBtn.addEventListener("click", async () => {
   const email = emailInput.value.trim().toLowerCase();
   const password = passwordInput.value;
   if (!email || !password) { loginMessage.textContent = "ઈમેલ અને પાસવર્ડ દાખલ કરો."; return; }
-  if (email !== ADMIN_EMAIL.toLowerCase()) { loginMessage.textContent = "આ ઈમેલ Admin નથી."; return; }
   loginBtn.disabled = true; loginMessage.textContent = "લોગિન થઈ રહ્યું છે...";
   try {
     const credential = await signInWithEmailAndPassword(auth, email, password);
     if (!isAdminUser(credential.user)) { await signOut(auth); loginMessage.textContent = "આ Account Admin નથી."; return; }
-    passwordInput.value = ""; loginMessage.textContent = "Admin Login Successful";
+    passwordInput.value = ""; loginMessage.textContent = "";
   } catch (error) {
-    loginMessage.textContent = "Login નિષ્ફળ રહ્યું.";
+    loginMessage.textContent = "લોગિન નિષ્ફળ! પાસવર્ડ ચેક કરો.";
   } finally { loginBtn.disabled = false; }
 });
 
 passwordInput.addEventListener("keydown", event => { if (event.key === "Enter") { loginBtn.click(); } });
 
+// AUTH OBSERVER
 onAuthStateChanged(auth, async user => {
-  if (!isAdminURL) { adminLoginBox.classList.add("hidden"); adminBox.classList.add("hidden"); return; }
-  if (isAdminUser(user)) {
-    adminLoginBox.classList.add("hidden"); adminBox.classList.remove("hidden");
-    adminStatus.textContent = "લોગિન: " + user.email; updateRateDisplay(); return;
-  }
-  if (user) { await signOut(auth); return; }
-  adminBox.classList.add("hidden"); adminLoginBox.classList.remove("hidden");
-  emailInput.value = ADMIN_EMAIL;
+  if (user && !isAdminUser(user)) { await signOut(auth); return; }
+  renderAdminPanels(user);
 });
 
-// UPDATE RATES & ADD ENTRY TO HISTORY FOR GRAPH
+// SAVE RATES TO FIRESTORE
 updateBtn.addEventListener("click", async () => {
   const user = auth.currentUser;
-  if (!isAdminURL || !isAdminUser(user)) { adminMessage.textContent = "Admin Login જરૂરી છે."; return; }
+  if (!isAdminUser(user)) { adminMessage.textContent = "Admin Login જરૂરી છે."; return; }
   const newRates = {};
   for (const key of RATE_KEYS) {
     const input = document.getElementById("new_" + key);
@@ -848,39 +849,42 @@ updateBtn.addEventListener("click", async () => {
   }
   updateBtn.disabled = true; adminMessage.textContent = "ભાવ સેવ થઈ રહ્યા છે...";
   try {
-    // 1. Update current main rates
     await setDoc(rateRef, { ...newRates, updatedAt: serverTimestamp(), updatedBy: user.email }, { merge: true });
-    
-    // 2. Add entry to history collection for graph plotting
-    await addDoc(historyCollectionRef, {
-      g24: newRates.g24,
-      s95: newRates.s95,
-      timestamp: serverTimestamp()
-    });
-
-rules_version = '2';
-
-service cloud.firestore {
-  match /databases/{database}/documents {
-  
-    // Rates અને History બંને માટેનો નિયમ
-    match /rates/current {
-      allow read: true;
-      allow write: if request.auth != null && request.auth.token.email == 'office.vopl@gmail.com';
-    }
-    
-    match /rate_history/{document} {
-      allow read: true;
-      allow create, write: if request.auth != null && request.auth.token.email == 'office.vopl@gmail.com';
-    }
-    
-  }
-}
-document.getElementById("logoutBtn").addEventListener("click", async () => {
-  try { await signOut(auth); adminMessage.textContent = ""; loginMessage.textContent = "લોગઆઉટ સફળ થયું."; } catch (error) {}
+    await addDoc(historyCollectionRef, { g24: newRates.g24, s95: newRates.s95, timestamp: serverTimestamp() });
+    rates = { ...rates, ...newRates }; updateRateDisplay();
+    adminMessage.textContent = "બધા ભાવ સફળતાપૂર્વક અપડેટ થયા!";
+    setTimeout(() => { adminMessage.textContent = ""; }, 4000);
+  } catch (error) {
+    adminMessage.textContent = "સેવ કરવામાં ભૂલ આવી. Firestore Rules ચેક કરો.";
+  } finally { updateBtn.disabled = false; }
 });
 
-document.getElementById("closeAdminBtn").addEventListener("click", () => { window.location.href = window.location.pathname; });
+// ADMIN LOGOUT
+document.getElementById("logoutBtn").addEventListener("click", async () => {
+  try { await signOut(auth); loginMessage.textContent = "લોગઆઉટ સફળ થયું."; } catch (error) {}
+});
+
+document.getElementById("closeAdminBtn").addEventListener("click", () => { 
+  forceAdminShow = false;
+  window.location.href = window.location.pathname; 
+});
+
+// SECRET BACKDOOR: "Developed by Bharat Suhar" પર ૩ વાર ક્લિક કરવાથી પેનલ ઓપન થશે.
+const footerDevText = document.querySelector("footer p:last-of-type");
+if(footerDevText) {
+  footerDevText.style.cursor = "pointer";
+  let clickCount = 0;
+  footerDevText.addEventListener("click", () => {
+    clickCount++;
+    if(clickCount === 3) {
+      clickCount = 0;
+      forceAdminShow = true;
+      renderAdminPanels(auth.currentUser);
+      adminLoginBox.scrollIntoView({ behavior: 'smooth' });
+    }
+    setTimeout(() => { clickCount = 0; }, 2000);
+  });
+}
 </script>
 </body>
 </html>
