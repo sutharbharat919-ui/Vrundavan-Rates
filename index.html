@@ -10,6 +10,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Gujarati:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <!-- FontAwesome for Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Chart.js for Live Graph -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
 :root {
@@ -268,24 +270,12 @@ h2 {
   font-weight: 600;
 }
 
-/* GRAPH SECTION PLACEHOLDER */
-.graph-container {
+/* GRAPH SECTION WORKING AREA */
+.graph-wrapper {
+  position: relative;
   width: 100%;
-  height: 200px;
-  background: var(--soft);
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: var(--muted);
-  border: 1px dashed var(--border);
-  margin-top: 10px;
-}
-.graph-container i {
-  font-size: 36px;
-  margin-bottom: 10px;
-  color: var(--coffee);
+  height: 260px;
+  margin-top: 15px;
 }
 
 /* INPUTS & BUTTONS */
@@ -420,8 +410,7 @@ footer {
 
 <!-- NOTIFICATION BAR -->
 <div class="notification-bar">
-  <div class="marquee">✨ સ્વાગત છે! વૃંદાવન ઓર્નમેન્ટ્સ 
-પ્રા.લી સોના ચાંદીના લાઈવ ભાવ અહીં જોઈ શકાશે. રોજના સચોટ અને તાજા અપડેટ માટે પેજ વિઝિટ કરતા રહો. ✨</div>
+  <div class="marquee">✨ સ્વાગત છે! વ્રુન્દાવન ઓર્નામેન્ટ્સ માં સોના ચાંદીના લાઈવ ભાવ અહીં જોઈ શકાશે. રોજના સચોટ અને તાજા અપડેટ માટે પેજ વિઝિટ કરતા રહો. ✨</div>
 </div>
 
 <header>
@@ -498,12 +487,11 @@ footer {
     </div>
   </section>
 
-  <!-- GRAPH SECTION -->
+  <!-- GRAPH SECTION (WORKING NOW) -->
   <section id="graph-sec" class="card">
     <h2><i class="fa-solid fa-chart-area" style="color: var(--coffee);"></i> બજાર વલણ (Market Trends)</h2>
-    <div class="graph-container">
-      <i class="fa-solid fa-lines-leaning"></i>
-      <span>ગ્રાફ લોડ થઈ રહ્યો છે... (ઐતિહાસિક ડેટા વિશ્લેષણ)</span>
+    <div class="graph-wrapper">
+      <canvas id="trendsChart"></canvas>
     </div>
   </section>
 
@@ -601,7 +589,7 @@ footer {
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-auth.js";
-import { getFirestore, doc, onSnapshot, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
+import { getFirestore, doc, onSnapshot, setDoc, serverTimestamp, collection, query, orderBy, limit, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyACpWFqxs1AaIx7C6kMpu45bD79fWJeR60",
@@ -618,10 +606,12 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const rateRef = doc(db, "rates", "current");
+const historyCollectionRef = collection(db, "rate_history");
 
 const RATE_KEYS = ["g24", "g22", "g18", "s95", "s90", "s60", "th_g999", "th_s999", "th_g22"];
 const SILVER_KEYS = ["s95", "s90", "s60", "th_s999"];
 let rates = {};
+let trendsChart = null;
 
 const adminLoginBox = document.getElementById("adminLoginBox");
 const adminBox = document.getElementById("adminBox");
@@ -662,15 +652,14 @@ themeToggleBtn.addEventListener("click", () => {
     document.documentElement.setAttribute("data-theme", "dark");
     themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
   }
-});
-
-// BOTTOM NAV ACTIVE
-const navItems = document.querySelectorAll('.nav-item');
-navItems.forEach(item => {
-  item.addEventListener('click', () => {
-    navItems.forEach(i => i.classList.remove('active'));
-    item.classList.add('active');
-  });
+  if(trendsChart) {
+    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+    trendsChart.options.scales.x.grid.color = isDark ? '#3d3530' : '#e2d3c9';
+    trendsChart.options.scales.y.grid.color = isDark ? '#3d3530' : '#e2d3c9';
+    trendsChart.options.scales.x.ticks.color = isDark ? '#e0d5cd' : '#554239';
+    trendsChart.options.scales.y.ticks.color = isDark ? '#e0d5cd' : '#554239';
+    trendsChart.update();
+  }
 });
 
 function formatMoney(value){ const number = Number(value); return !Number.isFinite(number) ? "0" : number.toLocaleString("en-IN", { maximumFractionDigits:2 }); }
@@ -691,6 +680,102 @@ function updateRateDisplay(){
   });
 }
 
+// INITIALIZE AND UPDATE GRAPH FROM SNAPSHOT HISTORY
+function initGraph(historyData) {
+  const ctx = document.getElementById('trendsChart').getContext('2d');
+  const labels = historyData.map(d => d.timeLabel).reverse();
+  const gold24Data = historyData.map(d => d.g24).reverse();
+  const silver95Data = historyData.map(d => d.s95).reverse();
+  
+  const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+
+  if (trendsChart) {
+    trendsChart.data.labels = labels;
+    trendsChart.data.datasets[0].data = gold24Data;
+    trendsChart.data.datasets[1].data = silver95Data;
+    trendsChart.update();
+    return;
+  }
+
+  trendsChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: '૨૪K સોનું (૧૦ ગ્રામ)',
+          data: gold24Data,
+          borderColor: '#bf953f',
+          backgroundColor: 'rgba(191, 149, 63, 0.1)',
+          borderWidth: 3,
+          tension: 0.3,
+          yAxisID: 'yGold'
+        },
+        {
+          label: 'ચાંદી ૯૫/૭૫ (૧ કિલો)',
+          data: silver95Data,
+          borderColor: '#96a5a6',
+          backgroundColor: 'rgba(150, 165, 166, 0.1)',
+          borderWidth: 3,
+          tension: 0.3,
+          yAxisID: 'ySilver'
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'top', labels: { font: { family: 'Poppins, Noto Serif Gujarati' } } }
+      },
+      scales: {
+        x: {
+          grid: { color: isDark ? '#3d3530' : '#e2d3c9' },
+          ticks: { color: isDark ? '#e0d5cd' : '#554239', font: { size: 10 } }
+        },
+        yGold: {
+          type: 'linear',
+          position: 'left',
+          title: { display: true, text: 'સોનાનો ભાવ (₹)', font: { size: 11, weight: 'bold' } },
+          grid: { color: isDark ? '#3d3530' : '#e2d3c9' },
+          ticks: { color: '#bf953f' }
+        },
+        ySilver: {
+          type: 'linear',
+          position: 'right',
+          title: { display: true, text: 'ચાંદીનો ભાવ (₹)', font: { size: 11, weight: 'bold' } },
+          grid: { drawOnChartArea: false },
+          ticks: { color: '#7f8c8d' }
+        }
+      }
+    }
+  });
+}
+
+// LISTEN TO LIVE HISTORICAL TRENDS (LAST 5 UPDATES)
+const historyQuery = query(historyCollectionRef, orderBy("timestamp", "desc"), limit(5));
+onSnapshot(historyQuery, snapshot => {
+  const historyData = [];
+  snapshot.forEach(doc => {
+    const data = doc.data();
+    let timeLabel = "-";
+    if (data.timestamp && typeof data.timestamp.toDate === "function") {
+      const t = data.timestamp.toDate();
+      timeLabel = t.toLocaleTimeString('gu-IN', { hour: '2-digit', minute: '2-digit' });
+    }
+    historyData.push({
+      timeLabel: timeLabel,
+      g24: data.g24 || 0,
+      s95: data.s95 || 0
+    });
+  });
+  
+  if(historyData.length > 0) {
+    initGraph(historyData);
+  }
+});
+
+// LISTEN LIVE RATES
 onSnapshot(rateRef, snapshot => {
   if(!snapshot.exists()){
     RATE_KEYS.forEach(key => { const display = document.getElementById(key); if(display){ display.textContent = "No Data"; } });
@@ -726,7 +811,7 @@ loginBtn.addEventListener("click", async () => {
   const email = emailInput.value.trim().toLowerCase();
   const password = passwordInput.value;
   if (!email || !password) { loginMessage.textContent = "ઈમેલ અને પાસવર્ડ દાખલ કરો."; return; }
-  if (email !== ADMIN_EMAIL.toLowerCase()) { loginMessage.textContent = "આ ઈમેલ Admin નથી.."; return; }
+  if (email !== ADMIN_EMAIL.toLowerCase()) { loginMessage.textContent = "આ ઈમેલ Admin નથી."; return; }
   loginBtn.disabled = true; loginMessage.textContent = "લોગિન થઈ રહ્યું છે...";
   try {
     const credential = await signInWithEmailAndPassword(auth, email, password);
@@ -750,6 +835,7 @@ onAuthStateChanged(auth, async user => {
   emailInput.value = ADMIN_EMAIL;
 });
 
+// UPDATE RATES & ADD ENTRY TO HISTORY FOR GRAPH
 updateBtn.addEventListener("click", async () => {
   const user = auth.currentUser;
   if (!isAdminURL || !isAdminUser(user)) { adminMessage.textContent = "Admin Login જરૂરી છે."; return; }
@@ -762,9 +848,18 @@ updateBtn.addEventListener("click", async () => {
   }
   updateBtn.disabled = true; adminMessage.textContent = "ભાવ સેવ થઈ રહ્યા છે...";
   try {
+    // 1. Update current main rates
     await setDoc(rateRef, { ...newRates, updatedAt: serverTimestamp(), updatedBy: user.email }, { merge: true });
+    
+    // 2. Add entry to history collection for graph plotting
+    await addDoc(historyCollectionRef, {
+      g24: newRates.g24,
+      s95: newRates.s95,
+      timestamp: serverTimestamp()
+    });
+
     rates = { ...rates, ...newRates }; updateRateDisplay();
-    adminMessage.textContent = "બધા ભાવ સફળતાપૂર્વક અપડેટ થયા.";
+    adminMessage.textContent = "બધા ભાવ સફળતાપૂર્વક અપડેટ થયા અને ગ્રાફ લાઈવ થયો.";
   } catch (error) {
     adminMessage.textContent = "અપડેટ કરવામાં ભૂલ આવી.";
   } finally { updateBtn.disabled = false; }
