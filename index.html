@@ -135,7 +135,7 @@ footer { padding: 25px 15px 90px; text-align: center; color: var(--muted); font-
       <span class="price">₹<span id="g18">લોડિંગ...</span></span>
     </div>
 
-    <div class="section-title">ચાંદીનો ભાવ (૧ કિલો) [GST સાથે]</div>
+    <div class="section-title">ચાんだીનો ભાવ (૧ કિલો) [GST સાથે]</div>
     <div class="rate">
       <span class="rate-label"><i class="fa-solid fa-coins" style="color: #c0c0c0;"></i> ચાંદી ૯૫/૭૫</span>
       <span class="price">₹<span id="s95">લોડિંગ...</span></span>
@@ -252,9 +252,9 @@ const firebaseConfig = {
   appId: "1:192490668353:web:e8ce193dab2d3c4f7061c0"
 };
 
-// LIVE SYNC USING GOOGLE SHEET PUBLISHED URL
+// MULTI-FALLBACK SECURE SYNC SYSTEM
 const SHEET_ID = '1ixR39Oy7ZJV4ldOm-uT_KbTXyYRmrfoXm-MuyrGSdHA';
-const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/pub?output=csv`;
+const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/pub?output=csv`;
 
 const ADMIN_EMAIL = "office.vopl@gmail.com";
 const app = initializeApp(firebaseConfig);
@@ -303,51 +303,78 @@ function parseCSV(text) {
   });
 }
 
-// INTELLIGENT CONTENT-MATCH AUTO SCANNER
+// BULLETPROOF LOGICAL SCANNER (Matches both Gujarati & English text structures)
 async function fetchGoogleSheetRates() {
   try {
-    const response = await fetch(SHEET_URL + "&cachebuster=" + new Date().getTime());
+    const response = await fetch(CSV_URL + "&cb=" + new Date().getTime());
     const text = await response.text();
     const rows = parseCSV(text);
 
     if (rows && rows.length > 0) {
       rows.forEach((row) => {
-        const fullRowText = row.join(" ");
+        const lineStr = row.join(" ");
         
-        // Smart matching pattern based on textual keyword appearances
-        if (fullRowText.includes("24 કેરેટ") || fullRowText.includes("24k") || fullRowText.includes("24K")) {
-          if (cleanNum(row[2]) > 0) sheetRates["g24"] = cleanNum(row[2]);
+        // Gold 24K Matrix Check
+        if (lineStr.includes("24 કેરેટ") || lineStr.includes("૨૪ કેરેટ") || lineStr.includes("24k") || lineStr.includes("24K")) {
+          let val = cleanNum(row[2]) || cleanNum(row[1]);
+          if (val > 0) sheetRates["g24"] = val;
         }
-        if (fullRowText.includes("22 કેરેટ") || fullRowText.includes("22k") || fullRowText.includes("22K")) {
-          if (cleanNum(row[2]) > 0) sheetRates["g22"] = cleanNum(row[2]);
+        // Gold 22K Matrix Check
+        if (lineStr.includes("22 કેરેટ") || lineStr.includes("૨૨ કેરેટ") || lineStr.includes("22k") || lineStr.includes("22K")) {
+          let val = cleanNum(row[2]) || cleanNum(row[1]);
+          if (val > 0) sheetRates["g22"] = val;
         }
-        if (fullRowText.includes("18 કેરેટ") || fullRowText.includes("18k") || fullRowText.includes("18K")) {
-          if (cleanNum(row[2]) > 0) sheetRates["g18"] = cleanNum(row[2]);
+        // Gold 18K Matrix Check
+        if (lineStr.includes("18 કેરેટ") || lineStr.includes("૧૮ કેરેટ") || lineStr.includes("18k") || lineStr.includes("18K")) {
+          let val = cleanNum(row[2]) || cleanNum(row[1]);
+          if (val > 0) sheetRates["g18"] = val;
         }
-        if (fullRowText.includes("95/75") || fullRowText.includes("95")) {
-          if (cleanNum(row[2]) > 0) sheetRates["s95"] = cleanNum(row[2]);
+        // Silver 95 Check
+        if (lineStr.includes("95/75") || lineStr.includes("૯૫/૭૫")) {
+          let val = cleanNum(row[2]) || cleanNum(row[1]);
+          if (val > 0) sheetRates["s95"] = val;
         }
-        if (fullRowText.includes("90/70") || fullRowText.includes("90")) {
-          if (cleanNum(row[2]) > 0) sheetRates["s90"] = cleanNum(row[2]);
+        // Silver 90 Check
+        if (lineStr.includes("90/70") || lineStr.includes("૯૦/૭૦")) {
+          let val = cleanNum(row[2]) || cleanNum(row[1]);
+          if (val > 0) sheetRates["s90"] = val;
         }
-        if (fullRowText.includes("60/80") || fullRowText.includes("60")) {
-          if (cleanNum(row[2]) > 0) sheetRates["s60"] = cleanNum(row[2]);
+        // Silver 60 Check
+        if (lineStr.includes("60/80") || lineStr.includes("૬૦/૮૦")) {
+          let val = cleanNum(row[2]) || cleanNum(row[1]);
+          if (val > 0) sheetRates["s60"] = val;
         }
-        if (fullRowText.includes("ગોલ્ડ ૯૯૯ CASH") || fullRowText.includes("999 CASH")) {
-          if (cleanNum(row[1]) > 0) sheetRates["th_g999"] = cleanNum(row[1]);
+        // Tharad Gold Cash
+        if (lineStr.includes("CASH") || lineStr.includes("રોકડ") || lineStr.includes("૯૯૯ CASH")) {
+          if(lineStr.includes("ગોલ્ડ") || lineStr.includes("Gold")) {
+            let val = cleanNum(row[1]) || cleanNum(row[2]);
+            if (val > 0) sheetRates["th_g999"] = val;
+          }
         }
-        if (fullRowText.includes("સિલ્વર ચોરસા") || fullRowText.includes("LO CASH")) {
-          if (cleanNum(row[1]) > 0) sheetRates["th_s999"] = cleanNum(row[1]);
+        // Tharad Silver Cash
+        if (lineStr.includes("LO CASH") || lineStr.includes("ચોરસા")) {
+          let val = cleanNum(row[1]) || cleanNum(row[2]);
+          if (val > 0) sheetRates["th_s999"] = val;
         }
-        if (fullRowText.includes("ગોલ્ડ ૯૯૯ CHEQUE") || fullRowText.includes("CHEQUE")) {
-          if (cleanNum(row[3]) > 0) sheetRates["th_g22"] = cleanNum(row[3]);
+        // Tharad Gold Cheque
+        if (lineStr.includes("CHEQUE") || lineStr.includes("ચેક")) {
+          let val = cleanNum(row[3]) || cleanNum(row[2]) || cleanNum(row[1]);
+          if (val > 0) sheetRates["th_g22"] = val;
         }
       });
+
+      // BACKUP HARD RECOVERY DICTIONARY (If text scan misses due to extreme shifts)
+      if(!sheetRates["g24"] && rows[16]) sheetRates["g24"] = cleanNum(rows[16][2]) || cleanNum(rows[16][1]);
+      if(!sheetRates["g22"] && rows[17]) sheetRates["g22"] = cleanNum(rows[17][2]) || cleanNum(rows[17][1]);
+      if(!sheetRates["g18"] && rows[20]) sheetRates["g18"] = cleanNum(rows[20][2]) || cleanNum(rows[20][1]);
+      if(!sheetRates["th_g999"] && rows[6]) sheetRates["th_g999"] = cleanNum(rows[6][1]);
+      if(!sheetRates["th_s999"] && rows[9]) sheetRates["th_s999"] = cleanNum(rows[9][1]);
+      if(!sheetRates["th_g22"] && rows[6]) sheetRates["th_g22"] = cleanNum(rows[6][3]);
 
       combineAndRenderRates();
     }
   } catch (e) {
-    console.error("Sheet Sync Failed", e);
+    console.error("Sheet Connection Error", e);
     combineAndRenderRates();
   }
 }
@@ -365,7 +392,7 @@ function combineAndRenderRates() {
       if (currentActiveRates[key] > 0) {
         display.textContent = Number(currentActiveRates[key]).toLocaleString("en-IN");
       } else {
-        display.textContent = "વેઇટિંગ...";
+        display.textContent = "અપડેટિંગ...";
       }
     }
     
@@ -374,7 +401,7 @@ function combineAndRenderRates() {
   });
 }
 
-// FIREBASE REALTIME MONITOR
+// FIREBASE MONITOR
 onSnapshot(rateRef, snapshot => {
   if(snapshot.exists()){
     const data = snapshot.data();
@@ -390,7 +417,7 @@ onSnapshot(rateRef, snapshot => {
 
 setInterval(fetchGoogleSheetRates, 10000);
 
-// CALCULATOR CODE
+// CALCULATOR
 document.getElementById("calculateBtn").addEventListener("click", () => {
   const selected = calcItem.value;
   const weight = Number(weightInput.value);
