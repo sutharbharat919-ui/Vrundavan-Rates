@@ -8,9 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Gujarati:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<!-- FontAwesome for Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<!-- Chart.js for Live Graph -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
@@ -30,7 +28,6 @@
   --shadow: 0 10px 30px rgba(73, 54, 45, 0.07);
 }
 
-/* Dark Mode Colors */
 [data-theme="dark"] {
   --bg: #121212;
   --surface: #1e1e1e;
@@ -44,376 +41,66 @@
   --shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-* {
-  box-sizing: border-box;
-  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
-}
+* { box-sizing: border-box; transition: background-color 0.3s, border-color 0.3s, color 0.3s; }
+html { scroll-behavior: smooth; }
+body { margin: 0; padding-bottom: 70px; min-height: 100vh; background: var(--bg); color: var(--text); font-family: 'Noto Serif Gujarati', serif; }
 
-html {
-  scroll-behavior: smooth;
-}
+.notification-bar { background: var(--gold-gradient); color: #000; padding: 8px 10px; font-size: 13px; font-weight: 700; overflow: hidden; position: relative; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+.marquee { display: inline-block; white-space: nowrap; animation: marquee 25s linear infinite; padding-left: 100%; }
+@keyframes marquee { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
-body {
-  margin: 0;
-  padding-bottom: 70px; /* Space for bottom navigation */
-  min-height: 100vh;
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Noto Serif Gujarati', serif;
-}
+header { padding: 20px 15px 30px; text-align: center; background: linear-gradient(145deg, #eadbd0, #dcc5b5); border-bottom: 2px solid var(--coffee); box-shadow: 0 6px 25px rgba(73,54,45,.12); position: relative; }
+[data-theme="dark"] header { background: linear-gradient(145deg, #231b15, #120d0a); }
+.header-tools { position: absolute; top: 15px; right: 15px; display: flex; gap: 10px; }
+.theme-toggle-btn { background: var(--surface); border: 1px solid var(--border); color: var(--text); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px; box-shadow: var(--shadow); }
 
-/* NOTIFICATION BAR */
-.notification-bar {
-  background: var(--gold-gradient);
-  color: #000;
-  padding: 8px 10px;
-  font-size: 13px;
-  font-weight: 700;
-  overflow: hidden;
-  position: relative;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-.marquee {
-  display: inline-block;
-  white-space: nowrap;
-  animation: marquee 25s linear infinite;
-  padding-left: 100%;
-}
-@keyframes marquee {
-  0% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(-100%, 0, 0); }
-}
+.logo-box { width: 100%; max-width: 360px; height: 140px; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; }
+.logo { width: 100%; height: 100%; object-fit: contain; }
+header h1 { margin: 0; color: var(--heading); font-family: 'Poppins', sans-serif; font-size: 32px; font-weight: 700; letter-spacing: 1px; }
+header p { margin: 8px 0 0; color: var(--dark); font-size: 16px; font-weight: 600; letter-spacing: 0.5px; }
 
-/* HEADER UPGRADE */
-header {
-  padding: 20px 15px 30px;
-  text-align: center;
-  background: linear-gradient(145deg, #eadbd0, #dcc5b5);
-  border-bottom: 2px solid var(--coffee);
-  box-shadow: 0 6px 25px rgba(73,54,45,.12);
-  position: relative;
-}
-[data-theme="dark"] header {
-  background: linear-gradient(145deg, #231b15, #120d0a);
-}
+.live-clock-box { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; padding: 6px 16px; background: rgba(255,255,255,0.2); border-radius: 20px; font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 600; color: var(--heading); border: 1px solid rgba(255,255,255,0.3); }
 
-.header-tools {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  display: flex;
-  gap: 10px;
-}
+.container { width: 100%; max-width: 720px; margin: auto; padding: 20px 12px 40px; }
+.card { position: relative; margin-bottom: 25px; padding: 22px; overflow: hidden; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; box-shadow: var(--shadow); }
+.card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--gold-gradient); }
 
-/* Dark Mode Toggle Button */
-.theme-toggle-btn {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  color: var(--text);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  box-shadow: var(--shadow);
-}
+h2 { margin: 0 0 18px; color: var(--heading); font-size: 22px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+.section-title { margin: 20px 0 10px; padding: 10px 14px; color: var(--dark); background: var(--soft); border-left: 4px solid var(--coffee); border-radius: 4px 10px 10px 4px; font-size: 14px; font-weight: 700; }
 
-.logo-box {
-  width: 100%;
-  max-width: 360px;
-  height: 140px;
-  margin: 0 auto 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.logo {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
+.disclaimer-box { background: rgba(154, 92, 85, 0.08); border: 1px solid var(--danger); border-radius: 12px; padding: 12px 15px; margin-top: 15px; font-size: 13px; color: var(--danger); line-height: 1.5; font-weight: 600; }
+.disclaimer-box i { margin-right: 5px; }
 
-header h1 {
-  margin: 0;
-  color: var(--heading);
-  font-family: 'Poppins', sans-serif;
-  font-size: 32px;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-header p {
-  margin: 8px 0 0;
-  color: var(--dark);
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
+.rate { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 60px; margin-bottom: 10px; padding: 12px 16px; background: var(--bg); border: 1px solid var(--border); border-radius: 14px; }
+.rate-label { color: var(--text); font-size: 15px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+.price { color: var(--dark); font-family: 'Poppins', sans-serif; font-size: 17px; font-weight: 700; white-space: nowrap; background: var(--soft); padding: 6px 12px; border-radius: 8px; }
 
-/* LIVE CLOCK */
-.live-clock-box {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 12px;
-  padding: 6px 16px;
-  background: rgba(255,255,255,0.2);
-  border-radius: 20px;
-  font-family: 'Poppins', sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--heading);
-  border: 1px solid rgba(255,255,255,0.3);
-}
+.date-box { margin-top: 20px; padding: 14px; background: var(--soft); border-radius: 12px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.date-line { color: var(--muted); font-size: 13px; font-weight: 600; }
 
-/* MAIN CONTAINER */
-.container {
-  width: 100%;
-  max-width: 720px;
-  margin: auto;
-  padding: 20px 12px 40px;
-}
+.graph-wrapper { position: relative; width: 100%; height: 260px; margin-top: 15px; }
 
-/* CARDS */
-.card {
-  position: relative;
-  margin-bottom: 25px;
-  padding: 22px;
-  overflow: hidden;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  box-shadow: var(--shadow);
-}
-.card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--gold-gradient);
-}
-
-h2 {
-  margin: 0 0 18px;
-  color: var(--heading);
-  font-size: 22px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.section-title {
-  margin: 20px 0 10px;
-  padding: 10px 14px;
-  color: var(--dark);
-  background: var(--soft);
-  border-left: 4px solid var(--coffee);
-  border-radius: 4px 10px 10px 4px;
-  font-size: 14px;
-  font-weight: 700;
-}
-
-/* DISCLAIMER BOX */
-.disclaimer-box {
-  background: rgba(154, 92, 85, 0.08);
-  border: 1px solid var(--danger);
-  border-radius: 12px;
-  padding: 12px 15px;
-  margin-top: 15px;
-  font-size: 13px;
-  color: var(--danger);
-  line-height: 1.5;
-  font-weight: 600;
-}
-.disclaimer-box i {
-  margin-right: 5px;
-}
-
-/* PREMIUM RATE CARDS */
-.rate {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  min-height: 60px;
-  margin-bottom: 10px;
-  padding: 12px 16px;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  position: relative;
-}
-.rate:hover {
-  border-color: var(--coffee);
-}
-.rate-label {
-  color: var(--text);
-  font-size: 15px;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.price {
-  color: var(--dark);
-  font-family: 'Poppins', sans-serif;
-  font-size: 17px;
-  font-weight: 700;
-  white-space: nowrap;
-  background: var(--soft);
-  padding: 6px 12px;
-  border-radius: 8px;
-}
-
-.date-box {
-  margin-top: 20px;
-  padding: 14px;
-  background: var(--soft);
-  border-radius: 12px;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-.date-line {
-  color: var(--muted);
-  font-size: 13px;
-  font-weight: 600;
-}
-
-/* GRAPH SECTION WORKING AREA */
-.graph-wrapper {
-  position: relative;
-  width: 100%;
-  height: 260px;
-  margin-top: 15px;
-}
-
-/* INPUTS & BUTTONS */
-input, select {
-  width: 100%;
-  margin-top: 10px;
-  padding: 14px;
-  outline: none;
-  color: var(--heading);
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  font-family: 'Noto Serif Gujarati', serif;
-  font-size: 15px;
-}
-input:focus, select:focus {
-  border-color: var(--coffee);
-  box-shadow: 0 0 0 3px rgba(185, 150, 125, 0.2);
-}
-button {
-  width: 100%;
-  margin-top: 15px;
-  padding: 14px;
-  border: 0;
-  border-radius: 12px;
-  color: #fff;
-  background: var(--dark);
-  font-family: 'Noto Serif Gujarati', serif;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
+input, select { width: 100%; margin-top: 10px; padding: 14px; outline: none; color: var(--heading); background: var(--bg); border: 1px solid var(--border); border-radius: 12px; font-family: 'Noto Serif Gujarati', serif; font-size: 15px; }
+button { width: 100%; margin-top: 15px; padding: 14px; border: 0; border-radius: 12px; color: #fff; background: var(--dark); font-family: 'Noto Serif Gujarati', serif; font-size: 16px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
 button:disabled { opacity: .55; cursor: not-allowed; }
 .secondary { background: #a98b78; }
 .save-button { background: var(--success); }
 .logout-button { background: var(--danger); }
 
-.total {
-  margin-top: 20px;
-  padding: 20px;
-  text-align: center;
-  color: var(--heading);
-  background: var(--soft);
-  border: 2px dashed var(--coffee);
-  border-radius: 14px;
-  font-size: 22px;
-  font-weight: 700;
-}
-
+.total { margin-top: 20px; padding: 20px; text-align: center; color: var(--heading); background: var(--soft); border: 2px dashed var(--coffee); border-radius: 14px; font-size: 22px; font-weight: 700; }
 .message { min-height: 22px; margin: 15px 0; text-align: center; color: var(--dark); font-size: 14px; font-weight: 700; }
 .hidden { display: none !important; }
 
-/* WHATSAPP FLOATING BUTTON */
-.whatsapp-float {
-  position: fixed;
-  bottom: 85px;
-  right: 20px;
-  background-color: #25d366;
-  color: white;
-  border-radius: 50%;
-  width: 55px;
-  height: 55px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  z-index: 99;
-  text-decoration: none;
-}
+.whatsapp-float { position: fixed; bottom: 85px; right: 20px; background-color: #25d366; color: white; border-radius: 50%; width: 55px; height: 55px; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 99; text-decoration: none; }
 
-/* BOTTOM NAVIGATION */
-.bottom-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 65px;
-  background: var(--surface);
-  border-top: 1px solid var(--border);
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  z-index: 100;
-  box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
-}
-.nav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: var(--muted);
-  text-decoration: none;
-  font-size: 11px;
-  font-weight: 600;
-}
-.nav-item i {
-  font-size: 20px;
-  margin-bottom: 4px;
-}
-.nav-item.active {
-  color: var(--coffee);
-}
+.bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; height: 65px; background: var(--surface); border-top: 1px solid var(--border); display: flex; justify-content: space-around; align-items: center; z-index: 100; box-shadow: 0 -4px 10px rgba(0,0,0,0.05); }
+.nav-item { display: flex; flex-direction: column; align-items: center; color: var(--muted); text-decoration: none; font-size: 11px; font-weight: 600; }
+.nav-item i { font-size: 20px; margin-bottom: 4px; }
+.nav-item.active { color: var(--coffee); }
 
-/* FOOTER UPGRADE */
-footer {
-  padding: 25px 15px 90px;
-  text-align: center;
-  color: var(--muted);
-  font-size: 13px;
-  border-top: 1px solid var(--border);
-  background: var(--soft);
-}
-.footer-links {
-  margin-bottom: 15px;
-}
-.footer-links a {
-  color: var(--text);
-  text-decoration: none;
-  margin: 0 10px;
-  font-weight: 600;
-}
+footer { padding: 25px 15px 90px; text-align: center; color: var(--muted); font-size: 13px; border-top: 1px solid var(--border); background: var(--soft); }
+.footer-links { margin-bottom: 15px; }
+.footer-links a { color: var(--text); text-decoration: none; margin: 0 10px; font-weight: 600; }
 
 @media(max-width:500px){
   header h1 { font-size: 24px; }
@@ -424,25 +111,19 @@ footer {
 </head>
 <body>
 
-<!-- NOTIFICATION BAR -->
 <div class="notification-bar">
   <div class="marquee">✨ સ્વાગત છે! વ્રુન્દાવન ઓર્નામેન્ટ્સ માં સોના ચાંદીના લાઈવ ભાવ અહીં જોઈ શકાશે. રોજના સચોટ અને તાજા અપડેટ માટે પેજ વિઝિટ કરતા રહો. ✨</div>
 </div>
 
 <header>
   <div class="header-tools">
-    <button class="theme-toggle-btn" id="themeToggle" title="ડાર્ક મોડ બદલો">
-      <i class="fa-solid fa-moon"></i>
-    </button>
+    <button class="theme-toggle-btn" id="themeToggle" title="ડાર્ક મોડ બદલો"><i class="fa-solid fa-moon"></i></button>
   </div>
-  
   <div class="logo-box">
     <img src="./logo.png" class="logo" alt="Vrundavan Ornaments Logo">
   </div>
   <h1>VRUNDAVAN ORNAMENTS PVT LTD</h1>
   <p><i class="fa-solid fa-gavel"></i> સોના ચાંદીના સત્તાવાર ભાવ</p>
-  
-  <!-- LIVE CLOCK -->
   <div class="live-clock-box">
     <i class="fa-regular fa-clock"></i>
     <span id="liveClock">00:00:00 AM</span>
@@ -450,50 +131,49 @@ footer {
 </header>
 
 <main class="container">
-
   <!-- TODAY RATES SECTION -->
   <section id="rates-sec" class="card">
     <h2><i class="fa-solid fa-chart-line" style="color: var(--coffee);"></i> આજના અંદાજિત ભાવ</h2>
 
-    <div class="section-title">સોનાનો ભાવ (૧૦ ગ્રામ) [GST અલગ]</div>
+    <div class="section-title">સોનાનો ભાવ (૧૦ ગ્રામ) [GST સાથે]</div>
     <div class="rate">
-      <span class="rate-label"><i class="fa-solid fa-award" style="color: #ffd700;"></i> ૨૪ કેરેટ ગોલ્ડ</span>
+      <span class="rate-label"><i class="fa-solid fa-award" style="color: #ffd700;"></i> ૨૪ કેરેટ ગોલ્ડ (100%)</span>
       <span class="price">₹<span id="g24">Loading...</span></span>
     </div>
     <div class="rate">
-      <span class="rate-label"><i class="fa-solid fa-award" style="color: #e6b800;"></i> ૨૨ કેરેટ ગોલ્ડ</span>
+      <span class="rate-label"><i class="fa-solid fa-award" style="color: #e6b800;"></i> ૨૨ કેરેટ ગોલ્ડ (92%)</span>
       <span class="price">₹<span id="g22">Loading...</span></span>
     </div>
     <div class="rate">
-      <span class="rate-label"><i class="fa-solid fa-award" style="color: #cc9900;"></i> ૧૮ કેરેટ ગોલ્ડ</span>
+      <span class="rate-label"><i class="fa-solid fa-award" style="color: #cc9900;"></i> ૧૮ કેરેટ ગોલ્ડ (75%)</span>
       <span class="price">₹<span id="g18">Loading...</span></span>
     </div>
 
-    <div class="section-title">ચાંદીનો ભાવ (૧ કિલો) [GST અલગ]</div>
+    <div class="section-title">ચાંદીનો ભાવ (૧ કિલો) [GST સાથે]</div>
     <div class="rate">
-      <span class="rate-label"><i class="fa-solid fa-coins" style="color: #c0c0c0;"></i> ૯૫/૭૫ ટ્રેડિંગ</span>
+      <span class="rate-label"><i class="fa-solid fa-coins" style="color: #c0c0c0;"></i> ચાંદી ૯૫/૭૫</span>
       <span class="price">₹<span id="s95">Loading...</span></span>
     </div>
     <div class="rate">
-      <span class="rate-label"><i class="fa-solid fa-coins" style="color: #d3d3d3;"></i> ૯૦/૭૦ ટ્રેડિંગ</span>
+      <span class="rate-label"><i class="fa-solid fa-coins" style="color: #d3d3d3;"></i> ચાંદી ૯૦/૭૦</span>
       <span class="price">₹<span id="s90">Loading...</span></span>
     </div>
     <div class="rate">
-      <span class="rate-label"><i class="fa-solid fa-coins" style="color: #e5e5e5;"></i> ૬૦/૮０ ટ્રેડિંગ</span>
+      <span class="rate-label"><i class="fa-solid fa-coins" style="color: #e5e5e5;"></i> ચાંદી ૬૦/૮૦</span>
       <span class="price">₹<span id="s60">Loading...</span></span>
     </div>
 
     <div class="section-title">થરાદ રોકડ બજાર (માત્ર કાચા/ચોરસા માટે)</div>
     <div class="rate">
-      <span class="rate-label"><i class="fa-solid fa-cubes" style="color: gold;"></i> ગોલ્ડ ૯૯૯ IMP (રોકડ)</span>
+      <span class="rate-label"><i class="fa-solid fa-cubes" style="color: gold;"></i> ગોલ્ડ ૯૯૯ CASH</span>
       <span class="price">₹<span id="th_g999">Loading...</span></span>
     </div>
     <div class="rate">
-      <span class="rate-label"><i class="fa-solid fa-cube" style="color: silver;"></i> સિલ્વર ચોરસા ૯૯૯ (રોકડ)</span>
+      <span class="rate-label"><i class="fa-solid fa-cube" style="color: silver;"></i> સિલ્વર ચોરસા LO CASH</span>
       <span class="price">₹<span id="th_s999">Loading...</span></span>
     </div>
     <div class="rate">
-      <span class="rate-label"><i class="fa-solid fa-store"></i> ૨૨ કેરેટ રોકડ બજાર</span>
+      <span class="rate-label"><i class="fa-solid fa-money-bill-1-wave" style="color: #647c65;"></i> ગોલ્ડ ૯૯૯ CHEQUE</span>
       <span class="price">₹<span id="th_g22">Loading...</span></span>
     </div>
 
@@ -502,7 +182,6 @@ footer {
       <div id="lastUpdate" class="date-line">છેલ્લો અપડેટ: -</div>
     </div>
 
-    <!-- BUSINESS DISCLAIMER -->
     <div class="disclaimer-box">
       <i class="fa-solid fa-triangle-exclamation"></i> 
       <b>ખાસ નોંધ:</b> આ ભાવ માત્ર ગ્રાહકોની માહિતી અને અંદાજ માટે છે. બજારમાં સતત વધ-ઘટ થતી હોવાથી, આ રેટ બિલિંગ કે પાકા સોદા માટે માન્ય ગણાશે નહીં. કાચું સોનું-ચાંદી કે ચોરસા લેતી વખતે આખરી સોદો લાઈવ બુલિયન માર્કેટ અને ફોન કન્ફર્મેશન મુજબ જ નક્કી કરવામાં આવશે.
@@ -512,9 +191,7 @@ footer {
   <!-- GRAPH SECTION -->
   <section id="graph-sec" class="card">
     <h2><i class="fa-solid fa-chart-area" style="color: var(--coffee);"></i> બજાર વલણ (Market Trends)</h2>
-    <div class="graph-wrapper">
-      <canvas id="trendsChart"></canvas>
-    </div>
+    <div class="graph-wrapper"><canvas id="trendsChart"></canvas></div>
   </section>
 
   <!-- CALCULATOR SECTION -->
@@ -527,24 +204,20 @@ footer {
       <option value="s95">ચાંદી ૯૫/૭૫ (૧ કિલો)</option>
       <option value="s90">ચાંદી ૯૦/૭૦ (૧ કિલો)</option>
       <option value="s60">ચાંદી ૬૦/૮૦ (૧ કિલો)</option>
-      <option value="th_g999">થરાદ ગોલ્ડ ૯૯૯ (રોકડ)</option>
-      <option value="th_s999">થરાદ સિલ્વર ૯૯૯ (રોકડ)</option>
-      <option value="th_g22">થરાદ ૨૨ કેરેટ (રોકડ)</option>
+      <option value="th_g999">થરાદ ગોલ્ડ ૯૯૯ CASH</option>
+      <option value="th_s999">થરાદ સિલ્વર LO CASH</option>
+      <option value="th_g22">થરાદ ગોલ્ડ ૯૯૯ CHEQUE</option>
     </select>
     <input id="weight" type="number" inputmode="decimal" min="0" step="0.001" placeholder="વજન ગ્રામમાં દાખલ કરો">
     <button id="calculateBtn"><i class="fa-solid fa-calculator"></i> હિસાબ કરો</button>
     <div class="total">અંદાજિત રકમ: <br>₹<span id="total">0</span></div>
-    
-    <div class="disclaimer-box" style="margin-top:15px; background:transparent; border-color:var(--border); color:var(--muted);">
-      * કેલ્ક્યુલેટર માત્ર પ્રાથમિક ગણતરી માટે છે. આમાં મજૂરી ખર્ચ કે GST ગણેલ નથી. સોદા સમયે લાઈવ રેટ જ આખરી ગણાશે.
-    </div>
   </section>
 
   <!-- ADMIN LOGIN BOX -->
   <section id="adminLoginBox" class="card hidden">
     <h2><i class="fa-solid fa-lock"></i> એડમિન લોગિન</h2>
-    <input id="email" type="email" autocomplete="username" placeholder="એડમિન ઈમેલ">
-    <input id="password" type="password" autocomplete="current-password" placeholder="પાસવર્ડ">
+    <input id="email" type="email" placeholder="એડમિન ઈમેલ">
+    <input id="password" type="password" placeholder="પાસવર્ડ">
     <button id="loginBtn">લોગિન</button>
     <button id="closeAdminBtn" class="secondary">એડમિન મોડ બંધ કરો</button>
     <div id="loginMessage" class="message"></div>
@@ -552,21 +225,23 @@ footer {
 
   <!-- ADMIN PANEL -->
   <section id="adminBox" class="card hidden">
-    <h2><i class="fa-solid fa-user-gear"></i> એડમિન પેનલ</h2>
+    <h2><i class="fa-solid fa-user-gear"></i> એડમિન ઓવરરાઈડ પેનલ</h2>
     <div id="adminStatus" class="admin-status"></div>
-    <div class="section-title">સોનાના ભાવ બદલો</div>
-    <input id="new_g24" type="number" inputmode="decimal" placeholder="૨૪ કેરેટનો ભાવ">
-    <input id="new_g22" type="number" inputmode="decimal" placeholder="૨૨ કેરેટનો ભાવ">
-    <input id="new_g18" type="number" inputmode="decimal" placeholder="૧૮ કેરેટનો ભાવ">
-    <div class="section-title">ચાંદીના ભાવ બદલો</div>
-    <input id="new_s95" type="number" inputmode="decimal" placeholder="૯૫/૭૫ ટ્રેડિંગ ભાવ">
-    <input id="new_s90" type="number" inputmode="decimal" placeholder="૯૦/૭૦ ટ્રેડિંગ ભાવ">
-    <input id="new_s60" type="number" inputmode="decimal" placeholder="૬૦/૮૦ ટ્રેડિંગ ભાવ">
-    <div class="section-title">થરાદ રોકડ બજારના ભાવ બદલો</div>
-    <input id="new_th_g999" type="number" inputmode="decimal" placeholder="થરાદ ગોલ્ડ ૯૯૯ ભાવ">
-    <input id="new_th_s999" type="number" inputmode="decimal" placeholder="થરાદ સિલ્વર ૯૯૯ ભાવ">
-    <input id="new_th_g22" type="number" inputmode="decimal" placeholder="થરાદ ૨૨ કેરેટ ભાવ">
-    <button id="updateBtn" class="save-button">બધા ભાવ સેવ કરો</button>
+    <p style="font-size:12px; color:var(--muted);">* જો તમે અહીં ભાવ નાખશો તો તે ગૂગલ શીટના ભાવ કરતા પહેલા દેખાશે. જો ગૂગલ શીટ વાપરવી હોય તો કિંમતો ખાલી રાખો.</p>
+    <div class="section-title">સોનાના ભાવ (મેન્યુઅલ ઓવરરાઇડ)</div>
+    <input id="new_g24" type="number" step="any" placeholder="૨૪ કેરેટનો ભાવ">
+    <input id="new_g22" type="number" step="any" placeholder="૨૨ કેરેટનો ભાવ">
+    <input id="new_g18" type="number" step="any" placeholder="૧૮ કેરેટનો ભાવ">
+    <div class="section-title">ચાんだીના ભાવ (મેન્યુઅલ ઓવરરાઇડ)</div>
+    <input id="new_s95" type="number" step="any" placeholder="૯૫/૭૫ ટ્રેડિંગ ભાવ">
+    <input id="new_s90" type="number" step="any" placeholder="૯૦/૭૦ ટ્રેડિંગ ભાવ">
+    <input id="new_s60" type="number" step="any" placeholder="૬૦/૮૦ ટ્રેડિંગ ભાવ">
+    <div class="section-title">થરાદ રોકડ બજાર (મેન્યુઅલ ઓવરરાઇડ)</div>
+    <input id="new_th_g999" type="number" step="any" placeholder="ગોલ્ડ ૯૯૯ CASH">
+    <input id="new_th_s999" type="number" step="any" placeholder="સિલ્વર LO CASH">
+    <input id="new_th_g22" type="number" step="any" placeholder="ગોલ્ડ ૯૯૯ CHEQUE">
+    <button id="updateBtn" class="save-button">ઓવરરાઇડ સેવ કરો</button>
+    <button id="clearOverrideBtn" class="secondary" style="background:#d9534f;">ઓવરરાઇડ હટાવો (ગૂગલ શીટ ચાલુ કરો)</button>
     <button id="logoutBtn" class="logout-button">લોગઆઉટ</button>
     <div id="adminMessage" class="message"></div>
   </section>
@@ -574,12 +249,8 @@ footer {
   <div id="publicMessage" class="message"></div>
 </main>
 
-<!-- WHATSAPP FLOATING BUTTON -->
-<a href="https://wa.me/918758383303?text=નમસ્તે%20VOPL%20GOLD,%20મને%20સોના-ચાંદીના%20લાઈવ%20ભાવ%20વિશે%20માહિતી%20જોઈએ%20છે." class="whatsapp-float" target="_blank" title="WhatsApp પર સંપર્ક કરો">
-  <i class="fa-brands fa-whatsapp"></i>
-</a>
+<a href="https://wa.me/918758383303?text=નમસ્તે%20VOPL%20GOLD" class="whatsapp-float" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
 
-<!-- BOTTOM NAVIGATION -->
 <nav class="bottom-nav">
   <a href="#rates-sec" class="nav-item active"><i class="fa-solid fa-indian-rupee-sign"></i>ભાવ</a>
   <a href="#calc-sec" class="nav-item"><i class="fa-solid fa-calculator"></i>કેલ્ક્યુલેટર</a>
@@ -587,30 +258,16 @@ footer {
   <a href="tel:+918758383303" class="nav-item"><i class="fa-solid fa-phone"></i>કોલ કરો</a>
 </nav>
 
-<!-- FOOTER WITH ACTIVE SOCIAL LINKS -->
 <footer>
-  <div class="footer-links" style="margin-bottom: 20px;">
-    <a href="#rates-sec"><i class="fa-solid fa-house"></i> મુખ્ય પેજ</a> | 
-    <a href="#calc-sec"><i class="fa-solid fa-calculator"></i> કેલ્ક્યુલેટર</a> | 
-    <a href="https://wa.me/918758383303" target="_blank"><i class="fa-brands fa-whatsapp"></i> વોટ્સએપ સંપર્ક</a>
+  <div class="footer-links">
+    <a href="#rates-sec">મુખ્ય પેજ</a> | <a href="#calc-sec">કેલ્ક્યુલેટર</a>
   </div>
-
   <div style="font-size: 22px; margin-bottom: 20px; display: flex; justify-content: center; gap: 20px;">
-    <a href="https://www.instagram.com/vrundavanornaments?igsh=Znpseng1bWxpaHZt" target="_blank" style="color: #e1306c;" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-    <a href="https://www.facebook.com/share/1b59DJLpLu/" target="_blank" style="color: #1877f2;" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
-    <a href="mailto:office.vopl@gmail.com" style="color: var(--text);" title="Email"><i class="fa-solid fa-envelope"></i></a>
+    <a href="https://www.instagram.com/vrundavanornaments?igsh=Znpseng1bWxpaHZt" target="_blank" style="color: #e1306c;"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://www.facebook.com/share/1b59DJLpLu/" target="_blank" style="color: #1877f2;"><i class="fa-brands fa-facebook"></i></a>
   </div>
-
-  <div style="line-height: 1.8; margin-bottom: 20px; font-family: sans-serif; font-size: 14px; color: var(--text);">
-    <p style="margin: 5px 0;"><i class="fa-solid fa-location-dot" style="color: var(--coffee);"></i> <b>સરનામું:</b> મુખ્ય બજાર, થરાદ, બનાસકાંઠા, ગુજરાત - ૩૮૫૫૬૫</p>
-    <p style="margin: 5px 0;"><i class="fa-solid fa-phone" style="color: var(--coffee);"></i> <b>ફોન નંબર:</b> <a href="tel:+918758383303" style="color: var(--text); text-decoration: none;">+91 87583 83303</a></p>
-  </div>
-
-  <hr style="border: 0; border-top: 1px solid var(--border); margin-bottom: 15px;">
-  
   <p>© 2026 Vrundavan Ornaments Pvt. Ltd. | All Rights Reserved.</p>
-  <!-- Interactive Dev Text -->
-  <p style="font-size: 11px; margin-top: 5px; color: var(--muted); cursor: pointer;" id="devBharatText">Developed by Bharat Suthar</p>
+  <p style="font-size: 11px; color: var(--muted); cursor: pointer;" id="devBharatText">Developed by Bharat Suthar</p>
 </footer>
 
 <script type="module">
@@ -624,9 +281,11 @@ const firebaseConfig = {
   projectId: "reset-de458",
   storageBucket: "reset-de458.firebasestorage.app",
   messagingSenderId: "192490668353",
-  appId: "1:192490668353:web:e8ce193dab2d3c4f7061c0",
-  measurementId: "G-NKVEWN4YSC"
+  appId: "1:192490668353:web:e8ce193dab2d3c4f7061c0"
 };
+
+const SHEET_ID = '1ixR39Oy7ZJV4ldOm-uT_KbTXyYRmrfoXm-MuyrGSdHA';
+const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=Sheet1`;
 
 const ADMIN_EMAIL = "office.vopl@gmail.com";
 const app = initializeApp(firebaseConfig);
@@ -637,7 +296,9 @@ const historyCollectionRef = collection(db, "rate_history");
 
 const RATE_KEYS = ["g24", "g22", "g18", "s95", "s90", "s60", "th_g999", "th_s999", "th_g22"];
 const SILVER_KEYS = ["s95", "s90", "s60", "th_s999"];
-let rates = {};
+let firebaseRates = {};
+let sheetRates = {};
+let currentActiveRates = {};
 let trendsChart = null;
 let forceAdminShow = false;
 
@@ -657,270 +318,140 @@ const totalEl = document.getElementById("total");
 const calcItem = document.getElementById("calcItem");
 const weightInput = document.getElementById("weight");
 
-function checkAdminAccess() {
-  const params = new URLSearchParams(window.location.search);
-  return params.get("admin") === "vopl" || forceAdminShow;
-}
+function checkAdminAccess() { return new URLSearchParams(window.location.search).get("admin") === "vopl" || forceAdminShow; }
 
-// LIVE CLOCK
 function updateLiveClock() {
-  const now = new Date();
-  const timeString = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
-  document.getElementById("liveClock").textContent = timeString;
+  document.getElementById("liveClock").textContent = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
 }
-setInterval(updateLiveClock, 1000);
-updateLiveClock();
+setInterval(updateLiveClock, 1000); updateLiveClock();
 
-// DARK MODE
-const themeToggleBtn = document.getElementById("themeToggle");
-themeToggleBtn.addEventListener("click", () => {
-  const currentTheme = document.documentElement.getAttribute("data-theme");
-  if (currentTheme === "dark") {
-    document.documentElement.removeAttribute("data-theme");
-    themeToggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
-  } else {
-    document.documentElement.setAttribute("data-theme", "dark");
-    themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+// FETCH GOOGLE SHEET RATES
+async function fetchGoogleSheetRates() {
+  try {
+    const response = await fetch(SHEET_URL);
+    const text = await response.text();
+    const json = JSON.parse(text.substr(47).slice(0, -2));
+    const rows = json.table.rows;
+
+    // Mapping Cells based on your structure
+    sheetRates["th_g999"] = Number(rows[6]?.c[1]?.v || 0);  // B7
+    sheetRates["th_s999"] = Number(rows[9]?.c[1]?.v || 0);  // B10
+    sheetRates["th_g22"]  = Number(rows[6]?.c[3]?.v || 0);  // D7
+
+    sheetRates["g24"] = Number(rows[16]?.c[2]?.v || 0); // C17
+    sheetRates["g22"] = Number(rows[17]?.c[2]?.v || 0); // C18
+    sheetRates["g18"] = Number(rows[20]?.c[2]?.v || 0); // C21
+    sheetRates["s95"] = Number(rows[21]?.c[2]?.v || 0); // C22
+    sheetRates["s90"] = Number(rows[22]?.c[2]?.v || 0); // C23
+    sheetRates["s60"] = Number(rows[23]?.c[2]?.v || 0); // C24
+
+    combineAndRenderRates();
+  } catch (e) {
+    console.error("Sheet Fetch Error", e);
   }
-  if(trendsChart) {
-    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
-    trendsChart.options.scales.x.grid.color = isDark ? '#3d3530' : '#e2d3c9';
-    trendsChart.options.scales.y.grid.color = isDark ? '#3d3530' : '#e2d3c9';
-    trendsChart.options.scales.x.ticks.color = isDark ? '#e0d5cd' : '#554239';
-    trendsChart.options.scales.y.ticks.color = isDark ? '#e0d5cd' : '#554239';
-    trendsChart.update();
-  }
-});
+}
 
-function formatMoney(value){ const number = Number(value); return !Number.isFinite(number) ? "0" : number.toLocaleString("en-IN", { maximumFractionDigits:2 }); }
-function isAdminUser(user){ return Boolean(user && user.email && user.email.toLowerCase() === ADMIN_EMAIL.toLowerCase()); }
-function formatCurrentDate(date){ return date.toLocaleDateString("gu-IN", { day:"2-digit", month:"2-digit", year:"numeric" }); }
-function formatUpdateDateTime(date){ return date.toLocaleString("gu-IN", { day:"2-digit", month:"2-digit", year:"numeric", hour:"2-digit", minute:"2-digit", second:"2-digit" }); }
-
-function updateCurrentDate(){ currentDateEl.textContent = "આજની તારીખ: " + formatCurrentDate(new Date()); }
-updateCurrentDate();
-setInterval(updateCurrentDate, 60000);
-
-function updateRateDisplay(){
+function combineAndRenderRates() {
   RATE_KEYS.forEach(key => {
+    // If Firebase has a manual override, use it; otherwise, default to Google Sheet
+    if (firebaseRates[key] && firebaseRates[key] > 0) {
+      currentActiveRates[key] = firebaseRates[key];
+    } else {
+      currentActiveRates[key] = sheetRates[key] || 0;
+    }
+
     const display = document.getElementById(key);
-    if(display){ display.textContent = formatMoney(rates[key] || 0); }
+    if(display) display.textContent = Number(currentActiveRates[key]).toLocaleString("en-IN");
+    
     const adminInput = document.getElementById("new_" + key);
-    if(adminInput){ adminInput.value = rates[key] ?? ""; }
+    if(adminInput) adminInput.value = firebaseRates[key] || "";
   });
 }
 
-// LIVE GRAPH LOGIC
-function initGraph(historyData) {
-  const ctx = document.getElementById('trendsChart').getContext('2d');
-  const labels = historyData.map(d => d.timeLabel).reverse();
-  const gold24Data = historyData.map(d => d.g24).reverse();
-  const silver95Data = historyData.map(d => d.s95).reverse();
-  
-  const isDark = document.documentElement.getAttribute("data-theme") === "dark";
-
-  if (trendsChart) {
-    trendsChart.data.labels = labels;
-    trendsChart.data.datasets[0].data = gold24Data;
-    trendsChart.data.datasets[1].data = silver95Data;
-    trendsChart.update();
-    return;
-  }
-
-  trendsChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: labels,
-      datasets: [
-        {
-          label: '૨૪K સોનું (૧0 ગ્રામ)',
-          data: gold24Data,
-          borderColor: '#bf953f',
-          backgroundColor: 'rgba(191, 149, 63, 0.1)',
-          borderWidth: 3,
-          tension: 0.3,
-          yAxisID: 'yGold'
-        },
-        {
-          label: 'ચાંદી ૯૫/૭૫ (૧ કિલો)',
-          data: silver95Data,
-          borderColor: '#96a5a6',
-          backgroundColor: 'rgba(150, 165, 166, 0.1)',
-          borderWidth: 3,
-          tension: 0.3,
-          yAxisID: 'ySilver'
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: { position: 'top', labels: { font: { family: 'Poppins, Noto Serif Gujarati' } } }
-      },
-      scales: {
-        x: {
-          grid: { color: isDark ? '#3d3530' : '#e2d3c9' },
-          ticks: { color: isDark ? '#e0d5cd' : '#554239', font: { size: 10 } }
-        },
-        yGold: {
-          type: 'linear',
-          position: 'left',
-          title: { display: true, text: 'સોનાનો ભાવ (₹)', font: { size: 11, weight: 'bold' } },
-          grid: { color: isDark ? '#3d3530' : '#e2d3c9' },
-          ticks: { color: '#bf953f' }
-        },
-        ySilver: {
-          type: 'linear',
-          position: 'right',
-          title: { display: true, text: 'ચાંદીનો ભાવ (₹)', font: { size: 11, weight: 'bold' } },
-          grid: { drawOnChartArea: false },
-          ticks: { color: '#7f8c8d' }
-        }
-      }
-    }
-  });
-}
-
-// FETCH HISTORY TRENDS FOR CHART
-const historyQuery = query(historyCollectionRef, orderBy("timestamp", "desc"), limit(5));
-onSnapshot(historyQuery, snapshot => {
-  const historyData = [];
-  snapshot.forEach(doc => {
-    const data = doc.data();
-    let timeLabel = "-";
-    if (data.timestamp && typeof data.timestamp.toDate === "function") {
-      const t = data.timestamp.toDate();
-      timeLabel = t.toLocaleTimeString('gu-IN', { hour: '2-digit', minute: '2-digit' });
-    }
-    historyData.push({ timeLabel: timeLabel, g24: data.g24 || 0, s95: data.s95 || 0 });
-  });
-  if(historyData.length > 0) { initGraph(historyData); }
-});
-
-// STREAM LIVE RATES
+// STREAM FIREBASE FOR MANUAL OVERRIDES
 onSnapshot(rateRef, snapshot => {
-  if(!snapshot.exists()){ return; }
-  const data = snapshot.data();
-  RATE_KEYS.forEach(key => { const value = Number(data[key]); rates[key] = Number.isFinite(value) ? value : 0; });
-  updateRateDisplay();
-  if(data.updatedAt && typeof data.updatedAt.toDate === "function"){
-    lastUpdateEl.textContent = "છેલ્લો અપડેટ: " + formatUpdateDateTime(data.updatedAt.toDate());
+  if(snapshot.exists()){
+    const data = snapshot.data();
+    RATE_KEYS.forEach(key => { firebaseRates[key] = Number(data[key] || 0); });
+    if(data.updatedAt && typeof data.updatedAt.toDate === "function"){
+      lastUpdateEl.textContent = "છેલ્લો અપડેટ: " + data.updatedAt.toDate().toLocaleString("gu-IN");
+    }
   }
-}, error => {
-  publicMessage.textContent = "ભાવ લોડ કરવામાં ભૂલ આવી.";
+  fetchGoogleSheetRates();
 });
 
-// CALCULATOR LOGIC
+// REFRESH SHEET EVERY 30 SECONDS
+setInterval(fetchGoogleSheetRates, 30000);
+
+// CALCULATOR
 document.getElementById("calculateBtn").addEventListener("click", () => {
   const selected = calcItem.value;
   const weight = Number(weightInput.value);
-  if(!Number.isFinite(weight) || weight <= 0){ totalEl.textContent = "0"; return; }
-  const rate = Number(rates[selected] || 0);
+  if(!weight || weight <= 0){ totalEl.textContent = "0"; return; }
+  const rate = Number(currentActiveRates[selected] || 0);
   let amount = SILVER_KEYS.includes(selected) ? (rate * weight / 1000) : (rate * weight / 10);
-  totalEl.textContent = formatMoney(amount);
+  totalEl.textContent = amount.toLocaleString("en-IN", { maximumFractionDigits:2 });
 });
 
-// SHOW/HIDE ADMIN PANELS
+// ADMIN AUTH WORKFLOW
 function renderAdminPanels(user) {
-  if (!checkAdminAccess()) {
-    adminLoginBox.classList.add("hidden");
-    adminBox.classList.add("hidden");
-    return;
-  }
-  if (isAdminUser(user)) {
-    adminLoginBox.classList.add("hidden");
-    adminBox.classList.remove("hidden");
+  if (!checkAdminAccess()) { adminLoginBox.classList.add("hidden"); adminBox.classList.add("hidden"); return; }
+  if (user && user.email.toLowerCase() === ADMIN_EMAIL.toLowerCase()) {
+    adminLoginBox.classList.add("hidden"); adminBox.classList.remove("hidden");
     adminStatus.textContent = "લોગિન: " + user.email;
-    updateRateDisplay();
   } else {
-    adminBox.classList.add("hidden");
-    adminLoginBox.classList.remove("hidden");
+    adminBox.classList.add("hidden"); adminLoginBox.classList.remove("hidden");
     emailInput.value = ADMIN_EMAIL;
   }
 }
 
-// ADMIN LOGIN CLICK
 loginBtn.addEventListener("click", async () => {
-  const email = emailInput.value.trim().toLowerCase();
-  const password = passwordInput.value;
-  if (!email || !password) { loginMessage.textContent = "ઈમેલ અને પાસવર્ડ દાખલ કરો."; return; }
-  loginBtn.disabled = true; loginMessage.textContent = "લોગિન થઈ રહ્યું છે...";
   try {
-    const credential = await signInWithEmailAndPassword(auth, email, password);
-    if (!isAdminUser(credential.user)) { await signOut(auth); loginMessage.textContent = "આ Account Admin નથી."; return; }
+    await signInWithEmailAndPassword(auth, emailInput.value.trim(), passwordInput.value);
     passwordInput.value = ""; loginMessage.textContent = "";
-  } catch (error) {
-    loginMessage.textContent = "લોગિન નિષ્ફળ! પાસવર્ડ ચેક કરો.";
-  } finally { loginBtn.disabled = false; }
+  } catch (error) { loginMessage.textContent = "લોગિન નિષ્ફળ!"; }
 });
 
-passwordInput.addEventListener("keydown", event => { if (event.key === "Enter") { loginBtn.click(); } });
+onAuthStateChanged(auth, user => renderAdminPanels(user));
 
-// AUTH OBSERVER
-onAuthStateChanged(auth, async user => {
-  if (user && !isAdminUser(user)) { await signOut(auth); return; }
-  renderAdminPanels(user);
-});
-
-// SAVE RATES TO FIRESTORE
 updateBtn.addEventListener("click", async () => {
-  const user = auth.currentUser;
-  if (!isAdminUser(user)) { adminMessage.textContent = "Admin Login જરૂરી છે."; return; }
   const newRates = {};
-  for (const key of RATE_KEYS) {
-    const input = document.getElementById("new_" + key);
-    const value = Number(input.value);
-    if (!Number.isFinite(value) || value <= 0) { adminMessage.textContent = "બધા ભાવ સાચા દાખલ કરો."; input.focus(); return; }
-    newRates[key] = value;
-  }
-  updateBtn.disabled = true; adminMessage.textContent = "ભાવ સેવ થઈ રહ્યા છે...";
+  RATE_KEYS.forEach(key => { newRates[key] = Number(document.getElementById("new_" + key).value) || 0; });
   try {
-    await setDoc(rateRef, { ...newRates, updatedAt: serverTimestamp(), updatedBy: user.email }, { merge: true });
-    await addDoc(historyCollectionRef, { g24: newRates.g24, s95: newRates.s95, timestamp: serverTimestamp() });
-    rates = { ...rates, ...newRates }; updateRateDisplay();
-    adminMessage.textContent = "બધા ભાવ સફળતાપૂર્વક અપડેટ થયા!";
-    setTimeout(() => { adminMessage.textContent = ""; }, 4000);
-  } catch (error) {
-    adminMessage.textContent = "સેવ કરવામાં ભૂલ આવી. Firestore Rules ચેક કરો.";
-  } finally { updateBtn.disabled = false; }
+    await setDoc(rateRef, { ...newRates, updatedAt: serverTimestamp() }, { merge: true });
+    await addDoc(historyCollectionRef, { g24: newRates.g24 || currentActiveRates.g24, s95: newRates.s95 || currentActiveRates.s95, timestamp: serverTimestamp() });
+    adminMessage.textContent = "મેન્યુઅલ ઓવરરાઇડ અપડેટ થયું!";
+  } catch (e) { adminMessage.textContent = "સેવ કરવામાં ભૂલ આવી."; }
 });
 
-// ADMIN LOGOUT
-document.getElementById("logoutBtn").addEventListener("click", async () => {
-  try { await signOut(auth); loginMessage.textContent = "લોગઆઉટ સફળ થયું."; } catch (error) {}
+document.getElementById("clearOverrideBtn").addEventListener("click", async () => {
+  const emptyRates = {}; RATE_KEYS.forEach(key => emptyRates[key] = 0);
+  try {
+    await setDoc(rateRef, { ...emptyRates, updatedAt: serverTimestamp() }, { merge: true });
+    adminMessage.textContent = "બધા ઓવરરાઇડ હટી ગયા, હવે ગૂગલ શીટના લાઈવ રેટ દેખાશે!";
+  } catch (e) {}
 });
 
-document.getElementById("closeAdminBtn").addEventListener("click", () => { 
-  forceAdminShow = false;
-  window.location.href = window.location.pathname; 
+document.getElementById("logoutBtn").addEventListener("click", () => signOut(auth));
+document.getElementById("closeAdminBtn").addEventListener("click", () => { forceAdminShow = false; window.location.href = window.location.pathname; });
+
+// 3 CLICKS SECRETS PANEL
+document.getElementById("devBharatText").addEventListener("click", (() => {
+  let count = 0; let timer;
+  return () => {
+    count++; clearTimeout(timer);
+    if(count === 3) { count = 0; forceAdminShow = true; renderAdminPanels(auth.currentUser); adminLoginBox.scrollIntoView({ behavior: 'smooth' }); }
+    else { timer = setTimeout(() => { if(count === 1) window.open("https://www.instagram.com/b_s_0022", "_blank"); count = 0; }, 400); }
+  };
+})());
+
+// THEME TOGGLE
+document.getElementById("themeToggle").addEventListener("click", () => {
+  const isDark = document.documentElement.toggleAttribute("data-theme");
+  document.getElementById("themeToggle").innerHTML = isDark ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
 });
 
-// INTERACTIVE DEV TEXT: 1 Click = Instagram, Fast 3 Clicks = Secret Admin Panel
-const footerDevText = document.getElementById("devBharatText");
-if(footerDevText) {
-  let clickCount = 0;
-  let clickTimer = null;
-
-  footerDevText.addEventListener("click", (e) => {
-    clickCount++;
-    clearTimeout(clickTimer);
-
-    if(clickCount === 3) {
-      clickCount = 0;
-      forceAdminShow = true;
-      renderAdminPanels(auth.currentUser);
-      adminLoginBox.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      clickTimer = setTimeout(() => {
-        if (clickCount === 1) {
-          window.open("https://www.instagram.com/b_s_0022?igsh=MWthbDZqeGdldjc2dA==", "_blank");
-        }
-        clickCount = 0;
-      }, 400);
-    }
-  });
-}
+currentDateEl.textContent = "આજની તારીખ: " + new Date().toLocaleDateString("gu-IN");
 </script>
 </body>
 </html>
