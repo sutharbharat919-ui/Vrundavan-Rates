@@ -9,7 +9,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Gujarati:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
 :root {
@@ -28,7 +27,6 @@
   --shadow: 0 10px 30px rgba(73, 54, 45, 0.07);
 }
 
-/* Dark Mode CSS Variables */
 html[data-theme="dark"], body[data-theme="dark"] {
   --bg: #121212;
   --surface: #1e1e1e;
@@ -70,7 +68,6 @@ h2 { margin: 0 0 18px; color: var(--heading); font-size: 22px; font-weight: 700;
 .section-title { margin: 20px 0 10px; padding: 10px 14px; color: var(--dark); background: var(--soft); border-left: 4px solid var(--coffee); border-radius: 4px 10px 10px 4px; font-size: 14px; font-weight: 700; }
 
 .disclaimer-box { background: rgba(154, 92, 85, 0.08); border: 1px solid var(--danger); border-radius: 12px; padding: 12px 15px; margin-top: 15px; font-size: 13px; color: var(--danger); line-height: 1.5; font-weight: 600; }
-.disclaimer-box i { margin-right: 5px; }
 
 .rate { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 60px; margin-bottom: 10px; padding: 12px 16px; background: var(--bg); border: 1px solid var(--border); border-radius: 14px; }
 .rate-label { color: var(--text); font-size: 15px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
@@ -111,12 +108,12 @@ footer { padding: 25px 15px 90px; text-align: center; color: var(--muted); font-
 <body>
 
 <div class="notification-bar">
-  <div class="marquee">✨ સ્વાગત છે! વ્રુન્દાવન ઓર્નામેન્ટ્સ માં સોના ચાંદીના લાઈવ ભાવ અહીં જોઈ શકાશે. રોજના સચોટ અને તાજા અપડેટ માટે પેજ વિઝિટ કરતા રહો. ✨</div>
+  <div class="marquee">✨ સ્વાગત છે! વ્રુન્દાવન ઓર્નામેન્ટ્સ માં સોના ચાんだીના લાઈવ ભાવ અહીં જોઈ શકાશે. રોજના સચોટ અને તાજા અપડેટ માટે પેજ વિઝિટ કરતા રહો. ✨</div>
 </div>
 
 <header>
   <div class="header-tools">
-    <button class="theme-toggle-btn" id="themeToggle" title="ડાર્ક મોડ બદલો"><i class="fa-solid fa-moon"></i></button>
+    <button class="theme-toggle-btn" id="themeToggle" title="સ્વિચ થીમ"><i class="fa-solid fa-moon"></i></button>
   </div>
   <div class="logo-box">
     <img src="./logo.png" class="logo" alt="Vrundavan Ornaments Logo">
@@ -220,7 +217,7 @@ footer { padding: 25px 15px 90px; text-align: center; color: var(--muted); font-
   <section id="adminBox" class="card hidden">
     <h2><i class="fa-solid fa-user-gear"></i> એડમિન ઓવરરાઈડ પેનલ</h2>
     <div id="adminStatus" class="admin-status"></div>
-    <p style="font-size:12px; color:var(--muted);">* જો તમે અહીં ભાવ નાખશો તો તે ગૂગલ શીટના ભાવ કરતા પહેલા દેખાશે. જો ગૂગલ શીટ વાપરવી હોય તો કિંમતો ખાલી રાખો કે હટાવી દો.</p>
+    <p style="font-size:12px; color:var(--muted);">* જો તમે અહીં ભાવ નાખશો તો તે ગૂગલ શીટના ભાવ કરતા પહેલા દેખાશે.</p>
     <div class="section-title">સોનાના ભાવ (મેન્યુઅલ ઓવરરાઇડ)</div>
     <input id="new_g24" type="number" placeholder="૨૪ કેરેટનો ભાવ">
     <input id="new_g22" type="number" placeholder="૨૨ કેરેટનો ભાવ">
@@ -234,13 +231,11 @@ footer { padding: 25px 15px 90px; text-align: center; color: var(--muted); font-
     <input id="new_th_s999" type="number" placeholder="સિલ્વર LO CASH">
     <input id="new_th_g22" type="number" placeholder="ગોલ્ડ ૯૯૯ CHEQUE">
     <button id="updateBtn" class="save-button">ઓવરરાઇડ સેવ કરો</button>
-    <button id="clearOverrideBtn" class="secondary" style="background:#d9534f;">ઓવરરાઇડ હટાવો (ગૂગલ શીટ ચાલુ કરો)</button>
+    <button id="clearOverrideBtn" class="secondary" style="background:#d9534f;">ઓવરરાઇડ હટાવો</button>
     <button id="logoutBtn" class="logout-button">લોગઆઉટ</button>
     <div id="adminMessage" class="message"></div>
   </section>
 </main>
-
-<a href="https://wa.me/918758383303?text=નમસ્તે%20VOPL%20GOLD" class="whatsapp-float" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
 
 <nav class="bottom-nav">
   <a href="#rates-sec" class="nav-item active"><i class="fa-solid fa-indian-rupee-sign"></i>ભાવ</a>
@@ -250,13 +245,6 @@ footer { padding: 25px 15px 90px; text-align: center; color: var(--muted); font-
 </nav>
 
 <footer>
-  <div class="footer-links">
-    <a href="#rates-sec">મુખ્ય પેજ</a> | <a href="#calc-sec">કેલ્ક્યુલેટર</a>
-  </div>
-  <div style="font-size: 22px; margin-bottom: 20px; display: flex; justify-content: center; gap: 20px;">
-    <a href="https://www.instagram.com/vrundavanornaments" target="_blank" style="color: #e1306c;"><i class="fa-brands fa-instagram"></i></a>
-    <a href="https://www.facebook.com/share/1b59DJLpLu/" target="_blank" style="color: #1877f2;"><i class="fa-brands fa-facebook"></i></a>
-  </div>
   <p>© 2026 Vrundavan Ornaments Pvt. Ltd. | All Rights Reserved.</p>
   <p style="font-size: 11px; color: var(--muted); cursor: pointer;" id="devBharatText">Developed by Bharat Suthar</p>
 </footer>
@@ -275,9 +263,9 @@ const firebaseConfig = {
   appId: "1:192490668353:web:e8ce193dab2d3c4f7061c0"
 };
 
-// Google Sheet Config - Exact Cells Mapped Perfectly
 const SHEET_ID = '1ixR39Oy7ZJV4ldOm-uT_KbTXyYRmrfoXm-MuyrGSdHA';
-const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=Sheet1`;
+// Advanced JSON Visualization string fetch to eliminate row indexing errors
+const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
 
 const ADMIN_EMAIL = "office.vopl@gmail.com";
 const app = initializeApp(firebaseConfig);
@@ -314,38 +302,41 @@ function updateLiveClock() {
 }
 setInterval(updateLiveClock, 1000); updateLiveClock();
 
-// Clean CSV format parser to get raw cell values directly
-function parseCSV(text) {
-  let lines = text.split("\n").map(line => {
-    return line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(cell => cell.replace(/^"|"$/g, '').trim());
-  });
-  return lines;
+// Clean numeric conversion helper
+function cleanNum(val) {
+  if (!val) return 0;
+  let s = String(val).replace(/[^0-9.]/g, '');
+  return Number(s) || 0;
 }
 
-// BULLETPROOF FETCH VIA CSV API (Reads precise matrix values)
+// BULLETPROOF FETCH VIA GOOGLE VISUALIZATION API JSON
 async function fetchGoogleSheetRates() {
   try {
-    const response = await fetch(SHEET_URL + "&cachebuster=" + new Date().getTime());
-    const text = await response.text();
-    const matrix = parseCSV(text);
+    const response = await fetch(SHEET_URL + "&cb=" + new Date().getTime());
+    const rawText = await response.text();
+    
+    // Google API returns standard object wrapper, stripping it down safely
+    const jsonString = rawText.substring(rawText.indexOf('{'), rawText.lastIndexOf('}') + 1);
+    const data = JSON.parse(jsonString);
+    const rows = data.table.rows;
 
-    if (matrix && matrix.length > 0) {
-      // Mapping absolute indices based on Sheet1 structure
-      sheetRates["th_g999"] = Number(matrix[6]?.[1]) || 0;  // B7
-      sheetRates["th_s999"] = Number(matrix[9]?.[1]) || 0;  // B10
-      sheetRates["th_g22"]  = Number(matrix[6]?.[3]) || 0;  // D7
+    if (rows && rows.length > 0) {
+      // Direct Row Mapping Matrix
+      sheetRates["th_g999"] = cleanNum(rows[6]?.c[1]?.v);  // B7
+      sheetRates["th_s999"] = cleanNum(rows[9]?.c[1]?.v);  // B10
+      sheetRates["th_g22"]  = cleanNum(rows[6]?.c[3]?.v);  // D7
 
-      sheetRates["g24"] = Number(matrix[16]?.[2]) || 0; // C17
-      sheetRates["g22"] = Number(matrix[17]?.[2]) || 0; // C18
-      sheetRates["g18"] = Number(matrix[20]?.[2]) || 0; // C21
-      sheetRates["s95"] = Number(matrix[21]?.[2]) || 0; // C22
-      sheetRates["s90"] = Number(matrix[22]?.[2]) || 0; // C23
-      sheetRates["s60"] = Number(matrix[23]?.[2]) || 0; // C24
+      sheetRates["g24"] = cleanNum(rows[16]?.c[2]?.v); // C17
+      sheetRates["g22"] = cleanNum(rows[17]?.c[2]?.v); // C18
+      sheetRates["g18"] = cleanNum(rows[20]?.c[2]?.v); // C21
+      sheetRates["s95"] = cleanNum(rows[21]?.c[2]?.v); // C22
+      sheetRates["s90"] = cleanNum(rows[22]?.c[2]?.v); // C23
+      sheetRates["s60"] = cleanNum(rows[23]?.c[2]?.v); // C24
 
       combineAndRenderRates(true);
     }
   } catch (e) {
-    console.error("Google Sheet parsing failed: ", e);
+    console.error("Critical: Google Sheet connection timed out or permissions missing.", e);
     combineAndRenderRates(false);
   }
 }
@@ -363,7 +354,7 @@ function combineAndRenderRates(sheetSuccess = true) {
       if (currentActiveRates[key] > 0) {
         display.textContent = Number(currentActiveRates[key]).toLocaleString("en-IN");
       } else {
-        display.textContent = sheetSuccess ? "0" : "ભૂલ આવી";
+        display.textContent = sheetSuccess ? "0" : "વેઇટિંગ...";
       }
     }
     
@@ -372,7 +363,7 @@ function combineAndRenderRates(sheetSuccess = true) {
   });
 }
 
-// REALTIME FIREBASE MONITORING
+// REALTIME MONITOR
 onSnapshot(rateRef, snapshot => {
   if(snapshot.exists()){
     const data = snapshot.data();
@@ -380,16 +371,15 @@ onSnapshot(rateRef, snapshot => {
     if(data.updatedAt && typeof data.updatedAt.toDate === "function"){
       lastUpdateEl.textContent = "છેલ્લો અપડેટ: " + data.updatedAt.toDate().toLocaleString("gu-IN");
     } else {
-      lastUpdateEl.textContent = "છેલ્લો અપડેટ: લાઈવ શીટ કનેક્ટેડ";
+      lastUpdateEl.textContent = "છેલ્લો અપડેટ: લાઈવ કનેક્ટેડ";
     }
   }
   fetchGoogleSheetRates();
 });
 
-// Auto refresh background data loop
-setInterval(fetchGoogleSheetRates, 15000);
+setInterval(fetchGoogleSheetRates, 10000);
 
-// CALCULATOR LOGIC
+// CALCULATOR
 document.getElementById("calculateBtn").addEventListener("click", () => {
   const selected = calcItem.value;
   const weight = Number(weightInput.value);
@@ -399,59 +389,7 @@ document.getElementById("calculateBtn").addEventListener("click", () => {
   totalEl.textContent = Math.round(amount).toLocaleString("en-IN");
 });
 
-// ADMIN ACCESS TERMINALS
-function renderAdminPanels(user) {
-  if (!checkAdminAccess()) { adminLoginBox.classList.add("hidden"); adminBox.classList.add("hidden"); return; }
-  if (user && user.email.toLowerCase() === ADMIN_EMAIL.toLowerCase()) {
-    adminLoginBox.classList.add("hidden"); adminBox.classList.remove("hidden");
-    adminStatus.textContent = "લોગિન બ્રાન્ચ: " + user.email;
-  } else {
-    adminBox.classList.add("hidden"); adminLoginBox.classList.remove("hidden");
-    emailInput.value = ADMIN_EMAIL;
-  }
-}
-
-loginBtn.addEventListener("click", async () => {
-  try {
-    await signInWithEmailAndPassword(auth, emailInput.value.trim(), passwordInput.value);
-    passwordInput.value = ""; loginMessage.textContent = "";
-  } catch (error) { loginMessage.textContent = "લોગિન ક્રેડેન્શિયલ ખોટા છે!"; }
-});
-
-onAuthStateChanged(auth, user => renderAdminPanels(user));
-
-updateBtn.addEventListener("click", async () => {
-  const newRates = {};
-  RATE_KEYS.forEach(key => { newRates[key] = Number(document.getElementById("new_" + key).value) || 0; });
-  try {
-    await setDoc(rateRef, { ...newRates, updatedAt: serverTimestamp() }, { merge: true });
-    adminMessage.textContent = "ઓવરરાઇડ સેવ થઈ ગયું! આ કિંમત શીટ કરતા પહેલા દેખાશે.";
-  } catch (e) { adminMessage.textContent = "ફાયરબેઝ સર્વર એરર."; }
-});
-
-document.getElementById("clearOverrideBtn").addEventListener("click", async () => {
-  const emptyRates = {}; RATE_KEYS.forEach(key => emptyRates[key] = 0);
-  try {
-    await setDoc(rateRef, { ...emptyRates, updatedAt: serverTimestamp() }, { merge: true });
-    adminMessage.textContent = "બધા મેન્યુઅલ ઓવરરાઇડ સફળતાપૂર્વક સાફ થયા! હવે સીધા શીટના ભાવ દેખાશે.";
-    RATE_KEYS.forEach(key => document.getElementById("new_" + key).value = "");
-  } catch (e) {}
-});
-
-document.getElementById("logoutBtn").addEventListener("click", () => signOut(auth));
-document.getElementById("closeAdminBtn").addEventListener("click", () => { forceAdminShow = false; window.location.href = window.location.pathname; });
-
-// FAST CLICK GESTURE ON DEVELOPER FOOTER FOR ADMIN
-document.getElementById("devBharatText").addEventListener("click", (() => {
-  let count = 0; let timer;
-  return () => {
-    count++; clearTimeout(timer);
-    if(count === 3) { count = 0; forceAdminShow = true; renderAdminPanels(auth.currentUser); adminLoginBox.scrollIntoView({ behavior: 'smooth' }); }
-    else { timer = setTimeout(() => { count = 0; }, 400); }
-  };
-})());
-
-// LIGHT / DARK SWITCH FIXED LOGIC
+// THEME SYSTEM WITH PROPER DOCUMENT ROOT ELEMENT MANIPULATION
 document.getElementById("themeToggle").addEventListener("click", () => {
   const isDark = document.documentElement.hasAttribute("data-theme");
   if (isDark) {
@@ -464,6 +402,56 @@ document.getElementById("themeToggle").addEventListener("click", () => {
     document.getElementById("themeToggle").innerHTML = '<i class="fa-solid fa-sun"></i>';
   }
 });
+
+function renderAdminPanels(user) {
+  if (!checkAdminAccess()) { adminLoginBox.classList.add("hidden"); adminBox.classList.add("hidden"); return; }
+  if (user && user.email.toLowerCase() === ADMIN_EMAIL.toLowerCase()) {
+    adminLoginBox.classList.add("hidden"); adminBox.classList.remove("hidden");
+    adminStatus.textContent = "બ્રાન્ચ: " + user.email;
+  } else {
+    adminBox.classList.add("hidden"); adminLoginBox.classList.remove("hidden");
+    emailInput.value = ADMIN_EMAIL;
+  }
+}
+
+loginBtn.addEventListener("click", async () => {
+  try {
+    await signInWithEmailAndPassword(auth, emailInput.value.trim(), passwordInput.value);
+    passwordInput.value = ""; loginMessage.textContent = "";
+  } catch (error) { loginMessage.textContent = "ખોટો પાસવર્ડ!"; }
+});
+
+onAuthStateChanged(auth, user => renderAdminPanels(user));
+
+updateBtn.addEventListener("click", async () => {
+  const newRates = {};
+  RATE_KEYS.forEach(key => { newRates[key] = Number(document.getElementById("new_" + key).value) || 0; });
+  try {
+    await setDoc(rateRef, { ...newRates, updatedAt: serverTimestamp() }, { merge: true });
+    adminMessage.textContent = "સેવ થઈ ગયું!";
+  } catch (e) { adminMessage.textContent = "સર્વર એરર."; }
+});
+
+document.getElementById("clearOverrideBtn").addEventListener("click", async () => {
+  const emptyRates = {}; RATE_KEYS.forEach(key => emptyRates[key] = 0);
+  try {
+    await setDoc(rateRef, { ...emptyRates, updatedAt: serverTimestamp() }, { merge: true });
+    adminMessage.textContent = "ઓવરરાઇડ સાફ થયું. ગુગલ શીટ રનિંગ છે.";
+    RATE_KEYS.forEach(key => document.getElementById("new_" + key).value = "");
+  } catch (e) {}
+});
+
+document.getElementById("logoutBtn").addEventListener("click", () => signOut(auth));
+document.getElementById("closeAdminBtn").addEventListener("click", () => { forceAdminShow = false; window.location.href = window.location.pathname; });
+
+document.getElementById("devBharatText").addEventListener("click", (() => {
+  let count = 0; let timer;
+  return () => {
+    count++; clearTimeout(timer);
+    if(count === 3) { count = 0; forceAdminShow = true; renderAdminPanels(auth.currentUser); adminLoginBox.scrollIntoView({ behavior: 'smooth' }); }
+    else { timer = setTimeout(() => { count = 0; }, 400); }
+  };
+})());
 
 currentDateEl.textContent = "આજની તારીખ: " + new Date().toLocaleDateString("gu-IN");
 </script>
